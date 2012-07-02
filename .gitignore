@@ -1,2 +1,10 @@
-/blog*
+blog/*
+!blog/wp-content
+
+blog/wp-content/*
+!blog/wp-content/themes
+
+blog/wp-content/themes/*
+!blog/wp-content/themes/kiln
+
 .DS_Store
