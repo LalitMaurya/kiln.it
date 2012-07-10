@@ -1,3 +1,26 @@
+body { background-color: #333; padding-left: 10%; padding-right: 10%; min-width: 420px;}	
+p, div { font-family: 'Droid Serif', Georgia, serif; color: white; font-size: 14px; line-height: 1.4em; }
+h2 { color: yellow; font-size: 18px; line-height: 1.4em; margin-top: 60px; font-weight: normal; }
+h3 { font-size: 15px; font-weight: normal; color: rgb(190,190,190); line-height: 1.4em; margin-top: 32px; }
+strong { font-weight: normal; text-transform: uppercase; }
+a:link, a:visited { color: white; border-bottom: 1px dotted yellow; text-decoration: none; }
+a:hover, a:active { background: yellow; color: black; }
+#container { max-width: 875px; min-width: 390px;}
+#masthead { padding-left: 10%; padding-right: 10%; font-size: 140px; margin-top: 120px; line-height: 51px; border-top: dashed 1px white; border-bottom: dashed 1px white; padding-bottom:0; margin-left: -5px; }
+#strap { padding-left: 10%; padding-right: 10%; font-size: 17px; color: yellow; }
+#projects { min-height: 130px; }
+#mainarea { padding-bottom: 40px; padding-left: 10%; padding-right: 10%; }
+#spinner { position: relative; left: -166px; top: -84px;}
+.intro { font-size: 18px; margin-top: 80px; }
+.highlight { color: yellow; font-size: 16px; }
+.projectimage { width: 100px; height: 100px; float: left; margin: 0 20px 10px 0; border: solid 1px white; background: white;}
+.menu { margin: 40px 0 80px 0; color: yellow; font-size: 16px; color: rgb(190,190,190); }
+.menu a:link, .menu a:visited  { color: rgb(190,190,190); }
+.menu a:hover, .menu a:active  { color: black; }
+.menuline { margin: 0 10px; }
+.yellowdot { color: yellow;}
+.project { min-height: 120px; }
+
 /*
 Animate.css - http://daneden.me/animate
 LICENSED UNDER THE  MIT LICENSE (MIT)
