@@ -5,7 +5,7 @@ body {
 p, div { 
 	font-family: 'Droid Serif', Georgia, serif;
 	color: black;
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 1.4em;
 }
 h2 { 
@@ -43,13 +43,13 @@ p a:hover, a:active {
 }
 #container {
 	max-width: 620px;
-	min-width: 470px;
+	min-width: 480px;
 	margin: 0 auto;
 }
 #logo {
 	width: 100px;
 	height: 100px;
-	margin: 140px auto 30px;
+	margin: 100px auto 30px;
 	-webkit-animation-name: spinner;
 	-moz-animation-name: spinner;
 	-ms-animation-name: spinner;
@@ -64,7 +64,7 @@ p a:hover, a:active {
 }
 #intro {
 	font-size: 18px;
-	margin: 80px 20px;
+	margin: 70px 20px;
 	text-align: center;
 	-webkit-animation-name: fadeInRightBig;
 	-moz-animation-name: fadeInRightBig;
@@ -93,8 +93,8 @@ p a:hover, a:active {
 	min-height: 130px;
 }
 #menu {
-	margin: 0 0 80px 0;
-	padding-top: 40px;
+	margin: 0 0 50px 0;
+	padding-top: 10px;
 	color: yellow;
 	font-size: 16px;
 	color: rgb(190,190,190);
@@ -312,4 +312,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	0% {opacity: 0;}
 	75% {opacity: 0;}
 	100% {opacity: 1;}
+}
+
+@media only screen and (max-device-width: 480px) {
+	#intro {
+		font-size: 24px;
+	}
 }
