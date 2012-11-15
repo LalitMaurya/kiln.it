@@ -1,15 +1,16 @@
 body {
 	background-color: white;
+	position: relative;
 }
 p, div { 
 	font-family: 'Droid Serif', Georgia, serif;
 	color: black;
-	font-size: 14px;
+	font-size: 13px;
 	line-height: 1.4em;
 }
 h2 { 
 	color: #C3004D;
-	font-size: 18px;
+	font-size: 20px;
 	line-height: 1.4em;
 	margin-top: 60px;
 	font-weight: normal;
@@ -17,7 +18,7 @@ h2 {
 h3 {
 	font-size: 15px;
 	font-weight: normal;
-	color: #00AC7B;
+	color: #C3004D;
 	line-height: 1.4em;
 	margin-top: 32px;
 }
@@ -27,16 +28,20 @@ strong {
 }
 a:link, a:visited {
 	color: #C3004D;
+	text-decoration: none;
+}
+p a:link, a:visited {
+	color: #C3004D;
 	border-bottom: 1px dotted #C3004D;
 	text-decoration: none;
 }
-a:hover, a:active {
+p a:hover, a:active {
 	background: black;
 	color: white;
 }
 #container {
 	max-width: 620px;
-	min-width: 450px;
+	min-width: 470px;
 	margin: 0 auto;
 }
 #logo {
@@ -78,23 +83,12 @@ a:hover, a:active {
 }
 #bigkiln {
 	position: absolute;
-	right: 0;
+	right: 0px;
 	z-index: -2;
-	top: 460px;
+	bottom: 280px;
 }
 #projects {
 	min-height: 130px;
-}
-.highlight {
-	color: yellow;
-	font-size: 16px;
-}
-.projectimage { width: 100px;
-	height: 100px;
-	float: left;
-	margin: 0 20px 10px 0;
-	border: solid 1px white;
-	background: white;
 }
 .menu {
 	margin: 40px 0 80px 0;
@@ -111,15 +105,30 @@ a:hover, a:active {
 .menu a:hover, .menu a:active  { 
 	color: white;
 	padding: 2px;
+	background: black;
 }
 .menuline {
 	margin: 0 10px;
 }
+.projectimage {
+	margin: 34px auto 10px;
+	width: 64px;
+	height: 64px;
+	border: none;
+}
+.projectimage:hover {
+	-webkit-animation-name: spinner-short;
+	-moz-animation-name: spinner;
+	-ms-animation-name: spinner;
+	-o-animation-name: spinner;
+	animation-name: spinner;
+}
 .yellowdot { 
 	color: yellow;
 }
-.project { 
-	min-height: 120px;
+.highlight {
+	color: yellow;
+	font-size: 16px;
 }
 
 /*
@@ -135,6 +144,18 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+.animated-1s {
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-ms-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-ms-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;
+}
 .animated-2s {
 	-webkit-animation-fill-mode: both;
 	-moz-animation-fill-mode: both;
@@ -199,6 +220,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	0% { transform-origin: center center; transform: rotate(-1200deg); opacity: 0.1; }
 	100% { transform-origin: center center; transform: rotate(0); opacity: 1; }
 }
+@-webkit-keyframes spinner-short {
+	0% { -webkit-transform-origin: center center; -webkit-transform: rotateY(-360deg); opacity: 1; }
+	100% { -webkit-transform-origin: center center; -webkit-transform: rotateY(0); opacity: 1; }
+}
+
 @-webkit-keyframes fadeIn {
 	0% {opacity: 0;}
 	75% {opacity: 0;}
