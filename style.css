@@ -130,6 +130,12 @@ p a:hover, a:active {
 	-o-animation-name: spinner-short-ac;
 	animation-name: spinner-short-ac;
 }
+.projectimage a:link, .menu a:visited  {
+	background: none;
+}
+.projectimage a:hover, .menu a:active  { 
+	background: none;
+}
 .yellowdot { 
 	color: yellow;
 }
