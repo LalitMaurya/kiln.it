@@ -337,6 +337,16 @@ p a:hover, a:active {
 	display: inline-block;
 	vertical-align: middle;
 }
+.projectimage a:link, .projectimage-ac a:visited,
+.projectimage a:link, .projectimage-ac a:visited {
+	border: none;
+	background: none;
+}
+.projectimage a:hover, .projectimage-ac a:active,
+.projectimage a:hover, .projectimage-ac a:active {
+	border: none;
+	background: none;
+}
 .projectname {
 	font-size: 18px;
 	color: #555;
