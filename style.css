@@ -407,6 +407,10 @@ p a:hover, a:active {
 	0% { -o-transform-origin: center center; -o-transform: rotate(360deg); opacity: 1; }
 	100% { -o-transform-origin: center center; -o-transform: rotate(0); opacity: 1; }
 }
-
+#followus {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
 @media only screen and (max-device-width: 520px) {
 }
+
