@@ -26,16 +26,16 @@ body {
 #bigkiln {
 	position: fixed;
 	right: -300px;
-	z-index: -1;
+	z-index: 10;
 	bottom: 0px;
 }
-
 /*** General text styles ***/
 
 h1 { 
-	font-size: 26px;
-	color: #666;
-	font-family: 'PMNCaeciliaW01-45Light', georgia, serif;
+	font-size: 70px;
+	font-family:'PMNCaeciliaW01-85Heavy';
+	color: #999;
+	margin-top: 80px;
 	font-weight: normal;
 }
 h2 { 
@@ -43,8 +43,6 @@ h2 {
 	font-size: 20px;
 	line-height: 1.1em;
 	margin-top: 35px;
-	padding-top: 20px;
-	display: inline;
 	font-family: 'PMNCaeciliaW01-75Bold', georgia, serif;
 	font-weight: normal;
 }
@@ -80,8 +78,6 @@ p a:hover, a:active {
 	border-bottom: 1px dotted #C3004D;
 }
 .uparrow {
-	margin-top: 50px;
-	display: inline-block;
 	margin-left: 6px;
 }
 .uparrow a:link, 
@@ -109,7 +105,7 @@ p a:hover, a:active {
 	-webkit-animation-name: spinner;
 	-moz-animation-name: spinner;
 	-o-animation-name: spinner;
-	animation-duration: 2s;
+	animation-duration: 2.5s;
 	-webkit-animation-duration: 2s;
 	-moz-animation-duration: 2s;
 	-o-animation-duration: 2s;
@@ -124,7 +120,7 @@ p a:hover, a:active {
 }
 @-moz-keyframes spinner {
 	0% { -moz-transform-origin: center center; -moz-transform: rotateY(-1080deg) rotate(25deg); opacity: 0.1; }
-	85% { -moz-transform-origin: center center; -moz-transform: rotateY(0) rotate(0); opacity: 1; }
+	75% { -moz-transform-origin: center center; -moz-transform: rotateY(0) rotate(0); opacity: 1; }
 }
 @-o-keyframes spinner {
 	0% { -o-transform-origin: center center; -o-transform: rotateY(-1080deg) rotate(25deg); opacity: 0.1; }
@@ -233,45 +229,6 @@ p a:hover, a:active {
 	-moz-animation-duration: 2.25s;
 	-o-animation-duration: 2.25s; 
 }
-/*** Disabled until can be made to work in iOS 
-
-@-webkit-keyframes enter-stage-right {
-	0% { opacity: 0; -webkit-transform: translateX(2000px); }
-	80% { opacity: 0.8; -webkit-transform: translateX(1800px); }
-	100% { opacity: 1; -webkit-transform: translateX(0); }
-}
-@-moz-keyframes enter-stage-right {
-	0% { opacity: 0; -moz-transform: translateX(2000px); }
-	80% { opacity: 0.8; -moz-transform: translateX(1800px); }
-	100% { opacity: 1; -moz-transform: translateX(0); }
-}
-@-o-keyframes enter-stage-right {
-	0% { opacity: 0; -o-transform: translateX(2000px); }
-	80% { opacity: 0.8; -o-transform: translateX(1800px); }
-	100% { opacity: 1; -o-transform: translateX(0); }
-}
-@keyframes enter-stage-right {
-	0% { opacity: 0; transform: translateX(2000px); }
-	80% { opacity: 0.8; transform: translateX(1800px); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-***/
-
-/***Main area***/
-
-#mainarea { 
-	padding-bottom: 40px;
-	padding-left: 20px;
-	padding-right: 20px;
-	animation-name: fadeIn;
-	-webkit-animation-name: fadeIn;
-	-moz-animation-name: fadeIn;
-	-o-animation-name: fadeIn;
-	animation-duration: 2.25s;
-	-webkit-animation-duration: 2.25s;
-	-moz-animation-duration: 2.25s;
-	-o-animation-duration: 2.25s;
-}
 @-webkit-keyframes fadeIn {
 	0% { opacity: 0; }
 	75% { opacity: 0; }
@@ -291,12 +248,25 @@ p a:hover, a:active {
 	0% { opacity: 0; }
 	75% { opacity: 0; }
 	100% { opacity: 1; }
-} 
+}
+/***Main area***/
 
+#mainarea { 
+	padding-bottom: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	animation-name: fadeIn;
+	-webkit-animation-name: fadeIn;
+	-moz-animation-name: fadeIn;
+	-o-animation-name: fadeIn;
+	animation-duration: 2.25s;
+	-webkit-animation-duration: 2.25s;
+	-moz-animation-duration: 2.25s;
+	-o-animation-duration: 2.25s;
+}
 #menu {
 	font-family: 'PMNCaeciliaW01-75Bold', georgia, serif;
-	margin: 0 0 50px 0;
-	padding-top: 10px;
+	margin: 20px auto 80px;
 	color: yellow;
 	font-size: 18px;
 	color: rgb(190,190,190);
@@ -329,6 +299,7 @@ p a:hover, a:active {
 	border: none;
 	display: inline-block;
 	vertical-align: middle;
+	margin-right: 10px;	
 }
 .projectimage a:link, .projectimage-ac a:visited,
 .projectimage a:link, .projectimage-ac a:visited {
@@ -345,7 +316,6 @@ p a:hover, a:active {
 	color: #555;
 	display: inline;
 	vertical-align: middle;
-	padding-left: 10px;
 	font-family: 'PMNCaeciliaW01-45Light', georgia, serif;
 }
 .projectname a:link, .projectname a:visited {
@@ -354,55 +324,94 @@ p a:hover, a:active {
 .projectname a:hover, .projectname a:active {
 	color: #C3004D;	
 }
-.projectimage:hover {
-	animation-name: spinner-short;   
-	-webkit-animation-name: spinner-short;
-	-moz-animation-name: spinner-short;
-	-o-animation-name: spinner-short;
-
+.projectimage:active {
+	animation-name: rotate;   
+	-webkit-animation-name: rotate;
+	-moz-animation-name: rotate;
+	-o-animation-name: rotate;
+	animation-duration: 2.25s;
+	-webkit-animation-duration: 2.25s;
+	-moz-animation-duration: 2.25s;
+	-o-animation-duration: 2.25s;
 }
-.projectimage-ac:hover {
-	animation-name: spinner-short-ac;
-	-webkit-animation-name: spinner-short-ac;
-	-moz-animation-name: spinner-short-ac;
-	-o-animation-name: spinner-short-ac;
-}
-@keyframes spinner-short {
+@keyframes rotate {
 	0% { transform-origin: center center; transform: rotate(-360deg); opacity: 1; }
 	100% { transform-origin: center center; transform: rotate(0); opacity: 1; }
 }
-@-webkit-keyframes spinner-short {
+@-webkit-keyframes rotate {
 	0% { -webkit-transform-origin: center center; -webkit-transform: rotate(-360deg); opacity: 1; }
 	100% { -webkit-transform-origin: center center; -webkit-transform: rotate(0); opacity: 1; }
 }
-@-moz-keyframes spinner-short {
+@-moz-keyframes rotate {
 	0% { -moz-transform-origin: center center; -moz-transform: rotate(-360deg); opacity: 1; }
 	100% { -moz-transform-origin: center center; -moz-transform: rotate(0); opacity: 1; }
 }
-@-o-keyframes spinner-short {
+@-o-keyframes rotate {
 	0% { -o-transform-origin: center center; -o-transform: rotate(-360deg); opacity: 1; }
-	100% { -o-transform-origin: center center; -o-transform: rotate(0); opacity: 1; }
-}
-@keyframes spinner-short-ac {
-	0% { transform-origin: center center; transform: rotate(360deg); opacity: 1; }
-	100% { transform-origin: center center; transform: rotate(0); opacity: 1; }
-}
-@-webkit-keyframes spinner-short-ac {
-	0% { -webkit-transform-origin: center center; -webkit-transform: rotate(360deg); opacity: 1; }
-	100% { -webkit-transform-origin: center center; -webkit-transform: rotate(0); opacity: 1; }
-}
-@-moz-keyframes spinner-short-ac {
-	0% { -moz-transform-origin: center center; -moz-transform: rotate(360deg); opacity: 1; }
-	100% { -moz-transform-origin: center center; -moz-transform: rotate(0); opacity: 1; }
-}
-@-o-keyframes spinner-short-ac {
-	0% { -o-transform-origin: center center; -o-transform: rotate(360deg); opacity: 1; }
 	100% { -o-transform-origin: center center; -o-transform: rotate(0); opacity: 1; }
 }
 #followus {
 	margin-top: 10px;
-	margin-bottom: 30px;
-}
-@media only screen and (max-device-width: 520px) {
+	margin-bottom: 50px;
 }
 
+/*** Project pages ***/
+
+.projectpage #container {
+	max-width: 900px;
+	min-width: 440px;
+}
+.projectpage #header {
+	margin-top: 30px;
+}
+.projectpage #logo {
+	animation-name: none;   
+	-webkit-animation-name: none;
+	-moz-animation-name: none;
+	-o-animation-name: none;
+	background-image: url("logosmall.png");
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 50px;
+	margin-top: 0;
+}
+.projectpage #menu {
+	animation-name: none;   
+	-webkit-animation-name: none;
+	-moz-animation-name: none;
+	-o-animation-name: none;
+	display: inline;
+	margin: 0 0 0 16px;
+}
+.projectpage #mainarea {
+	max-width: 560px;
+	min-width: 440px;
+	margin: 20px auto;
+	padding-left: 220px;
+	text-align: left;
+	position: relative;
+	animation-name: none;   
+	-webkit-animation-name: none;
+	-moz-animation-name: none;
+	-o-animation-name: none;
+}
+#torkies #mainimage {
+	position: absolute;
+	left: 0;
+	top: -16px;
+	background-image: url("microphone.png");
+	background-repeat: no-repeat;
+	height: 700px;
+	width: 177px;
+	z-index: -1;
+}
+#squishymaps #mainimage {
+	position: absolute;
+	left: 0;
+	top: -16px;
+	background-image: url("clamp.png");
+	background-repeat: no-repeat;
+	width: 225px;
+	height: 600px;
+	z-index: -1;
+}

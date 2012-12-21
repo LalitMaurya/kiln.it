@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name = "viewport" content = "width = 690">
+	<title>Kiln</title>
+	<link href='../style.css' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="http://fast.fonts.com/jsapi/c41e9f0e-5809-422c-8836-50879c093024.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="jquery.scrollTo-1.4.3.1.js"></script>
+	<script src="jquery.localscroll-1.2.7.js"></script>
+	<!--[if lt IE 8]>
+		<link rel="stylesheet" type="text/css" href="ie7-and-down.css" />
+	<![endif]-->
+</head>
+<body>
+	<script>
+		$(document).ready(function () {
+			$.localScroll();
+		});
+	</script>
+	<script>
+		var sdegree = 0;
+		$(window).scroll(function(event){
+		   var st = $(this).scrollTop();
+		       sdegree = st;
+		    var srotate = "rotate(" + sdegree/5 + "deg)";
+		    $("#bigcog").css({"-moz-transform": srotate, "-webkit-transform": srotate, "transform": srotate});
+		});
+	</script>
+	<div class="projectpage" id="squishymaps">
+		<div id="bigkiln"><img id="bigcog" src="../bigcog.png"></div>
+		<div id="container">
+			<div id="header">
+				<a href="/"><div id="logo"></div></a>
+				<div id="menu">
+					<a href="/index.html#projects">Projects</a> <span class="menuline">|</span> 
+					<a href="/index.html#projects">Concepts</a> <span class="menuline">|</span> 
+					<a href="/index.html#people">People</a> <span class="menuline">|</span> 
+					<a href="/index.html#FAQ">FAQ</a> <span class="menuline">|</span> 
+					<a href="/index.html#contact">Contact</a>
+				</div>
+			</div>
+			<div id="mainarea">
+				<div id="mainimage"></div>
+				<h1>Squishy maps</h1>
+				<p>Cartograms are maps where the shapes of countries or regions are distorted to reflect datasets such as population or income. We created the first interactive animated version, which we named &lsquo;squishy maps&rsquo;.</p>
+				<p>The first squishy map was the <a href="http://www.carbonmap.org">Carbon Map</a>. The next was <a href="http://www.guardian.co.uk/global-development/interactive/2012/jun/19/rio20-interactive-world-better-worseorg">Better or Worse</a>. We're currently working on a tool to enable anyone to make their own squishy maps.</p>
+				<h2>How it works</h2>
+				<p></p>
+				<h2>Technical</h2>
+				<p>Our cartogram tool is based on <a href="http://www-personal.umich.edu/%7Emejn/cart/">this publicly available algorithm by Mark Newman</a> (which works, ingeniously, by simulating the diffusion of chemicals between areas, as described <a href="http://www.pnas.org/content/101/20/7499.abstract">in this paper by Newman and Michael Gastner</a>). They're generated in advance as JSON files using javascript.</p>
+ 				<h2>Code</h2>
+				<p>We've made a basic Torkie library script available <a href="#">here</a>.</p>
+
+				<h2>How it works</h2>
+				<p></p>
+				<h2>Technical</h2>
+
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

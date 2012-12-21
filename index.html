@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<title>Kiln</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name = "viewport" content = "width = 690">
-	<title>Kiln</title>
 	<link href='style.css' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="http://fast.fonts.com/jsapi/c41e9f0e-5809-422c-8836-50879c093024.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -25,37 +25,37 @@
 		   var st = $(this).scrollTop();
 		       sdegree = st;
 		    var srotate = "rotate(" + sdegree/5 + "deg)";
-		    $("#bigkilncog").css({"-moz-transform" : srotate, "-webkit-transform" : srotate});
+		    $("#bigcog").css({"-moz-transform": srotate, "-webkit-transform": srotate, "transform": srotate});
 		});
 	</script>
-	<div id="bigkiln"><img id="bigkilncog" src="mediumkiln.png"></div>
+	<div id="bigkiln"><img id="bigcog" src="bigcog.png"></div>
 	<div id="container">
 		<div id="logoshadow"><img src="kilnshadow.png" /></div>
 		<div id="header">
-			<div id="logo"><img src="bottletopredcutout.png" /></div>
+			<div id="logo"><img src="logo.png" /></div>
 			<div id="strap">Making sense of a complex world</div>
 			<div id="intro">Kiln combines skills from journalism, web development, data analysis and graphic design to present knowledge and ideas in clear, fascinating and interactive ways.</div>
 		</div>
 		<div id="mainarea">
 			<div id="menu">
 				<a href="#projects">Projects</a> <span class="menuline">|</span> 
+				<a href="#concepts">Concepts</a> <span class="menuline">|</span> 
 				<a href="#people">People</a> <span class="menuline">|</span> 
 				<a href="#FAQ">FAQ</a> <span class="menuline">|</span> 
 				<a href="#contact">Contact</a>
 			</div>
 			<div class="section" id="projects">
-				<h2>Recent projects</h2>
-				<div class="uparrow"><a href="#menu">&uarr;</a></div>
+				<h2>Recent projects<span class="uparrow"><a href="#menu">&uarr;</a></span></h2>
 				<div class="project">
 					<div class="projectheader">
-						<div class="projectimage animated-1s"><a href="http://www.carbonmap.org"><img src="bottletopcarbonmap.png" alt="Carbon Map Thumbnail"></a></div>
+						<div class="projectimage"><a href="http://www.carbonmap.org"><img src="carbonmap.png" alt="Carbon Map Thumbnail"></a></div>
 						<div class="projectname"><a href="http://www.carbonmap.org">The Carbon Map</a></div>
 					</div>
 					<p>An interactive website using our &lsquo;squishy maps&rsquo; (cartograms) to explore responsibility for climate change. It was <a href="http://www.guardian.co.uk/news/datablog/interactive/2012/mar/29/carbon-map-infographic-world">featured prominently by the Guardian</a> and was a finalist in the World Bank&rsquo;s <a href="wwwr.worldbank.org/appsforclimate">Apps for Climate</a> competition.</p>
 				</div>
 				<div class="project">
 					<div class="projectheader">
-						<div class="projectimage-ac animated-1s"><a href="http://www.guardian.co.uk/global-development/interactive/2012/jun/19/rio20-interactive-world-better-worse"><img src="bottletopbetterorworse.png" alt="Better or Worse Thumbnail"></a></div>
+						<div class="projectimage"><a href="http://www.guardian.co.uk/global-development/interactive/2012/jun/19/rio20-interactive-world-better-worse"><img src="betterorworse.png" alt="Better or Worse Thumbnail"></a></div>
 						<div class="projectname"><a href="http://www.guardian.co.uk/global-development/interactive/2012/jun/19/rio20-interactive-world-better-worse">Better or Worse</a></div>                                                                       
 					</div>
 					<p>An interactive animation (&lsquo;<a href="torkies">Torkie</a>&rsquo;) which summarise twenty years of global economic and environmental data to ask whether the world is getting better or worse.</a> Created for the Guardian <a href="http://www.guardian.co.uk/global-development/interactive/2012/jun/19/rio20-interactive-world-better-worse">Global Development Desk</a>.</p>
@@ -63,15 +63,37 @@
 				</div>
 				<div class="project">
 					<div class="projectheader">
-						<div class="projectimage animated-1s"><a href="https://www.joininuk.org/wheretheystarted"><img src="bottletopjoinin.png" alt="Where They Started Thumbnail"></a></div>
+						<div class="projectimage"><a href="https://www.joininuk.org/wheretheystarted"><img src="joinin.png" alt="Where They Started Thumbnail"></a></div>
 						<div class="projectname"><a href="https://www.joininuk.org/wheretheystarted">Where they started</a></div>
 					</div>
 					<p>A fun interactive squishy map created for the charity <a href="https://www.joininuk.org">Join In</a> to show which British counties have produced which Olympians in which sports since the modern games began in 1896.</p>
 				</div>
 			</div>
+			<div class="section" id="concepts">
+				<h2>Concepts<span class="uparrow"><a href="#menu">&uarr;</a></span></h2>
+				<p>We specialise in developing new ways of presenting information and telling stories.</p>
+				<div class="project">
+					<div class="projectheader">
+						<div class="projectimage"><a href="torkies"><img src="torkies.png" alt="Torkies"></a></div>
+						<div class="projectname"><a href="torkies">Torkies</a></div>                                                                       
+					</div>
+			 		<p>A new form of content combining the best elements of animated video with the best elements of of interactive.</p>    
+				</div>
+				<div class="project">
+					<div class="projectheader">
+						<div class="projectname"><a href="torkies">Squishy maps</a></div>
+						<p>The world&rsquo;s first animated interactive cartogram maps, based on the diffusion approach.</p>
+					</div>
+				</div>
+				<div class="project">
+					<div class="projectheader">
+						<div class="projectname"><a href="torkies">Hyperlive</a></div>
+						<p>Forget 'live' blogging. Time for 'hyperlive'. </p>
+					</div>
+				</div>
+			</div>
 			<div class="section" id="people">
-				<h2>People</h2>
-				<div class="uparrow"><a href="#menu">&uarr;</a></div>
+				<h2>People<span class="uparrow"><a href="#menu">&uarr;</a></span></h2>
 				<p>Kiln was founded and is run by Robin Houston and Duncan Clark but draws on a network of others on a project-by-project basis.</p>
 				<div class="project">
 					<div class="projectheader">
@@ -87,8 +109,7 @@
 				</div>				
 			</div>
 			<div class="section" id="FAQ">
-				<h2>FAQ</h2>
-				<div class="uparrow"><a href="#menu">&uarr;</a></div>
+				<h2>FAQ<span class="uparrow"><a href="#menu">&uarr;</a></span></h2>
 				<h3>Why &lsquo;Kiln&rsquo;?</h3>
 				<p>Information is like clay: it exists in abundance but only becomes interesting when it&rsquo;s been processed, shaped and glazed. A kiln is a furnace where materials and form come together to create something useful or beautiful.</p>	
 				<h3>So Kiln doesn&rsquo;t stand for anything?</h3>
@@ -99,8 +120,7 @@
 				<p>Yes, we regularly take commissions and work with partners. Get in touch below.</p>
 			</div>
 			<div class="section" id="contact">
-				<h2>Contact</h2>
-				<div class="uparrow"><a href="#menu">&uarr;</a></div>
+				<h2>Contact<span class="uparrow"><a href="#menu">&uarr;</a></span></h2>
 				<p>Get in touch by emailing <a href="mailto:hello@kiln.it">hello@kiln.it</a>.</p>
 			</div>
 			<div id="followus">
