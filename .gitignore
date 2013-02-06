@@ -9,3 +9,5 @@ blog/wp-content/themes/*
 
 .DS_Store
 Thumbs.db
+
+css/style.css
