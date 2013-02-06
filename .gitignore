@@ -8,3 +8,4 @@ blog/wp-content/themes/*
 !blog/wp-content/themes/kiln
 
 .DS_Store
+Thumbs.db
