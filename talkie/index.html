@@ -1,51 +1,63 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name = "viewport" content = "width = 690">
-	<title>Kiln</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<script type="text/javascript" src="http://fast.fonts.com/jsapi/bf4135b1-c1fa-4758-a095-82a855ab6612.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="/jquery.scrollTo-1.4.3.1.js"></script>
-	<script src="/jquery.localscroll-1.2.7.js"></script>
-	<!--[if lt IE 8]>
-		<link rel="stylesheet" type="text/css" href="ie7-and-down.css" />
-	<![endif]-->
-	<script>
-		$(document).ready(function () {
-			$.localScroll();
-		});
-	</script>
-	<script>
-		var sdegree = 0;
-		$(window).scroll(function(event){
-		   var st = $(this).scrollTop();
-		       sdegree = st;
-		    var srotate = "rotate(" + sdegree/5 + "deg)";
-		    $("#bigcog").css({"-moz-transform": srotate, "-webkit-transform": srotate, "transform": srotate});
-		});
-	</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name = "viewport" content = "width = 690">
+    <title>Kiln</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script type="text/javascript" src="http://fast.fonts.com/jsapi/bf4135b1-c1fa-4758-a095-82a855ab6612.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="/jquery.scrollTo-1.4.3.1.js"></script>
+    <script src="/jquery.localscroll-1.2.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.localScroll();
+        });
+    </script>
+    <script>
+        var sdegree = 0;
+        $(window).scroll(function(event){
+           var st = $(this).scrollTop();
+               sdegree = st;
+            var srotate = "rotate(" + sdegree/5 + "deg)";
+            $("#bigcog").css({"-moz-transform": srotate, "-webkit-transform": srotate, "transform": srotate});
+        });
+    </script>
 </head>
 <body class="projectpage talkie">
-	<div id="bigkiln"><img id="bigcog" src="../bigcog.png"></div>
-	<div id="container">
-		<div id="header">
-			<div id="logo"><img src="/logo.png" /></div>
-		</div>
-		<div id="mainarea">
-			<div id="mainimage"></div>
-			<h1>Talkie</h1>
-			<p>Most interactives expect the viewer to do all the work. As a result, many are confusing and unengaging. Conventional videos and animations are simpler and better at telling a story, but they're not interactive.</p>
-			<p>Talkies combine best elements of both formats by allowing a combination of video, voiceover, animations and interactive.</p>
-			<p>The first Talkie was the <a href="http://www.carbonmap.org">Carbon Map</a>. The next was <a href="http://www.guardian.co.uk/global-development/interactive/2012/jun/19/rio20-interactive-world-better-worse">Where They Started</a>. We're currently working on a tool to enable anyone to make their own squishy maps without any technical know-how.</p>
-			<h2>How it works</h2>
-			<p><em>Layman</em>&mdash;Talkies use timecodes associated with a voiceover audio file to trigger actions in the interactive, such as sliding between panels, &lsquo;clicking&rsquo; buttons, animating graphs or drawing shapes.</p>
-			<p><em>Technical</em>&mdash;Talkies use the HTML5 multimedia layer to trigger events, such as graphs drawn and animated in SVG. A typical talkie will work on modern browsers and IE9 and above, though with sufficient effort and time it's possible create Flash back-ups for older browsers.</p>
-			<h2>Code</h2>
-			<p>We'v	e made a basic Talkie library script available <a href="#">here</a>.</p>
-			<p></p>
-		</div>
-	</div>
+    <div id="bigkiln"><img id="bigcog" src="../bigcog.png"></div>
+    <div id="header">
+        Created by<a href="/"><div id="logo"></div></a>
+    </div>
+    <div id="container">
+        <div id="mainarea">
+            <div id="talkieheader">
+                <div id="talkieh1">Talkie</div>
+                <div id="talkiesubtitle">Bringing the web to life</div>
+                <div id="talkiemenu">History <span class="talkiemenudivider">|</span> Code <span class="talkiemenudivider">|</span> Documentation&nbsp;<span class="talkiemenudivider">|</span>&nbsp;Contact</div>
+            </div>
+            <p class="introparagraph">A Talkie combines the narrative power of video and audio with the interactive power of the web. The Talkie toolkit makes it easy bring existing webpages and apps to life – or to create interactive animations, presentations and videos from scratch.<p/>
+            <div class="talkiesection">
+                <h2>Add a voiceover</h2>
+                <div class="talkieexample"></div>
+                <p>Most interactives expect the viewer to do all the work. As a result, many are confusing and unengaging. Conventional videos and animations are simpler and better at telling a story, but they're not interactive.</p>
+            </div>
+            <div class="talkiesection">
+                <h2>Empower video</h2>
+                <div class="talkieexample"></div>
+                <p>Most interactives expect the viewer to do all the work. As a result, many are confusing and unengaging. Conventional videos and animations are simpler and better at telling a story, but they're not interactive.</p>
+            </div>
+            <div class="talkiesection">
+                <h2>Animate</h2>
+                <div class="talkieexample"></div>
+                <p>Most interactives expect the viewer to do all the work. As a result, many are confusing and unengaging. Conventional videos and animations are simpler and better at telling a story, but they're not interactive.</p>
+            </div>
+            <div class="talkiesection">
+                <h2>Present</h2>
+                <div class="talkieexample"></div>
+                <p>Most interactives expect the viewer to do all the work. As a result, many are confusing and unengaging. Conventional videos and animations are simpler and better at telling a story, but they're not interactive.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
