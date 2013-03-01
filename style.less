@@ -14,6 +14,8 @@ font-family:'PMNCaeciliaW01-86HeavyI';
 body {
 	background-color: white;
 	position: relative;
+	margin: 0;
+	padding: 0;
 }
 #container {
 	max-width: 620px;
@@ -381,7 +383,7 @@ a:hover, a:active {
 	background-repeat: no-repeat;
 	height: 50px;
 	width: 50px;
-	margin: 10px;
+	margin: 20px 20px 20px 8px;
 	display: inline-block;
 	animation-name: none;   
 	-webkit-animation-name: none;
@@ -422,21 +424,37 @@ a:hover, a:active {
 }
 #talkiesubtitle {
     font-size: 24px;
-	padding-left: 75px;   
+	padding-left: 75px;
 	font-family: 'PMNCaeciliaW01-46LightI' 
 }
 #talkiemenu {
-    padding: 14px 0 0 75px; 
+    padding: 20px 0 0 75px; 
     font-family: 'PMNCaeciliaW01-75Bold';
     color: #777; 
     font-family: 26px;   
     .talkiemenudivider {
-        padding: 0 10px;
+        padding: 0 6px;
     }
 }
+
+/****** Talkie examples ******/
+
+/*** Talkie video ***/
+
+#videocontainer {width: 400px; height: 225px; margin-top: 25px; background: none; position: relative; }
+#talkievideo {width: 400px; }
+#animations {width: 400px; height: 225px; position: absolute; top: 0; left: 0; pointer-events: none;}
+#wavinghand {margin: 50px auto 0; padding: 0; height: 167px; display: none;}
+
+
+
+
+
+
 .projectpage .introparagraph {
     font-family: 'PMNCaeciliaW01-75Bold';
     font-size: 20px;
+    margin: 30px 0 60px;
 }
 .projectpage h2 {
     font-size: 30px;

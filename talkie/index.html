@@ -6,26 +6,12 @@
     <title>Kiln</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script type="text/javascript" src="http://fast.fonts.com/jsapi/bf4135b1-c1fa-4758-a095-82a855ab6612.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="/jquery.scrollTo-1.4.3.1.js"></script>
-    <script src="/jquery.localscroll-1.2.7.js"></script>
-    <script>
-        $(document).ready(function () {
-            $.localScroll();
-        });
-    </script>
-    <script>
-        var sdegree = 0;
-        $(window).scroll(function(event){
-           var st = $(this).scrollTop();
-               sdegree = st;
-            var srotate = "rotate(" + sdegree/5 + "deg)";
-            $("#bigcog").css({"-moz-transform": srotate, "-webkit-transform": srotate, "transform": srotate});
-        });
-    </script>
+    <script src="/d3.v3.min.js"></script>
+    <script src="/talkie-1.0.min.js"></script>
+    <script src="/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://kiln.it/talkie/ui/1.0/talkie.css">
 </head>
 <body class="projectpage talkie">
-    <div id="bigkiln"><img id="bigcog" src="../bigcog.png"></div>
     <div id="header">
         Created by<a href="/"><div id="logo"></div></a>
     </div>
@@ -36,17 +22,59 @@
                 <div id="talkiesubtitle">Bringing the web to life</div>
                 <div id="talkiemenu">History <span class="talkiemenudivider">|</span> Code <span class="talkiemenudivider">|</span> Documentation&nbsp;<span class="talkiemenudivider">|</span>&nbsp;Contact</div>
             </div>
-            <p class="introparagraph">A Talkie combines the narrative power of video and audio with the interactive power of the web. The Talkie toolkit makes it easy bring existing webpages and apps to life – or to create interactive animations, presentations and videos from scratch.<p/>
+            <p class="introparagraph">A Talkie combines the narrative power of video and audio with the interactive power of the web. The Talkie toolkit, now open source, makes it easy bring existing webpages and apps to life – or to create interactive animations, presentations and videos from scratch.<p/>
             <div class="talkiesection">
                 <h2>Add a voiceover</h2>
                 <div class="talkieexample"></div>
-                <p>Most interactives expect the viewer to do all the work. As a result, many are confusing and unengaging. Conventional videos and animations are simpler and better at telling a story, but they're not interactive.</p>
+                <p>Talkie makes it easy to add a guided tour or introduction to your webpage, interactive or data visualisation. This helps it tell its story better, converting a simple page or app into an engaging pseudo video.</p>
             </div>
             <div class="talkiesection">
-                <h2>Empower video</h2>
-                <div class="talkieexample"></div>
-                <p>Most interactives expect the viewer to do all the work. As a result, many are confusing and unengaging. Conventional videos and animations are simpler and better at telling a story, but they're not interactive.</p>
+                <h2 id="empowervideo">Empower video</h2>
+                <div class="talkieexample" id="videocontainer">
+                    <video id="talkievideo" controls="controls">
+                        <source src="/talkievideo.ogv" type="video/ogg">
+                        <source src="/talkievideo.m4v" type="video/mp4">
+                    </video>
+                    <object id="animations" data="/animations.svg" type="image/svg+xml" onload="init()"></object>
+                </div>
+                <p>Turning a video into a Talkie enables it to control the whole website that sits around it &ndash; or introduce interactive elements over the video itself.</p>
             </div>
+            <script>
+            function init() {
+                var animate = Talkie.animate(),
+                    video = animate.select("#talkievideo"),
+                    svg = Talkie.animate(document.getElementById("animations").contentDocument);
+
+                svg.select("#drawing").element.style("opacity", 0).attr("display", "block");
+                svg.select("#eye").element.style("opacity", 0).attr("display", "block");
+                svg.select("#mouth").element.style("opacity", 0).attr("display", "block");
+                svg.select("#ear").element.style("opacity", 0).attr("display", "block");
+                svg.select("#pupil").element.style("opacity", 0).attr("display", "block");
+                svg.select("#nose").element.style("opacity", 0).attr("display", "block");
+                var timeline = Talkie.timeline("#talkievideo", {
+                    "18": animate.select("#wavinghand").style("display", "block"),
+                    "18.5": function() {
+                        if (this.fast_forward) return;
+                        $('html, body').animate({
+                            scrollTop: $("#wavinghand").offset().top + "px"
+                        }, 1000).delay(1000).animate({
+                            scrollTop: $("#empowervideo").offset().top + "px"
+                        }, 1000);
+                    },
+                    "22": animate.select("#wavinghand").style("display", "none"),
+                    "23.5": animate.select("body").style("background", "#ddd", 500),
+                    "26.5": svg.select("#drawing").style("opacity", "1", 0),
+                    "27.25": svg.select("#drawing").morphTo("#morphed", 250),
+                    "27.75": svg.select("#eye").style("opacity", "1", 500).and(svg.select("#mouth").style("opacity", "1", 200)).and(svg.select("#pupil").style("opacity", "1", 200)).and(svg.select("#ear").style("opacity", "1", 200)).and(svg.select("#nose").style("opacity", "1", 200)).and(svg.select("#ear").style("opacity", "1", 200)).and(svg.select("#drawing").style("fill", "orange", 200)),
+                    "28.5": svg.select("#doodle").attr("transform", "translate(-1000 0)", 750),
+                    "30": video.style({"opacity": "0"}, 2000),
+                    "33": video.style({"opacity": "1"}, 1500),
+                    "37.25": video.style({"width": "96%", "position": "fixed", "left": "2%", "top": "10px"}, 500),
+                    "42.5": video.style({"width": "400px", "position": "relative", "left": "0", "top": 0}, 500).and(animate.select("body").style("background", "white", 500))
+                });
+                Talkie.ui.playButton("#videocontainer", timeline);
+            }
+            </script>
             <div class="talkiesection">
                 <h2>Animate</h2>
                 <div class="talkieexample"></div>
@@ -58,6 +86,7 @@
                 <p>Most interactives expect the viewer to do all the work. As a result, many are confusing and unengaging. Conventional videos and animations are simpler and better at telling a story, but they're not interactive.</p>
             </div>
         </div>
+        <div id="wavinghand"><img src="/HandWaving.gif"></div>
     </div>
 </body>
 </html>
