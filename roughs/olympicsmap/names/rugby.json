@@ -1,0 +1,31 @@
+{
+"West Midlands": [
+  ["bi/henry-birtles-1", "Henry Birtles", "Moseley", ["RUG"], ["1900"]],
+  ["ni/herbert-nicol-1", "Herbert Nicol", "Birmingham", ["RUG"], ["1900"]],
+  ["wa/joseph-wallis-1", "Joseph Wallis", "Kings Norton", ["RUG"], ["1900"]]
+],
+"Warwickshire": [
+  ["lo/herbert-loveitt-1", "Herbert Loveitt", "Easenhall", ["RUG"], ["1900"]],
+  ["wh/claude-whittindale-1", "Claude Whittindale", "Kenilworth", ["RUG"], ["1900"]],
+  ["wh/raymond-whittindale-1", "Raymond Whittindale", "Kenilworth", ["RUG"], ["1900"]]
+],
+"Cornwall": [
+  ["da/james-davey-1", "James Davey", "Redruth", ["RUG"], ["1908"]],
+  ["ja/edward-jackett-1", "Edward Jackett", "Falmouth", ["RUG"], ["1908"]],
+  ["ja/richard-jackett-1", "Richard Jackett", "Falmouth", ["RUG"], ["1908"]],
+  ["jo/jimmy-jose-1", "Jimmy Jose", "Falmouth", ["RUG"], ["1908"]],
+  ["so/barney-solomon-1", "Barney Solomon", "Camborne", ["RUG"], ["1908"]],
+  ["so/bert-solomon-1", "Bert Solomon", "Redruth", ["RUG"], ["1908"]],
+  ["tr/nicholas-tregurtha-1", "Nicholas Tregurtha", "Penzance", ["RUG"], ["1908"]],
+  ["we/thomas-wedge-1", "Thomas Wedge", "St. Ives", ["RUG"], ["1908"]]
+],
+"Staffordshire": [
+  ["de/clement-deykin-1", "Clement Deykin", "Lapley", ["RUG"], ["1900"]]
+],
+"Cheshire": [
+  ["da/arthur-darby-1", "Arthur Darby", "Chester", ["RUG"], ["1900"]]
+],
+"Tyne and Wear": [
+  ["wi/arthur-wilson-1", "Arthur Wilson", "Newcastle upon Tyne", ["RUG"], ["1908"]]
+]
+}

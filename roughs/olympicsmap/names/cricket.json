@@ -1,0 +1,28 @@
+{
+"Devon": [
+  ["bi/arthur-birkett-1", "Arthur Birkett", "Exeter", ["CRI"], ["1900"]],
+  ["cu/frederick-cuming-1", "Frederick Cuming", "Tiverton", ["CRI"], ["1900"]],
+  ["po/alfred-powlesland-1", "Alfred Powlesland", "Newton Abbot", ["CRI"], ["1900"]],
+  ["sy/john-symes-1", "John Symes", "Crediton", ["CRI"], ["1900"]],
+  ["to/montagu-toller-1", "Montagu Toller", "Barnstaple", ["CRI"], ["1900"]]
+],
+"City of Edinburgh": [
+  ["an/william-anderson-2", "William Anderson", "Edinburgh", ["CRI"], ["1900"]]
+],
+"Somerset": [
+  ["bo/alfred-bowerman-1", "Alfred Bowerman", "Broomfield", ["CRI"], ["1900"]],
+  ["co/harry-corner-1", "Harry Corner", "Taunton", ["CRI"], ["1900"]],
+  ["do/william-donne-1", "William Donne", "Wincanton", ["CRI"], ["1900"]]
+],
+"Hertfordshire": [
+  ["be/charles-beachcroft-1", "Charles Beachcroft", "Rickmansworth", ["CRI"], ["1900"]]
+],
+"Derbyshire": [
+  ["ch/fred-christian-1", "Fred Christian", "Buxton", ["CRI"], ["1900"]]
+],
+"Greater London": [
+  ["bu/george-buckley-1", "George Buckley", "Clapton", ["CRI"], ["1900"]],
+  ["sc/alfred-schneidau-1", "Alfred Schneidau", "Camden", ["CRI"], ["1900"]],
+  ["te/henry-terry-1", "Henry Terry", "Bermondsey", ["CRI"], ["1900"]]
+]
+}

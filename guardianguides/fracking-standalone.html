@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>SlideDeck v.1.3.2 Lite Example</title>
+
+        <!-- Include jQuery first. -->
+		<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+		
+        <!-- Include the below script, Copyright 2010, Brandon Aaron (http://brandonaaron.net/) for scrollwheel support. -->
+        <script type="text/javascript" src="jquery-mousewheel/jquery.mousewheel.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="slidedeck.skin.sandbox.css" media="screen" />
+        <!-- Styles for the skin that only load for Internet Explorer -->
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" type="text/css" href="slidedeck.skin.ie.css" media="screen,handheld" />
+        <![endif]-->
+		
+        <!-- Include the SlideDeck jQuery script. -->
+		<script type="text/javascript" src="slidedeck.jquery.lite.pack.js"></script>
+        
+        <style type="text/css">
+            #slidedeck_frame {
+                width: 938px;
+                height: 340px;
+                margin-left: auto;
+                margin-right: auto;
+            }        
+        </style>
+	</head>
+	<body>
+	<button onclick="run()">Test</button><br>
+		<div id="slidedeck_frame" class="skin-slidedeck">
+			<dl class="slidedeck">
+				<dt>Sample working</dt>		
+				<dd>Sample working text goes here</dd>
+				<dt>Current CO2 emissions</dt>
+				<dd><p>The simplest and most widely cited way to compare the emissions of countries is to add up all the fossil fuels burned in each nation and convert that into CO2. According to <a href="http://www.guardian.co.uk/news/datablog/2011/jan/31/world-carbon-dioxide-emissions-country-data-co2">2009 data</a> from the US <a href="http://www.eia.doe.gov">Energy Information Administration</a>, the top 10 emitters by this measure are:</p><p>1. China: 7,711 million tonnes (MT) or 25.4%<br />2. US: 5,425 MT or 17.8%<br />3. India: 1,602 MT or 5.3%<br />4. Russia: 1,572 MT or 5.2%<br />5. Japan: 1,098 MT or 3.6%	<br />6. Germany: 766 MT 2.5%<br />7. Canada: 541 MT or 1.8%<br />8. South Korea: 528 MT or 1.7%<br />9. Iran: 527 MT or 1.7%<br />10. UK: 520 MT or 1.7%<br /><a href="http://www.guardian.co.uk/news/datablog/2011/jan/31/world-carbon-dioxide-emissions-country-data-co2">See all countries</a> </p></dd>
+				<dt>All greenhouse gas emissions</dt>
+				<p>The problem with focusing purely on CO2 from burning fossil fuels is that it ignores other greenhouse gases and non-fossil-fuel sources of CO2. When these are included, the figures change considerably, with countries such as Brazil and Indonesia shooting up the list due to emissions caused by deforestation. Recent data isn't available, but as of 2005, the top 10 emitters as measured in total greenhouse gases looked like this:</p><p>1. China: 7,216 MT or 16.4%<br />2. US: 6,931 MT or 15.7% <br />3. Brazil: 2,856 MT or 6.5%<br />4. Indonesia: 2,046 MT or 4.6%<br />5. Russia: 2,028 MT or 4.6%<br />6. India: 1,870 MT or 4.2%<br />7. Japan: 1,387 MT or 3.1%<br />8. Germany: 1,005 MT or 2.3%<br />9. Canada: 808 MT or 1.8%<br />10. Mexico: 696 MT or 1.6%<br /><a href="http://cait.wri.org/cait.php?page=yearly&amp;mode=view&amp;sort=val-desc&amp;pHints=shut&amp;url=form&amp;year=2005&amp;sector=natl&amp;co2=1&amp;ch4=1&amp;n2o=1&amp;pfc=1&amp;hfc=1&amp;sf6=1&amp;lucf=1&amp;bunk=1&amp;update=Update">See all countries</a> (free registration required) </p>
+				<dt>Emissions per capita</dt>
+				<p>Comparing nations can be misleading, given their vastly varied sizes and populations. To get a more meaningful picture, it's essential also to consider <a href="http://www.guardian.co.uk/news/datablog/2011/jan/31/world-carbon-dioxide-emissions-country-data-co2">emissions on a per-person basis</a>. From this perspective, the list is topped by small countries with energy-intensive industries such as Qatar and Bahrain, and the large developing nations such as India and China look significantly less polluting. Here's a selection of countries and their per-person CO2 emissions from burning fossil fuels:</p><p>Australia: 19.6 tonnes<br />United States: 17.7 tonnes<br />Russia: 11.2 tonnes<br />Germany: 9.3 tonnes<br />UK: 8.4 tonnes<br />China: 5.8 tonnes<br />World average: 4.5 tonnes<br />India: 1.4 tonnes<br />Africa average: 1.1 tonnes<br />Chad: 0.03 tonnes<br /><a href="http://www.guardian.co.uk/news/datablog/2011/jan/31/world-carbon-dioxide-emissions-country-data-co2">See all countries</a></p><p>As with national emissions, this list would look different if all greenhouse gases were included.</p>
+				<dt>Historical emissions</dt>
+				<p>Since carbon dioxide added to the atmosphere can stay there for centuries, historical emissions are just as important – or even more important – than current emissions. The tricky question of historical responsibility is one of the key tensions in the process of negotiating a global climate deal. The following figures <a href="http://earthtrends.wri.org/searchable_db/index.php?theme=3&amp;variable_ID=779&amp;action=select_countries"> from the World Resources Institute</a> show the top 10 nations as measured by their cumulative emissions between 1850 and 2007. The US tops the list by a wide margin.</p><p>1. US: 339,174 MT or 28.8%<br />2. China: 105,915 MT or 9.0%<br />3. Russia: 94,679 MT or 8.0%<br />4. Germany: 81,194.5 MT or 6.9%<br />5. UK: 68,763 MT or 5.8%<br />6. Japan: 45,629 MT or 3.87%<br />7. France: 32,667 MT or 2.77%<br />8. India: 28,824 MT or 2.44%<br />9. Canada: 25,716 MT or 2.2%<br />10. Ukraine: 25,431 MT or 2.2%<br /><a http://cait.wri.org/cait.php?page="cumul&amp;mode=view&amp;sort=val-desc&amp;pHints=shut&amp;url=form&amp;start=1850&amp;limit=0"">See all countries</a></p><p>Of course, it's also possible to look at historical emissions per person, which turns things around yet again. In this view, the UK shoots close to the top of the rankings, while China drops towards the bottom.</p><p>1. Luxembourg: 1,429 tonnes<br />2. UK: 1,127 tonnes<br />3. US: 1,126 tonnes<br />4. Belgium: 1,026 tonnes<br />5. Czech Republic: 1,006 tonnes<br />6. Germany: 987 tonnes<br />7. Estonia: 877 tonnes<br />8. Canada: 780 tonnes<br />9. Kazakhstan: 682 tonnes<br />10. Russia: 666 tonnes<br /><a href="http://cait.wri.org/cait.php?page=cumul&amp;mode=view&amp;sort=pc-desc&amp;pHints=shut&amp;url=form&amp;start=1850&amp;limit=0">See all countries</a></p>
+				<dt>Consumption emissions</dt>
+				<p>Imported and exported goods add another layer of complexity to the equation. Many commentators argue that focusing on where emissions are produced is unfair, because much of the carbon output of countries such as China are generated as a result of producing goods that are ultimately consumed in richer nations. If emissions are <a href="http://www.guardian.co.uk/environment/2011/apr/14/outsourced-emissions">measured in terms of consumption rather than production</a> (that is, each country's exports are excluded from its footprint, and its imports added) the tables turn yet again. The <a href="http://www.carbonfootprintofnations.com/">most widely cited international dataset for consumption emissions</a>, from 2001, is rather out of date, but it still provides interesting insights. Here's the top 10 for consumption emissions per capita, including all greenhouse gases:</p><p>1. US: 29 tonnes<br />2. Australia: 21 tonnes<br />3. Canada: 20 tonnes<br />4. Switzerland: 18 tonnes<br />5. Finland: 18 tonnes<br />6. Netherlands: 17 tonnes<br />7. Belgium: 17 tonnes<br />8. Ireland: 16 tonnes<br />9. Cyprus: 16 tonnes<br />10. UK: 15 tonnes<br /><a href="http://www.carbonfootprintofnations.com/content/ranking/">See all countries</a></p><p>By contrast, China comes in at just 3.1 tonnes, and India at 1.8 tonnes.</p>
+													
+			</dl>
+		</div>
+		
+
+<script type="text/javascript">
+
+		
+	function wrapConsecutive(parent, desiredTagName, wrapTag) {
+    
+    desiredTagName = desiredTagName.toUpperCase();
+    if (typeof parent === "string") {
+        parent = document.getElementById(parent);
+    }
+    
+    function wrapNodes(nodeBegin, nodeEnd) {
+        // create and insert the wrap node
+        var wrapNode = document.createElement(wrapTag);
+        nodeBegin.parentNode.insertBefore(wrapNode, nodeBegin);
+        // now move the matched nodes into the wrap node
+        var node = nodeBegin, next;
+        while (node) {
+            next = node.nextSibling;
+            wrapNode.appendChild(node);
+            if (node === nodeEnd) {
+                break;
+            }
+            node = next;
+        }
+    }
+    
+    function wrapChildren(parent) {
+        var next = parent.firstChild;
+        var firstInSeries = null;
+        var lastInSeries;
+        while (next) {
+            // only look at element nodes
+            if (next.nodeType === 1) {
+                wrapChildren(next);
+                if (next.tagName === desiredTagName) {
+                    // found a matching tagName
+                    // if we don't have a series yet, start one
+                    // if we do have a series, just keep going
+                    if (!firstInSeries) {
+                        firstInSeries = next;
+                    }
+                    lastInSeries = next;
+                } else {
+                    // did not find a matching tagName
+                    // if we have a series, then end the series and process it
+                    // if we didn't have a series yet, then keep looking for one
+                    if (firstInSeries) {
+                        // wrap from firstInSeries to next.previousSibling
+                        wrapNodes(firstInSeries, lastInSeries);
+                        firstInSeries = null;
+                    }
+                }
+            }
+            next = next.nextSibling;
+        }
+        if (firstInSeries) {
+            wrapNodes(firstInSeries, lastInSeries);
+        }
+    }
+    
+
+    wrapChildren(parent);
+}
+
+function run() {
+    wrapConsecutive("slidedeck_frame", "p", "dd");
+}
+
+</script>
+
+
+		<script type="text/javascript">
+			$('.slidedeck').slidedeck();
+		</script>
+
+
+
+	</body>
+</html>

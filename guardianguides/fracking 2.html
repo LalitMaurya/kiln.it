@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>SlideDeck v.1.3.2 Lite Example</title>
+
+        <!-- Include jQuery first. -->
+		<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+		
+        <!-- Include the below script, Copyright 2010, Brandon Aaron (http://brandonaaron.net/) for scrollwheel support. -->
+        <script type="text/javascript" src="jquery-mousewheel/jquery.mousewheel.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="slidedeck.skin.css" media="screen" />
+        <!-- Styles for the skin that only load for Internet Explorer -->
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" type="text/css" href="slidedeck.skin.ie.css" media="screen,handheld" />
+        <![endif]-->
+		
+        <!-- Include the SlideDeck jQuery script. -->
+		<script type="text/javascript" src="slidedeck.jquery.lite.pack.js"></script>
+        
+        <style type="text/css">
+            #slidedeck_frame {
+                width: 938px;
+                height: 340px;
+                margin-left: auto;
+                margin-right: auto;
+            }        
+        </style>
+	</head>
+	<body>
+		<div id="slidedeck_frame" class="skin-slidedeck">
+			<dl class="slidedeck">
+				<dt>The issue</dt>
+				<dd><div class="ddh1">1. The issue at a glance</div>
+				Shale gas is natural gas stored deep underground in fine-grained sedimentary rocks. It can be extracted using a process known as hydraulic fracturing &ndash; &quot;fracking&quot; &ndash; which involves pumping huge quantities of pressurised water, sand and chemicals into the rocks. Advocates argue that exploiting the world&rsquo;s vast shale gas deposits will help keep energy affordable and cut consumption of dirtier coal. But sceptics claim that fracking is dangerous and polluting, and that tapping into extra natural gas supplies will boost rather than reduce planet-warming carbon emissions.</dd>
+				<dt>Current situation</dt>
+				<dd><div class="ddh1">2. Why is it being talked about now?</div>
+				<span>Shale gas production and controversy are both increasing fast. In the US, where the technology was developed, fracking has scaled up quickly to account for around a quarter of the country&rsquo;s natural gas extraction but critics say it could </span><span class="c6 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/2012/jan/05/fracking-new-york-poison-claim">poison New York&rsquo;s drinking water supply</a></span><span class="c2">. Meanwhile, the first fracking project in the UK claimed to find trillions of cubic meters of gas but was put on hold after being </span><span class="c6 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/2011/nov/02/fracking-cause-lancashire-quakes">linked to minor earthquakes</a></span><span class="c2">. Due to these kinds of concerns, </span><span class="c6 c2"><a target="_blank" class="c3" href="http://www.channel4.com/news/france-votes-to-ban-shale-gas-drilling">France</a></span><span class="c2">&nbsp;and </span><span class="c6 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/world/2012/feb/14/bulgaria-bans-shale-gas-exploration">Bulgaria</a></span><span class="c2">&nbsp;have banned fracking and campaigners are calling for other countries and US states to follow suit. But </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.google.com/url?q=http%3A%2F%2Fwww.theaustralian.com.au%2Fbusiness%2Fopinion%2Fshale-gas-fracking-drills-get-the-go-ahead-in-western-australia%2Fstory-e6frg9ex-1226288723917&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGUej5KbfZy9ofSPuMHtSTAVh-7BA">Australia has recently given fracking the go-ahead to,</a></span><span class="c2">&nbsp;and </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.telegraph.co.uk/finance/china-business/9117072/China-claims-worlds-biggest-shale-gas-reserves.html">China is making plans to further exploit its huge reserves</a></span><span class="c2">.</span></dd>
+				<dt>History</dt>
+<dd><div class="ddh1">3. A brief history</div>
+<span>Shale gas was formed hundreds of millions of years ago from decomposing plants trapped by clay and silt. A small amount of gas was extracted from shallow shale layers </span><span class="c6 c2"><a target="_blank" class="c3" href="http://www.netl.doe.gov/technologies/oil-gas/publications/brochures/Shale_Gas_March_2011.pdf">in the 19th century</a></span><span class="c2">, but it wasn&rsquo;t until the 1970s that fracking technology started to develop in earnest, supported by US government R&amp;D funding. After a slow start, American shale gas p</span><span class="c2">roduction </span><span class="c2">started</span><span class="c2">&nbsp;soaring in around 2005, leading to growing interest in the energy source around the world. By </span><span class="c2">20</span><span class="c2">11, fracking </span><span class="c2">experiments were </span><span class="c2">underway in </span><span class="c6 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/business/2011/jan/17/uk-shale-gas-warning">UK</a></span><span class="c2">, </span><span class="c2 c6"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/2011/apr/21/china-shale-gas-well">China</a></span><span class="c2">, </span><span class="c6 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/2010/dec/01/gas-fracking-extraction-europe">Poland</a></span><span class="c2">&nbsp;</span><span class="c2">and elsewhere, and estimates of global shale-gas reserves were rising fast, with the outgoing head of Shell </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/business/2011/apr/08/shell-oil-gas-james-smith">claiming</a></span><span class="c2">&nbsp;that there could be enough to power the world for 200 years.</span></dd>
+				<dt>Technology</dt>
+<dd><div class="ddh1">4. How does fracking work?</div>
+<span>A hole is drilled down into shale rocks more than a kilometre below the surface and then extended horizontally through the shale layer. The wellhole is lined and then massive quantities of water, sand and chemicals are pumped down into the horizontal well at high pressure. This opens up tiny fissures in the shale, which are held open by the sand, enabling the trapped gas to escape. It bubbles out of the rock, aided by the injected chemicals, and is piped off at surface level. See </span><span class="c5 c2"><a target="_blank" class="c3" href="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2012/2/25/1330199990222/Fracking-graphic-2-001.jpg">a large graphic of a fracking site</a></span><span class="c2">. </span></p><p class="c1"></dd>
+				<dt>Controversy</dt>
+<dd><div class="ddh1">5. Why is it controversial?</div>
+<span>Fracking has been linked to a wide range of problems, the highest profile of which has been </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/world/2011/dec/09/epa-reports-fracking-groundwater-pollution">chemical contamination of underground aquifers</a></span><span class="c2">. This connection has been </span><span class="c6 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/world/2011/dec/09/epa-reports-fracking-groundwater-pollution">acknowledged by the US Environmental Protection Agency</a></span><span class="c2">&nbsp;in the case of a community in Wyoming that has had to stop drinking local water, though a recent </span><span class="c5 c2"><a target="_blank" class="c3" href="http://energy.utexas.edu/index.php?option=com_content&amp;view=article&amp;id=151:shale-gas-regulation&amp;catid=1:features&amp;Itemid=146">University of Texas report</a></span><span class="c2">&nbsp;said contamination was more likely to be caused by surface spills and therefore could be avoided. Either way, details of the chemicals used in fracking are </span><span class="c5 c2"><a target="_blank" class="c3" href="http://fracfocus.org/">only just starting to be disclosed</a></span><span class="c2">, and their health impacts are not well understood. Other fracking risks include </span><span class="c2">ecologically damaging levels of water consumption; </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/2011/nov/02/fracking-cause-lancashire-quakes">minor earthquakes</a></span><span class="c2">; emissions of </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.nature.com/news/air-sampling-reveals-high-emissions-from-gas-field-1.9982">explosive and climate-warming methane</a></span><span class="c2">; and the impact of clearing forests for fracking sites.</span></dd>
+				<dt>Climate change</dt>
+<dd><div class="ddh1">6. Is shale gas good or bad for climate change?</div>
+<span>Creating heat or electricity by burning natural gas produces less CO2 (and other pollutants) than using coal or oil. Hence </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/2011/apr/20/fossil-fuel-lobbying-shale-gas">the gas industry and some commentators argue</a></span><span class="c2"> that shale gas is good news for the climate, as it could limit coal consumption while renewables and nuclear are scaling up. But the limited evidence that exists suggests that shale gas may be no better than coal, due to the </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.sustainablefuture.cornell.edu/news/attachments/Howarth-EtAl-2011.pdf">large emissions of methane</a></span><span class="c2">&nbsp;from fracking sites. Furthermore, as </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.tyndall.ac.uk/sites/default/files/coop_shale_gas_report_update_v3.10.pdf">a recent Tyndall Centre report</a></span><span class="c2">&nbsp;concluded, without a global CO2 cap, additional gas resources won&rsquo;t necessarily reduce coal use and may instead cause overall fossil fuel use and carbon emissions to increase.</span></dd>
+				<dt>Reserves</dt>
+<dd><div class="ddh1">7. How much shale gas is there?</div>
+<span class="c2">The US government </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.eia.gov/analysis/studies/worldshalegas/">assessed 32 countries</a></span><span class="c2">&nbsp;</span><span class="c2">and </span><span class="c2">concluded</span><span class="c2">&nbsp;they had of </span><span class="c6 c2"><a target="_blank" class="c3" href="http://www.eia.gov/analysis/studies/worldshalegas/">169 trillion cubic metres</a></span><span class="c2">&nbsp;of technically recoverable shale gas (</span><span class="c2">around </span><span class="c2">the same as the global economically recoverable reserves of conventional natural gas), with the largest reserves in China, the US, Argentina and Mexico (</span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/interactive/2011/apr/26/shale-gas-hydraulic-fracking-graphic">see map</a></span><span class="c2">). But the figures keep changing. Estimated US reserves doubled between 2010 and 2011, and the company drilling in Britain &ndash; </span><span class="c6 c2 c9"><a target="_blank" class="c3" href="http://www.cuadrillaresources.com/">Cuadrilla Resources</a></span><span class="c2">&nbsp;&ndash; </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.google.com/url?q=http%3A%2F%2Fwww.guardian.co.uk%2Fenvironment%2Fdamian-carrington-blog%2F2011%2Fsep%2F23%2Fcuadrilla-shale-gas-uk-energy&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNG__FH0BqKk7qQj8onogztehgh3Hw">claims its site near Blackpool in Lancashire contains more than 5 trillion cubic meters</a></span><span class="c2">, ten times more than the American government estimate for the whole of the UK.</span><span class="c2">&nbsp;Similarly, China&rsquo;s own survey </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.telegraph.co.uk/finance/china-business/9117072/China-claims-worlds-biggest-shale-gas-reserves.html">recently put its reserves at 25 trillion cubic meters</a></span><span class="c2">, nearly double the figure given in the US survey. But sceptics claim these figures may be overblown.</span></dd>
+				<dt>Significance</dt>
+<dd><div class="ddh1">8. How significant is shale gas?</div>
+<span class="c2">Shale gas could be hugely significant in the some regions, including the US. By 2035 the country expects </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.eia.gov/analysis/studies/worldshalegas/">fracking to account for 46% of its gas production</a></span><span class="c2">&nbsp;</span><span class="c2">and </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/interactive/2011/apr/26/shale-gas-hydraulic-fracking-graphic">according to BP</a></span><span class="c2">&nbsp;</span><span class="c2">shale gas, </span><span class="c2">tar sands and other &lsquo;unconventional&rsquo; fossil fuel sources will </span><span class="c2">make North and South America largely self-sufficient in energy by 2030</span><span class="c2">. By contrast, a </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/damian-carrington-blog/2011/nov/03/shale-gas-game-changer-fracking">Deutsche Bank report</a></span><span class="c2">&nbsp;looking at the potential for shale in Europe concluded that, due partly to higher population density and stronger environmental regulation, &ldquo;those waiting for a shale gas &#39;revolution&#39; outside the US will likely be disappointed, in terms of both price and </span><span class="c2">the </span><span class="c2">speed</span><span class="c2">&nbsp;at which high-volume production can be achieved</span><span class="c2">.&rdquo; Much will depend how the debate about environmental impacts and regulation plays out in coming years. Fossil fuel prices will be another factor, as higher prices will make fracking more economical.</span></dd>
+				<dt>Key players</dt>
+<dd><div class="ddh1">9. A few key players</div>
+<b><span class="c2">&bull; The EPA</b> The </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.epa.gov/">US Environmental Protection Agency</a></span><span class="c2">&nbsp;</span><span class="c2">which has acknowledged the link to pollution but so far done very little to regulate American fracking</span></p><p class="c1"><span class="c2"><b>&bull;&nbsp;Barack Obama</b>. Insiders says the US administration hopes to rely on switching from coal to gas as its nod to global carbon reductions</span></p><p class="c1"><span class="c2"><b>&bull;&nbsp;Cuadrilla Resources</b>. The first company to frack UK. It put its Lancashire operation on hold after causing earthquakes, but is </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.cuadrillaresources.com/news/cuadrilla-news/article/response-to-the-tyndall-centre-report-mark-miller/">fiercely resisting a moratorium of fracking</a></span></p><p class="c1"><span class="c2"><b>&bull; Charles Hendry</b>. UK environment minister who </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/environment/2011/sep/22/shale-gas-exploration">says shale gas is &ldquo;worth exploring&rdquo;</a></span></p><p class="c1"><span class="c2"><b>&bull;&nbsp;Dieter Helm</b>. Oxford energy academic who </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/commentisfree/2011/oct/18/energy-price-volatility-policy-fossil-fuels">advocates using gas to cheaply cut emissions</a></span></p><p class="c1"><span class="c2"><b>&bull;&nbsp;Fracked off</b>. The </span><span class="c2 c5"><a target="_blank" class="c3" href="http://frack-off.org.uk/">campaign group leading the charge against fracking in the UK</a></span><span class="c2">&nbsp;</span></dd>
+				<dt>Best quote</dt>
+<dd><div class="ddh1">10. The best quote</div>
+<span class="c2 c8">&ldquo;They heard the news today, oh boy: four thousand holes near Blackpool, Lancashire. And though the holes are rather small, they don&#39;t like them at all.</span><span class="c2">&rdquo; </span><span class="c5 c2"><a target="_blank" class="c3" href="http://www.guardian.co.uk/business/2011/sep/23/blackpool-shale-gas-cuadrilla">Fiona Harvey</a></span></dd>
+</body>
+</html>				
+				
+
+<!--			<dt>Share</dt>
+				<dd>
+				<div class="toolbox-popup trackable-component" id="send-share-box" data-component="Share box">
+					        <ul>
+								<li class="full-line tweet tweet_button">
+									<a target="_blank" href="http://twitter.com/share" class="twitter-share-button" data-url="http://gu.com/p/3vdt2/tw" data-via="guardian" data-counturl="http://www.guardian.co.uk/news/datablog/interactive/2011/jul/08/world-map-new-south-sudan" data-related="datastore" data-text="The new world map: download it for yourself">Tweet this</a>
+								</li>
+					        	<li class="third-party-tool full-line facebook">
+							        <span class="facebook-share">
+						            <a target="_blank" class="facebook-share-btn" href="http://www.facebook.com/dialog/feed?app_id=180444840287&amp;link=http://www.guardian.co.uk/news/datablog/interactive/2011/jul/08/world-map-new-south-sudan&amp;display=popup&amp;redirect_uri=http://static-serve.appspot.com/static/facebook-share/callback.html&amp;show_error=false" data-href="http://www.guardian.co.uk/news/datablog/interactive/2011/jul/08/world-map-new-south-sudan" data-link-name="Facebook Share">
+					                <span class="facebook-share-icon"></span>
+					                <span class="facebook-share-label">Share</span>
+					                <span class="corner-tl"></span>
+					                <span class="corner-tr"></span>
+					                <span class="corner-bl"></span>
+					                <span class="corner-br"></span>
+					            </a>
+							        </span>
+							    </li>
+	                           <li class="third-party-tool last-line reddit">
+					            <span class="reddit_button">
+					                <a target="_blank" target="http%3A%2F%2Fwww.guardian.co.uk%2Fnews%2Fdatablog%2Finteractive%2F2011%2Fjul%2F08%2Fworld-map-new-south-sudan&amp;amp;title=" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.guardian.co.uk%2Fnews%2Fdatablog%2Finteractive%2F2011%2Fjul%2F08%2Fworld-map-new-south-sudan&amp;title=" data-link-name="Reddit image" class="share-this-tracking">
+					                    <img src="http://static.guim.co.uk/static/5e8a33fc00d9d9e6d2e5ca71dd905bae18283811/common/images/icon_reddit.gif"/>
+					                </a>
+					                <a target="_blank" target="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.guardian.co.uk%2Fnews%2Fdatablog%2Finteractive%2F2011%2Fjul%2F08%2Fworld-map-new-south-sudan&amp;amp;title=" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.guardian.co.uk%2Fnews%2Fdatablog%2Finteractive%2F2011%2Fjul%2F08%2Fworld-map-new-south-sudan&amp;title=" data-link-name="Reddit text" class="share-this-tracking">reddit this</a>
+					            </span>
+					        </li>
+			            </ul>
+				</dd>					-->											
+			</dl>
+		</div>
+		<script type="text/javascript">
+			$('.slidedeck').slidedeck();
+		</script>
+	</body>
+</html>

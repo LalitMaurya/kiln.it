@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>How to green your home</title>
+    <link rel="stylesheet" type="text/css" href="http://kiln.it/talkie/ui/1.0/talkie.css">
+
+    <!--[if lt IE 9]>
+        <script>
+            document.location.href = "fail.html";
+        </script>
+    <![endif]-->
+    
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://kiln.it/talkie-1.0.min.js"></script>
+    
+    <style>
+      body { background: white; font-family: Helvetica, Arial, sans-serif; }
+      #wrapper { width: 780px; margin: auto; position: relative; background: #DADADA; }
+      #header { width: 755px; height: 40px; background: #666; color: yellow; line-height: 2em; text-align: left; padding-left: 25px; padding-top: 4px; }
+      #header h1 { margin: 0; font-family: georgia, serif; font-weight: normal; padding-left: 20px; font-size: 20px; color: #ddd; padding-top: 2px;}
+      #slider { padding: 14px 10px 10px 10px; background: white; width: 690px; position: relative; left: 25px;
+                border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
+                -moz-border-bottom-left-radius: 10px; -moz-border-bottom-right-radius: 10px; }
+      #controls { width: 740px; padding: 8px 5px 3px; }
+      #controls audio { width: 100%; }
+      .talkie-slider-panel { font-size: 530px; text-align: center; line-height: 530px; height: 479px; }
+      .talkie-slider-panel span { vertical-align: middle; }
+      .talkie-slider {
+        padding: 0!important;
+        margin-left: 20px;
+        background: white;
+        width: 730px;
+        height: 519px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        -moz-border-bottom-left-radius: 10px;
+        -moz-border-bottom-right-radius: 10px;
+        position: relative;
+        left: 25px;
+      }
+      .talkie-slider-arrownext {
+          left: 690px;
+      }
+      .talkie-slider-nav {
+        margin-top: 8px!important;
+        padding-bottom: 6px!important;
+      }
+      #p0-svg, #p1-svg, #p2-svg, #p3-svg, #p4-svg, #p5-svg, #p6-svg {
+          width: 690px;
+          height: 519px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <h1>How to green your home</h1>
+      </div>
+      <div id="slider" class="talkie-slider">
+        <div class="talkie-slider-arrowprev"></div>
+        <div class="talkie-slider-arrownext"></div>
+        <div class="talkie-slider-panel" id="p0">
+          <object id="p0-svg" data="Landing.svg" type="image/svg+xml"></object>
+        </div>
+        <div class="talkie-slider-panel" id="p1">
+          <object id="p1-svg" data="1-Overview.svg" type="image/svg+xml" onload="theSvgFileInPanelP1HasLoaded()"></object>
+        </div>
+        <div class="talkie-slider-panel" id="p2">
+          <object id="p2-svg" data="2-Lofts.svg" type="image/svg+xml" onload="theSvgFileInPanelP2HasLoaded()"></object>
+        </div>
+        <div class="talkie-slider-panel" id="p3">
+          <object id="p3-svg" data="3-Boilers.svg" type="image/svg+xml" onload="theSvgFileInPanelP3HasLoaded()"></object>
+        </div>
+        <div class="talkie-slider-panel" id="p4">
+          <object id="p4-svg" data="4-Walls.svg" type="image/svg+xml" onload="theSvgFileInPanelP4HasLoaded()"></object>
+        </div>
+        <div class="talkie-slider-panel" id="p5">
+          <object id="p5-svg" data="5-Windows.svg" type="image/svg+xml" onload="theSvgFileInPanelP5HasLoaded()"></object>
+        </div>
+        <div class="talkie-slider-panel" id="p6">
+          <object id="p6-svg" data="6-Solar.svg" type="image/svg+xml" onload="theSvgFileInPanelP6HasLoaded()"></object>
+        </div>
+      </div>
+      
+      <div class="talkie-slider-nav"></div>
+    </div>
+    
+    <script>
+      var slider = Talkie.slider("#slider").navigation(".talkie-slider-nav");
+      
+	  // Animating the opacity style fails in IE 9, for reasons that we have
+	  // not yet had time to get to the bottom of. So if we see that we are
+	  // running on IE 9, we use the opacity attribute instead.
+      var supports_opacity_style = !window.navigator.userAgent.match(/MSIE 9/);
+      
+      function Animation(slider_id) {
+          var svg_id = slider_id + "-svg";
+          this.slider_id = slider_id;
+          this.svg = d3.select(document.getElementById(svg_id).contentDocument);
+          this.all_element_ids = [];
+          this.ops = [];
+      }
+      Animation.prototype.slideIn = function(element_id, dx, dy, delay, duration) {
+          var element = this.svg.select("#" + element_id);
+          if (!duration) duration = 1000;
+          
+          this.all_element_ids.push(element_id);
+          this.ops.push(function() {
+              element.attr("transform", "translate(" + dx + "," + dy + ")")
+                .transition().delay(delay).duration(duration)
+                  .attr("transform", "translate(0,0)");
+          });
+          return this;
+      };
+      Animation.prototype.slideOut = function(element_id, dx, dy, delay, duration) {
+          var element = this.svg.select("#" + element_id);
+          if (!duration) duration = 1000;
+          
+          this.all_element_ids.push(element_id);
+          this.ops.push(function() {
+              element.attr("transform", "translate(0,0)")
+                .transition().delay(delay).duration(duration)
+                  .attr("transform", "translate(" + dx + "," + dy + ")");
+          });
+          return this;
+      };
+      if (supports_opacity_style) {
+          Animation.prototype.fadeIn = function(element_id, delay, duration) {
+              var element = this.svg.select("#" + element_id);
+              if (!duration) duration = 1000;
+          
+              this.all_element_ids.push(element_id);
+              this.ops.push(function() {
+                  element.style("opacity", 0)
+                    .transition().delay(delay).duration(duration)
+                      .style("opacity", 1);
+              });
+              return this;
+          };
+      }
+      else {
+          Animation.prototype.fadeIn = function(element_id, delay, duration) {
+              var element = this.svg.select("#" + element_id);
+              if (!duration) duration = 1000;
+          
+              this.all_element_ids.push(element_id);
+              this.ops.push(function() {
+                  element.attr("opacity", 0)
+                    .transition().delay(delay).duration(duration)
+                      .attr("opacity", 1);
+              });
+              return this;
+          };
+      }
+      Animation.prototype.shrink = function(element_id, attr, value, delay, duration) {
+          var element = this.svg.select("#" + element_id);
+          if (!duration) duration = 1000;
+          
+          this.all_element_ids.push(element_id);
+          this.ops.push(function() {
+              element.attr(attr, value)
+                .transition().delay(delay).duration(duration)
+                  .attr(attr, 0);
+          });
+          return this;
+      };
+      
+      Animation.prototype.go = function() {
+        var that = this;
+        Talkie.addEventListener("#" + this.slider_id, "Talkie.slider.load", function() {
+            var i;
+            
+            // Cancel any existing transitions
+            var selectors = [];
+            for (i=0; i < that.all_element_ids.length; i++) {
+                selectors.push("#" + that.all_element_ids[i]);
+            }
+            that.svg.selectAll(selectors.join(", ")).transition().duration(0);
+            
+            // Set up our new transitions
+            for (i=0; i < that.ops.length; i++) {
+                that.ops[i]();
+            }
+        });
+      };
+      
+      
+      // When the SVG file in panel p1 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP1HasLoaded() {
+          new Animation("p1")
+            .slideIn("arrow", 0,-300, 200)
+            .fadeIn("step0", 1000)
+            .fadeIn("step1", 3000)
+            .fadeIn("step2", 4000)
+            .fadeIn("step3", 5000)
+            .slideIn("chimney", 0,100, 6000, 500)
+            .fadeIn("smoke4", 6250)
+            .fadeIn("smoke3", 6500)
+            .fadeIn("smoke2", 6750)
+            .fadeIn("smoke1", 7000)
+            .fadeIn("middle", 7500)
+            .fadeIn("bracket2", 9000)
+            .fadeIn("powertext", 10000)
+            .slideIn("powerplants", 300,0, 11000, 500)
+            .fadeIn("x-power", 12000)
+            .fadeIn("carstext", 13000)
+            .slideIn("cars", 300,0, 14000, 500)
+            .fadeIn("x-car1", 15000)
+            .fadeIn("x-car2", 16000)
+            .go();
+      }
+
+      // When the SVG file in panel p2 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP2HasLoaded() {
+          new Animation("p2")
+            .slideIn("house", 0,600, 200, 1000)
+            .fadeIn("quarter", 1200)
+            .slideOut("roofmask", 0,-300, 1500, 2500)
+            
+            .fadeIn("money", 3000, 500)
+            .fadeIn("cash1", 4000, 500)
+            .fadeIn("cash2", 4100, 500)
+            .fadeIn("cash3", 4200, 500)            
+            .fadeIn("cash4", 4300, 500)
+            .fadeIn("cash5", 4400, 500)
+            .fadeIn("cash5", 4500, 500)
+            .fadeIn("cashtext", 4600, 500)
+                        
+            .fadeIn("graph", 6000, 500)
+            .slideOut("graphmask", 400,0, 6500, 3000)
+            .fadeIn("savings", 8500, 500)
+
+            .fadeIn("rightsection", 10500, 500)
+
+            .fadeIn("step1", 10500, 500)
+            .fadeIn("step1insulation1", 12000, 500)
+            .fadeIn("step1insulation2", 12500, 500)
+
+            .fadeIn("step2", 13500, 500)
+            .fadeIn("step2insulation1", 14000, 500)
+            .fadeIn("step2insulation2", 15000, 500)
+
+            .fadeIn("step3", 16000, 500)
+            .fadeIn("step3insulation1", 17000, 500)
+            .fadeIn("step3insulation2", 18000, 500)
+            
+            .go();
+      }
+      
+      // When the SVG file in panel p3 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP3HasLoaded() {
+          new Animation("p3")
+            .slideIn("see-saw", 0,-300, 200, 1000)
+            
+            .slideIn("stuff1", 0,-300, 1000, 1000)
+            .slideIn("stuff2", 0,-300, 1250, 1000)
+            .slideIn("stuff3", 0,-300, 1500, 1000)
+            .slideIn("stuff4", 0,-300, 1750, 1000)
+            .slideIn("stuff5", 0,-300, 2000, 1000)
+            .fadeIn("percent", 2500, 2250)
+
+            .fadeIn("q2", 5000, 500)
+            .fadeIn("q3", 7500, 500)
+
+            .fadeIn("q4", 10000, 500)
+            .fadeIn("g-flue", 11000, 500)
+            .fadeIn("a-flue", 12000, 500)
+            
+            .shrink("homemask", "r", "84.466", 12500)
+            
+            .go();
+      }
+
+      // When the SVG file in panel p4 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP4HasLoaded() {
+          new Animation("p4")
+            .shrink("circlemask", "r", "815.436", 0, 3000)
+            .go();
+      }
+
+      // When the SVG file in panel p5 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP5HasLoaded() {
+          new Animation("p5")
+            .fadeIn("introheading", 500, 500)
+
+            .slideIn("intro1", -300,0, 500, 1000)
+            .slideIn("intro2", -500,0, 1500, 1000)
+            .slideIn("intro3", -700,0, 2500, 1000)
+            .fadeIn("tick1", 3500, 500)
+            .fadeIn("tick2", 4000, 500)
+            .fadeIn("tick3", 4500, 500)
+            .fadeIn("tick4", 5000, 500)
+            .fadeIn("tick5", 5500, 500)
+                                                                        
+            .fadeIn("labels", 6000, 500)
+            .shrink("arrowmask", "width", "235.029", 6500)
+
+            .fadeIn("windows", 8000, 500)
+            .fadeIn("step1", 9000, 500)
+            .fadeIn("step2", 11000, 500)
+            .fadeIn("step3", 13000, 500)
+            .fadeIn("step4", 15000, 500)
+                                                            
+            .fadeIn("alts", 17000, 500)
+            .fadeIn("alt1", 17500, 500)
+            .fadeIn("alt2", 18000, 500)
+            .fadeIn("alt3", 18500, 500)
+            .fadeIn("alt4", 19000, 500)
+            
+            .go();
+      }
+      
+      // When the SVG file in panel p6 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP6HasLoaded() {
+          new Animation("p6")
+            .fadeIn("sun", 500, 1500)
+            .slideOut("whitearrows", 0,-34, 1500, 2000)
+            .slideOut("greenarrows", 0,34, 1500, 2000)
+
+            .fadeIn("solartypes", 4500, 500)
+            .slideIn("panel", 200,0, 5000, 1000)
+            .slideIn("tiles", 200,0, 6000, 1000)
+
+            .fadeIn("stats", 7500, 500)
+            .slideIn("power", -500,0, 8500, 1000)
+            .slideIn("power1", -500,0, 9500, 1000)
+            .slideIn("power2", -500,0, 10500, 1000)
+            .slideIn("power3", -500,0, 11500, 1000)
+            .slideIn("fillingup", 0,300, 12500, 1000)
+
+            .slideIn("cash", -500,0, 8500, 1000)
+            .slideIn("cash1", -500,0, 9500, 1000)
+            .slideIn("cash2", -500,0, 10500, 1000)
+
+            .slideIn("carbon", 500,0, 8500, 1000)
+            .slideIn("carbon1", 500,0, 9500, 1000)
+            .slideIn("carbon2", 500,0, 10500, 1000)
+            
+            .go();
+      }
+    </script>
+  </body>
+</html>

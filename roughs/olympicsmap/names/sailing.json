@@ -1,0 +1,261 @@
+{
+"Northamptonshire": [
+  ["ho/david-howlett-1", "David Howlett", "Wellingborough", ["SAI"], ["1976", "1992"]]
+],
+"Merseyside": [
+  ["ba/bruce-banks-1", "Bruce Banks", "Birkenhead", ["SAI"], ["1952", "1956"]],
+  ["ba/james-baxter-1", "James Baxter", "Rock Ferry", ["SAI"], ["1908"]],
+  ["da/william-davidson-1", "William Davidson", "Liverpool", ["SAI"], ["1908"]],
+  ["ke/j-graham-kenion-1", "J. Graham Kenion", "Bebington", ["SAI"], ["1908"]],
+  ["li/thomas-littledale-1", "Thomas Littledale", "West Derby", ["SAI"], ["1908"]],
+  ["ma/charles-maciver-1", "Charles MacIver", "Liverpool", ["SAI"], ["1908"]],
+  ["ma/charles-r-maciver-1", "Charles R. MacIver", "Bromborough", ["SAI"], ["1908"]]
+],
+"Isle of Wight": [
+  ["de/eric-denham-1", "Eric Denham", "?", ["SAI"], ["1964"]],
+  ["hu/frederick-hughes-1", "Frederick Hughes", "Cowes", ["SAI"], ["1908"]],
+  ["mc/leigh-mcmillan-1", "Leigh McMillan", "Newport", ["SAI"], ["2004", "2008"]],
+  ["ra/colin-ratsey-1", "Colin Ratsey", "Cowes", ["SAI"], ["1932"]],
+  ["wo/franklin-woodroffe-1", "Franklin Woodroffe", "?", ["SAI"], ["1952"]]
+],
+"Berkshire": [
+  ["ed/barrie-edgington-1", "Barrie Edgington", "Wokingham", ["SAI"], ["1992"]],
+  ["he/andrew-hemmings-1", "Andrew Hemmings", "Reading", ["SAI"], ["1988", "1992"]],
+  ["jo/christine-johnston-1", "Christine Johnston", "Reading", ["SAI"], ["2000"]],
+  ["ma/john-maddocks-1", "John Maddocks", "Reading", ["SAI"], ["1984"]],
+  ["rh/john-rhodes-1", "John Rhodes", "Wokingham", ["SAI"], ["1908"]],
+  ["st/vernon-stratton-1", "Vernon Stratton", "Sunningdale", ["SAI"], ["1960"]]
+],
+"Oxfordshire": [
+  ["ma/iain-macdonald-smith-1", "Iain MacDonald-Smith", "Oxford", ["SAI"], ["1968", "1976"]]
+],
+"City of Edinburgh": [
+  ["ha/ian-hannay-1", "Ian Hannay", "Edinburgh", ["SAI"], ["1960", "1972"]],
+  ["sp/james-spence-1", "James Spence", "Leith", ["SAI"], ["1908"]],
+  ["wo/iain-woolward-1", "Iain Woolward", "Edinburgh", ["SAI"], ["1984"]]
+],
+"Hampshire": [
+  ["be/jason-belben-1", "Jason Belben", "Gosport", ["SAI"], ["1988"]],
+  ["ch/glyn-charles-1", "Glyn Charles", "Winchester", ["SAI"], ["1996"]],
+  ["le/edward-leask-1", "Edward Leask", "Portsmouth", ["SAI"], ["1984", "1988"]],
+  ["ni/george-nicholson-1", "George Nicholson", "Southampton", ["SAI"], ["1960"]],
+  ["pe/iain-percy-1", "Iain Percy", "Southampton", ["SAI"], ["2000", "2004", "2008"]],
+  ["rh/ben-rhodes-1", "Ben Rhodes", "Southampton", ["SAI"], ["2008"]],
+  ["ro/nick-rogers-2", "Nick Rogers", "Southampton", ["SAI"], ["2000", "2004", "2008"]],
+  ["tu/david-tucker-1", "David Tucker", "Aldershot", ["SAI"], ["1968"]],
+  ["wi/pippa-wilson-1", "Pippa Wilson", "Southampton", ["SAI"], ["2008"]]
+],
+"Glasgow City": [
+  ["as/robert-aspin-1", "Robert Aspin", "Anderston", ["SAI"], ["1908"]],
+  ["bu/james-bunten-1", "James Bunten", "Glasgow", ["SAI"], ["1908"]],
+  ["co/mark-covell-1", "Mark Covell", "Glasgow", ["SAI"], ["2000"]],
+  ["do/arthur-downes-1", "Arthur Downes", "Kelvinside", ["SAI"], ["1908"]],
+  ["do/henry-downes-1", "Henry Downes", "Glasgow", ["SAI"], ["1908"]],
+  ["hu/howden-hume-1", "Howden Hume", "Glasgow", ["SAI"], ["1948"]],
+  ["mc/mike-mcintyre-1", "Mike McIntyre", "Glasgow", ["SAI"], ["1984", "1988"]]
+],
+"Argyll and Bute": [
+  ["bu/john-buchanan-1", "John Buchanan", "Rhu", ["SAI"], ["1908"]],
+  ["du/david-dunlop-1", "David Dunlop", "Rhu", ["SAI"], ["1908"]],
+  ["pa/rodney-pattisson-1", "Rodney Pattisson", "Campbeltown", ["SAI"], ["1968", "1972", "1976"]],
+  ["sk/george-skuodas-1", "George Skuodas", "Helensburgh", ["SAI"], ["1996"]],
+  ["ta/gerald-tait-1", "Gerald Tait", "Campbeltown", ["SAI"], ["1908"]]
+],
+"Greater Manchester": [
+  ["bo/david-bowker-1", "David Bowker", "Salford", ["SAI"], ["1956"]],
+  ["br/paul-brotherton-1", "Paul Brotherton", "Oldham", ["SAI"], ["1992"]],
+  ["sm/lawrie-smith-1", "Lawrie Smith", "Bury", ["SAI"], ["1988", "1992"]]
+],
+"Kent": [
+  ["ai/robin-aisher-1", "Robin Aisher", "Maidstone", ["SAI"], ["1960", "1964", "1968"]],
+  ["an/paul-anderson-2", "Paul Anderson", "Herne Bay", ["SAI"], ["1968"]],
+  ["da/slotty-dawes-1", "Slotty Dawes", "Faversham", ["SAI"], ["1960"]],
+  ["pr/kenneth-preston-1", "Kenneth Preston", "Sevenoaks", ["SAI"], ["1936", "1952"]],
+  ["rh/ian-rhodes-1", "Ian Rhodes", "Larkfield", ["SAI"], ["1992", "1996"]],
+  ["st/hugh-styles-1", "Hugh Styles", "Dover", ["SAI"], ["2000"]],
+  ["wi/david-williams-1", "David Williams", "Canterbury", ["SAI"], ["1992", "1996"]]
+],
+"Bedfordshire": [
+  ["me/salusbury-mellor-1", "Salusbury Mellor", "Cardington", ["SAI"], ["1900"]]
+],
+"West Yorkshire": [
+  ["ca/selwin-calverley-1", "Selwin Calverley", "Leeds", ["SAI"], ["1900"]],
+  ["pa/barry-parkin-1", "Barry Parkin", "Leeds", ["SAI"], ["1996", "2000"]]
+],
+"Worcestershire": [
+  ["wa/ian-walker-1", "Ian Walker", "Worcester", ["SAI"], ["1996", "2000"]]
+],
+"Wiltshire": [
+  ["ja/adrian-jardine-1", "Adrian Jardine", "Salisbury", ["SAI"], ["1964", "1968"]],
+  ["ja/stuart-jardine-1", "Stuart Jardine", "Salisbury", ["SAI"], ["1968", "1972"]],
+  ["la/chris-law-1", "Chris Law", "Salisbury", ["SAI"], ["1984"]]
+],
+"West Sussex": [
+  ["ba/christina-bassadone-1", "Christina Bassadone", "Chichester", ["SAI"], ["2004", "2008"]],
+  ["di/john-dillon-1", "John Dillon", "Westbourne", ["SAI"], ["1952", "1956"]],
+  ["ha/jeremy-harris-1", "Jeremy Harris", "Chichester", ["SAI"], ["1964"]],
+  ["pl/howard-plumb-1", "Howard Plumb", "Chichester", ["SAI"], ["1996"]]
+],
+"Lincolnshire": [
+  ["fo/gordon-fowler-1", "Gordon Fowler", "Donington", ["SAI"], ["1924", "1928"]]
+],
+"Dundee City": [
+  ["ro/shirley-robertson-1", "Shirley Robertson", "Dundee", ["SAI"], ["1992", "1996", "2000", "2004"]]
+],
+"Warwickshire": [
+  ["pe/robert-perry-1", "Robert Perry", "Warwick", ["SAI"], ["1952", "1956"]]
+],
+"Cornwall": [
+  ["bo/david-bond-1", "David Bond", "Falmouth", ["SAI"], ["1948"]],
+  ["ma/michael-maynard-1", "Michael Maynard", "Saltash", ["SAI"], ["1968"]]
+],
+"East Sussex": [
+  ["mc/neal-mcdonald-1", "Neal McDonald", "Brighton", ["SAI"], ["1988"]],
+  ["mo/stevie-morrison-1", "Stevie Morrison", "Eastbourne", ["SAI"], ["2008"]],
+  ["ra/james-ramus-1", "James Ramus", "Beckley", ["SAI"], ["1960", "1968"]]
+],
+"Renfrewshire": [
+  ["gl/thomas-glen-coats-1", "Thomas Glen-Coats", "Paisley", ["SAI"], ["1908"]]
+],
+"Devon": [
+  ["ca/charles-campbell-2", "Charles Campbell", "Newton Abbot", ["SAI"], ["1908"]],
+  ["py/patrick-pym-1", "Patrick Pym", "Honiton", ["SAI"], ["1972"]],
+  ["sy/richard-sydenham-1", "Richard Sydenham", "Exeter", ["SAI"], ["2000"]]
+],
+"Dorset": [
+  ["al/peter-allam-1", "Peter Allam", "Christchurch", ["SAI"], ["1984", "1992"]],
+  ["ba/ronald-backus-1", "Ronald Backus", "Poole", ["SAI"], ["1956"]],
+  ["la/phil-lawrence-2", "Phil Lawrence", "Bournemouth", ["SAI"], ["1992"]],
+  ["ma/graham-mann-1", "Graham Mann", "Charmouth", ["SAI"], ["1956", "1960"]],
+  ["st/adrian-stead-1", "Adrian Stead", "Poole", ["SAI"], ["1992", "1996"]]
+],
+"Norfolk": [
+  ["bo/christopher-boardman-1", "Christopher Boardman", "Norwich", ["SAI"], ["1936"]],
+  ["de/nick-dempsey-2", "Nick Dempsey", "Norwich", ["SAI"], ["2000", "2004", "2008"]]
+],
+"Inverclyde": [
+  ["ma/john-mackenzie-1", "John Mackenzie", "Greenock", ["SAI"], ["1908"]]
+],
+"South Glamorgan": [
+  ["ba/ian-barker-1", "Ian Barker", "Cardiff", ["SAI"], ["2000"]],
+  ["ye/roger-yeoman-1", "Roger Yeoman", "Cardiff", ["SAI"], ["1988"]]
+],
+"Antrim": [
+  ["mc/colin-mcleod-robertson-1", "Colin McLeod Robertson", "Belfast", ["SAI"], ["1908"]]
+],
+"Cambridgeshire": [
+  ["ha/russell-harmer-1", "Russell Harmer", "Cambridge", ["SAI"], ["1936"]]
+],
+"Cheshire": [
+  ["ai/ben-ainslie-1", "Ben Ainslie", "Macclesfield", ["SAI"], ["1996", "2000", "2004", "2008"]],
+  ["ca/david-campbell-james-1", "David Campbell-James", "Chester", ["SAI"], ["1984"]]
+],
+"Gloucestershire": [
+  ["ma/algernon-maudslay-1", "Algernon Maudslay", "Tetbury", ["SAI"], ["1900"]]
+],
+"Rutland": [
+  ["ri/jeremy-richards-1", "Jeremy Richards", "Empingham", ["SAI"], ["1984", "1988"]]
+],
+"Leicestershire": [
+  ["be/miles-bellville-1", "Miles Bellville", "Billesdon", ["SAI"], ["1936"]],
+  ["ja/debbie-jarvis-1", "Debbie Jarvis", "Leicester", ["SAI"], ["1988", "1992"]],
+  ["me/john-merricks-1", "John Merricks", "Leicester", ["SAI"], ["1996"]],
+  ["st/richard-stenhouse-1", "Richard Stenhouse", "Leicester", ["SAI"], ["1996"]],
+  ["su/henry-sutton-1", "Henry Sutton", "Skeffington Hall", ["SAI"], ["1908"]]
+],
+"Tyne and Wear": [
+  ["ha/david-hackford-1", "David Hackford", "Sunderland", ["SAI"], ["1984"]],
+  ["la/gilbert-laws-1", "Gilbert Laws", "Tynemouth", ["SAI"], ["1908"]]
+],
+"Surrey": [
+  ["ay/sarah-ayton-1", "Sarah Ayton", "Ashford", ["SAI"], ["2004", "2008"]],
+  ["fo/cathy-foster-1", "Cathy Foster", "Frimley", ["SAI"], ["1984"]],
+  ["hi/simon-hiscocks-1", "Simon Hiscocks", "Dorking", ["SAI"], ["2000", "2004"]],
+  ["mi/steve-mitchell-1", "Steve Mitchell", "Dorking", ["SAI"], ["2004"]],
+  ["si/andrew-simpson-1", "Andrew Simpson", "Chertsey", ["SAI"], ["2008"]],
+  ["we/sarah-webb-1", "Sarah Webb", "Weybridge", ["SAI"], ["2004", "2008"]]
+],
+"West Midlands": [
+  ["cl/penny-clark-1", "Penny Clark", "Birmingham", ["SAI"], ["2008"]],
+  ["ri/jo-richards-1", "Jo Richards", "Birmingham", ["SAI"], ["1984"]],
+  ["so/thomas-somers-1", "Thomas Somers", "Dudley", ["SAI"], ["1952"]]
+],
+"South Yorkshire": [
+  ["dr/chris-draper-1", "Chris Draper", "Sheffield", ["SAI"], ["2004"]],
+  ["go/paul-goodison-1", "Paul Goodison", "Sheffield", ["SAI"], ["2004", "2008"]]
+],
+"Derbyshire": [
+  ["gr/john-gretton-jr-1", "John Gretton, Jr.", "Newton Solney", ["SAI"], ["1900"]]
+],
+"Essex": [
+  ["cl/saskia-clark-1", "Saskia Clark", "Colchester", ["SAI"], ["2008"]],
+  ["cr/charles-crichton-1", "Charles Crichton", "Colchester", ["SAI"], ["1908"]],
+  ["go/simon-goody-1", "Simon Goody", "Rochford", ["SAI"], ["1988"]],
+  ["ha/sue-hay-carr-1", "Sue Hay-Carr", "Billericay", ["SAI"], ["1988", "1992", "1996"]],
+  ["mi/jean-mitchell-1", "Jean Mitchell", "Dovercourt", ["SAI"], ["1960"]],
+  ["mo/tony-morgan-2", "Tony Morgan", "Rochford", ["SAI"], ["1964"]],
+  ["mu/keith-musto-1", "Keith Musto", "Rochford", ["SAI"], ["1964"]],
+  ["ne/jeremy-newman-1", "Jeremy Newman", "Colchester", ["SAI"], ["1988"]],
+  ["wh/reg-white-1", "Reg White", "Brightlingsea", ["SAI"], ["1976"]],
+  ["wh/robert-white-1", "Robert White", "Tendring", ["SAI"], ["1984", "1988"]]
+],
+"Suffolk": [
+  ["ch/stuart-childerley-1", "Stuart Childerley", "Lowestoft", ["SAI"], ["1988", "1992"]],
+  ["cr/richard-creagh-osborne-1", "Richard Creagh-Osborne", "Stowmarket", ["SAI"], ["1956"]],
+  ["ri/walter-riggs-1", "Walter Riggs", "Leiston", ["SAI"], ["1924"]]
+],
+"Durham": [
+  ["wo/arthur-wood-1", "Arthur Wood", "Chester-le-Street", ["SAI"], ["1908"]]
+],
+"North Yorkshire": [
+  ["co/blair-cochrane-1", "Blair Cochrane", "Darlington", ["SAI"], ["1908"]]
+],
+"City of Bristol": [
+  ["wa/penny-way-wilson-1", "Penny Way-Wilson", "Bristol", ["SAI"], ["1992", "1996"]]
+],
+"Nottinghamshire": [
+  ["be/andy-beadsworth-1", "Andy Beadsworth", "Nottingham", ["SAI"], ["1996", "2000"]]
+],
+"Greater London": [
+  ["ba/michael-baker-harber-1", "Michael Baker-Harber", "Uxbridge", ["SAI"], ["1976"]],
+  ["ba/laura-baldwin-1", "Laura Baldwin", "London", ["SAI"], ["2004"]],
+  ["bi/norman-bingley-1", "Norman Bingley", "Hanover Square", ["SAI"], ["1908"]],
+  ["bl/jasper-blackall-1", "Jasper Blackall", "Hackney", ["SAI"], ["1956"]],
+  ["co/joseph-compton-1", "Joseph Compton", "Lewisham", ["SAI"], ["1936"]],
+  ["cr/robert-cruickshank-1", "Robert Cruickshank", "London", ["SAI"], ["1992"]],
+  ["du/barry-dunning-1", "Barry Dunning", "Brentford", ["SAI"], ["1972", "1976"]],
+  ["gl/joe-glanfield-1", "Joe Glanfield", "Sutton", ["SAI"], ["2000", "2004", "2008"]],
+  ["ho/katherine-hopson-1", "Katherine Hopson", "Croydon", ["SAI"], ["2004"]],
+  ["ho/edward-hore-1", "Edward Hore", "Knightsbridge", ["SAI"], ["1900"]],
+  ["ho/will-howden-1", "Will Howden", "Enfield", ["SAI"], ["2008"]],
+  ["hu/philip-hunloke-1", "Philip Hunloke", "Kensington", ["SAI"], ["1908"]],
+  ["hu/david-hunt-1", "David Hunt", "Woolwich", ["SAI"], ["1972", "1976"]],
+  ["ja/edwin-jacob-1", "Edwin Jacob", "Kensington", ["SAI"], ["1924"]],
+  ["ja/peter-jaffe-1", "Peter Jaffe", "Richmond", ["SAI"], ["1932"]],
+  ["ja/jonathan-janson-1", "Jonathan Janson", "Chelsea", ["SAI"], ["1956", "1960"]],
+  ["le/charles-leaf-1", "Charles Leaf", "Marylebone", ["SAI"], ["1936"]],
+  ["ma/leonard-martin-1", "Leonard Martin", "Wandsworth", ["SAI"], ["1936"]],
+  ["mi/roy-mitchell-1", "Roy Mitchell", "Erith", ["SAI"], ["1960"]],
+  ["mo/stewart-morris-1", "Stewart Morris", "Bromley", ["SAI"], ["1948"]],
+  ["oa/john-oakeley-1", "John Oakeley", "Willesden", ["SAI"], ["1972"]],
+  ["po/stanley-potter-2", "Stanley Potter", "Romford", ["SAI"], ["1952", "1956"]],
+  ["pr/francis-preston-1", "Francis Preston", "Marylebone", ["SAI"], ["1936"]],
+  ["ra/bethan-raggatt-1", "Bethan Raggatt", "Ealing", ["SAI"], ["1996"]],
+  ["ra/george-ratsey-1", "George Ratsey", "St. Pancras", ["SAI"], ["1908"]],
+  ["ri/thomas-riggs-1", "Thomas Riggs", "Hendon", ["SAI"], ["1924", "1928"]],
+  ["ro/ernest-roney-1", "Ernest Roney", "Lambeth", ["SAI"], ["1924", "1928"]],
+  ["ro/esmond-roney-1", "Esmond Roney", "Kingston Hill", ["SAI"], ["1928"]],
+  ["ro/margaret-roney-1", "Margaret Roney", "Lambeth", ["SAI"], ["1928"]],
+  ["ru/john-ruggles-1", "John Ruggles", "Hayes", ["SAI"], ["1960"]],
+  ["sc/peter-scott-2", "Peter Scott", "London", ["SAI"], ["1936"]],
+  ["sh/martin-sharp-1", "Martin Sharp", "Holborn", ["SAI"], ["1952"]],
+  ["sh/bryony-shaw-1", "Bryony Shaw", "Wandsworth", ["SAI"], ["2008"]],
+  ["st/ossie-stewart-1", "Ossie Stewart", "Surbiton", ["SAI"], ["1992"]],
+  ["va/bryn-vaile-1", "Bryn Vaile", "Enfield", ["SAI"], ["1988"]],
+  ["wa/william-ward-1", "William Ward", "Kensington", ["SAI"], ["1908"]],
+  ["wa/john-wastall-1", "John Wastall", "Edmonton", ["SAI"], ["1972"]],
+  ["we/william-welply-1", "William Welply", "West Ham", ["SAI"], ["1936"]],
+  ["wr/cyril-wright-1", "Cyril Wright", "Hampstead", ["SAI"], ["1920"]],
+  ["wr/dorothy-wright-1", "Dorothy Wright", "Leytonstone", ["SAI"], ["1920"]]
+]
+}

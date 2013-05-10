@@ -1,0 +1,80 @@
+/*
+Skin Name: Ribbons
+Skin URI: http://www.slidedeck.com/
+Skin Type: fixed
+Skin Height: 344
+Description: Steel Gray Ribbons.
+Version: 1.0
+Author: digital-telepathy
+Designer: Artem Laptiski
+Tags: flexible, white, gray
+*/
+
+dl.slidedeck { 
+	height:344px;
+	width:1000px;
+	margin: 0 auto 25px;
+}
+
+dl.slidedeck dd {
+    padding: 10px;
+	background: url('slides.png') 0 bottom repeat-x;
+	background-color: rgb(255,255,255);
+	height:308px !important;
+	margin-top: 8px !important;
+}
+
+dl.slidedeck dt {
+    height: 41px;
+	line-height: 41px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: normal;
+	font-family: "Lucida Grande", Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	text-shadow: -1px -1px 1px #434b56;
+	background: url('spines.png') 0 -104px no-repeat;
+	color: #fff;
+}
+.slidedeck dt:hover { background: url('spines.png') 0 -153px no-repeat; }
+.slidedeck dt.active{ height: 48px !important; background: url('spines.png') 0 -48px no-repeat; }
+.slidedeck dt.active:hover{ background: url('spines.png') 0 0 no-repeat; }
+.slidedeck dt.next{
+	height: 48px !important;
+	line-height: 55px !important;
+	background: url('spines.png') 0 -97px no-repeat;
+	margin-left: -28px !important;
+}
+.slidedeck dt.next:last-child{
+	margin-left: -28px !important;
+}
+.slidedeck dt.next:hover{ background: url('spines.png') 0 -146px no-repeat; }
+
+dl.slidedeck dt .index {
+	line-height:41px !important;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+}
+
+dl.slidedeck dt .index:last-child{ /*firefox selector*/
+	margin-left: 4px;
+}
+
+dl.slidedeck dt.active .index {
+	width: 32px !important;
+}
+
+dl.slidedeck dt.active .index:last-child {
+	height: 47px !important;
+	width: 41px !important;
+}
+
+dl.slidedeck dt:hover .index{
+	color: #fecb00;
+}
+
+dl.slidedeck .activeCorner {
+	display:none;
+}

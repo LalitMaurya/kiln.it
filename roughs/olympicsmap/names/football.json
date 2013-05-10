@@ -1,0 +1,151 @@
+{
+"Merseyside": [
+  ["be/arthur-berry-1", "Arthur Berry", "Liverpool", ["FTB"], ["1908", "1912"]],
+  ["br/george-bromilow-1", "George Bromilow", "Southport", ["FTB"], ["1956"]],
+  ["pe/daniel-pettit-1", "Daniel Pettit", "Liverpool", ["FTB"], ["1936"]]
+],
+"Kent": [
+  ["fr/eric-fright-1", "Eric Fright", "Eastry", ["FTB"], ["1948"]],
+  ["st/harry-stapley-1", "Harry Stapley", "Royal Tunbridge Wells", ["FTB"], ["1908"]]
+],
+"Berkshire": [
+  ["ha/ted-hanney-1", "Ted Hanney", "Reading", ["FTB"], ["1912"]]
+],
+"Oxfordshire": [
+  ["hu/kenneth-hunt-1", "Kenneth Hunt", "Oxford", ["FTB"], ["1908", "1920"]],
+  ["sm/herbert-smith-1", "Herbert Smith", "Witney", ["FTB"], ["1908"]]
+],
+"Glasgow City": [
+  ["cr/james-crawford-1", "James Crawford", "Glasgow", ["FTB"], ["1936"]],
+  ["ho/david-holt-1", "David Holt", "Glasgow", ["FTB"], ["1960"]],
+  ["si/ronnie-simpson-1", "Ronnie Simpson", "Glasgow", ["FTB"], ["1948"]]
+],
+"Hampshire": [
+  ["pr/herbert-prince-1", "Herbert Prince", "South Stoneham", ["FTB"], ["1920"]]
+],
+"Isle of Wight": [
+  ["pu/clyde-purnell-1", "Clyde Purnell", "Ryde", ["FTB"], ["1908"]]
+],
+"Wiltshire": [
+  ["am/bill-amor-1", "Bill Amor", "Pewsey", ["FTB"], ["1948"]]
+],
+"South Lanarkshire": [
+  ["mc/douglas-mcbain-1", "Douglas McBain", "Blantyre", ["FTB"], ["1948"]]
+],
+"West Sussex": [
+  ["ch/alfred-chalk-1", "Alfred Chalk", "Plaistow", ["FTB"], ["1900"]],
+  ["th/eric-thornton-1", "Eric Thornton", "Worthing", ["FTB"], ["1900"]]
+],
+"Lincolnshire": [
+  ["pi/mike-pinner-1", "Mike Pinner", "Boston", ["FTB"], ["1960"]]
+],
+"Clackmannanshire": [
+  ["mc/ron-mckinven-1", "Ron McKinven", "Alloa", ["FTB"], ["1960"]]
+],
+"Greater Manchester": [
+  ["ha/harold-hardman-1", "Harold Hardman", "Kirkmanshulme", ["FTB"], ["1908"]],
+  ["mi/james-mitchell-1", "James Mitchell", "Manchester", ["FTB"], ["1920"]],
+  ["sh/harry-sharratt-1", "Harry Sharratt", "Wigan", ["FTB"], ["1956"]]
+],
+"Devon": [
+  ["sl/richard-sloley-1", "Richard Sloley", "Barnstaple", ["FTB"], ["1920"]]
+],
+"North Lanarkshire": [
+  ["de/john-devine-1", "John Devine", "Auchinloch", ["FTB"], ["1960"]],
+  ["ne/bill-neil-1", "Bill Neil", "Airdrie", ["FTB"], ["1960"]]
+],
+"Hertfordshire": [
+  ["fa/tommy-farrer-1", "Tommy Farrer", "Hoddesdon", ["FTB"], ["1956"]],
+  ["ha/robert-hawkes-1", "Robert Hawkes", "Breachwood Green", ["FTB"], ["1908"]],
+  ["sa/derek-saunders-1", "Derek Saunders", "Ware", ["FTB"], ["1952"]],
+  ["sh/ivor-sharpe-1", "Ivor Sharpe", "St. Albans", ["FTB"], ["1912"]]
+],
+"Dyfed": [
+  ["do/frank-donovan-1", "Frank Donovan", "Pembroke", ["FTB"], ["1948"]]
+],
+"Norfolk": [
+  ["di/joseph-dines-1", "Joseph Dines", "King's Lynn", ["FTB"], ["1912"]]
+],
+"Northumberland": [
+  ["bu/thomas-burn-1", "Thomas Burn", "Spittal", ["FTB"], ["1912"]]
+],
+"Shropshire": [
+  ["co/walter-corbett-1", "Walter Corbett", "Wellington", ["FTB"], ["1908"]]
+],
+"Antrim": [
+  ["fo/hugh-forde-1", "Hugh Forde", "Belfast", ["FTB"], ["1960"]],
+  ["fu/bertie-fulton-1", "Bertie Fulton", "Larne", ["FTB"], ["1936"]],
+  ["ha/paddy-hasty-1", "Paddy Hasty", "Belfast", ["FTB"], ["1960"]]
+],
+"Cheshire": [
+  ["le/eric-lee-1", "Eric Lee", "Chester", ["FTB"], ["1948"]]
+],
+"Mid Glamorgan": [
+  ["ma/gwyn-manning-1", "Gwyn Manning", "Merthyr Tydfil", ["FTB"], ["1948"]]
+],
+"Lancashire": [
+  ["ki/peter-kippax-1", "Peter Kippax", "Burnley", ["FTB"], ["1948"]],
+  ["sl/bill-slater-1", "Bill Slater", "Clitheroe", ["FTB"], ["1952"]]
+],
+"Derbyshire": [
+  ["ba/horace-bailey-1", "Horace Bailey", "Derby", ["FTB"], ["1908"]],
+  ["bu/charlie-bunyan-jr-1", "Charlie Bunyan, Jr.", "Chesterfield", ["FTB"], ["1920"]],
+  ["hi/haydn-hill-1", "Haydn Hill", "Creswell", ["FTB"], ["1936"]]
+],
+"Surrey": [
+  ["kn/arthur-knight-1", "Arthur Knight", "Godalming", ["FTB"], ["1912", "1920"]],
+  ["wr/edward-wright-1", "Edward Wright", "Englefield Green", ["FTB"], ["1912"]]
+],
+"West Midlands": [
+  ["he/kenneth-hegan-1", "Kenneth Hegan", "Coventry", ["FTB"], ["1920"]]
+],
+"South Yorkshire": [
+  ["gr/michael-greenwood-1", "Michael Greenwood", "Barnsley", ["FTB"], ["1960"]]
+],
+"Essex": [
+  ["do/herbert-dodkins-1", "Herbert Dodkins", "Epping", ["FTB"], ["1956"]],
+  ["go/william-gosling-1", "William Gosling", "Hassobury", ["FTB"], ["1900"]]
+],
+"Suffolk": [
+  ["li/henry-littlewort-1", "Henry Littlewort", "Ipswich", ["FTB"], ["1912"]]
+],
+"Durham": [
+  ["br/laurie-brown-1", "Laurie Brown", "Shildon", ["FTB"], ["1960"]],
+  ["ha/bob-hardisty-1", "Bob Hardisty", "Chester-le-Street", ["FTB"], ["1948", "1952", "1956"]],
+  ["la/jack-laybourne-1", "Jack Laybourne", "Durham", ["FTB"], ["1956"]],
+  ["st/harold-stamper-1", "Harold Stamper", "Stockton-on-Tees", ["FTB"], ["1912"]],
+  ["st/don-stoker-1", "Don Stoker", "Durham", ["FTB"], ["1956"]],
+  ["th/tommy-thompson-1", "Tommy Thompson", "Stockton-on-Tees", ["FTB"], ["1960"]]
+],
+"North Yorkshire": [
+  ["br/ronald-brebner-1", "Ronald Brebner", "Darlington", ["FTB"], ["1912"]]
+],
+"Nottinghamshire": [
+  ["ch/frederick-chapman-1", "Frederick Chapman", "Nottingham", ["FTB"], ["1908"]]
+],
+"Greater London": [
+  ["be/ted-bennett-1", "Ted Bennett", "Kilburn", ["FTB"], ["1952"]],
+  ["br/bobby-brown-1", "Bobby Brown", "London", ["FTB"], ["1960"]],
+  ["bu/claude-buckenham-1", "Claude Buckenham", "Herne Hill", ["FTB"], ["1900"]],
+  ["bu/tom-burridge-1", "Tom Burridge", "Pimlico", ["FTB"], ["1900"]],
+  ["ed/maurice-edelston-1", "Maurice Edelston", "Wimbledon", ["FTB"], ["1936"]],
+  ["fi/lester-finch-1", "Lester Finch", "Barnet", ["FTB"], ["1936"]],
+  ["ho/gordon-hoare-1", "Gordon Hoare", "Blackheath", ["FTB"], ["1912"]],
+  ["ho/guy-holmes-1", "Guy Holmes", "Ilford", ["FTB"], ["1936"]],
+  ["ho/terry-howard-1", "Terry Howard", "London", ["FTB"], ["1960"]],
+  ["jo/bernard-joy-1", "Bernard Joy", "Fulham", ["FTB"], ["1936"]],
+  ["le/jim-lewis-1", "Jim Lewis", "Hackney", ["FTB"], ["1952", "1956", "1960"]],
+  ["li/hugh-lindsay-1", "Hugh Lindsay", "Ickenham", ["FTB"], ["1960"]],
+  ["mc/douglas-mcwhirter-1", "Douglas McWhirter", "Erith", ["FTB"], ["1912"]],
+  ["no/alfred-noble-1", "Alfred Noble", "Hackney", ["FTB"], ["1952"]],
+  ["pr/stanley-prince-1", "Stanley Prince", "West Ham", ["FTB"], ["1956"]],
+  ["qu/bill-quash-1", "Bill Quash", "Barking", ["FTB"], ["1900"]],
+  ["ro/george-robb-1", "George Robb", "Finsbury Park", ["FTB"], ["1952"]],
+  ["sh/edgar-shearer-1", "Edgar Shearer", "Hendon", ["FTB"], ["1936"]],
+  ["sl/roy-sleap-1", "Roy Sleap", "London", ["FTB"], ["1960"]],
+  ["st/leslie-stratton-1", "Leslie Stratton", "West Ham", ["FTB"], ["1952"]],
+  ["to/laurie-topp-1", "Laurie Topp", "London", ["FTB"], ["1952", "1956"]],
+  ["wo/vivian-woodward-1", "Vivian Woodward", "Kennington", ["FTB"], ["1908", "1912"]],
+  ["ze/james-zealey-1", "James Zealey", "Mile End", ["FTB"], ["1900"]]
+]
+}

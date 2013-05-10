@@ -1,0 +1,191 @@
+{
+"Northamptonshire": [
+  ["ke/daniel-keatings-1", "Daniel Keatings", "Kettering", ["GYM"], ["2008"]]
+],
+"Merseyside": [
+  ["dr/herbert-drury-1", "Herbert Drury", "Liverpool", ["GYM"], ["1908", "1912"]],
+  ["ma/william-mackune-1", "William MacKune", "Liverpool", ["GYM"], ["1912"]],
+  ["wi/emma-williams-1", "Emma Williams", "Liverpool", ["GYM"], ["2000"]]
+],
+"Gwent": [
+  ["be/richard-benyon-1", "Richard Benyon", "Newport", ["GYM"], ["1984"]],
+  ["la/sonia-lawrence-1", "Sonia Lawrence", "Caerphilly", ["GYM"], ["1996"]]
+],
+"West Glamorgan": [
+  ["da/cissy-davies-1", "Cissy Davies", "Swansea", ["GYM"], ["1948", "1952"]],
+  ["ev/pat-evans-1", "Pat Evans", "Swansea", ["GYM"], ["1948"]],
+  ["ha/graham-harcourt-1", "Graham Harcourt", "Swansea", ["GYM"], ["1952"]],
+  ["le/stanley-leigh-1", "Stanley Leigh", "Swansea", ["GYM"], ["1920", "1924"]],
+  ["mo/andrew-morris-1", "Andrew Morris", "Swansea", ["GYM"], ["1984", "1988"]],
+  ["mu/valerie-mullins-1", "Valerie Mullins", "Swansea", ["GYM"], ["1952"]],
+  ["vi/ivor-vice-1", "Ivor Vice", "Swansea", ["GYM"], ["1948"]],
+  ["wh/arthur-whitford-1", "Arthur Whitford", "Swansea", ["GYM"], ["1928"]],
+  ["wh/jack-whitford-1", "Jack Whitford", "Swansea", ["GYM"], ["1952"]]
+],
+"Hampshire": [
+  ["ba/terry-bartlett-1", "Terry Bartlett", "Southampton", ["GYM"], ["1984", "1988", "1992"]],
+  ["ho/vanessa-hobbs-1", "Vanessa Hobbs", "Portsmouth", ["GYM"], ["2004"]],
+  ["la/keith-langley-1", "Keith Langley", "Aldershot", ["GYM"], ["1980", "1984"]],
+  ["pa/jack-pancott-1", "Jack Pancott", "Farnborough", ["GYM"], ["1960", "1964"]]
+],
+"Kent": [
+  ["po/edward-potts-1", "Edward Potts", "Perge", ["GYM"], ["1908", "1912"]]
+],
+"West Yorkshire": [
+  ["al/barbara-alred-1", "Barbara Alred", "Bradford", ["GYM"], ["1972"]],
+  ["bo/michael-booth-1", "Michael Booth", "Huddersfield", ["GYM"], ["1968"]],
+  ["br/dominic-brindle-1", "Dominic Brindle", "Bradford", ["GYM"], ["1996"]],
+  ["ha/leonard-hanson-1", "Leonard Hanson", "Bradford", ["GYM"], ["1908", "1912"]],
+  ["hi/irene-hirst-1", "Irene Hirst", "North Bierley", ["GYM"], ["1948", "1952"]],
+  ["ja/amy-jagger-1", "Amy Jagger", "Halifax", ["GYM"], ["1928"]],
+  ["pi/carrie-pickles-1", "Carrie Pickles", "Wilsden", ["GYM"], ["1928"]],
+  ["po/jill-pollard-1", "Jill Pollard", "Bradford", ["GYM"], ["1960"]],
+  ["ra/marjorie-raistrick-carter-1", "Marjorie Raistrick-Carter", "Bradford", ["GYM"], ["1952", "1960"]],
+  ["so/arthur-southern-1", "Arthur Southern", "Sowerby Bridge", ["GYM"], ["1912"]],
+  ["wh/marion-wharton-1", "Marion Wharton", "Keighley", ["GYM"], ["1936"]]
+],
+"Somerset": [
+  ["se/charles-sederman-1", "Charles Sederman", "Nailsea", ["GYM"], ["1908"]]
+],
+"Worcestershire": [
+  ["la/sally-larner-1", "Sally Larner", "Bromsgrove", ["GYM"], ["1984"]]
+],
+"Greater Manchester": [
+  ["bo/paul-bowler-1", "Paul Bowler", "Manchester", ["GYM"], ["1992"]],
+  ["ca/marvin-campbell-1", "Marvin Campbell", "Manchester", ["GYM"], ["1992"]],
+  ["fe/cherrelle-fennell-1", "Cherrelle Fennell", "Manchester", ["GYM"], ["2004"]],
+  ["sm/ada-smith-1", "Ada Smith", "Leigh", ["GYM"], ["1928"]],
+  ["sm/hilda-smith-1", "Hilda Smith", "Leigh", ["GYM"], ["1928"]],
+  ["wi/kathy-williams-1", "Kathy Williams", "Manchester", ["GYM"], ["1984"]]
+],
+"East Sussex": [
+  ["mu/sharna-murray-1", "Sharna Murray", "Hastings", ["GYM"], ["2000"]]
+],
+"Clwyd": [
+  ["th/neil-thomas-1", "Neil Thomas", "Chirk", ["GYM"], ["1992"]]
+],
+"Devon": [
+  ["ma/james-may-1", "James May", "Seaton", ["GYM"], ["1992"]]
+],
+"Mid Glamorgan": [
+  ["co/william-cowhig-1", "William Cowhig", "Maesteg", ["GYM"], ["1912", "1920"]],
+  ["ho/glyn-hopkins-1", "Glyn Hopkins", "Pontypridd", ["GYM"], ["1948"]],
+  ["wa/edgar-watkins-1", "Edgar Watkins", "Ferndale", ["GYM"], ["1908"]]
+],
+"Buckinghamshire": [
+  ["ma/lisa-mason-1", "Lisa Mason", "Aylesbury", ["GYM"], ["2000"]]
+],
+"Hertfordshire": [
+  ["ha/kelly-hackman-1", "Kelly Hackman", "Watford", ["GYM"], ["2000"]]
+],
+"Derbyshire": [
+  ["do/sidney-domville-1", "Sidney Domville", "New Mills", ["GYM"], ["1908", "1920"]]
+],
+"Norfolk": [
+  ["st/peter-starling-1", "Peter Starling", "Norwich", ["GYM"], ["1952", "1960"]]
+],
+"South Glamorgan": [
+  ["bu/ken-buffin-1", "Ken Buffin", "Barry", ["GYM"], ["1948", "1952", "1960"]],
+  ["go/denise-goddard-1", "Denise Goddard", "Cardiff", ["GYM"], ["1964"]],
+  ["ho/pamela-hopkins-1", "Pamela Hopkins", "Cardiff", ["GYM"], ["1972"]],
+  ["le/gwynedd-lewis-lingard-1", "Gwynedd Lewis-Lingard", "Cardiff", ["GYM"], ["1952", "1960"]],
+  ["mu/john-mulhall-1", "John Mulhall", "Cardiff", ["GYM"], ["1960", "1964"]],
+  ["pe/pat-perks-1", "Pat Perks", "Cardiff", ["GYM"], ["1960"]],
+  ["su/dorothy-summers-1", "Dorothy Summers", "Cardiff", ["GYM"], ["1960"]],
+  ["th/margaret-thomas-neale-1", "Margaret Thomas-Neale", "Cardiff", ["GYM"], ["1952", "1960"]]
+],
+"Shropshire": [
+  ["yo/lisa-young-1", "Lisa Young", "", ["GYM"], ["1984"]]
+],
+"Cambridgeshire": [
+  ["ki/marissa-king-1", "Marissa King", "Cambridge", ["GYM"], ["2008"]],
+  ["sm/louis-smith-1", "Louis Smith", "Peterborough", ["GYM"], ["2008"]]
+],
+"Lancashire": [
+  ["ha/margaret-hartley-1", "Margaret Hartley", "Burnley", ["GYM"], ["1928"]],
+  ["he/craig-heap-1", "Craig Heap", "Burnley", ["GYM"], ["2000"]]
+],
+"Leicestershire": [
+  ["ch/susan-cheesebrough-1", "Susan Cheesebrough", "Leicester", ["GYM"], ["1976", "1980"]],
+  ["le/avril-lennox-1", "Avril Lennox", "Leicester", ["GYM"], ["1972", "1976"]]
+],
+"Tyne and Wear": [
+  ["ru/monica-rutherford-1", "Monica Rutherford", "Sunderland", ["GYM"], ["1964"]]
+],
+"Surrey": [
+  ["ke/karen-kennedy-1", "Karen Kennedy", "Farnham", ["GYM"], ["1988"]],
+  ["li/elizabeth-line-1", "Elizabeth Line", "Woking", ["GYM"], ["2004"]],
+  ["wi/rebecca-wing-1", "Rebecca Wing", "Frimley", ["GYM"], ["2008"]]
+],
+"West Midlands": [
+  ["be/albert-betts-1", "Albert Betts", "Birmingham", ["GYM"], ["1912", "1920"]],
+  ["ed/reginald-edgecombe-1", "Reginald Edgecombe", "Birmingham", ["GYM"], ["1920"]],
+  ["fi/henry-finchett-1", "Henry Finchett", "Birmingham", ["GYM"], ["1920", "1924", "1928"]],
+  ["ho/samuel-hodgetts-1", "Samuel Hodgetts", "Birmingham", ["GYM"], ["1908", "1912", "1920"]],
+  ["me/alfred-messenger-1", "Alfred Messenger", "Birmingham", ["GYM"], ["1912"]],
+  ["pe/edward-pepper-1", "Edward Pepper", "Birmingham", ["GYM"], ["1912"]],
+  ["pr/hayley-price-1", "Hayley Price", "Wolverhampton", ["GYM"], ["1984"]],
+  ["sl/barbara-slater-1", "Barbara Slater", "Birmingham", ["GYM"], ["1976"]],
+  ["ty/walter-tysall-1", "Walter Tysall", "Birmingham", ["GYM"], ["1908"]],
+  ["vi/charles-vigurs-1", "Charles Vigurs", "Birmingham", ["GYM"], ["1908", "1912"]],
+  ["wa/samuel-walker-1", "Samuel Walker", "Birmingham", ["GYM"], ["1912"]],
+  ["wh/john-whitaker-2", "John Whitaker", "Birmingham", ["GYM"], ["1908", "1912"]]
+],
+"Fife": [
+  ["ha/karen-hargate-1", "Karen Hargate", "St. Andrews", ["GYM"], ["1988"]]
+],
+"South Yorkshire": [
+  ["ha/amanda-harrison-1", "Amanda Harrison", "Sheffield", ["GYM"], ["1984"]],
+  ["va/eddie-van-hoof-1", "Eddie Van Hoof", "Stainforth", ["GYM"], ["1984"]],
+  ["wi/stan-wild-1", "Stan Wild", "Bolton upon Dearne", ["GYM"], ["1968", "1972"]]
+],
+"Essex": [
+  ["re/annika-reeder-1", "Annika Reeder", "Epping", ["GYM"], ["1996", "2000"]],
+  ["wi/nicola-willis-1", "Nicola Willis", "Southend-on-Sea", ["GYM"], ["2004"]]
+],
+"North Yorkshire": [
+  ["di/harry-dickason-1", "Harry Dickason", "Harrogate", ["GYM"], ["1912"]],
+  ["st/nik-stuart-1", "Nik Stuart", "Thirsk", ["GYM"], ["1956", "1960"]]
+],
+"City of Bristol": [
+  ["ca/imogen-cairns-1", "Imogen Cairns", "Bristol", ["GYM"], ["2008"]],
+  ["ya/ralph-yandell-1", "Ralph Yandell", "Bristol", ["GYM"], ["1920"]]
+],
+"Nottinghamshire": [
+  ["do/beckie-downie-1", "Beckie Downie", "Nottingham", ["GYM"], ["2008"]]
+],
+"Greater London": [
+  ["ai/joan-airey-1", "Joan Airey", "Croydon", ["GYM"], ["1948"]],
+  ["ba/otto-bauscher-1", "Otto Bauscher", "St. Pancras", ["GYM"], ["1906", "1908"]],
+  ["be/margaret-bell-1", "Margaret Bell", "Beckenham", ["GYM"], ["1968"]],
+  ["bl/doris-blake-1", "Doris Blake", "Edmonton", ["GYM"], ["1936"]],
+  ["co/william-connor-1", "William Connor", "London", ["GYM"], ["1900"]],
+  ["co/joseph-cook-1", "Joseph Cook", "London", ["GYM"], ["1908"]],
+  ["cr/sidney-cross-1", "Sidney Cross", "Hoxton", ["GYM"], ["1912", "1920"]],
+  ["cr/brenda-crowe-1", "Brenda Crowe", "Edmonton", ["GYM"], ["1936"]],
+  ["da/suzanne-dando-1", "Suzanne Dando", "London", ["GYM"], ["1980"]],
+  ["da/natalie-davies-1", "Natalie Davies", "Farnborough", ["GYM"], ["1984"]],
+  ["da/horace-dawswell-1", "Horace Dawswell", "Holborn", ["GYM"], ["1920"]],
+  ["de/lucy-desmond-1", "Lucy Desmond", "Lambeth", ["GYM"], ["1928"]],
+  ["fr/bernard-franklin-1", "Bernard Franklin", "London", ["GYM"], ["1912", "1920"]],
+  ["gr/dick-gradley-1", "Dick Gradley", "London", ["GYM"], ["1960"]],
+  ["hi/henry-hiatt-1", "Henry Hiatt", "Marylebone", ["GYM"], ["1900"]],
+  ["ju/queenie-judd-1", "Queenie Judd", "West Ham", ["GYM"], ["1928"]],
+  ["ki/jessie-kite-1", "Jessie Kite", "Hackney", ["GYM"], ["1928"]],
+  ["le/katy-lennon-1", "Katy Lennon", "Carshalton", ["GYM"], ["2004"]],
+  ["lu/charles-luck-1", "Charles Luck", "London", ["GYM"], ["1912"]],
+  ["mc/lee-mcdermott-1", "Lee McDermott", "London", ["GYM"], ["1996"]],
+  ["mc/ronald-mclean-1", "Ronald McLean", "London", ["GYM"], ["1912", "1920"]],
+  ["mu/yvonne-mugridge-1", "Yvonne Mugridge", "Sidcup", ["GYM"], ["1972"]],
+  ["ob/henry-oberholzer-1", "Henry Oberholzer", "St. Pancras", ["GYM"], ["1912"]],
+  ["po/reginald-potts-1", "Reginald Potts", "London", ["GYM"], ["1912"]],
+  ["pr/mary-prestidge-1", "Mary Prestidge", "London", ["GYM"], ["1968"]],
+  ["ri/lilian-ridgewell-1", "Lilian Ridgewell", "Edmonton", ["GYM"], ["1936"]],
+  ["ro/rowena-roberts-1", "Rowena Roberts", "Kingston-upon-Thames", ["GYM"], ["1992"]],
+  ["ro/george-ross-1", "George Ross", "London", ["GYM"], ["1908", "1912"]],
+  ["si/charles-simmons-1", "Charles Simmons", "London", ["GYM"], ["1912"]],
+  ["we/george-weedon-1", "George Weedon", "Richmond", ["GYM"], ["1948", "1952"]],
+  ["wi/elaine-willett-1", "Elaine Willett", "Lewisham", ["GYM"], ["1972"]],
+  ["wi/barry-winch-1", "Barry Winch", "Carshalton", ["GYM"], ["1980", "1984"]]
+]
+}

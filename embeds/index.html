@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Keeling Curve hits 400ppm</title>
+    <link rel="stylesheet" type="text/css" href="http://kiln.it/talkie/ui/1.0/talkie.css">
+    <!--[if lt IE 8]>
+        <script>
+            document.location.href="/fail.html";
+        </script>
+    <![endif]-->
+    
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://kiln.it/talkie-1.0.min.js"></script>
+    
+    <style>
+      body { background: white; font-family: Helvetica, Arial, sans-serif; }
+      #wrapper { width: 890px; margin: auto; position: relative; background: #DADADA; }
+      #header { width: 865px; height: 40px; background: #666; color: yellow; line-height: 2em; text-align: left; padding-left: 25px; padding-top: 4px; }
+      #header h1 { margin: 0; font-family: georgia, serif; font-weight: normal; padding-left: 20px; font-size: 20px; color: #ddd; padding-top: 2px;}
+      #slider { padding: 14px 10px 10px 10px; background: white; width: 800px; position: relative; left: 25px;
+                border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
+                -moz-border-bottom-left-radius: 10px; -moz-border-bottom-right-radius: 10px; }
+      #controls { width: 850px; padding: 8px 5px 3px; }
+      #controls audio { width: 100%; }
+      .paneltext { position: absolute; right: 26px; top: 120px; width: 145px; font-size: 15px; line-height: 1.2em; text-align: left; }
+      .talkie-slider-panel { font-size: 20px; text-align: center; line-height: 1.25em; height: 460px; position: relative; }
+      .talkie-slider-panel span { vertical-align: middle; }
+      .talkie-slider {
+        padding: 0!important;
+        margin-left: 20px;
+        background: white;
+        width: 840px;
+        height: 500px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        -moz-border-bottom-left-radius: 10px;
+        -moz-border-bottom-right-radius: 10px;
+        position: relative;
+        left: 25px;
+      }
+      .talkie-slider-arrownext {
+          left: 800px;
+      }
+      .talkie-slider-nav {
+        margin-top: 8px!important;
+        padding-bottom: 6px!important;
+      }
+      #credittext {
+          position: absolute;
+          font-size: 12px;
+          color: white;
+          text-align: right;
+          top: 14px;
+          right: 25px;
+          line-height: 1.4em; 
+      }
+      #credittext a:link, #credittext a:visited {
+          color: white;
+          text-decoration: none;
+      }
+      #credittext a:hover, #credittext a:active {
+          color: white;
+          text-decoration: underline;
+      }
+      #p0-svg, #p1-svg, #p2-svg, #p3-svg, #p4-svg, #p5-svg {
+          width: 800px;
+          height: 500px;
+      }
+      #header a:link, #header a:visited {
+          color: white;
+          text-decoration: none;
+      } 
+      #header a:hover, #header a:active {
+          color: white;
+          text-decoration: underline;
+      } 
+      .paneltext a:link, .paneltext a:visited {
+          color: #005689;
+          text-decoration: none;
+      } 
+      .paneltext a:hover, .paneltext a:active {
+          color: #005689;
+          text-decoration: underline;
+      }
+      .paneltext {
+          z-index: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <h1><a href="/">The Keeling Curve</a></h1>
+        <div id="credittext">
+            Made using <a target="_top" href="https://github.com/kiln/talkie">Talkie</a> by <a target="_top" href="kiln.it">Kiln</a>
+        </div>
+      </div>
+      <div id="slider" class="talkie-slider">
+        <div class="talkie-slider-arrowprev"></div>
+        <div class="talkie-slider-arrownext"></div>
+        <div class="talkie-slider-panel" id="p0">
+          <object id="p0-svg" data="landing.svg" type="image/svg+xml" onload="theSvgFileInPanelP0HasLoaded(this)"></object>
+        </div>
+        <div class="talkie-slider-panel" id="p1">
+          <object id="p1-svg" data="keelingcurveanimations.svg" type="image/svg+xml" onload="theSvgFileInPanelP1HasLoaded(this)"></object>
+          <div class="paneltext">
+              &lsquo;The Keeling Curve&rsquo; shows rising atmospheric CO&#x2082; levels, as measured at the <a target="_top" href="http://www.esrl.noaa.gov/gmd/obop/mlo/">Mauna Loa Observatory in Hawaii</a>. Nothing has yet slowed the curve's inexorable rise. CO2 has now reached 400 parts per million (ppm) – a level <a target="_top" href="http://keelingcurve.ucsd.edu/what-does-400-ppm-look-like/">last seen millions of years ago when the world looked radically different</a> and was much hotter than today.
+          </div>
+        </div>
+        <div class="talkie-slider-panel" id="p2">
+          <object id="p2-svg" data="keelingcurveseason.svg" type="image/svg+xml" onload="theSvgFileInPanelP2HasLoaded(this)"></object>
+          <div class="paneltext">
+              The famous &lsquo;saw-tooth&rsquo; line of the graph reflects the seasons: there are more trees and plants in the northern hemisphere than in the southern hemisphere, so globally the world&rsquo;s land areas &lsquo;breathe in&rsquo; during the northern spring/summer and out during the northern autumn/winter.
+          </div>
+        </div>
+        <div class="talkie-slider-panel" id="p3">
+          <object id="p3-svg" data="keelingcurvelongviewalt.svg" type="image/svg+xml" onload="theSvgFileInPanelP3HasLoaded(this)"></object>
+          <div class="paneltext">
+              To see how rapid the build up of CO&#x2082; has been since the industrial revolution, it&rsquo;s necessary to zoom out. This graph shows the Keeling Curve (in red) in the context of the last two millennia. It shows how CO&#x2082; levels were very flat until widespread fossil fuel use took off in the 1800s.
+          </div>
+        </div>
+        <div class="talkie-slider-panel" id="p4">
+          <object id="p4-svg" data="keelingcurvefuture.svg" type="image/svg+xml" onload="theSvgFileInPanelP4HasLoaded(this)"></object>
+          <div class="paneltext">
+              CO&#x2082; levels will keep rising until carbon emissions are radically reduced. The dotted lines reflect the <a target="_top" href="http://tntcat.iiasa.ac.at:8787/RcpDb/dsd?Action=htmlpage&amp;page=welcome">latest emissions scenarios</a> used by the <a target="_top" href="http://www.ipcc.ch/" >IPCC</a> and others. So far emissions have roughly tracked the red dotted line, which could lead to almost 1000ppm by the end of the century.
+          </div>
+        </div>
+        <div class="talkie-slider-panel" id="p5">
+          <object id="p5-svg" data="keelingcurveverylongview.svg" type="image/svg+xml" onload="theSvgFileInPanelP5HasLoaded(this)"></object>
+          <div class="paneltext">
+              To see how unprecedented and rapid that kind of change would be, this graph shows current and expected CO&#x2082; increases in the context of the past 800,000 years – a period during which the level has consistently fluctuated but  narrow constraints that we've already greatly  
+          </div>
+        </div>
+      </div>
+      <div class="talkie-slider-nav"></div>
+    </div>
+    
+    <script>
+      var slider = Talkie.slider("#slider").navigation(".talkie-slider-nav");
+      
+      function checkSvg(x) {
+        var filename = x.getAttribute("data"),
+            basename = filename.substr(0, filename.length - 4);
+        
+        if (basename != x.contentDocument.rootElement.id) {
+          // Poor old Chrome has got its knickers in a terrible twist.
+          // Reload the page.
+          window.location.href = ".";
+        }
+      }
+      
+      // When the SVG file in panel p0 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP0HasLoaded(x) {
+        checkSvg(x);
+        var svg = d3.select(x.contentDocument);
+      }
+      // When the SVG file in panel p1 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP1HasLoaded(x) {
+        checkSvg(x);
+        var svg = d3.select(x.contentDocument),
+            dots = svg.selectAll("#dots > circle"),
+            bubbles = svg.selectAll("#bubbles > g");
+        
+        dots.datum(function() { return this.id.substr(3); })
+            .on("mouseover", function(year) { svg.select("#bubble" + year).transition().duration(250).attr("opacity", 1); })
+            .on("mouseout",  function(year) { svg.select("#bubble" + year).transition().duration(250).attr("opacity", 0); });
+        var animatePanel = function() {
+            svg.select("#mask").style("display", "block");
+            svg.selectAll("#dots, #dotlabel").transition().attr("opacity", "0");
+            bubbles.attr("opacity", 0);
+            
+            svg.select("#mask").attr("transform", "translate(0,0)").transition().delay(0).duration(7000).attr("transform", "translate(800,0)");
+            svg.select("#dots").transition().delay(2500).duration(3000).attr("opacity", "0.35");
+            svg.select("#dotlabel").transition().delay(2500).duration(3000).attr("opacity", "1");
+        };
+        
+        Talkie.addEventListener("#p1", "Talkie.slider.load", animatePanel);
+        if (slider.selected_panel == 1) animatePanel();
+      }
+      // When the SVG file in panel p2 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP2HasLoaded(x) {
+        checkSvg(x);
+        var animate = Talkie.animate(x.contentDocument),
+            svg = animate.raw(),
+            things_to_undo = [],
+            dummy_timeline = {setUndo: function(f) { things_to_undo.push(f); }};
+        
+        var animatePanel = function() {
+          svg.select("#seasonlabels").transition().duration(0).attr("opacity", "0");
+          
+          for (var i=0; i<things_to_undo.length; i++) things_to_undo[i]();
+          things_to_undo = [];
+          
+          animate.select("#curvezoom").style("stroke-width", "4", "10000").run(dummy_timeline);
+          animate.select("#curvezoom").morphTo("#curvezoombig", "4000").run(dummy_timeline);
+          animate.select("#curvezoomring").attr("r", "117", "4000").run(dummy_timeline);
+          animate.select("#curvezoombackground").attr("r", "117", "4000").run(dummy_timeline);
+          svg.select("#seasonlabels").transition().delay(2000).duration(4000).attr("opacity", "1");
+        };
+        Talkie.addEventListener("#p2", "Talkie.slider.load", animatePanel);
+        if (slider.selected_panel == 2) animatePanel();
+      }
+      // When the SVG file in panel p3 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP3HasLoaded(x) {
+        checkSvg(x);
+        var animate = Talkie.animate(x.contentDocument),
+            svg = animate.raw(),
+            things_to_undo = [],
+            dummy_timeline = {setUndo: function(f) { things_to_undo.push(f); }};
+        
+       var animatePanel = function() {
+            svg.select("#axiszoom").transition().attr("opacity", "1");
+            svg.select("#axisunzoom").transition().attr("opacity", "0");
+            
+            for (var i=0; i<things_to_undo.length; i++) things_to_undo[i]();
+            things_to_undo = [];
+            
+            animate.select("#keelingzoom").morphTo("#keelingunzoom", 4000).run(dummy_timeline);
+            svg.select("#axiszoom")  .transition().delay(2000).duration(4000).attr("opacity", "0");
+            svg.select("#axisunzoom").transition().delay(2000).duration(4000).attr("opacity", "1");
+        };
+        Talkie.addEventListener("#p3", "Talkie.slider.load", animatePanel);
+        if (slider.selected_panel == 3) animatePanel();
+      }
+      // When the SVG file in panel p4 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP4HasLoaded(x) {
+        checkSvg(x);
+        var animate = Talkie.animate(x.contentDocument),
+            svg = animate.raw(),
+            things_to_undo = [],
+            dummy_timeline = {setUndo: function(f) { things_to_undo.push(f); }};
+        
+        var animatePanel = function() {
+            svg.select("#firstlabels").transition().attr("opacity", "1");
+            svg.selectAll("#secondlabels, #keelingunzoomlower, #futures, #longtermlinelower").transition().attr("opacity", "0");
+            svg.select("#longtermpoints").transition().delay(0).duration(1500).attr("opacity", "0");
+                        
+            for (var i=0; i<things_to_undo.length; i++) things_to_undo[i]();
+            things_to_undo = [];
+            
+            animate.select("#keelingunzoom").morphTo("#keelingunzoomlower", 4000).run(dummy_timeline);
+            animate.select("#longtermline").morphTo("#longtermlinelower", 4000).run(dummy_timeline);
+
+            svg.select("#firstlabels").transition().delay(2000).duration(4000).attr("opacity", "0");
+            svg.select("#secondlabels").transition().delay(2000).duration(4000).attr("opacity", "1");
+            svg.select("#futures").transition().delay(4000).duration(3000).attr("opacity", "1");
+        };
+        Talkie.addEventListener("#p4", "Talkie.slider.load", animatePanel);
+        if (slider.selected_panel == 4) animatePanel();
+      }
+      // When the SVG file in panel p5 has loaded, set it up to animate on panel load
+      function theSvgFileInPanelP5HasLoaded(x) {
+        checkSvg(x);
+        var animate = Talkie.animate(x.contentDocument),
+            svg = animate.raw(),
+            things_to_undo = [],
+            dummy_timeline = {setUndo: function(f) { things_to_undo.push(f); }};
+        
+       var animatePanel = function() {
+           svg.select("#year1").transition().duration(0).attr("opacity", "1");
+           svg.select("#xaxis1").transition().duration(0).attr("opacity", "1")
+           svg.select("#year2").transition().duration(0).attr("opacity", "0");
+           svg.select("#xaxis2").transition().duration(0).attr("opacity", "0");                                                                        
+           svg.select("#labels").transition().duration(0).attr("opacity", "0");                                                                        
+           svg.select("#verylongtermline").transition().duration(0).attr("opacity", "0");            
+            
+            for (var i=0; i<things_to_undo.length; i++) things_to_undo[i]();
+            things_to_undo = [];
+            
+            animate.select("#keeling").morphTo("#keeling2", 4000).run(dummy_timeline);
+            animate.select("#a").morphTo("#a2", 4000).run(dummy_timeline);
+            animate.select("#b").morphTo("#b2", 4000).run(dummy_timeline);
+            animate.select("#c").morphTo("#c2", 4000).run(dummy_timeline);
+            animate.select("#d").morphTo("#d2", 4000).run(dummy_timeline);            
+            animate.select("#longtermline").morphTo("#longtermline2", 4000).run(dummy_timeline);
+            svg.select("#verylongtermline").transition().delay(2500).duration(3000).attr("opacity", "1");
+            
+            svg.select("#year1").transition().delay(2500).duration(3000).attr("opacity", "0");
+            svg.select("#xaxis1").transition().delay(2500).duration(3000).attr("opacity", "0");
+            svg.select("#year2").transition().delay(2500).duration(3000).attr("opacity", "1");
+            svg.select("#xaxis2").transition().delay(2500).duration(3000).attr("opacity", "1");
+            svg.select("#labels").transition().delay(2500).duration(3000).attr("opacity", "1");
+
+        };
+        Talkie.addEventListener("#p5", "Talkie.slider.load", animatePanel);
+        if (slider.selected_panel == 5) animatePanel();
+      }
+    </script>
+  </body>
+</html>
