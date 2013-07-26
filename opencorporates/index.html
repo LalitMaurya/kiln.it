@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Kiln = Journalism + Data + Technology + Design</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script src="/d3.v3.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://fast.fonts.net/jsapi/411dcd77-eeeb-4bf0-a0c2-7cdf19f88192.js"></script>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <style>
+
+    /* Font names … TradeGothicNextW01-Ligh 693250'; 'Trade Gothic Next W01'; 'TradeGothicNextW01-Cond'; 'TradeGothicNextW01-Bold 693229'; 'TradeGothicNextW01-Bold 693232'; 'TradeGothicNextW01-HvCn 707049'; 'TradeGothicNextW01-Cm'; 'TradeGothicNextW01-HvCm'; */
+    
+    /* Swatches … Dark (downpipe) #5B8192; Medium #4FB7DB; Logo Pale #4BA9C9 */
+        
+    body { background: white; font-family: 'TradeGothicNextW01-Cond', sans-serif; line-height: 1.8em; }
+    
+    .topbar { -moz-box-shadow: 1px 1px 5px #aaa; -webkit-box-shadow: 1px 1px 5px #aaa; box-shadow: 1px 1px 10px #aaa; width: 100%; height: 80px; position: absolute; top: 0; z-index: -10; padding: 0 20px; 
+      /* Fallback */
+      background-color: #eee; 
+      /* Gradients for modern browsers*/
+      background-image: -moz-linear-gradient(top, #e3e3e3, #eee);
+      background-image: -ms-linear-gradient(top, #e3e3e3, #eee);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e3e3e3), to(#eee));
+      background-image: -webkit-linear-gradient(top, #e3e3e3, #eee);
+      background-image: -o-linear-gradient(top, #e3e3e3, #eee);
+      background-image: linear-gradient(top,#e3e3e3, #eee);
+      background-repeat: repeat-x;
+      /* IE8-9 gradient filter */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+      }
+    
+    .logoholder { width: 60px; height: 60px; position: absolute; top: 10px; left: 10px; transform:rotate(2deg);
+      -ms-transform:rotate(2deg); /* IE 9 */
+      -webkit-transform:rotate(2deg); /* Safari and Chrome */
+     }
+    
+    #menu { width: 100%; text-align: right; font-family: 'TradeGothicNextW01-Cm', sans-serif; font-size: 26px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1em; margin: 40px 0 10px; }
+    .menuitems { text-align: right; }
+    .menuitem { display: inline-block; margin-left: 20px; }
+    .container { position: relative; }
+    
+    .footer { color: black; margin-top: 30px;
+      /* Fallback */
+      background-color: #eee; 
+      /* Gradients for modern browsers*/
+      background-image: -moz-linear-gradient(top, #222, #3a3a3a);
+      background-image: -ms-linear-gradient(top, #222, #3a3a3a);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222), to(#3a3a3a));
+      background-image: -webkit-linear-gradient(top, #222, #3a3a3a);
+      background-image: -o-linear-gradient(top, #222, #3a3a3a);
+      background-image: linear-gradient(top,#222, #3a3a3a);
+      background-repeat: repeat-x;
+      /* IE8-9 gradient filter */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+      
+    }
+    .footertext { text-align: center; padding: 50px; font-size: 22px; letter-spacing: 1px; color: white; font-size: 16px; }
+    #footerlogo { width: 50px; height: 50px; background-image: url("/kilnlogo50.png"); display: inline-block; margin: 0 10px; }    
+    .footertext a:link, .footertext a:visited { color: white; text-decoration: none;}
+    .footertext a:hover, .footertext a:active { color: #4BA9C9; text-decoration: none; border-bottom: 1px dotted #4BA9C9; }
+    .footertext a:hover img:hover, .footertext a:active img { border-bottom: none; }
+    
+    a:link, a:visited { color: #4FB7DB; text-decoration: none;}
+    a:hover, a:active { color: #333; text-decoration: none; border-bottom: 1px dotted #333; }
+    
+    .projectimagebig { -moz-box-shadow: 5px 5px 10px #aaa; -webkit-box-shadow: 5px 5px 10px #aaa; box-shadow: 5px 5px 10px #aaa; margin-bottom: 20px; } 
+
+    .projectlinks { font-size: 20px; padding-bottom: 20px; }
+    .projectlinks .link { margin-right: 12px; }
+    .projectlinks a:hover, .projectlinks a:active  { border-bottom: none; }
+    .projectstandfirst p { font-size: 26px; line-height: 1.2em; color: #4FB7DB; padding-left: 12px;  }
+
+    h1 { font-size: 44px; color: black; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; margin: 60px 0 10px;  }
+    h2 { font-size: 34px; color: black; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; }
+    h3 { color: #4FB7DB; margin: 20px 0 5px;}
+    h3 .icon { margin-right: 2px; color: #ccc; }
+    
+    .projectmain p { font-size: 18px; }
+    .projectrow:hover .projectimage .projectbw { opacity: 0; }
+    .projectrow:hover h2 { color: yellow; }
+    
+    /* Move default Bootstrap responsible padding to Container to allow edge-to-edge */
+    @media (max-width: 767px) {
+      body { padding: 0!important; }
+    }
+    @media (max-width: 767px) {
+      .container { padding: 0 20px!important; }
+    }
+    /* Avoid menu overlapping with logo or creating orphans */
+    @media (max-width: 525px) {
+      #menuitems { width: 200px; position: absolute; right: 20px; top: 12px; }
+      #menu { margin-bottom: 80px; }
+    }
+    
+  </style>
+
+</head>
+<body>
+  <div class="topbar"></div>
+  <div class="container">
+    <div class="logoholder"><a href="/"><img src="/kilnlogo60.png"></a></div>
+    <div id="menu">
+      <div id="menuitems">
+        <div class="menuitem"><a href="#concepts">Projects</a></div> 
+        <div class="menuitem"><a href="#projects">About</a></div>
+        <div class="menuitem"><a href="#concepts">News</a></div>
+        <div class="menuitem"><a href="#contact">Contact</a></div>
+      </div>
+    </div>
+    <div class="row">
+        <h1 class="span12">OpenCorporates Maps</h1>
+        <div class="projectlinks span12"><span class="link"><a href="http://opencorporates.com/viz/financial/index.html"><i class="icon-external-link"></i> Live version</a><a href=""></span><span class="link"><i class="icon-twitter"></i> Tweet this</a></span><span class="link"><a href="#"><i class="icon-envelope"></i> Email this</a></span>
+        </div>
+
+        <div class="projectstandfirst span8"><a href="http://opencorporates.com/viz/financial/index.html"><img class="projectimagebig" src="/opencorpsbig.gif"></a></div>
+        <div class="projectstandfirst span4"><p>A visualisation of the Byzantine corporates structures of the world's biggest banks and financial services companies. Created for OpenCorporates, summer 2013.</p></div>
+        
+      <div class="projectmain span8">
+        <h3><i class="icon-briefcase icon"></i> The brief</h3>
+        <p><a href="http://opencorporates.com">OpenCorporates</a> is assembling the first open database of all the companies around the world. For now, their data is richest in the financial sector, home to global banks such as Goldman Sachs and Citigroup. Although we often think of them as corporate monoliths, these huge firms actually consist of thousands of subsidiaries located all over the world, many of them in tax havens. OpenCorporates asked Kiln to make these huge networks visually engaging and interactive.</p>
+        <h3><i class="icon-warning-sign icon"></i> Challenges</h3>
+        <p>The main challenge with this project was working out a way to represent an incredibly large tree-style dataset that would both make sense visually and allow each company to be interacted with. There are many ways to represent smaller hierarchical networks, including D3's <a href="http://bl.ocks.org/mbostock/4062045">force-directed graph tools</a>. But when the dataset contains up to 5000 entries, each of which is tagged to a country, those techniques are impractical. For a start, the animations run hopelessly slowly with that many nodes. Moreover, force-directed graphs aren't ideal for conveying the geographical elements. (Which is not to say the results can't look quite fun, as we'll show below.)</p>
+        <p>Another approach would be to cluster the companies onto their parent countries on a normal map. But that wouldn't work either as there would be so many companies in a small country like the UK that they would inevitably overlap, making it impossible to interact with them individually.</p>
+        <h3><i class="icon-lightbulb icon"></i> Our approach</h3>
+        <p>The solution we came up with after a day or two of experimenting was a new kind of cartogram map, provisionally dubbed a 'Kilnogram'. It works by grouping the companies by country and then laying out each group in the shape of that country. To avoid overlaps the country is scaled up until it can accommodate enough circles, packed together honeycomb-style.</p>
+        <p>The result is a map that shows the relative importance of each country and the density of connections between each country. So for example it shows at a glance the ridiculous prominence of the tax-haven Cayman Islands in the world of Goldman Sachs. But because each company is individually visible and clickable, it's ideal for interactivity: in this case browsing to see all the parents and children of each company, which are shown on  hover.</p>
+        <h3><i class="icon-bullhorn icon"></i> Selected press coverage</h3>
+        <p><a href="http://gigaom.com/2013/07/12/want-to-follow-the-money-opencorporates-uses-open-data-to-expose-corporate-structures/">GigaOm</a></p>
+        <p><a href="http://www.wired.co.uk/news/archive/2013-07/11/opencorporates">Wired</a></p>
+        <p><a href="http://boingboing.net/2013/07/17/maps-of-corporate-tax-avoidanc.html">BoingBoing</a></p>
+        <p><a href="http://gizmodo.com/check-out-these-totally-not-shocking-maps-of-corporate-818076424">Gizmodo</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footertext">
+      <a href="/about">About</a> • <a href="/contact">Contact</a>
+      <a href="/"><div id="footerlogo"></div></a> 
+      <a href="https://twitter.com/k_i_l_n">Twitter</a> • <a href="https://github.com/kiln">Gitub</a>
+    </div>
+  </div>
+</body>
+</html>
