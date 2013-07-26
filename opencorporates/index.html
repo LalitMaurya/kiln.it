@@ -31,10 +31,12 @@
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
       }
     
-    .logoholder { width: 60px; height: 60px; position: absolute; top: 10px; left: 10px; transform:rotate(2deg);
-      -ms-transform:rotate(2deg); /* IE 9 */
-      -webkit-transform:rotate(2deg); /* Safari and Chrome */
+    .logoholder { width: 60px; height: 60px; position: absolute; top: 10px; left: 10px;
+      transform:rotate(2deg); -ms-transform:rotate(2deg); -webkit-transform:rotate(2deg);
+      -moz-box-shadow: 1px 1px 3px #aaa; -webkit-box-shadow: 1px 1px 3px #aaa; box-shadow: 1px 1px 3px #aaa;
      }
+
+     .logoholder:hover { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
     
     #menu { width: 100%; text-align: right; font-family: 'TradeGothicNextW01-Cm', sans-serif; font-size: 26px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1em; margin: 40px 0 10px; }
     .menuitems { text-align: right; }
@@ -78,6 +80,7 @@
     h3 .icon { margin-right: 2px; color: #ccc; }
     
     .projectmain p { font-size: 18px; }
+    .projectmain img { margin-top: 10px; margin-bottom: 20px; }
     .projectrow:hover .projectimage .projectbw { opacity: 0; }
     .projectrow:hover h2 { color: yellow; }
     
@@ -121,11 +124,19 @@
         <h3><i class="icon-briefcase icon"></i> The brief</h3>
         <p><a href="http://opencorporates.com">OpenCorporates</a> is assembling the first open database of all the companies around the world. For now, their data is richest in the financial sector, home to global banks such as Goldman Sachs and Citigroup. Although we often think of them as corporate monoliths, these huge firms actually consist of thousands of subsidiaries located all over the world, many of them in tax havens. OpenCorporates asked Kiln to make these huge networks visually engaging and interactive.</p>
         <h3><i class="icon-warning-sign icon"></i> Challenges</h3>
-        <p>The main challenge with this project was working out a way to represent an incredibly large tree-style dataset that would both make sense visually and allow each company to be interacted with. There are many ways to represent smaller hierarchical networks, including D3's <a href="http://bl.ocks.org/mbostock/4062045">force-directed graph tools</a>. But when the dataset contains up to 5000 entries, each of which is tagged to a country, those techniques are impractical. For a start, the animations run hopelessly slowly with that many nodes. Moreover, force-directed graphs aren't ideal for conveying the geographical elements. (Which is not to say the results can't look quite fun, as we'll show below.)</p>
-        <p>Another approach would be to cluster the companies onto their parent countries on a normal map. But that wouldn't work either as there would be so many companies in a small country like the UK that they would inevitably overlap, making it impossible to interact with them individually.</p>
+        <p>The main challenge with this project was working out a way to represent an incredibly large tree-style dataset that would both make sense visually and allow each company to be interacted with. There are many ways to represent smaller hierarchical networks, including D3's <a href="http://bl.ocks.org/mbostock/4062045">force-directed graph tools</a>. But when the dataset contains up to 5000 entries, each of which is tagged to a country, those techniques are impractical. For a start, the animations run hopelessly slowly with that many nodes. Moreover, force-directed graphs aren't ideal for conveying the geographical elements. Which is not to say the results can't look quite cool; here's Goldman Sachs as a jelly fish.</p>
+        <img src="jellyfish.png">
+        <p>Another approach would be to cluster the companies onto their parent countries on a normal map. But that wouldn't work either as there would be so many companies in a small country like the UK that they would inevitably overlap, making it impossible to interact with them individually, as this mockup shows.</p>
+        <img src="normalmap.png">
         <h3><i class="icon-lightbulb icon"></i> Our approach</h3>
-        <p>The solution we came up with after a day or two of experimenting was a new kind of cartogram map, provisionally dubbed a 'Kilnogram'. It works by grouping the companies by country and then laying out each group in the shape of that country. To avoid overlaps the country is scaled up until it can accommodate enough circles, packed together honeycomb-style.</p>
-        <p>The result is a map that shows the relative importance of each country and the density of connections between each country. So for example it shows at a glance the ridiculous prominence of the tax-haven Cayman Islands in the world of Goldman Sachs. But because each company is individually visible and clickable, it's ideal for interactivity: in this case browsing to see all the parents and children of each company, which are shown on  hover.</p>
+        <p>The solution we came up with after a day or two of experimenting was a new kind of cartogram map, provisionally dubbed a 'Kilnogram'. It works by grouping the companies by country and then laying out each group in the shape of that country. To avoid overlaps the country is scaled up until it can accommodate enough circles, packed together honeycomb-style. So the US or UK for example are immediately recognisable due to their distinctive shapes, even though their size is determined by the data. Here's the UK and Ireland.</p>
+        <img src="uk.png">        
+        <p>The result is a map that shows the relative importance of each country and the density of connections between each country. So for example it shows at a glance the ridiculous prominence of the tax-haven Cayman Islands in the world of Goldman Sachs.</p>
+        <img src="cayman.png">
+        <p>But because each company is individually visible and clickable, it's ideal for interactivity: in this case browsing to see all the parents and children of each company, which are shown on  hover. Some of the chains are amazingly long with some companies lying around 10 layers of ownership – and more than one tax haven – away from HQ.</p>
+        <img src="chain.png">
+        <p>And just for fun … here's the Goldman Sachs Map without the companies, just showing the links. It looks like one of those flight-path diagrams, in a way showing even more clearly how amazingly complex these corporates structures are.</p>
+        <img src="pathsonly.png">
         <h3><i class="icon-bullhorn icon"></i> Selected press coverage</h3>
         <p><a href="http://gigaom.com/2013/07/12/want-to-follow-the-money-opencorporates-uses-open-data-to-expose-corporate-structures/">GigaOm</a></p>
         <p><a href="http://www.wired.co.uk/news/archive/2013-07/11/opencorporates">Wired</a></p>
