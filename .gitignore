@@ -1,3 +1,5 @@
+/raw/*
+
 /blog/*
 !/blog/wp-content
 
