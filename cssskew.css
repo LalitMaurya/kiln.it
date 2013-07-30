@@ -1,0 +1,162 @@
+/*
+Fonts for reference
+font-family:'TradeGothicNextW01-Ligh 693250';
+font-family:'Trade Gothic Next W01';
+font-family:'TradeGothicNextW01-Cond';
+font-family:'TradeGothicNextW01-Bold 693229';
+font-family:'TradeGothicNextW01-Bold 693232';
+font-family:'TradeGothicNextW01-HvCn 707049';
+font-family:'TradeGothicNextW01-Cm';
+font-family:'TradeGothicNextW01-HvCm';
+*/
+
+/*
+Swatches for reference
+Dark (downpipe) #5B8192;
+Medium #4FB7DB;
+Logo Pale #4BA9C9
+*/
+
+
+/* Basic theming */
+
+body { font-family: 'TradeGothicNextW01-Cond', sans-serif; line-height: 1.8em; }
+
+a:link, a:visited { color: #4FB7DB; text-decoration: none;}
+a:hover, a:active { color: #333; text-decoration: none; border-bottom: 1px dotted #333; }
+
+p, ul  { font-size: 18px; color: black; }
+li { margin-top: 4px; }
+
+h1 { font-size: 48px; color: black; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; margin: 60px 0 10px;  }
+h2 { font-size: 40px; color: black; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; margin: 50px 0 10px; }
+h3 { font-size: 34px; color: #4FB7DB; margin: 24px 0 5px; line-height: 1.3em; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; }
+h3 .icon { margin-right: 2px; color: #ccc; }
+
+.container { min-height: 500px;  }
+
+/* Core layout */
+
+.topbar { -moz-box-shadow: 1px 1px 5px #aaa; -webkit-box-shadow: 1px 1px 5px #aaa; box-shadow: 1px 1px 10px #aaa; width: 100%; height: 80px; position: absolute; top: 0; z-index: -10; background-color: #eee; background-image: -moz-linear-gradient(top, #e3e3e3, #eee); background-image: -ms-linear-gradient(top, #e3e3e3, #eee); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e3e3e3), to(#eee)); background-image: -webkit-linear-gradient(top, #e3e3e3, #eee); background-image: -o-linear-gradient(top, #e3e3e3, #eee); background-image: linear-gradient(top,#e3e3e3, #eee); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0); }
+
+.logoholder { width: 50px; height: 50px; position: absolute; top: 9px; padding: 4px; margin-left: 10px; background: white;
+  transform:rotate(2deg); -ms-transform:rotate(2deg); -webkit-transform:rotate(2deg); -moz-box-shadow: 1px 1px 3px #aaa; -webkit-box-shadow: 1px 1px 3px #aaa; box-shadow: 1px 1px 3px #aaa;
+}
+.logoholder:hover { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+.container { position: relative; }
+
+#menu { width: 100%; text-align: right; font-family: 'TradeGothicNextW01-Cm', sans-serif; font-size: 26px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1em; margin: 40px 0 10px; }
+.homepage #menu { font-size: 35px; margin: 90px 0 100px; }
+.menuitems { text-align: right; }
+.menuitem { display: inline-block; margin-left: 20px; }
+.menuitem a:hover, .menuitem a:active { color: black; border-bottom: none; }
+.menuselected, .menuselected a:link, .menuselected a:visited, menuselected a:hover, .menuselected a:active { color: #555; }
+
+.footer { color: black; margin-top: 30px; background-color: #eee;  background-image: -moz-linear-gradient(top, #222, #3a3a3a); background-image: -ms-linear-gradient(top, #222, #3a3a3a); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222), to(#3a3a3a)); background-image: -webkit-linear-gradient(top, #222, #3a3a3a); background-image: -o-linear-gradient(top, #222, #3a3a3a); background-image: linear-gradient(top,#222, #3a3a3a); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+}
+.footertext { text-align: center; padding: 50px; font-size: 22px; letter-spacing: 1px; color: white; font-size: 16px; }
+#footerlogo { width: 50px; height: 50px; background-image: url("images/kilnlogo50.png"); background-repeat: no-repeat; display: inline-block; vertical-align: middle; margin: 0 10px; padding: 3px; background-color: white; background-position: 3px 3px; transform:rotate(2deg); -ms-transform:rotate(2deg); -webkit-transform:rotate(2deg); }
+.footertext a:link, .footertext a:visited { color: white; text-decoration: none;}
+.footertext a:hover, .footertext a:active { color: #4BA9C9; text-decoration: none; border-bottom: 1px dotted #4BA9C9; }
+.footertext a:hover img:hover, .footertext a:active img { border-bottom: none; }
+
+/* Homepage */
+
+.homepage .topbar { height: 250px; }
+.homepage .logoholder { width: 300px; height: 250px; position: absolute; right: 50%; margin: 0 10px 0 0; padding: 0; background: none; transform:rotate(0); -ms-transform:rotate(0); -webkit-transform:rotate(0); -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+.homepage svg { width: 300px; height: 250px; stroke-width: 0; stroke: white; fill: #94C6DD; }
+.homepage svg text { font-size: 0.18px; fill: #333; stroke: none; font-family: 'TradeGothicNextW01-BdCm'; opacity: 0.7;  }
+.homepage svg #logogroup { opacity: 0; filter: "url(#dropshadow)"; }
+
+.homepage #menu { width: 50%; text-align: left; font-family: 'TradeGothicNextW01-Cm', sans-serif; font-size: 40px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1em; margin: 40px 0 10px 50%; }
+.homepage .menuitem { display: block; margin-left: 20px; }
+
+.splash { color: #333; max-width: 940px; margin: 120px auto 80px; font-size: 74px; line-height: 1.3em; text-align: center; font-family: 'TradeGothicNextW01-Bold 693232', sans-serif; /*transform:rotate(-7deg); -ms-transform:rotate(-7deg); -webkit-transform:rotate(-7deg);*/ }
+.splash em { color: #4FB7DB; font-style: normal;
+-moz-box-shadow: -2px -2px 6px #aaa; -webkit-box-shadow: -2px -2px 6px #aaa; box-shadow: -2px -2px 6px #aaa; padding: 2px 6px; }
+.splash em.data { color: #DB724F; }
+
+
+.projectrow {
+  transform:skew(6deg);
+  -ms-transform:skew(6deg); /* IE 9 */
+  -webkit-transform:skew(6deg); /* Safari and Chrome */
+  padding: 0 50px;
+}
+.projecthead { max-width: 1000px; margin: 10px auto; }
+.projecthead h2 { font-size: 48px; margin-top: 0; }
+
+.projectleft, .projectright { height: 550px; padding: 0 0 32px; position: relative; background-image: url("images/banner.png"); background-size: 100% 550px; overflow: hidden; max-width: 1000px; margin: 0 auto -290px; background-repeat: no-repeat; }
+.projectrowlirowcameraroll {}
+
+.projectimage { width: 63.5%; position: relative; overflow: hidden; height: 260px; }
+.projectleft .projectimage { position: absolute; right: 0;  }
+.projectright .projectimage { position: absolute; left: 0; }
+
+.projectimage .projectcolour { position: absolute; width: 650px; max-width: none; }
+.projectimage .projectbw { position: absolute; display: none; max-width: none; }
+
+.projecttextholder { width: 36%; background: #94C6DD; height: 260px; }
+.projecttext { padding: 20px; height: 220px; }
+.projecttext p { color: white; font-size: 20px; }
+.projecttext h3 { margin-top: 0; color: black; font-size: 30px; }
+.projectleft  .projecttextholder { position: absolute; left: 0; text-align: left;  }
+.projectright .projecttextholder { position: absolute; right: 0; text-align: right; }
+
+.projectcontent { background: none; width: 100%; height: 260px; opacity: 0.98  ; }
+
+.projectwedge { width: 30px; height: 260px; display: none; }
+.projectleft .projectwedge { background-image: url("images/wedgeleft.png");   position: absolute; left: 37%; }
+.projectright .projectwedge { background-image: url("images/wedgeright.png"); position: absolute; right: 37%; }
+
+.projectrow:hover .projectimage .projectbw { opacity: 0; }
+.projectrow:hover h3 { color: yellow; }
+.projectrow:hover .projecttext { background: #5B8192; }
+.projectleft.projectrow:hover .projectwedge { background-image: url("images/wedgeleftdark.png"); }
+.projectright.projectrow:hover .projectwedge { background-image: url("images/wedgerightdark.png"); }    
+
+.projectlast { background-image: none; margin-bottom: -220px; }
+
+.ribbonstart { padding-bottom: 290px; background-size: 100% 800px; background-image: url("images/bannershort.png"); }
+.miscellany { background-image: none; }
+
+/* About page */
+
+.person { min-height: 220px; }
+.mugshot { float: right; width: 150px; margin: -20px 0 0 10px; }
+
+.aboutmain { padding: 20px 0 35px; }
+.aboutlogo { padding: 14px; margin-bottom: 30px; transform:rotate(2deg); -ms-transform:rotate(2deg); -webkit-transform:rotate(2deg);
+-moz-box-shadow: 4px 4px 7px #aaa; -webkit-box-shadow: 4px 4px 7px #aaa; box-shadow: 4px 4px 7px #aaa; }
+.aboutmain h1 { font-size: 60px; line-height: 1.1em; margin-bottom: 20px; margin-top: 35px; }
+.aboutsplash { color: #4FB7DB; font-size: 32px; margin-top: 20px; line-height: 1.2em; }
+
+/* Project page */
+
+.metapage .projectimage { -moz-box-shadow: 5px 5px 10px #aaa; -webkit-box-shadow: 5px 5px 10px #aaa; box-shadow: 5px 5px 10px #aaa; margin-bottom: 20px; } 
+
+.projectlinks { font-size: 20px; padding-bottom: 20px; }
+.projectlinks .link { margin-right: 12px; }
+.projectlinks a:hover, .projectlinks a:active  { border-bottom: none; }
+.projectstandfirst p { font-size: 26px; line-height: 1.2em; color: #4FB7DB; padding-left: 12px;  }
+
+.projectmain img { margin-top: 10px; margin-bottom: 20px; }
+.quoteblock { text-align: right; position: absolute; bottom: 0; right: 0; margin-top: 30px; }
+.quote { font-size: 28px; color: #888; padding-left: 40px; line-height: 1.1em; margin-top: 20px; }
+.quotesource { font-size: 20px; color: #4FB7DB; padding-left: 40px; line-height: 1.3em; margin-top: 5px; }
+
+
+/* Responsive settings */
+
+@media (max-width: 767px) {
+  /* Move default Bootstrap responsible padding to Container to allow edge-to-edge */
+  body { padding: 0!important; }
+  .container { padding: 0 20px!important; }
+  /* Make quotes in project page appear inline, in the main column. */
+  .quoteblock { position: relative; margin-top: 30px; padding-right: 20px; }
+}
+/* Avoid menu overlapping with logo or creating orphans */
+@media (max-width: 525px) {
+  #menuitems { width: 200px; position: absolute; right: 20px; top: 12px; }
+  #menu { margin-bottom: 80px; }
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kiln = Journalism + Data + Technology + Design</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script src="d3.v3.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://fast.fonts.net/jsapi/411dcd77-eeeb-4bf0-a0c2-7cdf19f88192.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div id="mainarea">
+    <div id="menu">
+      <div class="menuselected"><a href="index.html">Projects</a></div> 
+      <div><a href="about.html">About</a></div>
+      <div><a href="news.html">News</a></div>
+      <div><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="projectrow projectright">
+      <div class="projectcontent">
+        <a href="opencorporates">
+          <div class="projectimage"><img class="projectcolour" src="images/opencorps.gif"><img class="projectbw" src="images/opencorpsbw.gif"></div>
+          <div class="projecttext"><h2>Goldman Maps</h2><p>Interactive maps of the corporate structures of leading banks such as Goldman Sachs.</p></div>
+          <div class="projectwedge"></div>
+        </a>
+      </div>
+    </div>
+    <div class="projectrow projectleft">
+      <div class="projectcontent">
+        <a href="unburnablecarbon">
+          <div class="projectimage"><img class="projectcolour" src="images/carbontracker.gif"><img class="projectbw" src="images/carbontrackerbw.gif"></div>
+          <div class="projecttext"><h2>Unburnable Carbon</h2><p>An interactive animation (‘Talkie’) explaining the issue of unburnable carbon reserves and mapping the data.</p></div>
+          <div class="projectwedge"></div>
+        </a>
+      </div>
+    </div>
+    <div class="projectrow projectright">
+      <div class="projectcontent">
+        <a href="betterorworse">
+          <div class="projectimage"><img class="projectcolour" src="images/betterorworse.gif"><img class="projectbw" src="images/betterorworsebw.gif"></div>
+          <div class="projecttext"><h2>Better Or Worse</h2><p>An animated slideshow using data to ask whether the world has got better or worse over the past 20 years. Users vote at the end.</p></div>
+          <div class="projectwedge"></div>
+        </a>
+      </div>
+    </div>
+    <div class="projectrow projectleft">
+      <div class="projectcontent">
+        <a href="carbonmap">
+          <div class="projectimage"><img class="projectcolour" src="images/carbonmap.gif"><img class="projectbw" src="images/carbonmapbw.gif"></div>
+          <div class="projecttext"><h2>The Carbon Map</h2><p>The world’s first interactive, animated ‘squishy’ map. Explores national responsibility for and vulnerability to climate change impacts.</p></div>
+          <div class="projectwedge"></div>
+        </a>
+      </div>
+    </div>
+    <div class="projectrow projectright">
+      <div class="projectcontent">
+        <a href="wheretheystarted">
+          <div class="projectimage"><img class="projectcolour" src="images/joinin.gif"><img class="projectbw" src="images/joininbw.gif"></div>
+          <div class="projecttext"><h2>Where They Started</h2><p>A fun squishy map showing where the UK’s Olympians were born. Which regions excel at which sport?</p></div>
+          <div class="projectwedge"></div>
+        </a>
+      </div>
+    </div>
+    <div class="projectrow projectleft">
+      <div class="projectcontent">
+        <a href="talkie">
+          <div class="projectimage"><img class="projectcolour" src="images/talkie.gif"><img class="projectbw" src="images/talkiebw.gif"></div>
+          <div class="projecttext"><h2>Talkie</h2><p>Our toolkit for adding voiceovers to websites, creating interactive animations and more. Now open-source.</p></div>
+          <div class="projectwedge"></div>
+        </a>
+      </div>
+    </div>
+    <div class="projectrow projectright">
+      <div class="projectcontent">
+        <a href="miscellany">
+          <div class="projectimage"><img class="projectcolour" src="images/carbontracker.gif"><img class="projectbw" src="images/carbontrackerbw.gif"></div>
+          <div class="projecttext"><h2>Miscellany</h2><p>Mini-projects, graveyard and experiments.</p></div>
+          <div class="projectwedge"></div>
+        </a>
+      </div>
+    </div>
+    <div class="projectrow footer">
+      <div id="footertext">Twitter • Gitub <img src="images/logo.gif" style="width: 100px; margin-top:-50px;"> About • Contact</div>
+    </div>
+  </div>
+  <div id="logoholder"></div>
+
+  <script>
+    function point_to_string(point, origin) {
+      if (typeof origin == "undefined") origin = [0, 0];
+      return (point[0] - origin[0]) + "," + (point[1] - origin[1]);
+    }
+    function points_to_string(points, origin) {
+      return points.map(function(point) { return point_to_string(point, origin); }).join(" ");
+    }
+
+    // http://www.public.asu.edu/~aaafp/hinged/Dudeneytrianglesquare.html
+    var root_3 = Math.sqrt(3),
+      p = (3 - Math.sqrt(4*root_3 - 3))/4,
+      np = 3/4 - p,
+      i = ( (1/4 - p) * np + 3/16 ) / ( np*np + 3/16 ),
+      e = [ p + i*np, i * root_3/4 ],
+      j = ( (1/2) * np ) / ( np*np + 3/16 ),
+      c = [ p + j*np, j * root_3/4 ];
+
+    var svg = d3.select("#logoholder").append("svg").attr("viewBox", "-1 -0.6 3 2"),
+      outer = svg.append("g").attr("transform", "translate(0,0)").attr("id","logogroup");
+    outer.append("polygon").attr("id", "a").attr("points", points_to_string([
+      [1/2, root_3/2], [3/4, root_3/4], e, [1/4, root_3/4] ]));
+
+    function polygon(name, points, rotate_class, within, outer_origin) {
+      if (typeof within == "undefined") within = outer;
+      var origin = points[0], translation = [origin[0], origin[1]];
+      if (typeof outer_origin != "undefined") {
+        translation[0] -= outer_origin[0];
+        translation[1] -= outer_origin[1];
+      }
+      var g = within.append("g").attr("id", name)
+        .attr("transform", "translate("+point_to_string(translation)+")")
+        .append("g").attr("class", rotate_class).attr("transform", "rotate(0)");
+      g.append("polygon").attr("points", points_to_string(points, origin));
+      var chain = function(name, points, rotate_class) {
+        return polygon(name, points, rotate_class, g, origin);
+      };
+      chain.text = function(name, t, pos, rotate_class) {
+        var new_g = g.append("g").attr("id", name).attr("transform", "translate("+point_to_string(pos, origin)+")");
+        return new_g.append("g").attr("class", rotate_class).append("text").text(t);
+      }
+      return chain;
+    }
+
+    polygon("b", [ [1/4, root_3/4], e, [p, 0], [0, 0] ], "anticlockwise")
+         ("c", [ [p, 0], c, [p+1/2, 0] ], "anticlockwise");
+    polygon("d", [ [3/4, root_3/4], [1, 0], [p+1/2, 0], c ], "clockwise")
+         .text("text", "KILN", [1, 0], "rotatetext").attr("transform", "translate(0.15,-0.01) rotate(180,-0.15,0.01)");
+
+    var duration = 1500,
+      transforms = {
+        triangle: "scale(1.25) translate(0,-0.3) rotate(150,0.5,0.5)",
+        square: "scale(1.1) translate(-1,-0.5) rotate(52,0.5,0.5)"
+      };
+    function toSquare() {
+      outer.transition().duration(duration).attrTween("transform", function() {
+        return d3.interpolateString(transforms.triangle, transforms.square);
+      });
+      svg.selectAll(".anticlockwise").transition().duration(duration).attr("transform", "rotate(-180)");
+      svg.selectAll(".clockwise").transition().duration(duration).attr("transform", "rotate(180)");
+      svg.selectAll(".rotatetext").transition().duration(duration/2).attrTween("transform", function() {
+        return d3.interpolateString("rotate(0)", "rotate(300)");
+      });
+      svg.transition().duration(duration).style("stroke-width", "0.038");
+    }
+    function toTriangle() {
+      outer.transition().duration(0).attrTween("transform", function() {
+        return d3.interpolateString(transforms.square, transforms.triangle);
+      });
+      svg.selectAll(".anticlockwise, .clockwise").transition().duration(0).attr("transform", "rotate(0)");
+      svg.selectAll(".rotatetext").transition().delay(duration/2).duration(0).attrTween("transform", function() {
+        return d3.interpolateString("rotate(300)", "rotate(0)");
+      });
+      svg.transition().duration(0).style("stroke-width", "0.005");
+    }
+
+    // function addDefsToSvg() {
+    //   var defs = svg.append("defs");
+    // 
+    //   var filter = defs.append("filter").attr("id", "dropshadow").attr("height", "130%");
+    //   filter.append("feGaussianBlur").attr("in", "SourceAlpha").attr("stdDeviation", "3");
+    //   filter.append("feOffset").attr("dx", "1").attr("dy", "1").attr("result", "offsetblur");
+    //   filter.append("feComponentTransfer").append("feFuncA").attr("type", "linear").attr("slope", "0.2");
+    // }
+    // addDefsToSvg();
+
+    // var triangle = true;
+    // function flip() {
+    //   if (triangle) toSquare();
+    //   else toTriangle();
+    //   triangle = !triangle;
+    // }
+    
+    toTriangle();
+    setTimeout( function(){
+        svg.select("#logogroup").style("opacity",1).attr("transform","scale(1.25) translate(-4,-0.3) rotate(150,0.5,0.5)").transition().duration(1000).attr("transform","scale(1.25) translate(0,-0.3) rotate(150,0.5,0.5)");
+    },1000);
+    setTimeout( function(){
+      toSquare()
+    },2000);
+    d3.selectAll("#mainarea, #menu").transition().delay(3500).duration(1000).style("opacity",1);
+    d3.select("logogroup").on("click", function(){ flip() });
+  </script>
+</body>
+</html>
