@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title></title>
+    <style>
+      #talkie-svg { width: 1500px; height: 400px; }
+    </style>
+    <script src="d3.v3.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <object id="trial-svg" data="trial.svg" type="image/svg+xml" onload="morph()"></object>
+  </body>
+  <script>
+  function morph() {
+    var svg = d3.select(document.getElementById("trial-svg").contentDocument);      
+    svg.select("#US").transition().duration(5000).attr("d", svg.select("#historical-US").attr("d"));
+  }
+  </script>
+</html>
