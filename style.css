@@ -57,7 +57,7 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 
 .carousel { overflow: hidden; margin-bottom: 50px; }
 .carousel-inner { height: 400px; text-align: center; }
-.carousel-inner .item { overflow: hidden; height: 400px; }
+.carousel-inner .item { overflow: hidden; height: 400px; background-position: 50% 0; background-repeat: no-repeat; },
 .carousel-inner .item img,
 .carousel-inner .item a img,
 .carousel-inner .item .carousel-svg,
@@ -67,12 +67,14 @@ a.carousel-control:hover, a.carousel-control:active { border-bottom: none; }
 .carousel-black { background: black; }
 
 .carousel-textholder { position: absolute; top: 0; width: 100%; text-align: center; }
-
 .carousel-text { margin: 160px 15% 0; text-align: left; padding: 10px; }
 .carousel-text h1 { margin: 0; font-size: 70px; color: white; text-shadow: 0 1px 1px rgba(0,0,0,.4); line-height: 1em; }
 .carousel-text p { font-size: 24px; color: white; text-shadow: 0 1px 1px rgba(0,0,0,.4); }
 
 .carousel-text.carousel-talkie { margin-top: 30px; }
+
+#carousel-carbonmap { background-image: url("images/carbonmapfullwidth.png"); }
+#carousel-opencorporates { background: black; background-image: url("images/opencorpsfullwidth.png"); }
 
 .carousel-svg { width: 1500px; height: 400px; margin: auto; display: block; }
 
