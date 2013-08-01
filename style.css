@@ -70,7 +70,7 @@ a.carousel-control:hover, a.carousel-control:active { border-bottom: none; }
 .carousel-text.carousel-talkie { margin-top: 30px; }
 
 #carousel-carbonmap { background-image: url("/images/carbonmapfullwidth.png"); }
-#carousel-opencorporates { background: black; background-image: url("/images/opencorpsfullwidth.png"); }
+#carousel-opencorporates { background-color: black; background-image: url("/images/opencorpsfullwidth.png"); }
 
 .carousel-svg { width: 1500px; height: 400px; margin: auto; display: block; }
 
