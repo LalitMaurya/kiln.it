@@ -1,5 +1,5 @@
 /*
-Fonts for reference
+Fonts
 font-family:'TradeGothicNextW01-Ligh 693250';
 font-family:'Trade Gothic Next W01';
 font-family:'TradeGothicNextW01-Cond';
@@ -8,15 +8,12 @@ font-family:'TradeGothicNextW01-Bold 693232';
 font-family:'TradeGothicNextW01-HvCn 707049';
 font-family:'TradeGothicNextW01-Cm';
 font-family:'TradeGothicNextW01-HvCm';
-*/
 
-/*
-Swatches for reference
-Dark (downpipe) #5B8192;
-Medium #4FB7DB;
-Logo Pale #91C7DB
+Swatches
+Dark (downpipe):   #5B8192;
+Medium (brighter): #4FB7DB;
+Pale (logo):       #91C7DB
 */
-
 
 /* Basic theming */
 
@@ -40,20 +37,18 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 
 /* Core layout */
 
-.topbar { -moz-box-shadow: 1px 1px 5px #aaa; -webkit-box-shadow: 1px 1px 5px #aaa; box-shadow: 1px 1px 10px #aaa; width: 100%; height: 80px; position: absolute; top: 0; z-index: -10; background-color: #eee; /*background-image: -moz-linear-gradient(top, #e3e3e3, #eee); background-image: -ms-linear-gradient(top, #e3e3e3, #eee); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e3e3e3), to(#eee)); background-image: -webkit-linear-gradient(top, #e3e3e3, #eee); background-image: -o-linear-gradient(top, #e3e3e3, #eee); background-image: linear-gradient(top,#e3e3e3, #eee); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);*/ }
+.topbar { -moz-box-shadow: 1px 1px 5px #aaa; -webkit-box-shadow: 1px 1px 5px #aaa; box-shadow: 1px 1px 10px #aaa; width: 100%; height: 80px; position: absolute; top: 0; z-index: -10; background-color: #eee; *background-image: -moz-linear-gradient(top, #e3e3e3, #eee); background-image: -ms-linear-gradient(top, #e3e3e3, #eee); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e3e3e3), to(#eee)); background-image: -webkit-linear-gradient(top, #e3e3e3, #eee); background-image: -o-linear-gradient(top, #e3e3e3, #eee); background-image: linear-gradient(top,#e3e3e3, #eee); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0); }
 
 .logoholder { width: 50px; height: 50px; position: absolute; top: 15px; padding: 0; -moz-box-shadow: 1px 1px 3px #aaa; -webkit-box-shadow: 1px 1px 3px #aaa; box-shadow: 1px 1px 3px #aaa; }
 .logoholder:hover { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
 .container { position: relative; }
 
 #menu { width: 100%; text-align: right; font-family: 'TradeGothicNextW01-Cm', sans-serif; font-size: 26px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1em; margin: 40px 0 10px; }
-.homepage #menu { font-size: 35px; margin: 90px 0 100px; }
 
 .menuitems { text-align: right; }
 .menuitem { display: inline-block; margin-left: 20px; }
 .menuitem a:hover, .menuitem a:active { color: black; border-bottom: none; }
 .menuselected, .menuselected a:link, .menuselected a:visited, menuselected a:hover, .menuselected a:active { color: #555; }
-
 
 .carousel { overflow: hidden; margin-bottom: 50px; }
 .carousel-inner { height: 400px; text-align: center; }
@@ -64,7 +59,6 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 .carousel-inner .item a .carousel-svg { height: 400px; max-height: 400px; width: auto!important; max-width: none; position: relative; }
 .carousel-control { background-image: none!important; background-color: none!important; font-size: 300px; top: 40%; }
 a.carousel-control:hover, a.carousel-control:active { border-bottom: none; } 
-.carousel-black { background: black; }
 
 .carousel-textholder { position: absolute; top: 0; width: 100%; text-align: center; }
 .carousel-text { margin: 160px 15% 0; text-align: left; padding: 10px; }
@@ -84,50 +78,12 @@ a.carousel-control:hover, a.carousel-control:active { border-bottom: none; }
 -moz-box-shadow: -2px -2px 6px #aaa; -webkit-box-shadow: -2px -2px 6px #aaa; box-shadow: -2px -2px 6px #aaa; padding: 8px 6px 2px 8px; }
 .carousel-text-splash h1 em.data { color: #DB724F; }
 
-ol.carousel-indicators {
-  margin-bottom: -10px;
-  display: none;
-}
+ol.carousel-indicators { margin-bottom: -10px; display: none; }
+.carousel-control.left { display: none; }
 
-.carousel-control.left {
-  display: none;
-}
+.carousel-indicators li { width: 13px; height: 13px; margin: 0 0 0 4px; text-indent: -999px; background-color: #5B8192; background-color: rgba(200,200,200,.9); border-radius: 10px; border: 2px solid #eee; }
 
-.carousel-indicators li {
-    width: 13px; 
-    height: 13px; 
-    margin: 0 0 0 4px;
-    text-indent: -999px;
-    background-color: #5B8192;
-    background-color: rgba(200,200,200,.9);
-    border-radius: 10px;
-    border: 2px solid #eee;
-}
-
-.carousel-indicators .active {
-    background-color: black;
-    border: 2px solid #eee;
-    margin: 0 0 0 4px;
-    width: 13px; 
-    height: 13px; 
-
-}
-
-
-a svg  { width: 100%; height: 100%; }
-.node { fill: rgba(100, 175, 255, 0.4); stroke: rgba(255, 255, 255, 0.9); }
-a svg .highlighter { fill: rgba(255, 255, 0, 1); pointer-events: none; stroke: rgba(0, 0, 0, 0.5); }
-a svg .keynontaxhaven { fill: rgba(100, 175, 255, 0.4); stroke: rgba(255, 255, 255, 0.9); }
-a svg .keytaxhaven { fill: rgba(200, 100, 100, 0.5); stroke: rgba(255, 255, 255, 0.9); }
-a svg .selected-country.node { fill: rgba(255, 255, 0, 0.8) !important; stroke: rgba(255, 255, 255, 0.6); }
-a svg .popup { fill: white; font-size: 12px; }
-a svg .popupbackground { fill: #333; stroke: rgba(200, 200, 255, 0.7); }
-a svg polyline { stroke: rgba(200, 200, 255, 0.2); pointer-events: none; }
-a svg .upward.link { stroke: white; stroke-width: 4; opacity: 1; marker-mid: url(#arrowheadupward); }
-a svg .downward.link { stroke: white; stroke-width: 4; stroke-dasharray: 5 2; opacity: 1; marker-mid: url(#arrowheaddownward);  }
-
-#opencorporates svg .mapviewlink { stroke: rgba(255, 255, 255, 0.05); pointer-events: none; stroke-width: 10; }
-
+.carousel-indicators .active { background-color: black; border: 2px solid #eee; margin: 0 0 0 4px; width: 13px;  height: 13px; }
 
 #talkie-animation { width: 600px; height: 400px; margin-left: 24%; position: relative; left: -200px; }
 #talkie-animation svg { width: 600px; height: 400px; stroke-width: 0; stroke: white; fill: #91C7DB; }
@@ -143,28 +99,12 @@ a svg .downward.link { stroke: white; stroke-width: 4; stroke-dasharray: 5 2; op
 
 /* Homepage */
 
-.homepage .topbar { height: 250px; }
-.homepage .logoholder { width: 300px; height: 250px; position: absolute; right: 50%; margin: 0 10px 0 0; padding: 0; background: none;  -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
-.homepage svg { width: 300px; height: 250px; stroke-width: 0; stroke: white; fill: #94C6DD; }
-.homepage svg text { font-size: 0.18px; fill: #333; stroke: none; font-family: 'TradeGothicNextW01-BdCm'; opacity: 0.7;  }
-.homepage svg #logogroup { opacity: 0; filter: "url(#dropshadow)"; }
-
-.homepage #menu { width: 50%; text-align: left; font-family: 'TradeGothicNextW01-Cm', sans-serif; font-size: 40px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1em; margin: 40px 0 10px 50%; }
-.homepage .menuitem { display: block; margin-left: 20px; }
-
-.splash { color: #333; max-width: 1000px; margin: 80px auto 20px; font-size: 50px; line-height: 1.3em; text-align: center; font-family: 'TradeGothicNextW01-Bold 693232', sans-serif; }
-.splash em { color: #4FB7DB; font-style: normal; background: white; 
--moz-box-shadow: -2px -2px 6px #aaa; -webkit-box-shadow: -2px -2px 6px #aaa; box-shadow: -2px -2px 6px #aaa; padding: 8px 6px 2px 8px; }
-.splash em.data { color: #DB724F; }
-
-.splash.findoutmore { padding: 0; margin-top: 0; margin-bottom: 40px;  }
-.splash.findoutmore a:link, .splash.findoutmore a:visited { color: #aaa; font-family: 'TradeGothicNextW01-Cond', sans-serif; font-size: 40px; }
-
 .projecthead { max-width: 1000px; margin: 10px auto; }
 .projecthead h2 { font-size: 48px; margin-top: 0; }
 
-.projectleft, .projectright { height: 550px; padding: 0 0 32px; position: relative; background-image: url("/images/banner.png"); background-size: 100% 550px; overflow: hidden; max-width: 1000px; margin: 0 auto -290px; background-repeat: no-repeat; }
+.projectrow { margin-bottom: 4px; margin-top:0; height: 260px; background-image: none; }
 
+.projectleft, .projectright { height: 550px; padding: 0 0 32px; position: relative; background-image: url("images/banner.png"); background-size: 100% 550px; overflow: hidden; max-width: 1000px; margin: 0 auto -290px; background-repeat: no-repeat; }
 
 .projectimage { width: 100%; position: relative; }
 .projectleft .projectimage { width: 650px; position: absolute; right: 0;  }
@@ -186,7 +126,6 @@ a svg .downward.link { stroke: white; stroke-width: 4; stroke-dasharray: 5 2; op
 .projectleft .projectwedge { background-image: url("/images/wedgeleft.png");   position: absolute; left: 37%; }
 .projectright .projectwedge { background-image: url("/images/wedgeright.png"); position: absolute; right: 37%; }
 
-.projectrow { margin-bottom: 4px; margin-top:0; height: 260px; background-image: none; }
 .projectrow:hover .projectimage .projectbw { opacity: 0; }
 .projectrow:hover h3 { color: #FCE53D; }
 .projectrow:hover .projecttext { background: #5B8192; }
@@ -194,8 +133,6 @@ a svg .downward.link { stroke: white; stroke-width: 4; stroke-dasharray: 5 2; op
 .projectright.projectrow:hover .projectwedge { background-image: url("/images/wedgerightdark.png"); }    
 
 .projectleft.projectlast, .projectright.projectlast, .miscellany  { background-image: none; height: 260px; margin: 0 auto 0; }
-
-
 
 /* About page */
 
@@ -221,22 +158,9 @@ a svg .downward.link { stroke: white; stroke-width: 4; stroke-dasharray: 5 2; op
 .quote { font-size: 28px; color: #888; padding-left: 40px; line-height: 1.1em; margin-top: 20px; }
 .quotesource { font-size: 20px; color: #4FB7DB; padding-left: 40px; line-height: 1.3em; margin-top: 5px; }
 
-
 /* Responsive settings */
 
-/* Option to stretch homepage over full width
-@media (min-width: 1200px ) {
-  .projecttextholder { width: 45%; background: #94C6DD; height: 260px; }
-  .projectleft .projectwedge { background-image: url("/images/wedgeleft.png");   position: absolute; left: 45%; }
-  .projectright .projectwedge { background-image: url("/images/wedgeright.png"); position: absolute; right: 4%; }
-
-}*/
-
 @media (max-width: 1000px) {
-  .carousel-inner .item img,
-  .carousel-inner .item a img,
-  .carousel-inner .item .carousel-svg,
-  .carousel-inner .item a .carousel-svg { left: -50%; }
   .carousel-text-splash { margin: 70px 13% 20px; }
   .carousel-text-splash h1 { font-size: 48px; }
 }
@@ -247,15 +171,8 @@ a svg .downward.link { stroke: white; stroke-width: 4; stroke-dasharray: 5 2; op
   .container { padding: 0 20px!important; }
   /* Make quotes in project page appear inline, in the main column. */
   .quoteblock { position: relative; margin-top: 30px; padding-right: 20px; }
-  /* Reduce splash text on homepage to avoid nasty line breaks */
-  .splash { font-size: 44px; }
-  .splash.findoutmore { font-size: 20px; margin-top: 30px; }
 
   .carousel-text { margin: 100px; }
-  .carousel-inner .item img,
-  .carousel-inner .item a img,
-  .carousel-inner .item .carousel-svg,
-  .carousel-inner .item a .carousel-svg { left: -50%; }
   .carousel-text-splash { margin: 50px 15% 20px; }
   .carousel-text-splash h1 { font-size: 45px; }
 }
@@ -264,13 +181,7 @@ a svg .downward.link { stroke: white; stroke-width: 4; stroke-dasharray: 5 2; op
 @media (max-width: 525px) {
   #menuitems { width: 200px; position: absolute; right: 20px; top: 12px; }
   #menu { margin-bottom: 80px; }
-  .splash { font-size: 34px; }
-  
-  .carousel-inner .item img,
-  .carousel-inner .item a img,
-  .carousel-inner .item .carousel-svg,
-  .carousel-inner .item a .carousel-svg { left: -50%; }
+
   .carousel-text-splash { margin: 40px 15% 20px; }
   .carousel-text-splash h1 { font-size: 40px; }
-
 }
