@@ -37,7 +37,7 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 
 /* Core layout */
 
-.topbar { -moz-box-shadow: 1px 1px 5px #aaa; -webkit-box-shadow: 1px 1px 5px #aaa; box-shadow: 1px 1px 10px #aaa; width: 100%; height: 80px; position: absolute; top: 0; z-index: -10; background-color: #eee; *background-image: -moz-linear-gradient(top, #e3e3e3, #eee); background-image: -ms-linear-gradient(top, #e3e3e3, #eee); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e3e3e3), to(#eee)); background-image: -webkit-linear-gradient(top, #e3e3e3, #eee); background-image: -o-linear-gradient(top, #e3e3e3, #eee); background-image: linear-gradient(top,#e3e3e3, #eee); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0); }
+.topbar { -moz-box-shadow: 1px 1px 5px #aaa; -webkit-box-shadow: 1px 1px 5px #aaa; box-shadow: 1px 1px 10px #aaa; width: 100%; height: 80px; position: absolute; top: 0; z-index: -10; background-color: #eee; background-image: -moz-linear-gradient(top, #e3e3e3, #eee); background-image: -ms-linear-gradient(top, #e3e3e3, #eee); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e3e3e3), to(#eee)); background-image: -webkit-linear-gradient(top, #e3e3e3, #eee); background-image: -o-linear-gradient(top, #e3e3e3, #eee); background-image: linear-gradient(top,#e3e3e3, #eee); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0); }
 
 .logoholder { width: 50px; height: 50px; position: absolute; top: 15px; padding: 0; -moz-box-shadow: 1px 1px 3px #aaa; -webkit-box-shadow: 1px 1px 3px #aaa; box-shadow: 1px 1px 3px #aaa; }
 .logoholder:hover { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
@@ -51,6 +51,8 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 .menuselected, .menuselected a:link, .menuselected a:visited, menuselected a:hover, .menuselected a:active { color: #555; }
 
 .carousel { overflow: hidden; margin-bottom: 50px; }
+.carousel a:hover, .carousel a:active { border-bottom: none; }
+
 .carousel-inner { height: 400px; text-align: center; }
 .carousel-inner .item { overflow: hidden; height: 400px; background-position: 50% 0; background-repeat: no-repeat; },
 .carousel-inner .item img,
@@ -61,8 +63,8 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 a.carousel-control:hover, a.carousel-control:active { border-bottom: none; } 
 
 .carousel-textholder { position: absolute; top: 0; width: 100%; text-align: center; }
-.carousel-text { margin: 160px 15% 0; text-align: left; padding: 10px; }
-.carousel-text h1 { margin: 0; font-size: 70px; color: white; text-shadow: 0 1px 1px rgba(0,0,0,.4); line-height: 1em; }
+.carousel-text { margin: 30px 10% 0; text-align: left; padding: 10px; }
+.carousel-text h1 { margin: 0 0 10px; font-size: 70px; color: white; text-shadow: 0 1px 1px rgba(0,0,0,.4); line-height: 1em; }
 .carousel-text p { font-size: 24px; color: white; text-shadow: 0 1px 1px rgba(0,0,0,.4); }
 
 .carousel-text.carousel-talkie { margin-top: 30px; }
@@ -72,14 +74,15 @@ a.carousel-control:hover, a.carousel-control:active { border-bottom: none; }
 
 .carousel-svg { width: 1500px; height: 400px; margin: auto; display: block; }
 
-.carousel-text-splash { margin: 70px 10% 20px;  }
-.carousel-text-splash h1 { margin-top: 0; margin-bottom: 0; color: #333; font-size: 60px; line-height: 1.3em; }
+.carousel-text-splash { margin: 70px 10% 20px; display: inline-block; }
+.carousel-text-splash h1 { margin-top: 0; margin-bottom: 0; color: #333; font-size: 60px; line-height: 1.4em; }
 .carousel-text-splash h1 em { color: #4FB7DB; font-style: normal; background: white; 
--moz-box-shadow: -2px -2px 6px #aaa; -webkit-box-shadow: -2px -2px 6px #aaa; box-shadow: -2px -2px 6px #aaa; padding: 8px 6px 2px 8px; }
+-moz-box-shadow: 2px 2px 6px #aaa; -webkit-box-shadow: 2px 2px 6px #aaa; box-shadow: 2px 2px 6px #aaa; padding: 2px 6px 2px 8px; }
 .carousel-text-splash h1 em.data { color: #DB724F; }
 
 ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .carousel-control.left { display: none; }
+.carousel-control.right { width: 80px; }
 
 .carousel-indicators li { width: 13px; height: 13px; margin: 0 0 0 4px; text-indent: -999px; background-color: #5B8192; background-color: rgba(200,200,200,.9); border-radius: 10px; border: 2px solid #eee; }
 
@@ -102,9 +105,8 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .projecthead { max-width: 1000px; margin: 10px auto; }
 .projecthead h2 { font-size: 48px; margin-top: 0; }
 
+.projectleft, .projectright { height: 260px; padding: 0 0 32px; position: relative; overflow: hidden; max-width: 1000px; margin: 0 auto; }
 .projectrow { margin-bottom: 4px; margin-top:0; height: 260px; background-image: none; }
-
-.projectleft, .projectright { height: 550px; padding: 0 0 32px; position: relative; background-image: url("images/banner.png"); background-size: 100% 550px; overflow: hidden; max-width: 1000px; margin: 0 auto -290px; background-repeat: no-repeat; }
 
 .projectimage { width: 100%; position: relative; }
 .projectleft .projectimage { width: 650px; position: absolute; right: 0;  }
@@ -160,11 +162,6 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 
 /* Responsive settings */
 
-@media (max-width: 1000px) {
-  .carousel-text-splash { margin: 70px 13% 20px; }
-  .carousel-text-splash h1 { font-size: 48px; }
-}
-
 @media (max-width: 767px) {
   /* Move default Bootstrap responsible padding to Container to allow edge-to-edge */
   body { padding: 0!important; }
@@ -172,9 +169,8 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
   /* Make quotes in project page appear inline, in the main column. */
   .quoteblock { position: relative; margin-top: 30px; padding-right: 20px; }
 
-  .carousel-text { margin: 100px; }
-  .carousel-text-splash { margin: 50px 15% 20px; }
-  .carousel-text-splash h1 { font-size: 45px; }
+  .carousel-text-splash { margin: 50px 13% 20px; }
+  .carousel-text-splash h1 { font-size: 50px; }
 }
 
 /* Avoid menu overlapping with logo or creating orphans */
@@ -182,6 +178,6 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
   #menuitems { width: 200px; position: absolute; right: 20px; top: 12px; }
   #menu { margin-bottom: 80px; }
 
-  .carousel-text-splash { margin: 40px 15% 20px; }
-  .carousel-text-splash h1 { font-size: 40px; }
+  .carousel-text-splash { margin: 40px 12% 20px; }
+  .carousel-text-splash h1 { font-size: 45px; }
 }
