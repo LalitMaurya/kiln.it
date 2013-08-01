@@ -1,2 +1,4 @@
 error_log
 access_log
+update.log
+update.out
