@@ -9,25 +9,24 @@
 
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="metapage">
   <div class="topbar"></div>
   <div class="container">
-    <div class="logoholder"><a href="../"><img src="images/kilnlogo60.png"></a></div>
+    <div class="logoholder"><a href="/"><img src="/images/kilnlogo60.png"></a></div>
     <div id="menu">
       <div id="menuitems">
-        <div class="menuitem menuselected"><a href="opencorporates.html">Projects</a></div> 
-        <div class="menuitem"><a href="about.html">About</a></div>
-        <div class="menuitem"><a href="#">News</a></div>
-        <div class="menuitem"><a href="#">Contact</a></div>
+        <div class="menuitem menuselected"><a href="/">Projects</a></div> 
+        <div class="menuitem"><a href="/about">About</a></div>
+        <div class="menuitem"><a href="/contact">Contact</a></div>
       </div>
     </div>
     <div class="row">
       <h1 class="span12">The Carbon Map</h1>
       <div class="projectlinks span12"><span class="link"><a href="http://www.carbonmap.org"><i class="icon-external-link"></i> Live version</a><a href=""></span><span class="link"><i class="icon-twitter"></i> Tweet this</a></span><span class="link"><a href="#"><i class="icon-envelope"></i> Email this</a></span></div>
-      <div class="projectstandfirst span8"><a href="http://www.carbonmap.org"><img class="projectimage" id="projectmainimage" src="images/carbonmapbig.png"></a></div>
+      <div class="projectstandfirst span8"><a href="http://www.carbonmap.org"><img class="projectimage" id="projectmainimage" src="/images/carbonmapbig.png"></a></div>
       <div class="projectstandfirst span4"><p>An interactive “squishy map” exploring national responsibility for and vulnerability to climate change. Created for the Guardian and the World Bank Apps for Climate competition. Spring 2012.</p></div>
       <div class="projectmain span8">
         <h3><i class="icon-briefcase icon"></i>The brief</h3>
@@ -39,15 +38,15 @@
         <h3><i class="icon-lightbulb icon"></i> Our approach</h3>
         <p>To make the data as engaging and clear as possible we decided to reinvent the <a href="http://en.wikipedia.org/wiki/Cartogram">area cartogram</a> – a map which distorts the size and shape of nations to reflect the data being displayed. These have been popular in <a href="http://www.amazon.co.uk/Atlas-Real-World-Mapping-Live/dp/0500288534">books</a>, <a href="http://www.amazon.co.uk/Population-Cartogram-Poster-Schofield-Sims/dp/0721709427">posters</a> and <a href="http://www.worldmapper.org">online as still images</a>, but we wanted to make them more tactile and legible by animating between different datasets. This was done with an SVG implementation of <a href="http://www-personal.umich.edu/~mejn/cart/">a publicly available algorithm by Mark Newman</a> (which works, ingeniously, by simulating the diffusion of chemicals between areas, as described in <a href="http://www.pnas.org/content/101/20/7499.abstract">this paper</a> by Newman and Michael Gastner).</p>
         <p>This approach makes it easy to see at a glance how each region or nation stands in terms of each metric. So here's historical emissions, for example, in which wealthy nations look relatively inflated – especially the UK, whose massive size reflects its pivotal roll in the coal-powered industrial revolution.</a>
-        <img class = "projectimage" src="images/cmhistorical.png">
+        <img class = "projectimage" src="/images/cmhistorical.png">
         <p>By contrast, on the vulnerability maps it's the poor world that looks too large. Here’s the world resized to show the number of people living less than five metres above sea level.</a>
-        <img class="projectimage" src="images/cmsealevel.png">
+        <img class="projectimage" src="/images/cmsealevel.png">
         <p>The other advantage of the interactive cartogram approach is that it allows the user to see how two different datasets correlate by allowing the maps to be shaded as well as distorted. For instance, if you shade the map by population growth and click between the various metrics, it's clear at once that high rates of population increase (the reddest areas) are very poorly correlated to carbon footprint…</a>
-        <img class="projectimage" src="images/cmpopulationconsumption.png">
+        <img class="projectimage" src="/images/cmpopulationconsumption.png">
         <p>… but very highly correlated to poverty.</a>
-        <img class="projectimage" src="images/cmpopulationpoverty.png">
+        <img class="projectimage" src="/images/cmpopulationpoverty.png">
         <p>Finally, we wanted to deal with the problem of interactive maps being baffling and expecting the user to do all the work in terms of working out what's going on. We thought about having an introductory video but that felt awkward. So instead, we decided to turn the whole map into a pseudo-video by adding a big play button that kick starts an audio introduction and moves the actual map in sync. This technique later became the basis of our <a href="#">Talkie</a> toolkit.</p>
-        <img class="projectimage" src="images/cmtalkie.png">
+        <img class="projectimage" src="/images/cmtalkie.png">
         <h3><i class="icon-bullhorn icon"></i> Selected media coverage</h3>
         <ul>
           <li><a href="http://www.guardian.co.uk/news/datablog/interactive/2012/mar/29/carbon-map-infographic-world">The Guardian</a></li>

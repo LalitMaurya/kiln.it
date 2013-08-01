@@ -7,7 +7,7 @@
   <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/411dcd77-eeeb-4bf0-a0c2-7cdf19f88192.css"/>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -16,14 +16,13 @@
   <div class="container">
     <div class="row-fluid">
       <div class="logoholder">
-        <a href="../"><img src="images/kilnlogo50.png"></a>
+        <a href="/"><img src="/images/kilnlogo50.png"></a>
       </div>
       <div id="menu">
         <div id="menuitems">
-          <div class="menuitem"><a href="opencorporates.html">Projects</a></div> 
-          <div class="menuitem"><a href="about.html">About</a></div>
-          <div class="menuitem"><a href="#">News</a></div>
-          <div class="menuitem"><a href="#">Contact</a></div>
+          <div class="menuitem menuselected"><a href="/">Projects</a></div>
+          <div class="menuitem"><a href="/about">About</a></div>
+          <div class="menuitem"><a href="/contact">Contact</a></div>
         </div>
       </div>
     </div>
@@ -41,7 +40,7 @@
         <!-- Carousel items -->
         <div class="carousel-inner">
           <div class="active item">
-            <a href="about.html">
+            <a href="/about">
               <div class="carousel-textholder">
                 <div class="carousel-text-splash">
                   <h1 class="splash">We turn <em class="data"><span class="font-awesome">&#xF012;</span>&nbsp;data</em>&nbsp;into <em><span class="font-awesome">&#xF0A6;</span>&nbsp;interactives</em>, <em><span class="font-awesome">&#xF041;</span>&nbsp;maps</em> and <em><span class="font-awesome">&#xF06E;</span>&nbsp;visualisations</em></h1>
@@ -52,7 +51,8 @@
             </div>
           </div>
           <div class="item" id="carousel-opencorporates">
-            <a href="opencorporates.html">
+            <a href="/projects/opencorporates">
+              <div class="carousel-textholder">
                 <div class="carousel-text">
                   <h1>Goldman Maps</h1>
                   <p>Interactive maps of the world's biggest banks</p>
@@ -61,8 +61,8 @@
             </a>
           </div>
           <div class="item">
-            <a href="talkie.html">
-              <object id="talkie-svg" class="carousel-svg" data="images/carousel-talkie.svg" type="image/svg+xml" onload="carouselTalkie()"></object>
+            <a href="/talkie">
+              <object id="talkie-svg" class="carousel-svg" data="/images/carousel-talkie.svg" type="image/svg+xml" onload="carouselTalkie()"></object>
               <div class="carousel-textholder">
                 <div class="carousel-text carousel-talkie">
                   <h1>Talkie</h1>
@@ -73,7 +73,7 @@
             </a>
           </div>
           <div class="item" id="carousel-carbonmap">
-            <a href="carbonmap.html">
+            <a href="/projects/carbonmap">
               <div class="carousel-textholder">
                 <div class="carousel-text carousel-talkie">
                   <h1>Carbon Map</h1>
@@ -100,7 +100,7 @@
       <div class="row projectrow projectright">
         <div class="projectcontent">
           <a href="opencorporates">
-            <div class="projectimage"><img class="projectcolour" src="images/opencorps.gif"><img class="projectbw" src="images/opencorpsbw.gif"></div>
+            <div class="projectimage"><img class="projectcolour" src="/images/opencorps.gif"><img class="projectbw" src="/images/opencorpsbw.gif"></div>
             <div class="projecttextholder">
               <div class="projecttext"><h3>Goldman Maps</h3><p>Interactive maps of the corporate structures of global banks such as Goldman Sachs.</p></div>
             </div>
@@ -110,8 +110,8 @@
       </div>
       <div class="row projectrow projectleft">
         <div class="projectcontent">
-          <a href="unburnablecarbon">
-            <div class="projectimage"><img class="projectcolour" src="images/carbontracker.gif"><img class="projectbw" src="images/carbontrackerbw.gif"></div>
+          <a href="/projects/unburnablecarbon">
+            <div class="projectimage"><img class="projectcolour" src="/images/carbontracker.gif"><img class="projectbw" src="/images/carbontrackerbw.gif"></div>
             <div class="projecttextholder">
               <div class="projecttext"><h3>Unburnable Carbon</h3><p>An interactive animation and map exploring 'unburnable' fossil fuel reserves.</p></div>
             </div>
@@ -121,8 +121,8 @@
       </div>
       <div class="row projectrow projectright">
         <div class="projectcontent">
-          <a href="betterorworse">
-            <div class="projectimage"><img class="projectcolour" src="images/betterorworse.gif"><img class="projectbw" src="images/betterorworsebw.gif"></div>
+          <a href="/projects/betterorworse">
+            <div class="projectimage"><img class="projectcolour" src="/images/betterorworse.gif"><img class="projectbw" src="/images/betterorworsebw.gif"></div>
             <div class="projecttextholder">
               <div class="projecttext"><h3>Better Or Worse</h3><p>An animated slideshow and poll asking whether the world is better or worse than it was 20 years ago.</p></div>
             </div>
@@ -132,8 +132,8 @@
       </div>
       <div class="row projectrow projectleft">
         <div class="projectcontent">
-          <a href="carbonmap">
-            <div class="projectimage"><img class="projectcolour" src="images/carbonmap.gif"><img class="projectbw" src="images/carbonmapbw.gif"></div>
+          <a href="/projects/carbonmap">
+            <div class="projectimage"><img class="projectcolour" src="/images/carbonmap.gif"><img class="projectbw" src="/images/carbonmapbw.gif"></div>
             <div class="projecttextholder">
               <div class="projecttext"><h3>The Carbon Map</h3><p>An interactive squishy map exploring responsibility for – and vulnerability to – climate change.</p></div>
             </div>
@@ -143,8 +143,8 @@
       </div>
       <div class="row projectrow projectright">
         <div class="projectcontent">
-          <a href="wheretheystarted">
-            <div class="projectimage"><img class="projectcolour" src="images/joinin.gif"><img class="projectbw" src="images/joininbw.gif"></div>
+          <a href="/projects/wheretheystarted">
+            <div class="projectimage"><img class="projectcolour" src="/images/joinin.gif"><img class="projectbw" src="/images/joininbw.gif"></div>
             <div class="projecttextholder">
               <div class="projecttext"><h3>Where They Started</h3><p>A squishy map of UK’s Olympians. Which regions excel at which sport?</p></div>
             </div>
@@ -154,8 +154,8 @@
       </div>
       <div class="row projectrow projectleft projectlast">
         <div class="projectcontent">
-          <a href="talkie">
-            <div class="projectimage"><img class="projectcolour" src="images/talkie.gif"><img class="projectbw" src="images/talkiebw.gif"></div>
+          <a href="/talkie">
+            <div class="projectimage"><img class="projectcolour" src="/images/talkie.gif"><img class="projectbw" src="/images/talkiebw.gif"></div>
             <div class="projecttextholder">
               <div class="projecttext"><h3>Talkie</h3><p>Our open-source toolkit for adding voiceovers to websites, creating interactive animations and more.</p></div>
             </div>
@@ -163,20 +163,20 @@
           </a>
         </div>
       </div>
-      <div class="row projecthead">
+      <!-- <div class="row projecthead">
         <h2>Miscellany</h2>
       </div>
       <div class="row projectrow projectright miscellany">
         <div class="projectcontent">
-          <a href="miscellany">
-            <div class="projectimage"><img class="projectcolour" src="images/carbontracker.gif"><img class="projectbw" src="images/carbontrackerbw.gif"></div>
+          <a href="/miscellany">
+            <div class="projectimage"><img class="projectcolour" src="/images/carbontracker.gif"><img class="projectbw" src="/images/carbontrackerbw.gif"></div>
             <div class="projecttextholder">
               <div class="projecttext"><h3>Miscellany</h3><p>Mini-projects, graveyard and experiments.</p></div>
             </div>
             <div class="projectwedge"></div>
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="footer">
