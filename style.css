@@ -50,7 +50,7 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 .menuitem a:hover, .menuitem a:active { color: black; border-bottom: none; }
 .menuselected, .menuselected a:link, .menuselected a:visited, menuselected a:hover, .menuselected a:active { color: #555; }
 
-.carousel { overflow: hidden; margin-bottom: 50px; }
+.carousel { overflow: hidden; margin-bottom: 20px;}
 .carousel a:hover, .carousel a:active { border-bottom: none; }
 
 .carousel-inner { height: 400px; text-align: center; }
@@ -69,8 +69,8 @@ a.carousel-control:hover, a.carousel-control:active { border-bottom: none; }
 
 .carousel-text.carousel-talkie { margin-top: 30px; }
 
-#carousel-carbonmap { background-image: url("/images/carbonmapfullwidth.png"); }
 #carousel-opencorporates { background: black; background-image: url("/images/opencorpsfullwidth.png"); }
+#carousel-carbonmap { background-image: url("/images/carbonmapfullwidth.png"); }
 
 .carousel-svg { width: 1500px; height: 400px; margin: auto; display: block; }
 
@@ -107,7 +107,7 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .project-area { max-width: 96%; margin: 0 auto; }
   
 .projecthead { max-width: 1000px; margin: 10px auto; }
-.projecthead h2 { font-size: 48px; margin-top: 0; }
+.projecthead h2 { font-size: 48px; }
 
 .projectleft, .projectright { height: 260px; padding: 0 0 32px; position: relative; overflow: hidden; max-width: 1000px; margin: 0 auto; }
 .projectrow { margin-bottom: 4px; margin-top:0; height: 260px; background-image: none; }
@@ -165,7 +165,13 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .quote { font-size: 28px; color: #888; padding-left: 40px; line-height: 1.1em; margin-top: 20px; }
 .quotesource { font-size: 20px; color: #4FB7DB; padding-left: 40px; line-height: 1.3em; margin-top: 5px; }
 
+.grey { color: #ccc }
+
 /* Responsive settings */
+
+@media (min-width: 1000px) {
+  .carousel-text-splash h1 { font-size: 68px; } 
+}
 
 @media (max-width: 767px) {
   /* Move default Bootstrap responsible padding to Container to allow edge-to-edge */
