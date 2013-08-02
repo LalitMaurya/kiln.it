@@ -74,6 +74,8 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 #carousel-carbonmap { background-image: url("/images/carbonmapfullwidth.png"); }
 #carousel-opencorporates { background-color: black; background-image: url("/images/opencorpsfullwidth.png"); }
 
+#carousel-opencorporates .carousel-text {margin-top: 150px; }
+
 .carousel-svg { width: 1500px; height: 400px; margin: auto; display: block; }
 
 .carousel-text-splash { margin: 70px 10% 20px; display: inline-block; }
@@ -179,6 +181,8 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 
   .toprow { margin: 0 10px; }
   
+  body { padding-left: 0; padding-right: 0 }
+    
   .carousel-text-splash { margin: 50px 13% 20px; }
   .carousel-text-splash h1 { font-size: 50px; }
 }
