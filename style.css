@@ -54,7 +54,7 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 .carousel a:hover, .carousel a:active { border-bottom: none; }
 
 .carousel-inner { height: 400px; text-align: center; }
-.carousel-inner .item { overflow: hidden; height: 400px; background-attachment: fixed; background-position: 50% 0; background-repeat: no-repeat; },
+.carousel-inner .item { overflow: hidden; height: 400px; background-position: 50% 0; background-repeat: no-repeat; },
 .carousel-inner .item img,
 .carousel-inner .item a img,
 .carousel-inner .item .carousel-svg,
