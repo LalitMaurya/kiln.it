@@ -83,6 +83,7 @@ a.carousel-control:hover, a.carousel-control:active { border-bottom: none; }
 ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .carousel-control.left { display: none; }
 .carousel-control.right { width: 80px; }
+.carousel-control:focus { outline: none; }
 
 .carousel-indicators li { width: 13px; height: 13px; margin: 0 0 0 4px; text-indent: -999px; background-color: #5B8192; background-color: rgba(200,200,200,.9); border-radius: 10px; border: 2px solid #eee; }
 
