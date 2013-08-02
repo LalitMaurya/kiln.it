@@ -59,8 +59,10 @@ h3 .icon { margin-right: 2px; color: #ccc; }
 .carousel-inner .item a img,
 .carousel-inner .item .carousel-svg,
 .carousel-inner .item a .carousel-svg { height: 400px; max-height: 400px; width: auto!important; max-width: none; position: relative; }
-.carousel-control { background-image: none!important; background-color: none!important; font-size: 300px; top: 40%; }
-a.carousel-control:hover, a.carousel-control:active { border-bottom: none; } 
+.carousel-control.left { display: none; }
+.carousel-control.right,
+.carousel-control.right:focus { width: 80px; background-image: none; filter: none; font-size: 300px; top: 40%; }
+.carousel-control:focus { outline: none; }
 
 .carousel-textholder { position: absolute; top: 0; width: 100%; text-align: center; }
 .carousel-text { margin: 30px 10% 0; text-align: left; padding: 10px; }
@@ -81,9 +83,6 @@ a.carousel-control:hover, a.carousel-control:active { border-bottom: none; }
 .carousel-text-splash h1 em.data { color: #DB724F; }
 
 ol.carousel-indicators { margin-bottom: -10px; display: none; }
-.carousel-control.left { display: none; }
-.carousel-control.right { width: 80px; }
-.carousel-control:focus { outline: none; }
 
 .carousel-indicators li { width: 13px; height: 13px; margin: 0 0 0 4px; text-indent: -999px; background-color: #5B8192; background-color: rgba(200,200,200,.9); border-radius: 10px; border: 2px solid #eee; }
 
