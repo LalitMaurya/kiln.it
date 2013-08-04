@@ -117,7 +117,7 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .projectright .projectimage { width: 650px; position: absolute; left: 0; }
 
 .projectimage .projectcolour { position: absolute; }
-.projectimage .projectbw { position: absolute; }
+.projectimage .projectbw { position: absolute; display: none; }
 
 .projecttextholder { width: 37%; background: #94C6DD; height: 260px; }
 .projecttext { padding: 20px; height: 260px; }
