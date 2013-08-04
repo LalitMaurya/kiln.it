@@ -25,7 +25,7 @@ a:hover, a:active { color: #333; text-decoration: none; border-bottom: 1px dotte
 p, ul  { font-size: 18px; color: black; }
 li { margin-top: 4px; }
 
-h1 { font-size: 48px; color: black; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; margin: 60px 0 10px;  }
+h1 { font-size: 48px; color: black; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; margin: 60px 0 0px;  }
 h2 { font-size: 38px; color: black; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; margin: 50px 0 10px; }
 h3 { font-size: 28px; color: #4FB7DB; margin: 24px 0 5px; line-height: 1.1em; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; }
 h3 .icon { margin-right: 2px; color: #ccc; }
@@ -103,7 +103,6 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .footertext a:hover img:hover, .footertext a:active img { border-bottom: none; }
 
 /* Homepage */
-
 
 .project-area { max-width: 96%; margin: 0 auto; }
   
