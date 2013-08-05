@@ -99,7 +99,7 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .footertext { text-align: center; padding: 50px; font-size: 22px; letter-spacing: 1px; color: white; font-size: 16px; }
 #footerlogo { width: 50px; height: 50px; background-image: url("/images/kilnlogo50.png"); background-repeat: no-repeat; display: inline-block; vertical-align: middle; margin: 0 10px; background-color: white; }
 .footertext a:link, .footertext a:visited { color: white; text-decoration: none;}
-.footertext a:hover, .footertext a:active { color: #4BA9C9; text-decoration: none; border-bottom: 1px dotted #4BA9C9; }
+.footertext a:hover, .footertext a:active { color: #4BA9C9; text-decoration: none; border-bottom: none; }
 .footertext a:hover img:hover, .footertext a:active img { border-bottom: none; }
 
 /* Homepage */
