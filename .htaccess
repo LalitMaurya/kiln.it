@@ -1,6 +1,5 @@
 Redirect temp /projects/unburnablecarbon http://www.carbontracker.org/carbon-bubble-interactive
 Redirect temp /projects/wheretheystarted https://www.joininuk.org/wheretheystarted
-RedirectMatch temp ^/talkie/?$ https://github.com/kiln/talkie
 
 RewriteEngine on
 RewriteRule ^(projects/[^.]+)$ $1.html

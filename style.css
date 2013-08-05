@@ -29,6 +29,7 @@ h1 { font-size: 48px; color: black; font-family: 'TradeGothicNextW01-BdCm', sans
 h2 { font-size: 38px; color: black; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; margin: 50px 0 10px; }
 h3 { font-size: 28px; color: #4FB7DB; margin: 24px 0 5px; line-height: 1.1em; font-family: 'TradeGothicNextW01-BdCm', sans-serif; font-weight: normal; }
 h3 .icon { margin-right: 2px; color: #ccc; }
+h4 { font-size: 20px; color: #333; margin: 20px 0 4px; line-height: 1.1em; font-family: 'TradeGothicNextW01-Bold 693232', sans-serif; font-weight: normal; }
 
 .font-awesome { font-family: FontAwesome; }
 
@@ -115,6 +116,8 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .projectimage { width: 100%; position: relative; }
 .projectleft .projectimage { width: 650px; position: absolute; right: 0;  }
 .projectright .projectimage { width: 650px; position: absolute; left: 0; }
+
+.projectimage-floatright { width: 50%; margin-left: 20px; float: right; -moz-box-shadow: 1px 1px 3px #aaa; -webkit-box-shadow: 1px 1px 3px #aaa; box-shadow: 1px 1px 3px #aaa; }
 
 .projectimage .projectcolour { position: absolute; }
 .projectimage .projectbw { position: absolute; display: none; }

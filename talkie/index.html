@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Kiln = Journalism + Data + Technology + Design</title>
+  <script src="d3.v3.min.js" charset="utf-8"></script>
+  <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/411dcd77-eeeb-4bf0-a0c2-7cdf19f88192.css"/>
+
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="metapage">
+  <div class="topbar"></div>
+  <div class="container">
+    <div class="row-fluid toprow">
+      <div class="logoholder"><a href="/"><img src="/images/kilnlogo50.png"></a></div>
+      <div id="menu">
+        <div id="menuitems">
+          <div class="menuitem menuselected"><a href="/">Projects</a></div> 
+          <div class="menuitem"><a href="/about">About</a></div>
+          <div class="menuitem"><a href="/about#contact">Contact</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h1 class="col-lg-12">Talkie</h1>
+      <div class="projectlinks col-lg-12"><span class="link"><a href="https://github.com/kiln/talkie"><i class="icon-external-link"></i> View on Github</a><!--<a href=""></span><span class="link"><i class="icon-twitter"></i> Tweet this</a></span><span class="link"><a href="#"><i class="icon-envelope"></i> Email this</a></span>--></div>
+      <div class="projectstandfirst col-lg-8"><a href="http://www.guardian.co.uk/global-development/interactive/2012/jun/19/rio20-interactive-world-better-worse"><img class="projectimage" id="projectmainimage" src="/images/talkieproject.png"></a></div>
+      <div class="projectstandfirst col-lg-4"><p>A tool for adding voiceovers to interactives and web apps, and for creating interactive animations and slideshows. (And more.)</p></div>
+      <div class="projectmain col-lg-8">
+        <h3><i class="icon-lightbulb icon"></i> The idea</h3>
+        <p>Talkie is a tool for producing pieces of content – ‘Talkies’ – that combine the accessibility and story-telling strength of a video with the depth and explorability of a data-rich interactive visualisation.</p>
+        <p>At its simplest, creating a Talkie means adding an audio voiceover to an interactive map or visualisation so that users can be ‘talked through’ the content rather than approaching it cold and doing all the interpretation themselves. The Talkie JavaScript library makes it easy to trigger animations and other changes at the appropriate points in the voiceover introduction.</p>
+        <p>Talkie can also be used for producing interactive animations and presentations from scratch, or for enabling a video to take control of the website in which it sits.</p>
+        <h3><i class="icon-microphone icon"></i> Getting started</h3>
+        <p>To use Talkie, include the library in your page, either by <a href="http://kiln.it/talkie-1.0.min.js">downloading a local copy</a> or including the following line of code:</p>
+        <pre>&lt;script src="http://kiln.it/talkie-1.0.min.js" charset="utf-8"&gt;&lt;/script&gt;</pre>
+        <p>Note that Talkie relies on <a href="http://d3js.org">D3</a> for animations and other features. So be sure to include D3 as well:</p>
+        <pre>&lt;script src="http://d3js.org/d3.v3.min.js" charset="utf-8"&gt;&lt;/script&gt;</pre>
+        <p>Once that’s done, refer to the documentation and demos on Github:</p>
+        <ul>
+          <li><a href="https://github.com/kiln/talkie/wiki/Demos">Demos</a></li>
+          <li><a href="https://github.com/kiln/talkie/wiki/API-reference">API reference</a></li>
+        </ul>
+        <h3><i class="icon-list-ol icon"></i> Some things you can do with Talkie</h3>
+        <h4>1. Add a voiceover to your interactive</h4>
+        <a href="http://www.carbonmap.org"><img class="projectimage-floatright" src="/images/carbonmapfull.png"></a>
+        <p>An easy way to make any interactive map or visualisation more engaging. First record a voiceover – as if you were talking a friend through the interactive to show them how it works and what’s interesting about the content. Include the Talkie library in your page, along with the voiceover in Ogg format (for Firefox) and MP3 (for other browsers). Add a big play button over the middle and specify what should happen when as the audio plays back, as described in the <a href="https://github.com/kiln/talkie/wiki/Animation">documentation</a>. The result will give a similar effect to the introduction on <a href="http://www.carbonmap.org">The Carbon Map</a>.</p>
+        <h4>2. Create an interactive animation</h4>
+        <a href="http://www.carbontracker.org/carbon-bubble-interactive"><img class="projectimage-floatright" src="/images/unburnablecarbonfull.png"></a>
+        <p>Talkie makes it possible to create impressive interactive animations from scratch – à la <a href="http://www.carbontracker.org/carbon-bubble-interactive">Unburnable Carbon</a>. Here’s how we do it. First, plan the animation by sketching out a storyboard and writing a script. Next, draw the various elements in a layered document in Illustrator (or your vector graphics programme of choice). Ensure that each element you want to manipulate independently is named in the layers palette. (In Preferences, choose to show layer names as XML IDs to avoid duplicates.) Export your graphic as an SVG, drop it into your interactive, along with the Talkie library and voiceover or audiotrack (as described above). Use Talkie to manipulate the SVG elements as required. In addition to simple tranformations such as it's possible to morph between two shapes, as long as they have the same number of points. So for example you could duplicate a complex shape in illustrator, manipulate the points into a new shape and then morph between them. For a simple how-to example, see <a href="http://bl.ocks.org/robinhouston/4742544">Heads & Shoulders</a> demo.</p>
+        <h4>3. Create an interactive slideshow</h4>
+        <a href="http://www.theguardian.com/global-development/interactive/2012/jun/19/rio20-interactive-world-better-worse"><img class="projectimage-floatright" src="/images/betterorworsefull.png"></a>
+        <p>Talkie comes with a ready-to-use but completely customisable slider module. This is a handy way to present all kinds of content; the user can browse the slides in their own time as with a normal slider or (assuming you include a voiceover audio track) press play and watch the presentation like a video. A simple example would an audio photo slide show. Just drop a photo into each panel, add a voiceover and use Talkie to specify when in the audio track the slider should slide. A more complex example would involve triggering individual animations on arrival on each panel. This approach can be useful <a href="http://www.theguardian.com/global-development/interactive/2012/jun/19/rio20-interactive-world-better-worse">with</a> or <a href="http://www.theguardian.com/green-deal/interactive/make-your-home-more-energy-efficient-infographic">without</a> an audio track.</p>
+        <h4>4. Let audio or video take control</h4>
+        <p>Talkie can turn a simple video (or audio track) into something more surprising and interesting, by enabling the video to control the webpage that it’s part of. For example, at any given timecode Talkie could resize or reposition the video, slide the page and highlight things on it, make the video fade out, or add live links over the top.</p>
+        <h3><i class="icon-time icon"></i> History</h3>
+        <p>We developed the Talkie concept when creating projects such as <a href="/projects/carbonmap">The Carbon Map</a> and <a href="projects/betterorworse">Better or Worse</a>. These early projects did not use the Talkie library, of course, since we hadn’t developed it yet, but the experience of creating them had a strong influence on its design and implementation. At present (July 2013) we are working on a more ambitious ambitious Talkie project for the Guardian that will be released later in the year.</p>
+        <p>We hope that releasing an easy-to-use library will help the Talkie concept become adopted more widely. Almost every interesting data interactive would be improved by the addition of a short Talkie introduction – and it’s so easy to do, there’s no excuse not to. </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footertext">
+      <a href="/about">About</a> • <a href="/about#contact">Contact</a>
+      <a href="/"><div id="footerlogo"></div></a> 
+      <a href="https://twitter.com/k_i_l_n">Twitter</a> • <a href="https://github.com/kiln">Gitub</a>
+    </div>
+  </div>
+</body>
+</html>
