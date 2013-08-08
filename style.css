@@ -150,7 +150,7 @@ ol.carousel-indicators { margin-bottom: -10px; display: none; }
 .mugshot { float: right; width: 150px; margin: -20px 0 0 10px; }
 
 .aboutmain { padding: 20px 0 35px; }
-.aboutlogo { padding: 0; margin-bottom: 30px; -moz-box-shadow: 4px 4px 7px #aaa;  }
+.aboutlogo { padding: 0; margin-bottom: 30px;  }
 .aboutmain h1 { font-size: 60px; line-height: 1.1em; margin-bottom: 20px; margin-top: 35px; }
 .aboutsplash { color: #4FB7DB; font-size: 32px; margin-top: 20px; margin-bottom: 20px; line-height: 1.2em; }
 
