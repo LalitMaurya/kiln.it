@@ -2,7 +2,11 @@
 
 import logging, subprocess
 
-logging.basicConfig(filename="logs/update.log", level=logging.INFO)
+logging.basicConfig(
+    filename="logs/update.log",
+    level=logging.INFO,
+    format="[%(asctime)s] %(levelname)s: %(message)s"
+)
 out = open("logs/update.out", 'a')
 
 logging.info("Received update request")
