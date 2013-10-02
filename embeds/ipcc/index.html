@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>How hot will it get in your lifetime?</title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="css/fonts.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.css" rel="stylesheet">
+  <script src="js/d3.v3.js" charset="utf-8"></script>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</head>
+<body class="game">
+  <div id="wrapper">
+    <div id="graph">
+      <div id="explainers">
+        <div class="explainer" id="step1">Temperatures have risen about 0.75°C since the industrial revolution.</div>
+        <div class="explainer" id="step2"><span id="amount-in-lifetime">Some of that increase was in your lifetime.</span> The last decade was <span id="temp-rise-in-lifetime"></span> hotter than the decade before you were born.</div>
+        <div class="explainer" id="step3">What happens next depends on future carbon emissions and how ‘sensitive’ the climate turns out to be. The orange area shows the range of possibilities if emissions keep rising.</div>
+        <div class="explainer" id="step4">On current emissions trends, the planet will be <span id="low-temp-retirement"></span>–<span id="high-temp-retirement"></span> hotter than the preindustrial era by your retirement <span id="retirement-comment"> – potentially <span id="retirement-adverb"></span> above the agreed ‘safety’ limit of 2°C</span>.</div>
+        <div class="explainer" id="step5">By the end of your life, warming could have reached <span id="high-temp-lifespan"></span> above preindustrial levels. For comparison, a 4°C rise was enough to transform the planet since the last ice age.</div>
+        <div class="explainer" id="step6">A child born today could see rises of up to <span id="high-temp-child"></span> in its lifetime – enough to bring catastrophic impacts.</div>
+        <div class="explainer" id="step7">Without emissions cuts, temperatures would keep rising in future centuries, likely accelerated by natural processes.</div>
+        <div class="explainer" id="step8">There is some good news: the new IPCC report suggests that the climate may be slightly less sensitive to carbon than previously thought. Unfortunately that doesn't help much.</div>
+        <div class="explainer" id="step9">Only if emissions are cut radically will there be a good chance of staying below 2°C.</div>
+        <div class="explainer" id="step10">
+          <div id="final-text"></div>
+          <div id="tweet-button-final"></div>
+          <div id="tweet-button-final"></div>
+        </div>
+        <span id="info"><i class="icon-info-sign"></i></span>
+        <div id="tweet-button"></div>
+        <div id="buttons">
+            <span id="next-button" class="next"><i class="icon-chevron-sign-right"></i></span>
+            <span id="reload-button" class="reload"><i class="icon-refresh"></i></span>
+        </div>
+      </div>
+      <div id="help-text"></div>
+      <div id="overlays">
+        <div id="screen"></div>
+        <div id="controls">
+          <h2>Enter your year of birth</h2>
+          <form id="go"><input type="text" id="dateinput" name="dateinput"><input type="submit" value="Go" class="btn" href="#"></form>
+          <div class="alerts" id="numbers-only">Please enter a year. Numbers only.</div>
+          <div class="alerts" id="too-early">You surely weren't born that long ago. Try again.</div>
+          <div class="alerts" id="too-late">You surely weren't born in the future. Try again.</div>
+        </div>
+      </div>
+      <div id="hand-explainer">
+        <div id="helping-hand">
+          <div id="hand"><i class="icon-hand-left"></i></div>
+          <div id="hand-text">Tip: the text here explains each graph</span></div>
+        </div>
+      </div>
+      <!--[if lte IE 8]>
+      <div id="ie8message">This interactive is not supported by your browser. To see it, download a modern browser such as <a href="https://www.google.com/chrome">Chrome</a>, <a href="http://www.getfirefox.net">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 9.</div>
+      <![endif]-->
+    </div>
+    <div id="credits">
+      <p>Data provided by the Environmental Change Institute, School of Geography and the Environment, and Department of Physics, University of Oxford, with support from the Oxford Martin Programme on Resource Stewardship and the Union of Concerned Scientists. Modelling by Richard Millar. Interactive by Duncan Clark.</p>
+      <p class="small">Temperature projections are based on the idealised climate model of Boucher and Reddy (2009), as used for calculation of warming potentials in IPCC (2013), driven by the IPCC "RCP8.5" high emissions scenario. They are consistent with, but not identical to, to the projections of the IPCC (2013).</p>
+    </div>
+  </div>
+</body>
+
+<script>
+
+// Global variables
+var dob, dor, le, dobOnGraph, dorOnGraph, leOnGraph, leChild, leChildOnGraph, tempRiseInLifetime, remainingYears, 
+    highTempAtRetirement,highTempAtLifespan, lowTempAtLifespan, tempAtChildLifespan, switcher, switcher, handTip1, handTip2, handTip3;
+
+var thisYear = 2013,
+    haveMentioned2C = false,
+    old = false,
+    currentStep = 1,
+    visibleHighlighters = [],
+    helpText = "";
+
+// Layout
+var margin = {top: 10, right: 60, bottom: 30, left: 150},
+    width = 880 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
+
+var x = d3.scale.linear().range([0, width]),
+    y = d3.scale.linear().range([height, 0]),
+    xAxis = d3.svg.axis().scale(x).tickSize(-height).tickSubdivide(true).tickFormat(d3.format()),
+    yAxis = d3.svg.axis().scale(y).ticks(4).orient("right");
+
+var bigLabelHeight = 24;
+var smallLabelHeight = 20;
+
+// Area generator for gap between lines
+var areaNew = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lineLowNew); })
+    .y1(function(d) { return y(d.lineHighNew); })
+    .defined(function(d) { return d.year > 2012; });
+
+var areaAR4 = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lineLowAR4); })
+    .y1(function(d) { return y(d.lineHighAR4); })
+    .defined(function(d) { return d.year > 2012; });
+
+var area3PD = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lineLow3PD); })
+    .y1(function(d) { return y(d.lineHigh3PD); })
+    .defined(function(d) { return d.year > 2012; });
+
+// Line generators
+var lineHighNew = d3.svg.line()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.lineHighNew); })
+    .defined(function(d) { return d.year > 2012; });
+
+var lineHighAR4 = d3.svg.line()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.lineHighAR4); })
+    .defined(function(d) { return d.year > 2012; });
+
+var lineLowNew = d3.svg.line()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.lineLowNew); })
+    .defined(function(d) { return d.year > 2012; });
+
+var lineLowAR4 = d3.svg.line()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.lineLowAR4); })
+    .defined(function(d) { return d.year > 2012; });
+
+var lineHigh3PD = d3.svg.line()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.lineHigh3PD); })
+    .defined(function(d) { return d.year > 2012; });
+
+var lineLow3PD= d3.svg.line()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.lineLow3PD); })
+    .defined(function(d) { return d.year > 2012; });
+
+var lineObserved = d3.svg.line()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.observations); })
+    .defined(function(d) { return !isNaN(d.observations) });
+
+var currentArea = areaNew,
+    currentLowLine = lineLowNew,
+    currentHighLine = lineHighNew;
+
+// Set up tweet buttons
+function addTweetButton(tweetText) {
+  d3.select('#tweet-button').html("");
+  twttr.widgets.createShareButton(
+    'http://bitly.com/howhotwillitget',
+    document.getElementById('tweet-button'),
+    function (el) {  },
+    { count: 'none', text: tweetText, hashtag: "howhotwillitget", via: 'guardianeco' }
+    );
+}
+function addTweetButtonLarge(tweetText) {
+  d3.select('#tweet-button').remove();
+  twttr.widgets.createShareButton(
+    'http://bitly.com/howhotwillitget',
+    document.getElementById('tweet-button-final'),
+    function (el) {  },
+    { count: 'none', size: 'large', hashtag: "howhotwillitget", text: tweetText, via: 'guardianeco' }
+    );
+}
+
+// Mac-style wobble alert for invalid date inputs and button highlight
+function wobble(selector,width) {
+  var l = parseFloat(d3.select(selector).style("left"));
+  d3.select(selector)
+    .transition().duration(50).style("left", function() { return l - width + "px"; })
+    .transition().duration(50).style("left", function() { return l + width + "px"; })
+    .transition().duration(50).style("left", function() { return l - width + "px"; })
+    .transition().duration(50).style("left", function() { return l + width + "px"; })
+    .transition().duration(50).style("left", function() { return l - width + "px"; })
+    .transition().duration(50).style("left", function() { return l + "px"; });
+}
+
+// Load data and draw graph
+d3.csv("data.csv", parse, function(error, data) {
+
+  // Create SVG
+  d3.select("body #graph").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom);
+
+  // Add gradient shading definitions
+  var grad = d3.select("svg").append("defs")
+    .append("linearGradient").attr("id","shading").attr("x1","0%").attr("y1","0%").attr("x2","0%").attr("y2","100%");
+  grad.append("stop").attr("offset","20%").attr("style","stop-color: red; stop-opacity: 0.8");
+  grad.append("stop").attr("offset","100%").attr("style","stop-color: green; stop-opacity: 0.8");
+
+  // Create graph
+  var svg = d3.select("svg").append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .attr("id","svg-graph");
+
+  // Add the clip path
+  svg.append("clipPath")
+      .attr("id", "clip")
+    .append("rect")
+      .attr("width", width)
+      .attr("height", height);
+
+  // Set bounds to display
+  var dataStartYear = data[1].year,
+      initialMin = 1980,
+      initialMax = thisYear,
+      lowerBounds = initialMin - dataStartYear,
+      upperBounds = initialMax - dataStartYear;
+  x.domain([data[lowerBounds].year, data[upperBounds].year]);
+  y.domain([data[lowerBounds].observations - 0.3, data[upperBounds].observations + 0.4]);
+
+  // Add the x-axis
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+  // Add the y-axis
+  svg.append("g")
+    .attr("class", "y axis")
+    .classed("next",true)
+    .attr("transform", "translate(" + width + ",0)")
+    .call(yAxis);
+
+  svg.append("text")
+      .attr("class", "y label")
+      .attr("text-anchor", "middle")
+      .attr("y", width + 40)
+      .attr("x", -200)
+      .attr("dy", ".75em")
+      .attr("transform", "rotate(-90)")
+      .text("Temperature rise over preindustrial average (°C)");
+
+  // Add a background group for shading
+  svg.append("g").attr("id", "background-highlighters")
+
+  // Add lines and shading
+
+  var mods = svg.append("g").attr("id", "models-data");
+  // Add the higher line
+  mods.append("path")
+    .attr("class", "lineHigh")
+    .attr("clip-path", "url(#clip)")
+    .attr("d", lineHighNew(data));
+  // Add the lower line
+  mods.append("path")
+    .attr("class", "lineLow")
+    .attr("clip-path", "url(#clip)")
+    .attr("d", lineLowNew(data));
+  // Add the area between
+  mods.append("path")
+    .attr("class", "area")
+    .attr("clip-path", "url(#clip)")
+    .attr("d", areaNew(data));    
+  mods.append("path")
+    .attr("class", "area")
+    .attr("id", "low-temp-scenarios")
+    .attr("clip-path", "url(#clip)")
+    .attr("d", area3PD(data))
+    .attr("opacity",0);
+  // Add labels
+  var modY = height * 0.43;
+  var modX = width * 0.99;
+  var modsLabs = mods.append("g").attr("id","report-labels").attr("transform","rotate(-29 700,230) translate(0,0)").attr("text-anchor","end");
+  modsLabs.append("text").classed("report-label-main",true).classed("highlighter",true).style("fill","#DD6500")
+    .text("The future")
+    .attr("x",modX).attr("y",modY)
+    .style("font-size","24px");
+  modsLabs.append("text").classed("report-label-sub",true).classed("highlighter",true).style("fill","#DD6500")
+    .text("if emissions keep rising")
+    .attr("x",modX).attr("y",modY + 18)
+    .style("font-size","16px");
+
+  // Add the observed line
+  svg.append("path")
+    .attr("class", "lineObserved")
+    .attr("clip-path", "url(#clip)")
+    .attr("d", lineObserved(data));
+
+  // Add buttons to toggle between report
+  d3.selectAll(".ar4").on("click",function() {
+      var t = svg.transition().duration(1750);
+      t.select(".area").attr("d", areaAR4(data));
+      t.select(".lineLow").attr("d", lineLowAR4(data));
+      t.select(".lineHigh").attr("d", lineHighAR4(data));
+      report = "AR4";
+  });
+  d3.selectAll(".New").on("click",function() {
+      var t = svg.transition().duration(1750);
+      t.select(".area").attr("d", areaNew(data));
+      t.select(".lineLow").attr("d", lineLowNew(data));
+      t.select(".lineHigh").attr("d", lineHighNew(data));
+      report = "New";
+  });
+
+  // Take year of birth, process variables and initiate interaction
+  d3.select("#go").on("submit", function() {
+    d3.event.preventDefault();
+    dob = document.getElementById("dateinput").value;
+    d3.selectAll(".alerts").style("display","none");
+    
+    // Load graph only when usable date is entered
+      //Convert to string
+    var dobString = dob.toString();
+      //Get four last chars
+    var lastFour = dobString.substring(dobString.length - 4,dobString.length);
+    dob = parseFloat(lastFour);
+    if (isNaN(dob) || dob == "") {
+      wobble("#controls",10);
+      d3.select("#numbers-only").style("display","block");
+    } else if (dob > thisYear) {
+      wobble("#controls",10);
+      d3.select("#too-late").style("display","block");
+    } else if (dob < 1900) {
+      wobble("#controls",10);
+      d3.select("#too-early").style("display","block");
+    } else {
+      d3.select("#overlays").transition().duration(400).style("opacity",0).remove();
+      d3.selectAll("input").transition().style("opacity",0).remove();
+      d3.selectAll("#info").style("display","inline")
+        .on("mouseover",function(){ d3.select("#help-text").text(helpText).style("width","0")
+        .transition().duration(750).style("opacity",1).style("width","150px"); })
+        .on("mouseout",function(){ d3.select("#help-text").transition().duration(750).style("opacity",0); });
+      processDate();
+      nextStep();
+    }
+  });
+
+  // Common functions for animations
+  function processDate() {
+
+    dobOnGraph = dob - dataStartYear + 1;
+    
+    // Set retirement age based on 62 (average for men and women) plus
+    // a year and a half extra per decade of remaining working life
+    dor = Math.round(dob + 62 + 1.5 * (dob + 62 - thisYear)/10);
+    dorOnGraph = dor - dataStartYear + 1;
+    highTempAtRetirement = Math.round(data[dor - dataStartYear + 1].lineHighNew * 10)/10
+    lowTempAtRetirement = Math.round(data[dor - dataStartYear + 1].lineLowNew * 10)/10
+    d3.select("#high-temp-retirement").text(highTempAtRetirement + "°C");
+    d3.select("#low-temp-retirement").text(lowTempAtRetirement + "°C");
+    d3.select("#date-of-retirement").text(dor);
+
+    // Set life expectancy as UK average (80) + 0.2 years per remaining year,
+    // based on http://www.ons.gov.uk/ons/rel/lifetables/interim-life-tables/2009-2011/stb-2009-2011.html
+    le = Math.round((dob + 80) + 0.2 * (dob + 80 - thisYear));
+    // Adjust for older people to avoid tiny highlighted block
+    if (dor < thisYear + 15) {
+      old = true;
+      if (dor >= thisYear + 7) le = thisYear + 40;
+      else if (dor >= thisYear) le = thisYear + 30;
+      else le = thisYear + 20;
+    }
+    remainingYears = le - thisYear;
+    leOnGraph = le - dataStartYear + 1;
+    highTempAtLifespan = Math.round(data[leOnGraph].lineHighNew * 10)/10;
+    lowTempAtLifespan = Math.round(data[leOnGraph].lowHighNew * 10)/10;
+
+    // Details for child born today
+    leChild = Math.round((thisYear + 80) + 0.2 * (thisYear + 80 - thisYear));
+    leChildOnGraph = leChild - dataStartYear + 1;
+    tempAtChildLifespan = Math.round(data[leChildOnGraph].lineHighNew * 10)/10;
+
+    // Set temperature rise during lifetime
+    var sumToAverageBirth = 0;
+    var sumToAverageRecent = 0;
+    for (var i = 0; i <= 9; i++) {
+      var preBirthYear = dob - i,
+          recentYear = 2012 - i,
+          preBirthTemp = data[preBirthYear - dataStartYear + 1].observations,
+          recentTemp = data[recentYear - dataStartYear + 1].observations;              
+      sumToAverageBirth = preBirthTemp + sumToAverageBirth;
+      sumToAverageRecent = recentTemp + sumToAverageRecent;
+     }
+     var averageTempAtBirth = sumToAverageBirth/10;
+     var averageTempNow = sumToAverageRecent/10;
+     tempRiseInLifetime = Math.round((averageTempNow - averageTempAtBirth)*10)/10;
+  }
+
+  function drawLineAcross(value,color,delay,label,baseline,indent) {
+    svg.append("line").classed("highlighter",true).classed("temperature-line",true).style("stroke",color)
+      .attr("x1",0).attr("x2",0).attr("y1",y(value)).attr("y2",y(value))
+      .transition().duration(1000).delay(delay).attr("x2",width)
+    svg.append("text").classed("highlighter",true).classed("temperature-label",true).text(label)
+      .attr("x",indent).attr("y",y(value) + baseline).style("fill",color).style("opacity",0)
+      .transition().duration(1000).delay(delay + 750).style("opacity",1)
+  }
+
+  function runHelperTool() {
+    d3.select("#helping-hand").transition().delay(4000).duration(750).style("top","36px");
+    handTip1 = setTimeout(function() {
+      d3.select("#helping-hand").transition().delay(0).duration(750).style("top","80px");
+      d3.select("#hand-text").transition().delay(500).duration(0).text("The info sign reveals more details");      
+    },7000);
+    handTip2 = setTimeout(function() {
+      d3.select("#helping-hand").transition().delay(0).duration(750).style("top","346px");
+      d3.select("#hand-text").transition().delay(500).duration(0).text("The button moves to the next graph");
+    },10000);
+    handTip3 = setTimeout(function() {
+      d3.select("#helping-hand").transition().delay(0).duration(750).style("top","-100px");      
+    },13000);
+  }
+
+  function highlightArea(focus,color,lower,upper,labelspacing,label) {
+    if (visibleHighlighters.indexOf(focus) == -1) {
+      visibleHighlighters.push(focus);
+      svg.select("#background-highlighters").append("rect")
+        .classed(focus + "-highlight",true).attr("fill",color).style("opacity",0.15)
+        .attr("x", x(lower)).attr("y", height)
+        .attr("width", x(upper) - x(lower)).attr("height",0.1)
+        .transition().duration(1000).delay(250)
+        .attr("height", height).attr("y", 0);
+      svg.select("#background-highlighters").append("text").text(label).attr("opacity",0)
+        .classed("highlighter-label",true).classed(focus + "-label",true).style("fill",color)
+        .attr("y", x(lower) + bigLabelHeight).attr("x", -20)
+        .attr("text-anchor","end")
+        .style("font-size","22px").attr("transform","rotate(-90)")
+        .transition(500).delay(1500).style("opacity",0.7);
+    }
+  }
+
+  function redrawGraph(axisStart,axisEnd,separated) {
+    lowerBounds = axisStart - dataStartYear + 1;
+    upperBounds = axisEnd - dataStartYear + 1;
+    x.domain([data[lowerBounds].year, data[upperBounds].year]);
+    y.domain([data[lowerBounds].observations - 0.5, data[upperBounds].lineHighAR4 + 0.1]);
+    var t = svg.transition().duration(750);
+    t.select(".x.axis").call(xAxis);
+    t.select(".y.axis").call(yAxis);
+    t.select(".area").attr("d", currentArea(data));
+    t.select(".lineLow").attr("d", currentLowLine(data));
+    t.select(".lineHigh").attr("d", currentHighLine(data));
+    t.select(".lineObserved").attr("d", lineObserved(data));
+    t.select(".lifetime-highlight").attr("x", x(dob)).attr("width", x(thisYear) - x(dob));
+    t.selectAll(".lifetime-label").attr("y", x(dob) + bigLabelHeight);
+    t.select(".working-life-highlight").attr("x", x(thisYear)).attr("width", x(dor) - x(thisYear));
+    t.selectAll(".working-life-label").attr("y", x(thisYear) + bigLabelHeight);
+    t.select(".lifespan-highlight").attr("x", x(dor)).attr("width", x(le) - x(dor));
+    t.selectAll(".lifespan-label").attr("y", x(dor) + bigLabelHeight);
+    t.select(".remaining-years-highlight").attr("x", x(thisYear)).attr("width", x(le) - x(thisYear));
+    t.selectAll(".remaining-years-label").attr("y", x(thisYear) + bigLabelHeight);
+    t.select(".child-highlight").attr("x", x(le)).attr("width", x(leChild) - x(le));
+    t.selectAll(".child-label").attr("y", x(le) + bigLabelHeight);
+    t.select(".future-generations-highlight").attr("x", x(leChild)).attr("width", x(2200) - x(leChild));
+    t.selectAll(".future-generations-label").attr("y", x(leChild) + bigLabelHeight);
+    // t.select(".2C-line").attr("y1", y(2)).attr("y2", y(2));
+    // t.select(".2C-label").attr("y",y(2) - smallLabelHeight/2);
+  }
+
+  function addCircleHighlights(year) {
+    var yearOnGraph = year - dataStartYear + 1;
+    var tempHigh = Math.round(data[yearOnGraph].lineHighNew * 10)/10;
+    var tempLow = Math.round(data[yearOnGraph].lineLowNew * 10)/10;
+    // Add Upper circle
+    svg.append("circle").attr("fill","red")
+      .attr("r",0).attr("cx", x(year)).attr("cy", y(data[yearOnGraph].lineHighNew))
+      .classed("highlighter",true).classed("temperature-circle-high",true).classed("circle-highlights",true)
+      .transition(500).delay(2500).attr("r",20);
+    // Add lower circle
+    svg.append("circle").attr("fill","red")
+      .attr("r",0).attr("cx", x(year)).attr("cy", y(data[yearOnGraph].lineLowNew))
+      .classed("highlighter",true).classed("temperature-circle-low",true).classed("circle-highlights",true)
+      .transition(500).delay(2500).attr("r",20);
+    // Add labels
+    svg.append("text").style("fill","white")
+      .style("opacity",0).attr("text-anchor","middle").text(tempHigh + "°C")
+      .classed("highlighter",true).classed("circle-highlights",true).classed("temperature-stat-high",true)
+      .attr("x", x(year)).attr("y", y(data[yearOnGraph].lineHighNew) + 5)
+      .transition(500).delay(3000).style("opacity",1);
+    svg.append("text").style("fill","white")
+      .style("opacity",0).attr("text-anchor","middle").text(tempLow + "°C")
+      .classed("highlighter",true).classed("circle-highlights",true).classed("temperature-stat-low",true)
+      .attr("x", x(year)).attr("y", y(data[yearOnGraph].lineLowNew) + 5)
+      .transition(500).delay(3000).style("opacity",1);
+  }
+
+  function nextStep() {
+    // Remove old bits
+    d3.selectAll(".explainer").style("display","none");
+    d3.selectAll(".circle-highlights").remove();
+    d3.selectAll(".temperature-line").remove();
+    d3.selectAll(".temperature-label").remove();
+    // Hide next button on final frame
+    if (currentStep > 9) {
+      d3.select("#next-button").style("display","none").remove();
+    } else {
+      d3.select("#next-button").style("display","inline-block").style("opacity","0").style("bottom","-100px").transition().duration(500).delay(3000).style("opacity",1).style("bottom","0px");
+    }
+    // Call next step and fetch relevant explainer
+    var currentExplainer = "#step" + currentStep;
+    d3.select(currentExplainer).style("display","inline"); 
+    steps(currentStep);
+  }
+
+  // Activate next and previous buttons
+  d3.selectAll(".next").on("click", function(){ 
+    if (currentStep ==  1) {
+      clearTimeout(handTip1);
+      clearTimeout(handTip2);
+      clearTimeout(handTip3);      
+      d3.select("#hand-explainer").remove();
+    }
+    currentStep++; 
+    nextStep();
+  });
+  d3.selectAll(".back").on("click", function(){ currentStep--; nextStep(); } );
+  
+  function steps(step) {
+    if (step == 1) {
+      helpText = "The increase in global temperatures since the nineteenth century is clear in direct observations (shown here by the black line). The increase is corroborated by other lines of evidence such as melting sea ice and glaciers, and shifting growing seasons.";
+      runHelperTool();
+      if (dob < 1995) d3.select("#amount-in-lifetime").style("display","inline");
+      redrawGraph(1860,thisYear);
+      drawLineAcross(0,"green",500, "Average temperature, preindustrial", smallLabelHeight, width * 0.4);
+      drawLineAcross(0.75,"red",1500,"Average temperature, today", (-smallLabelHeight/2), width * 0.4);
+    }
+    else if (step == 2) {
+      addTweetButton("The world has warmed around " + tempRiseInLifetime + "°C so far during my lifetime.");
+      helpText = "This is based on the mean observed global temperature in the 10 years up to and including your birth, compared with the global mean for the decade up to 2012, the last year for which data is available.";
+      svg.select("path.lineLow").style("opacity",0.6);
+      svg.select("path.lineHigh").style("opacity",0.6);
+      svg.select("path.area").style("opacity",0.5);
+      d3.select("#lifetime").classed("visible",true);
+      redrawGraph(1900,thisYear);
+      highlightArea("lifetime","rgb(0,100,200)",dob,thisYear,0,"Your life so far");
+      if ( dob < 2007) d3.select("#temp-rise-in-lifetime").text(tempRiseInLifetime + "°C")
+      else {
+        d3.select("#step2").text("But most of that was before you were born.");
+        helpText = "The few years since your birth have been relative flat in terms of global temperatures, but they are among the warmest on record.";
+      }
+    }
+    else if (step == 3) {
+      d3.select('#tweet-button').html("");
+      helpText = "This shows the range of possible temperature increases in a scenario where carbon concentrations keep rising at current rates (the so-called RCP8 scenario), based on the estimates of climate response in the new IPCC report.";
+      d3.select("#report-labels").transition().delay(1000).duration(750).style("opacity",1);
+      redrawGraph(1900,thisYear + 60);
+    }
+    else if (step == 4) {
+      if (old) { currentStep++; nextStep(); }
+      else {
+        d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-31 700,230) translate(10,-7)");
+        addTweetButton("By the time I retire the world could be " + highTempAtRetirement + "°C hotter than preindustrial levels.");
+        helpText = "Assumes you retire in " + dor + ". Retirement age is based on 62 (traditional average for men and women) plus a year and a half extra per decade of remaining working life to reflect ongoing increases.";
+        redrawGraph(1900,dor + 50);
+        highlightArea("working-life","rgb(240,40,40)",thisYear,dor,0,"Your remaining work years");
+        addCircleHighlights(dor);
+        if (!haveMentioned2C && highTempAtRetirement > 2) {
+          d3.select("#retirement-comment").style("display","inline");
+          if (highTempAtRetirement > 2.5) d3.select("#retirement-adverb").text("far ");
+          haveMentioned2C = true;
+        }
+      }
+    }
+    else if (step == 5) {
+      addTweetButton("In my lifetime the world could see " + highTempAtLifespan + "°C of global warming. How about in yours?");
+      d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-31 700,230) translate(10,-15)");
+      redrawGraph(1900,le + 50);
+      d3.select("#date-of-retirement").text(dor);
+      d3.select("#high-temp-lifespan").text(highTempAtLifespan + "°C");
+      d3.select("#low-temp-lifespan").text(lowTempAtLifespan);
+      if (!haveMentioned2C && highTempAtLifespan > 2) { d3.select("#lifespan-comment").style("display","inline"); }
+      if (old) {
+        helpText = "The graph highlights upper-end and lower-end temperatures for the year " + (remainingYears + thisYear) + ".";
+        var twoCComment = "";
+        if (highTempAtLifespan > 2) twoCComment = " That's higher than the agree global safety limit of 2°C."
+        d3.select("#step5").text("If you live another " + remainingYears + " years, you could see a world " + highTempAtLifespan + "°C above preindustrial levels, if emissions keep rising." + twoCComment)
+        highlightArea("remaining-years","green",thisYear,le,0,"Next " + remainingYears + " years");
+      } else {
+        helpText = "Life expectancy of is based on the current UK average age at death (80 years), plus 0.2 years per remaining year of life to reflect ongoing increases.";
+        highlightArea("lifespan","green",dor,le,0,"Your retirement");
+      }
+      addCircleHighlights(le);
+    }
+    else if (step == 6) {
+      addTweetButton("A child born today could see a world " + tempAtChildLifespan + "°C hotter than preindustrial levels.");
+      helpText = "Assumes a life expectancy for a child born today of 96 years, based on current UK average age at death (80 years), plus 0.2 years per remaining year of life to reflect ongoing increases."
+      redrawGraph(1900,leChild + 45);
+      d3.select("#child").classed("visible",true);
+      d3.select("#high-temp-child").text(tempAtChildLifespan + "°C");
+      d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-31 700,230) translate(10,-25)");
+      highlightArea("child","rgb(240,150,20)",le,leChild,0,"Child born today");
+      addCircleHighlights(leChild);
+    }
+    else if (step == 7) {
+      addTweetButton("If emissions keep rising global warming could reach " + Math.round(data[2200 - dataStartYear + 1].lineHighNew * 10)/10 + "°C by 2200.");
+      helpText = "Longer-term forecasts contain greater uncertainty, partly because the feedback loops that would likely augment manmade climate change (such as emissions from melting permafrost) are poorly understood at present.";
+      redrawGraph(1900,2200,"separate");
+      d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-23 700,230) translate(10,-25)");
+      highlightArea("future-generations","rgb(60,30,200)",leChild,2200,0,"Future generations");
+      addCircleHighlights(2200);
+    }
+    else if (step == 8) {
+      addTweetButton("See what the new IPCC report means for temperatures in your lifetime.");
+      helpText = "This chart compares temperature predictions in the business-as-usual scenario shown before, given the rates of equilibrium climate sensitivity and transient climate response provided in the IPCC reports from 2007 (ECS 2–4.5; TCR 1–3) and 2013 (ECS 1.5–4.5; TCR 1–2.5). The reductions are helpful but while emissions are still rising, the effect is just to delay any given temperature rise by a relatively short period.";
+      d3.select("#background-highlighters").transition().style("opacity","0.45");
+      d3.selectAll(".area").transition().style("opacity","0.55");
+      switcher = setInterval(function() {
+        if (currentHighLine == lineHighNew) {
+          currentHighLine = lineHighAR4;
+          currentLowLine = lineLowAR4;
+          currentArea = areaAR4;
+          d3.select(".report-label-main").text("2007 estimates");
+          d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-25 700,230) translate(10,-40)");
+          redrawGraph(1900,2200);
+        }
+        else {
+          currentHighLine = lineHighNew;
+          currentLowLine = lineLowNew;
+          currentArea = areaNew;
+          d3.select(".report-label-main").text("2013 estimates");
+          d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-23 700,230) translate(10,-25)");
+          redrawGraph(1900,2200);
+        }
+      },2000);
+    }
+    else if (step == 9) {
+      addTweetButton("Only radical emissions cuts can avoid global warming of 2°C in our lifetimes.");
+      helpText = "This shows the IPCC's 3PD scenario in which carbon concentrations are quickly reduced. This would probably be sufficient to avoid exceeding 2°C of warming but would require radical, possibly infeasible, reductions in emissions and/or some CO2 being removed from the air.";
+      clearInterval(switcher);
+      currentHighLine = lineHighNew;
+      currentLowLine = lineLowNew;
+      currentArea = areaNew;
+      currentHighLine = lineHighNew;
+      currentLowLine = lineLowNew;
+      currentArea = areaNew;
+      d3.select(".report-label-sub").text("With radical emissions cuts");
+      d3.select("#report-labels").transition().duration(2500).attr("transform","rotate(8 700,230) translate(-24,50)");
+      svg.select("#low-temp-scenarios").transition().duration(2000).attr("opacity",1);
+      currentArea = area3PD;
+      currentLowLine = lineLow3PD;
+      currentHighLine = lineHigh3PD;
+      y.domain([data[lowerBounds].observations - 0.5, 3]);
+      var t = d3.transition().duration(3000);
+      t.select(".y.axis").call(yAxis);
+      t.select(".area").attr("d", currentArea(data));
+      t.select(".lineLow").attr("d", currentLowLine(data));
+      t.select(".lineHigh").attr("d", currentHighLine(data));
+      t.select(".lineObserved").attr("d", lineObserved(data));
+      drawLineAcross(2,"red",2000,"Agreed global limit", (-smallLabelHeight/2), 40);
+    }
+    else if (step == 10) {
+      addTweetButtonLarge("In my lifetime the world could see " + highTempAtLifespan + "°C of global warming. How about in yours?");
+      d3.select("#info").remove();
+      d3.select("#reload-button").transition().duration(1500).style("margin-bottom","50px").style("margin-left","450px");        
+      d3.select("#reload-button").style("display","block").on("click",function() { location.reload() });
+      d3.select("#explainers").transition().duration(1500).style("width","590px").style("padding-right","150px").style("padding-left","150px");
+      d3.select("#final-text").text('“In my lifetime the world could see ' + highTempAtLifespan + '°C of global warming. How about in yours? #howhotwillitget”')
+        .transition().duration(1500).style("font-size","24px").style("padding-top","100px");
+    }
+  }
+});
+
+// Parse and filter the data
+function parse(d) {
+  d.year = parseInt(d["Year"]);
+  d.observations = parseFloat(d["Observations"]);
+  d.forcing = parseFloat(d["Total forcing"]);
+  d.aerosol = parseFloat(d["Aerosol forcing"]);
+  d.cumulative = parseFloat(d["Cumulative CO2"]);
+  d.lineLowNew = parseFloat(d["Low response"]);
+  d.lineLowAR4 = parseFloat(d["Low - AR4"]);
+  d.lineHighNew = parseFloat(d["High response"]);
+  d.lineHighAR4 = parseFloat(d["High - AR4"]);
+  d.lineLow3PD = parseFloat(d["Low 3PD"]);
+  d.lineHigh3PD = parseFloat(d["High 3PD"]);
+  return d;
+}
+
+</script>
+</html>
