@@ -426,7 +426,7 @@ function drawGraph() {
       if (view == "historical") {
         d3.selectAll(".temperature-line").transition().duration(1000).delay(0).style("opacity",0);
         d3.selectAll(".focus-scenarios").style("opacity",0);
-        d3.selectAll(".focus-historical").style("opacity",0).transition().duration(1000).delay(1000).style("opacity",1);
+        d3.selectAll(".focus-historical").style("opacity",0).transition().duration(1000).delay(0).style("opacity",1);
         lowerBounds = 1860 - dataStartYear + 6;
         upperBounds = 2010 - dataStartYear + 6;
         x.domain([data[lowerBounds].year, data[upperBounds].year]);
@@ -441,19 +441,18 @@ function drawGraph() {
         t.select("#shade-block").attr("opacity",0);
         d3.select("#y-label").text("Annual emissions (MtC)");
         d3.select("#info-text").text("This graph shows total manmade CO2 emissions, which have been increasing fairly steadily since the industrial revolution.");
-        d3.selectAll("#linehistorical").style("opacity",0).transition().duration(1000).delay(1000).style("opacity",1);
       }      
       else if (view == "emissions") {
         d3.selectAll(".temperature-line").transition().duration(1000).delay(0).style("opacity",0);
         d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(1000).delay(1000).style("opacity",1);
         d3.selectAll(".focus-historical").style("opacity",0);
-        svg.select("#linehistorical").style("opacity","0");
         lowerBounds = 2000 - dataStartYear + 6;
         upperBounds = 2100 - dataStartYear + 6;
         x.domain([data[lowerBounds].year, data[upperBounds].year]);
         y.domain([-5, data[upperBounds].emissions85 + 1]);
         t.select(".x.axis").call(xAxis);
         t.select(".y.axis").call(yAxis);
+        t.select("#linehistorical").attr("d", emissionshistorical(data));
         t.select("#linercp3P").attr("d", emissionsrcp3P(data));
         t.select("#linercp45").attr("d",  emissionsrcp45(data));
         t.select("#linercp60").attr("d",  emissionsrcp60(data));
@@ -466,13 +465,13 @@ function drawGraph() {
         d3.selectAll(".temperature-line").transition().duration(1000).delay(0).style("opacity",0);
         d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(1000).delay(1000).style("opacity",1);
         d3.selectAll(".focus-historical").style("opacity",0);
-        svg.select("#linehistorical").style("opacity","0");
         lowerBounds = 2013 - dataStartYear + 6;
         upperBounds = 2100 - dataStartYear + 6;
         x.domain([data[lowerBounds].year, data[upperBounds].year]);
         y.domain([0, data[upperBounds].cumulativercp85 + 100]);
         t.select(".x.axis").call(xAxis);
         t.select(".y.axis").call(yAxis);
+        t.select("#linehistorical").attr("d", emissionshistorical(data));
         t.select("#linercp3P").attr("d", cumulativercp3P(data));
         t.select("#linercp45").attr("d", cumulativercp45(data));
         t.select("#linercp60").attr("d", cumulativercp60(data));
@@ -491,6 +490,7 @@ function drawGraph() {
         x.domain([400,2500]);
         t.select(".x.axis").call(xAxis);
         t.select(".y.axis").call(yAxis);
+        t.select("#linehistorical").attr("d", emissionshistorical(data));
         t.select("#linercp3P").attr("d", lineTemprcp3P(data));
         t.select("#linercp45").attr("d",  lineTemprcp45(data));
         t.select("#linercp60").attr("d",  lineTemprcp60(data));
@@ -498,7 +498,7 @@ function drawGraph() {
         t.select(".shading85").attr("d",  shading85(data));
         t.select("#shade-block").attr("y", y(12)).attr("height", y(-1) - y(12)).delay(2000).attr("opacity",0.3);
         drawLineAcross(2,"red",1000,"Agreed temperature limit", -10, 20);
-        drawLineDown(1100,"#333",2000,"All-time carbon budget for 50% odds of success", -10);
+        drawLineDown(1000,"#333",2000,"All-time carbon budget for two-thirds odds of success", -10);
         d3.select("#y-label").text("Temperature change (°C)");
         d3.select("#info-text").text("When the graph is replotted to show cumulative emissions against expected temperature rise, something striking comes into view: all the scenarios follow basically the same straight path, the only difference being how fast. (The green line goes back on itself when human society becomes carbon negative.) In other words, it's cumulative carbon that counts, and no matter which scenario we follow, avoiding more than 2°C of warming means staying within an all-time carbon budget of around 1000 million tonnes of carbon, most of which we've already used up.")
       }
