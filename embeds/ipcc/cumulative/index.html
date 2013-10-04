@@ -7,8 +7,7 @@
 <script src="../js/d3.v3.js" charset="utf-8"></script>
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  
+
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="../css/font-awesome.css" rel="stylesheet">
@@ -16,24 +15,24 @@
 <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
 <style type="text/css">
-body { min-width: 460px; }
-#wrapper { width: 100%; padding: 20px 5%; }
+body { }
+#wrapper { width: 940px; padding: 20px; }
 #graph { margin: 0; padding: 0; width: 100%; }
 .axis path, .axis line { fill: none; stroke: #000; shape-rendering: crispEdges; }
 .y.axis path { display: none; }
 .y.axis line { fill: none; stroke: #666; stroke-dasharray: 2,2; }
 .x.axis .tick { stroke: #777; stroke-dasharray: none; }
 .x.axis .minor { stroke-opacity: 0.4; }
-#zoom { font-size: 20px; padding: 0 40px; line-height: 20px; position: absolute; left: 0; bottom: 20px;  }
+#zoom { font-size: 20px; padding: 0 40px; line-height: 20px; position: absolute; left: 0; bottom: 20px;	}
 #left-zoom, #right-zoom { cursor: pointer; }
 .icons { font-family: FontAwesome; fill: #888; text-anchor: middle; cursor: pointer; }
 .button-mini { font-size: 11px; color: yellow; }
 #choosers { text-align: center; }
 .chooser { display: inline-block; margin: 10px; }
 .chooser-label { margin-bottom: 4px; }
-#scenario-label { display: inline-block; vertical-align: middle; line-height: 1.2; font-size: 16px; text-align: right; padding-right: 10px; }  
+#scenario-label { display: inline-block; vertical-align: middle; line-height: 1.2; font-size: 16px; text-align: right; padding-right: 10px; }
 #lineLow, #lineHigh { fill: none; stroke: #999; stroke-width: 2; }
-.highlighted-line { stroke: black!important; stroke-width: 2!important;  }
+.highlighted-line { stroke: black!important; stroke-width: 2!important;	}
 #line-label { font-size: 20px; }
 .overlay { fill: none; pointer-events: all; }
 .focus circle { fill: none; stroke: #333; }
@@ -43,555 +42,534 @@ body { min-width: 460px; }
 #linercp60 { stroke: red; }
 #linercp85 { stroke: purple; }
 #linehistorical { stroke: black; }
-#info-text { margin: 0 40px; font-size: 20px; }
-.temperature-line { stroke: 12px; }
+#info-text { margin: 0 20px; font-size: 16px; line-height: 1.3; }
+.line-highlighter { stroke: 12px; }
 @media only screen and (max-width : 560px) {
-  #line-label { font-size: 14px; }
-  #wrapper { padding: 20px 0; }
-  .btn-lg { font-size: 15px; }
+	#line-label { font-size: 14px; }
+	#wrapper { padding: 20px 0; }
+	.btn-lg { font-size: 15px; }
 }
 </style>
 
 </head>
 <body>
-  <div id="wrapper">
-    <div id="choosers">
-      <div id="report" class="chooser">
-        <span class="btn-group" data-toggle="buttons">
-          <label class="historical btn btn-lg btn-primary active"><input type="radio" name="options" id="report-option1"> Historical</label>
-          <label class="emissions btn btn-lg btn-primary"><input type="radio" name="options" id="report-option2"> Scenarios</label>
-          <label class="cumulative btn btn-lg btn-primary"><input type="radio" name="options" id="report-option3"> Cumulative</label>
-          <label class="temperatures btn btn-lg btn-primary"><input type="radio" name="options" id="report-option4"> Warming</label>
-        </span>
-      </div>
-    </div>
-    <div id="graph">
-      <!--[if lte IE 8]>
-      <div id="ie8message">This interactive is not supported by your browser. To see it, download a modern browser such as <a href="https://www.google.com/chrome">Chrome</a>, <a href="http://www.getfirefox.net">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 9.</div>
-      <![endif]-->
-    </div>
-    <div id="info-text">This graph shows total manmade CO2 emissions, which have been increasing fairly steadily since the industrial revolution.</div>
-  </div>
+	<div id="wrapper">
+		<div id="choosers">
+			<div id="report" class="chooser">
+				<span class="btn-group" data-toggle="buttons">
+					<label class="historical btn btn-lg btn-primary active"><input type="radio" name="options" id="report-option1"> Historical</label>
+					<label class="emissions btn btn-lg btn-primary"><input type="radio" name="options" id="report-option2"> Scenarios</label>
+					<label class="cumulative btn btn-lg btn-primary"><input type="radio" name="options" id="report-option3"> Cumulative</label>
+					<label class="temperatures btn btn-lg btn-primary"><input type="radio" name="options" id="report-option4"> Warming</label>
+					<label class="budget btn btn-lg btn-primary"><input type="radio" name="options" id="report-option5"> Budget</label>
+				</span>
+			</div>
+		</div>
+		<div id="graph">
+		<!--[if lte IE 8]>
+		<div id="ie8message">This interactive is not supported by your browser. To see it, download a modern browser such as <a href="https://www.google.com/chrome">Chrome</a>, <a href="http://www.getfirefox.net">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 9.</div>
+		<![endif]-->
+		</div>
+		<div id="info-text">This graph shows total manmade CO2 emissions, which have been increasing fairly steadily since the industrial revolution.</div>
+	</div>
 </body>
 
 <script>
+// Enable bootstrap radio buttons
 $('.nav-tabs').button();
-
-var range, tcr, ecs, margin, width, height, x, y, xAxis, yAxis;
 
 // Defaults
 var locked = false,
-    scenarioName = "RCP 8.5",
-    initialMin = 1860,
-    initialMax = 2000,
-    untouched = true,
-    view = "historical";
-    
-function defineLayout() {
-  margin = {top: 10, right: 70, bottom: 30, left: 30};
-  width = parseFloat(d3.select("#graph").style("width")) - margin.left - margin.right;
-  height = 400 - margin.top - margin.bottom;
-  
-  x = d3.scale.linear().range([0, width]);
-  y = d3.scale.linear().range([height, 0]);
-  xAxis = d3.svg.axis().scale(x).tickSubdivide(true).tickFormat(d3.format()).ticks(6);
-  yAxis = d3.svg.axis().scale(y).tickSize(-width).orient("right");
-  
+		scenarioName = "RCP 8.5",
+		initialMin = 1860,
+		initialMax = 2000,
+		untouched = true,
+		view = "historical";
+
+// Layout
+var margin = {top: 10, right: 70, bottom: 30, left: 30},
+		width = parseFloat(d3.select("#graph").style("width")) - margin.left - margin.right,
+		height = 400 - margin.top - margin.bottom,
+		x = d3.scale.linear().range([0, width]),
+		y = d3.scale.linear().range([height, 0]),
+		xAxis = d3.svg.axis().scale(x).tickSubdivide(true).tickFormat(d3.format()).ticks(6),
+		yAxis = d3.svg.axis().scale(y).tickSize(-width).orient("right");
+
+// Load data and draw graph
+d3.csv("../data-complete.csv", parse, function(error, data) {
+
+	// Create SVG
+	d3.select("body #graph").append("svg")
+			.attr("width", width + margin.left + margin.right )
+			.attr("height", height + margin.top + margin.bottom);
+
+	// Add gradient shading definitions
+	var grad = d3.select("svg").append("defs")
+				.append("linearGradient").attr("id","shading")
+				.attr("x1","0%").attr("y1","0%").attr("x2","0%").attr("y2","100%");
+	grad.append("stop").attr("offset","0%").attr("style","stop-color: purple; stop-opacity: 1");
+	grad.append("stop").attr("offset","50%").attr("style","stop-color: purple; stop-opacity: 0.8");
+	grad.append("stop").attr("offset","60%").attr("style","stop-color: red; stop-opacity: 0.8");
+	grad.append("stop").attr("offset","90%").attr("style","stop-color: rgb(20,200,20); stop-opacity: 0.8");
+	grad.append("stop").attr("offset","100%").attr("style","stop-color: rgb(40,200,40); stop-opacity: 1");
+
+	// Set bounds to display
+	var dataStartYear = 1765,
+			lowerBounds = initialMin - dataStartYear + 6,
+			upperBounds = initialMax - dataStartYear + 6;
+	y.domain([0, data[upperBounds].emissions85 + 1]);
+	x.domain([data[lowerBounds].year, data[upperBounds].year]);
+
+	// Create graph
+	var svg = d3.select("svg")
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	// Add the main clip path
+	svg.append("clipPath")
+			.attr("id", "clip")
+		.append("rect")
+			.attr("width", width)
+			.attr("height", height);
+
+	// Add background group for highlighters	
+	svg.append("g").attr("id","bg-group");
+	
+	// Add the x-axis
+	svg.append("g")
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis);
+
+	// Add the y-axis
+	svg.append("g")
+		.attr("class", "y axis")
+		.classed("next",true)
+		.attr("transform", "translate(" + width + ",0)")
+		.call(yAxis);
+
+	svg.append("text")
+			.attr("class", "y label")
+			.attr("id", "y-label")
+			.attr("text-anchor", "middle")
+			.attr("y", width + 50)
+			.attr("x", -height/2)
+			.attr("dy", ".75em")
+			.attr("transform", "rotate(-90)")
+			.text("Annual emissions (MtC)");
+
+	// Line generators
+	var emissionsrcp3P = d3.svg.line().interpolate("monotone")
+		.x(function(d) { return x(d.year); })
+		.y(function(d) { return y(d.emissions3P); })
+		.defined(function(d) { return !isNaN(d.year) });
+	var emissionsrcp45 = d3.svg.line().interpolate("monotone")
+	.x(function(d) { return x(d.year); })
+	.y(function(d) { return y(d.emissions45); })
+		.defined(function(d) { return !isNaN(d.year) });
+	var emissionsrcp60 = d3.svg.line().interpolate("monotone")
+	.x(function(d) { return x(d.year); })
+	.y(function(d) { return y(d.emissions60); })
+		.defined(function(d) { return !isNaN(d.year) });
+	var emissionsrcp85 = d3.svg.line().interpolate("monotone")
+	.x(function(d) { return x(d.year); })
+	.y(function(d) { return y(d.emissions85); })
+		.defined(function(d) { return !isNaN(d.year) });
+
+	var emissionshistorical = d3.svg.line().interpolate("monotone")
+		.x(function(d) { return x(d.year); })
+		.y(function(d) { return y(d.emissions85); })
+			.defined(function(d) { return !isNaN(d.year) && d.year < 2010 });
+	var cumulativehistorical = d3.svg.line().interpolate("monotone")
+		.x(function(d) { return x(d.year); })
+		.y(function(d) { return y(d.cumulativercp85); })
+			.defined(function(d) { return !isNaN(d.year) && d.year < 2010 });
+	var tempshistorical = d3.svg.line().interpolate("monotone")
+		.x(function(d) { return x(d.cumulativercp85); })
+		.y(function(d) { return y((d.lowAR5rcp85 + d.highAR5rcp85)/2); })
+		.defined(function(d) { return !isNaN(d.year) && d.year < 2010 });
+
+	var cumulativercp3P = d3.svg.line().interpolate("monotone")
+		.x(function(d) { return x(d.year); })
+		.y(function(d) { return y(d.cumulativercp3P); })
+		.defined(function(d) { return !isNaN(d.year) });
+	var cumulativercp45 = d3.svg.line().interpolate("monotone")
+		.x(function(d) { return x(d.year); })
+		.y(function(d) { return y(d.cumulativercp45); })
+		.defined(function(d) { return !isNaN(d.year) });
+	var cumulativercp60 = d3.svg.line().interpolate("monotone")
+		.x(function(d) { return x(d.year); })
+		.y(function(d) { return y(d.cumulativercp60); })
+		.defined(function(d) { return !isNaN(d.year) });
+	var cumulativercp85 = d3.svg.line().interpolate("monotone")
+		.x(function(d) { return x(d.year); })
+		.y(function(d) { return y(d.cumulativercp85); })
+		.defined(function(d) { return !isNaN(d.year) });
+
+	var lineTemprcp3P = d3.svg.line().interpolate("monotone")
+		.x(function(d) { return x(d.cumulativercp3P); })
+		.y(function(d) { return y((d.lowAR5rcp3P + d.highAR5rcp3P)/2); })
+		.defined(function(d) { return !isNaN(d.year) });
+	var lineTemprcp45 = d3.svg.line().interpolate("monotone")
+	.x(function(d) { return x(d.cumulativercp45); })
+	.y(function(d) { return y((d.lowAR5rcp45 + d.highAR5rcp45)/2); })
+		.defined(function(d) { return !isNaN(d.year) });
+	var lineTemprcp60 = d3.svg.line().interpolate("monotone")
+	.x(function(d) { return x(d.cumulativercp60); })
+	.y(function(d) { return y((d.lowAR5rcp60 + d.highAR5rcp60)/2); })
+		.defined(function(d) { return !isNaN(d.year) });
+	var lineTemprcp85 = d3.svg.line().interpolate("monotone")
+	.x(function(d) { return x(d.cumulativercp85); })
+	.y(function(d) { return y((d.lowAR5rcp85 + d.highAR5rcp85)/2); })
+		.defined(function(d) { return !isNaN(d.year) });
+
+	// Shading generator
+	var shading85 = d3.svg.area().interpolate("monotone")
+			.x(function(d) { return x(d.cumulativercp85); })
+			.y0(function(d) { return y(d.highAR5rcp85); })
+			.y1(function(d) { return y(d.lowAR5rcp85); })
+			.defined(function(d) { return !isNaN(d.year) });
+
+	// Add the shading clip based on RCP85 as it's the only one that goes to the end of the axis
+	svg.append("clipPath").attr("id", "shading85").append("path").attr("class", "shading85")
+		.attr("clip-path", "url(#clip)").attr("d", shading85(data));
+
+	 // Add the lines
+	 svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
+			.attr("id", "linercp3P").attr("d", emissionsrcp3P(data));
+	 svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
+			.attr("id", "linercp45").attr("d", emissionsrcp45(data));
+	 svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
+			.attr("id", "linercp60").attr("d", emissionsrcp60(data));
+	 svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
+			.attr("id", "linercp85").attr("d", emissionsrcp85(data));
+	 svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
+		 .attr("id", "linehistorical").attr("d", emissionshistorical(data));
+
+	 // Add shaded background
+	 svg.append("rect")
+			 .attr("fill", "url(#shading)")
+			 .attr("id", "shade-block")
+			 .attr("opacity",0)
+			 .attr("class", "models")
+			 .attr("y", y(5))
+			 .attr("width", width)
+			 .attr("height", y(-1) - y(5))
+			 .attr("clip-path", "url(#shading85)");
+
+	// Add mouseover features
+	var mousemoveHistorical = function() {
+		 var x0 = x.invert(d3.mouse(this)[0]),
+				 bisector = d3.bisector(function(d) { return d.year; }).left;
+				 i = bisector(data, x0, 1),
+				 d0 = data[i - 1],
+				 d1 = data[i],
+				 d = x0 - d0 > d1 - x0 ? d1 : d0;
+		 svg.select("#circleHistorical").attr("transform", "translate(" + x(d.year) + "," + y(d.emissions3P) + ")");
+		 svg.selectAll(".labelHistorical").text(Math.round(d.emissions3P) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions3P) + 25) + ")");
+		 if (d3.mouse(this)[0] > width * 0.5) {
+				 d3.selectAll(".focus text").attr("x","-85").attr("dy",0);
+				 d3.selectAll(".focus rect").attr("x","-90").attr("width","100").attr("y",-15);
+			 } else {
+				 d3.selectAll(".focus text").attr("x","5").attr("dy",-15);
+				 d3.selectAll(".focus rect").attr("x","0").attr("width","100").attr("y",-30);
+		 }
+	};
+
+	var mousemoveEmissions = function() {
+		 var x0 = x.invert(d3.mouse(this)[0]),
+				 bisector = d3.bisector(function(d) { return d.year; }).left;
+				 i = bisector(data, x0, 1),
+				 d0 = data[i - 1],
+				 d1 = data[i],
+				 d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+		 svg.select("#circle3P").attr("transform", "translate(" + x(d.year) + "," + y(d.emissions3P) + ")");
+		 svg.select("#circle45") .attr("transform", "translate(" + x(d.year) + "," + y(d.emissions45) + ")");
+		 svg.select("#circle60") .attr("transform", "translate(" + x(d.year) + "," + y(d.emissions60) + ")");
+		 svg.select("#circle85") .attr("transform", "translate(" + x(d.year) + "," + y(d.emissions85) + ")");
+		 svg.selectAll(".label3P").text(Math.round(d.emissions3P) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions3P) + 25) + ")");
+		 svg.selectAll(".label45").text(Math.round(d.emissions45) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions45) + 13) + ")");
+		 svg.selectAll(".label60").text(Math.round(d.emissions60) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions60) - 13) + ")");
+		 svg.selectAll(".label85").text(Math.round(d.emissions85) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions85) - 25) + ")");
+		 if (d3.mouse(this)[0] > width * 0.5) {
+			 d3.selectAll(".focus text").attr("x","-95");
+			 d3.selectAll(".focus rect").attr("x","-100").attr("width","110");
+		 } else {
+			 d3.selectAll(".focus text").attr("x","5");
+			 d3.selectAll(".focus rect").attr("x","0").attr("width","110");
+		 }
+	};
+	var mousemoveCumulative = function() {
+		 var x0 = x.invert(d3.mouse(this)[0]),
+				 bisector = d3.bisector(function(d) { return d.year; }).left;
+				 i = bisector(data, x0, 1),
+				 d0 = data[i - 1],
+				 d1 = data[i],
+				 d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+		 svg.select("#circle3P").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp3P) + ")");
+		 svg.select("#circle45").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp45) + ")");
+		 svg.select("#circle60").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp60) + ")");
+		 svg.select("#circle85").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp85) + ")");
+		 svg.selectAll(".label3P").text(Math.round(d.cumulativercp3P) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp3P) + 25) + ")");
+		 svg.selectAll(".label45").text(Math.round(d.cumulativercp45) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp45) + 13) + ")");
+		 svg.selectAll(".label60").text(Math.round(d.cumulativercp60) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp60) - 13) + ")");
+		 svg.selectAll(".label85").text(Math.round(d.cumulativercp85) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp85) - 25) + ")");
+		 if (d3.mouse(this)[0] > width * 0.5) {
+			 d3.selectAll(".focus text").attr("x","-115");
+			 d3.selectAll(".focus rect").attr("x","-120").attr("width","130");
+		 } else {
+			 d3.selectAll(".focus text").attr("x","5");
+			 d3.selectAll(".focus rect").attr("x","0").attr("width","130");
+		 }
+	};
+	var mousemoveTemperatures = function() {
+		var x0 = x.invert(d3.mouse(this)[0]),
+				 bisector = d3.bisector(function(d) { return d.cumulativercp60; }).left
+				 i = Math.min(bisector(data, x0, 1), data.length - 1),
+				 d0 = data[i - 1],
+				 d1 = data[i],
+				 d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+		svg.select("#circle3P").attr("transform", "translate(" + x(d.cumulativercp3P) + "," + y((d.highAR5rcp3P + d.lowAR5rcp3P)/2) + ")");
+		svg.select("#circle45").attr("transform", "translate(" + x(d.cumulativercp45) + "," + y((d.highAR5rcp45 + d.lowAR5rcp45)/2) + ")");
+		svg.select("#circle60").attr("transform", "translate(" + x(d.cumulativercp60) + "," + y((d.highAR5rcp60 + d.lowAR5rcp60)/2) + ")");
+		svg.select("#circle85").attr("transform", "translate(" + x(d.cumulativercp85) + "," + y((d.highAR5rcp85 + d.lowAR5rcp85)/2) + ")");
+		svg.selectAll(".label3P").text(d.year + ": " + Math.round(d.lowAR5rcp3P * 10)/10 + "–" + Math.round(d.highAR5rcp3P * 10)/10 + "°C").attr("transform", "translate(" + x(d.cumulativercp3P) + "," + (y((d.highAR5rcp3P + d.lowAR5rcp3P)/2) + 25) + ")");
+		svg.selectAll(".label45").text(d.year + ": " + Math.round(d.lowAR5rcp45 * 10)/10 + "–" + Math.round(d.highAR5rcp45 * 10)/10 + "°C").attr("transform", "translate(" + x(d.cumulativercp45) + "," + (y((d.highAR5rcp45 + d.lowAR5rcp45)/2) + 13) + ")");
+		svg.selectAll(".label60").text(d.year + ": " + Math.round(d.lowAR5rcp60 * 10)/10 + "–" + Math.round(d.highAR5rcp60 * 10)/10 + "°C").attr("transform", "translate(" + x(d.cumulativercp60) + "," + (y((d.highAR5rcp60 + d.lowAR5rcp60)/2) - 13) + ")");
+		svg.selectAll(".label85").text(d.year + ": " + Math.round(d.lowAR5rcp85 * 10)/10 + "–" + Math.round(d.highAR5rcp85 * 10)/10 + "°C").attr("transform", "translate(" + x(d.cumulativercp85) + "," + (y((d.highAR5rcp85 + d.lowAR5rcp85)/2) - 25) + ")");
+		if (d3.mouse(this)[0] > width * 0.5) {
+			d3.selectAll(".focus text").attr("x","-95");
+			d3.selectAll(".focus rect").attr("x","-100").attr("width","110");
+		} else {
+			d3.selectAll(".focus text").attr("x","5");
+			d3.selectAll(".focus rect").attr("x","0").attr("width","110");
+		}
+	};
+
+	var focus = svg.append("g").attr("class", "focus").style("display", "none").attr("clip-path","url(#clip)");
+	focus.append("circle").classed("focus-scenarios",true).attr("id","circle3P").attr("r", 4.5).style("stroke","green");
+	focus.append("rect")	.classed("focus-scenarios label3P",true).attr("id","bg3P").attr("x", 0).attr("y",0).attr("rx",4).attr("width",130).attr("height",20).style("fill","green");
+	focus.append("text")	.classed("focus-scenarios label3P",true).attr("id","text3P").attr("x", 5).attr("dy", "15").style("fill","white");
+	focus.append("circle").classed("focus-scenarios 45",true).attr("id","circle45").attr("r", 4.5).style("stroke","orange");
+	focus.append("rect")	.classed("focus-scenarios label45",true).attr("id","bg3P").attr("x", 0).attr("y",0).attr("rx",4).attr("width",130).attr("height",20).style("fill","orange");
+	focus.append("text")	.classed("focus-scenarios label45",true).attr("id","text45").attr("x", 5).attr("dy", "15").style("fill","white");
+	focus.append("circle").classed("focus-scenarios 60",true).attr("id","circle60").attr("r", 4.5).style("stroke","red");
+	focus.append("rect")	.classed("focus-scenarios label60",true).attr("id","bg3P").attr("x", 0).attr("y",0).attr("rx",4).attr("width",130).attr("height",20).style("fill","red");
+	focus.append("text")	.classed("focus-scenarios label60",true).attr("id","text60").attr("x", 5).attr("dy", "15").style("fill","white");
+	focus.append("circle").classed("focus-scenarios 85",true).attr("id","circle85").attr("r", 4.5).style("stroke","purple");
+	focus.append("rect")	.classed("focus-scenarios label85",true).attr("id","bg3P").attr("x", 0).attr("y",0).attr("rx",4).attr("width",130).attr("height",20).style("fill","purple");
+	focus.append("text")	.classed("focus-scenarios label85",true).attr("id","text85").attr("x", 5).attr("dy", "15").style("fill","white");
+	focus.append("circle").classed("focus-historical historical",true).attr("id","circleHistorical").attr("r", 4.5).style("stroke","#555");
+	focus.append("rect")	.classed("focus-historical labelHistorical",true).attr("id","bg3P").attr("x", 0).attr("rx",4).attr("y",0).attr("width",130).attr("height",20).style("fill","#333");
+	focus.append("text")	.classed("focus-historical labelHistorical",true).attr("id","textHistorical").attr("x", 5).attr("dy", "15").style("fill","white");
+
+	svg.append("rect")
+			 .attr("class", "overlay")
+			 .attr("width", width)
+			 .attr("height", height)
+			 .on("mouseover", function() { focus.style("display", null); })
+			 .on("mouseout", function() { focus.style("display", "none"); })
+			 .on("mousemove", function() {
+				 if (view == "historical") mousemoveHistorical.call(this)
+				 else if (view == "emissions") mousemoveEmissions.call(this)
+				 else if (view == "cumulative") mousemoveCumulative.call(this)
+				 else mousemoveTemperatures.call(this)
+				});
+
+	// Set initial state visbility for mouseover stuff
+	d3.selectAll(".focus-scenarios").style("opacity",0);
+	d3.selectAll(".focus-historical").style("opacity",1);
+
+	function drawLineAcross(value,color,delay,label,baseline,indent) {
+		svg.append("line").classed("highlighter line-highlighter",true).style("stroke",color)
+			.attr("x1",0).attr("x2",0).attr("y1",y(value)).attr("y2",y(value))
+			.transition().duration(1000).delay(delay).attr("x2",width)
+		svg.append("text").classed("highlighter temperature-label",true).text(label)
+			.attr("x",indent).attr("y",y(value) + baseline).style("fill",color).style("opacity",0)
+			.transition().duration(1000).delay(delay + 750).style("opacity",1)
+	}
+
+	function drawLineDown(value,color,delay,label,baseline,indent) {
+		svg.append("line").classed("highlighter line-highlighter",true).style("stroke",color)
+			.attr("x1",x(value)).attr("x2",x(value)).attr("y1",0).attr("y2",0)
+			.transition().duration(1000).delay(delay).attr("y2",height)
+		svg.append("text").classed("highlighter temperature-label",true).text(label)
+			.attr("x",x(value) + 5).attr("y",20).style("fill",color).style("opacity",0)
+			.transition().duration(1000).delay(delay + 750).style("opacity",1)
+	}
+
+	function drawRectDown(lowValue,highValue,color,delay,label,baseline,indent) {
+		var bg  = svg.select("#bg-group");
+		bg.append("rect").classed("highlighter rect-highlighter",true).style("stroke",color).style("opacity",0.1)
+			.attr("x", x(lowValue)).attr("width", x(highValue) - x(lowValue)).attr("y",0).attr("height",0).attr("fill","eee")
+			.transition().duration(1000).delay(delay).attr("height", height);
+		bg.append("text").classed("highlighter temperature-label",true).text(label)
+			.attr("x",x(lowValue) + 5).attr("y",20).style("fill",color).style("opacity",0).style("transform","rotate(-90)")
+			.transition().duration(1000).delay(delay + 750).style("opacity",1);
+	}
+
+	function redraw() {
+		d3.selectAll(".highlighter").remove();
+		var t = svg.transition().duration(1250);
+		if (view == "historical") {
+			d3.selectAll(".focus-scenarios").style("opacity",0);
+			d3.selectAll(".focus-historical").style("opacity",0).transition().duration(2000).delay(0).style("opacity",1);
+			lowerBounds = 1860 - dataStartYear + 6;
+			upperBounds = 2010 - dataStartYear + 6;
+			x.domain([data[lowerBounds].year, data[upperBounds].year]);
+			y.domain([0, data[upperBounds].emissions85 + 1]);
+			t.select(".x.axis").call(xAxis);
+			t.select(".y.axis").call(yAxis);
+			t.select("#linehistorical").attr("d", emissionshistorical(data));
+			t.select("#linercp3P").attr("d", emissionsrcp3P(data));
+			t.select("#linercp45").attr("d",	emissionsrcp45(data));
+			t.select("#linercp60").attr("d",	emissionsrcp60(data));
+			t.select("#linercp85").attr("d",	emissionsrcp85(data));
+			t.select("#shade-block").attr("opacity",0);
+			d3.select("#y-label").text("Annual emissions (MtC)");
+			d3.select("#info-text").text("This graph shows total manmade CO2 emissions, which have been increasing fairly steadily since the industrial revolution.");
+		}
+		else if (view == "emissions") {
+			d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(2000).delay(0).style("opacity",1);
+			d3.selectAll(".focus-historical").style("opacity",0);
+			lowerBounds = 2000 - dataStartYear + 6;
+			upperBounds = 2100 - dataStartYear + 6;
+			x.domain([data[lowerBounds].year, data[upperBounds].year]);
+			y.domain([-5, data[upperBounds].emissions85 + 1]);
+			t.select(".x.axis").call(xAxis);
+			t.select(".y.axis").call(yAxis);
+			t.select("#linehistorical").attr("d", emissionshistorical(data));
+			t.select("#linercp3P").attr("d", emissionsrcp3P(data));
+			t.select("#linercp45").attr("d",	emissionsrcp45(data));
+			t.select("#linercp60").attr("d",	emissionsrcp60(data));
+			t.select("#linercp85").attr("d",	emissionsrcp85(data));
+			t.select("#shade-block").attr("opacity",0);
+			d3.select("#y-label").text("Annual emissions (MtC)");
+			d3.select("#info-text").text("The IPCC has examined a number of future emissions scenarios. So far actual emissions have tracked the highest path – RCP 8.0, shown here in purple – though the world has agreed in principle that it must cut its emissions.");
+		}
+		else if (view == "cumulative") {
+			d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(2000).delay(0).style("opacity",1);
+			d3.selectAll(".focus-historical").style("opacity",0);
+			lowerBounds = 2013 - dataStartYear + 6;
+			upperBounds = 2100 - dataStartYear + 6;
+			x.domain([data[lowerBounds].year, data[upperBounds].year]);
+			y.domain([0, data[upperBounds].cumulativercp85 + 100]);
+			t.select(".x.axis").call(xAxis);
+			t.select(".y.axis").call(yAxis);
+			t.select("#linehistorical").attr("d", cumulativehistorical(data));
+			t.select("#linercp3P").attr("d", cumulativercp3P(data));
+			t.select("#linercp45").attr("d", cumulativercp45(data));
+			t.select("#linercp60").attr("d", cumulativercp60(data));
+			t.select("#linercp85").attr("d", cumulativercp85(data));
+			t.select("#shade-block").attr("opacity",0);
+			d3.select("#y-label").text("Cumulative emissions (MtC)");
+			d3.select("#info-text").text("But even when emissions start to decline, carbon keeps building up in the air, because of the long lifetime of CO2. This graph shows the same four scenarios in terms of their cumulative emissions over time.");
+		}
+		else if (view == "temperatures") {
+			d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(2000).delay(0).style("opacity",1);
+			d3.selectAll(".focus-historical").style("opacity",0);
+			upperBounds = 1870 - dataStartYear + 6;
+			lowerBounds = 2013 - dataStartYear + 6;
+			y.domain([-1,5]);
+			x.domain([400,2500]);
+			t.select(".x.axis").call(xAxis);
+			t.select(".y.axis").call(yAxis);
+			t.select("#linehistorical").attr("d", tempshistorical(data));
+			t.select("#linercp3P").attr("d", lineTemprcp3P(data));
+			t.select("#linercp45").attr("d",	lineTemprcp45(data));
+			t.select("#linercp60").attr("d",	lineTemprcp60(data));
+			t.select("#linercp85").attr("d",	lineTemprcp85(data));
+			t.select(".shading85").attr("d",	shading85(data));
+			t.select("#shade-block").attr("y", y(12)).attr("height", y(-1) - y(12)).delay(2000).attr("opacity",0.2);
+			d3.select("#y-label").text("Temperature change (°C)");
+			d3.select("#info-text").text("When the graph is replotted to show cumulative emissions against expected temperature rise, something striking comes into view: all the scenarios follow basically the same straight path, the only difference being how fast. In other words, the thing that determines how hot the planet will get is the total amount of carbon we emit – not when we emit it. (The green line goes back on itself when human starts taking more carbon out of the air than we put into it, and the shading shows the uncertainty range based on the RCP 8.0 scenario.)")
+		}
+		else if (view == "budget") {
+			d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(2000).delay(0).style("opacity",1);
+			d3.selectAll(".focus-historical").style("opacity",0);
+			upperBounds = 1870 - dataStartYear + 6;
+			lowerBounds = 2013 - dataStartYear + 6;
+			y.domain([-1,5]);
+			x.domain([400,2500]);
+			t.select(".x.axis").call(xAxis);
+			t.select(".y.axis").call(yAxis);
+			t.select("#linehistorical").attr("d", tempshistorical(data));
+			t.select("#linercp3P").attr("d", lineTemprcp3P(data));
+			t.select("#linercp45").attr("d",	lineTemprcp45(data));
+			t.select("#linercp60").attr("d",	lineTemprcp60(data));
+			t.select("#linercp85").attr("d",	lineTemprcp85(data));
+			t.select(".shading85").attr("d",	shading85(data));
+			t.select("#shade-block").attr("y", y(12)).attr("height", y(-1) - y(12)).delay(2000).attr("opacity",0.2);
+			drawLineAcross(2,"red",500,"Agreed temperature limit", -10, 20);
+			drawLineDown(1000,"#333",1000,"All-time carbon budget", -10, 20);
+			drawRectDown(900,1100,"#333",1000,"", -10, 20);
+			d3.select("#y-label").text("Temperature change (°C)");
+			d3.select("#info-text").text("The world has agreed to limit warming to 2°C. For a two-thirds chance of achieving that, cumulative emissions must stay below 1000 billion tonne of carbon. (A bit less if we want better odds; a bit more if we accept worse odds.) Of that, we've already used around 540 billion, leaving just 460 – a small fraction of the carbon stored in the world's remaining fossil fuel reserves. Only radical emissions cuts would stop us exceeding this budget by the 2050s, and on current trends we'll exceed it in about 30 years.")
+		}
+	}
+
+	// Activate chooser buttons
+	d3.select(".historical").on("click",function() { view = "historical"; redraw(); });
+	d3.select(".emissions").on("click",function() { view = "emissions"; redraw(); });
+	d3.select(".cumulative").on("click",function() { view = "cumulative"; redraw(); });
+	d3.select(".temperatures").on("click",function() { view = "temperatures"; redraw(); });
+	d3.select(".budget").on("click",function() { view = "budget"; redraw(); });
+
+	// Highlight lines
+	function nameLine(action) {
+		if (action == "remove") svg.select("#line-label").remove();
+		else svg.append("text").attr("id","line-label").text(function() {
+			if (view == "historical") return "Emissions so far"
+			else {
+				if (action == "linercp85") return "Highest emissions scenario (RCP 8.5)"
+				else if (action == "linercp60")	return "High emissions scenario (RCP 6.0)"
+				else if (action == "linercp45")	return "Low emissions scenario (RCP 4.5)"
+				else if (action == "linercp3P") return "Lowest emissions scenario (RCP 3P)"
+			}
+		}).attr("x", 5).attr("y",27).attr("text-anchor","start");
+	}
+	d3.selectAll(".emissions-line").on("mouseover", function(){
+		d3.select(this).classed("highlighted-line",true);
+		nameLine(d3.select(this).attr("id"));
+	});
+	d3.selectAll(".emissions-line").on("mouseout", function(){
+		d3.select(this).classed("highlighted-line",false);
+		nameLine("remove");
+	});
+});
+
+// Parse and filter the data
+function parse(d) {
+	d.year = parseInt(d["1"]);
+	d.observations = parseFloat(d["2"]);
+	d.forcing = parseFloat(d["3"]);
+	d.aerosol = parseFloat(d["4"]);
+	d.cumulativercp3P = parseFloat(d["5"]);
+	d.lowAR5rcp3P = parseFloat(d["6"]);
+	d.lowAR4rcp3P = parseFloat(d["7"]);
+	d.highAR5rcp3P = parseFloat(d["8"]);
+	d.highAR4rcp3P = parseFloat(d["9"]);
+	d.cumulativercp45 = parseFloat(d["14"]);
+	d.lowAR5rcp45 = parseFloat(d["15"]);
+	d.lowAR4rcp45 = parseFloat(d["16"]);
+	d.highAR5rcp45 = parseFloat(d["17"]);
+	d.highAR4rcp45 = parseFloat(d["18"]);
+	d.cumulativercp60 = parseFloat(d["23"]);
+	d.lowAR5rcp60 = parseFloat(d["24"]);
+	d.lowAR4rcp60 = parseFloat(d["25"]);
+	d.highAR5rcp60 = parseFloat(d["26"]);
+	d.highAR4rcp60 = parseFloat(d["27"]);
+	d.cumulativercp85 = parseFloat(d["32"]);
+	d.lowAR5rcp85 = parseFloat(d["33"]);
+	d.lowAR4rcp85 = parseFloat(d["34"]);
+	d.highAR5rcp85 = parseFloat(d["35"]);
+	d.highAR4rcp85 = parseFloat(d["36"]);
+	d.emissions3P = parseFloat(d["37"]);
+	d.emissions45 = parseFloat(d["38"]);
+	d.emissions60 = parseFloat(d["39"]);
+	d.emissions85 = parseFloat(d["40"]);
+	return d;
 }
-defineLayout();
-
-function drawGraph() {
-  // Load data and draw graph
-  d3.csv("../data-complete.csv", parse, function(error, data) {
-
-    // Create SVG
-    d3.select("body #graph").append("svg")
-        .attr("width", width + margin.left + margin.right )
-        .attr("height", height + margin.top + margin.bottom);
-
-    // Add gradient shading definitions
-    var grad = d3.select("svg").append("defs")
-      .append("linearGradient").attr("id","shading").attr("x1","0%").attr("y1","0%").attr("x2","0%").attr("y2","100%");
-    grad.append("stop").attr("offset","0%").attr("style","stop-color: purple; stop-opacity: 1");
-    grad.append("stop").attr("offset","50%").attr("style","stop-color: purple; stop-opacity: 0.8");
-    grad.append("stop").attr("offset","60%").attr("style","stop-color: red; stop-opacity: 0.8");
-    grad.append("stop").attr("offset","90%").attr("style","stop-color: rgb(20,200,20); stop-opacity: 0.8");
-    grad.append("stop").attr("offset","100%").attr("style","stop-color: rgb(40,200,40); stop-opacity: 1");
-
-    // Set bounds to display
-    var dataStartYear = 1765,
-        lowerBounds = initialMin - dataStartYear + 6,
-        upperBounds = initialMax - dataStartYear + 6;
-    y.domain([0, data[upperBounds].emissions85 + 1]);
-    x.domain([data[lowerBounds].year, data[upperBounds].year]);
-
-    // Create graph
-    var svg = d3.select("svg")
-        .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    // Add the main clip path
-    svg.append("clipPath")
-        .attr("id", "clip")
-      .append("rect")
-        .attr("width", width)
-        .attr("height", height);
-        
-    // Add the x-axis
-    svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-    // Add the y-axis
-    svg.append("g")
-      .attr("class", "y axis")
-      .classed("next",true)
-      .attr("transform", "translate(" + width + ",0)")
-      .call(yAxis);
-
-    svg.append("text")
-        .attr("class", "y label")
-        .attr("id", "y-label")
-        .attr("text-anchor", "middle")
-        .attr("y", width + 50)
-        .attr("x", -height/2)
-        .attr("dy", ".75em")
-        .attr("transform", "rotate(-90)")
-        .text("Annual emissions (MtC)");
-
-    // Line generators
-    var observed = d3.svg.line().interpolate("monotone")
-      .x(function(d) { return x(d.year); })
-      .y(function(d) { return y(d.observations); })
-      .defined(function(d) { return !isNaN(d.observations) && !(d.observations > 100) });
-
-    var emissionsrcp3P = d3.svg.line().interpolate("monotone")
-      .x(function(d) { return x(d.year); })
-      .y(function(d) { return y(d.emissions3P); })
-      .defined(function(d) { return !isNaN(d.year) });
-    var emissionsrcp45 = d3.svg.line().interpolate("monotone")
-    .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.emissions45); })
-      .defined(function(d) { return !isNaN(d.year) });
-    var emissionsrcp60 = d3.svg.line().interpolate("monotone")
-    .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.emissions60); })
-      .defined(function(d) { return !isNaN(d.year) });
-    var emissionsrcp85 = d3.svg.line().interpolate("monotone")
-    .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.emissions85); })
-      .defined(function(d) { return !isNaN(d.year) });
-
-    var emissionshistorical = d3.svg.line().interpolate("monotone")
-    .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.emissions85); })
-      .defined(function(d) { return !isNaN(d.year) && d.year < 2010 });
-
-    var cumulativercp3P = d3.svg.line().interpolate("monotone")
-      .x(function(d) { return x(d.year); })
-      .y(function(d) { return y(d.cumulativercp3P); })
-      .defined(function(d) { return !isNaN(d.year) });
-    var cumulativercp45 = d3.svg.line().interpolate("monotone")
-      .x(function(d) { return x(d.year); })
-      .y(function(d) { return y(d.cumulativercp45); })
-      .defined(function(d) { return !isNaN(d.year) });
-    var cumulativercp60 = d3.svg.line().interpolate("monotone")
-      .x(function(d) { return x(d.year); })
-      .y(function(d) { return y(d.cumulativercp60); })
-      .defined(function(d) { return !isNaN(d.year) });
-    var cumulativercp85 = d3.svg.line().interpolate("monotone")
-      .x(function(d) { return x(d.year); })
-      .y(function(d) { return y(d.cumulativercp85); })
-      .defined(function(d) { return !isNaN(d.year) });
-
-    var lineTemprcp3P = d3.svg.line().interpolate("monotone")
-      .x(function(d) { return x(d.cumulativercp3P); })
-      .y(function(d) { return y((d.lowAR5rcp3P + d.highAR5rcp3P)/2); })
-      .defined(function(d) { return !isNaN(d.year) });
-    var lineTemprcp45 = d3.svg.line().interpolate("monotone")
-    .x(function(d) { return x(d.cumulativercp45); })
-    .y(function(d) { return y((d.lowAR5rcp45 + d.highAR5rcp45)/2); })
-      .defined(function(d) { return !isNaN(d.year) });
-    var lineTemprcp60 = d3.svg.line().interpolate("monotone")
-    .x(function(d) { return x(d.cumulativercp60); })
-    .y(function(d) { return y((d.lowAR5rcp60 + d.highAR5rcp60)/2); })
-      .defined(function(d) { return !isNaN(d.year) });
-    var lineTemprcp85 = d3.svg.line().interpolate("monotone")
-    .x(function(d) { return x(d.cumulativercp85); })
-    .y(function(d) { return y((d.lowAR5rcp85 + d.highAR5rcp85)/2); })
-      .defined(function(d) { return !isNaN(d.year) });
-
-    // Shading generator
-    var shading85 = d3.svg.area().interpolate("monotone")
-        .x(function(d) { return x(d.cumulativercp85); })
-        .y0(function(d) { return y(d.highAR5rcp85); })
-        .y1(function(d) { return y(d.lowAR5rcp85); })
-        .defined(function(d) { return !isNaN(d.year) });
-    var shading60 = d3.svg.area().interpolate("monotone")
-        .x(function(d) { return x(d.cumulativercp60); })
-        .y0(function(d) { return y(d.highAR5rcp60); })
-        .y1(function(d) { return y(d.lowAR5rcp60); })
-        .defined(function(d) { return !isNaN(d.year) });
-    var shading45 = d3.svg.area().interpolate("monotone")
-        .x(function(d) { return x(d.cumulativercp45); })
-        .y0(function(d) { return y(d.highAR5rcp45); })
-        .y1(function(d) { return y(d.lowAR5rcp45); })
-        .defined(function(d) { return !isNaN(d.year) });
-    var shading3P = d3.svg.area().interpolate("monotone")
-        .x(function(d) { return x(d.cumulativercp3P); })
-        .y0(function(d) { return y(d.highAR5rcp3P); })
-        .y1(function(d) { return y(d.lowAR5rcp3P); })
-        .defined(function(d) { return !isNaN(d.year) });
-
-    // Add the shading clips
-    svg.append("clipPath").attr("id", "shading3P").append("path").attr("class", "shading3P")
-      .attr("clip-path", "url(#clip)").attr("d", shading3P(data));
-    svg.append("clipPath").attr("id", "shading45").append("path").attr("class", "shading45")
-      .attr("clip-path", "url(#clip)").attr("d", shading45(data));
-    svg.append("clipPath").attr("id", "shading60").append("path").attr("class", "shading60")
-      .attr("clip-path", "url(#clip)").attr("d", shading60(data));
-    svg.append("clipPath").attr("id", "shading85").append("path").attr("class", "shading85")
-      .attr("clip-path", "url(#clip)").attr("d", shading85(data));
-
-
-     // Add the lines
-     svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
-        .attr("id", "linercp3P").attr("d", emissionsrcp3P(data));
-     svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
-        .attr("id", "linercp45").attr("d", emissionsrcp45(data));
-     svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
-        .attr("id", "linercp60").attr("d", emissionsrcp60(data));
-     svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
-        .attr("id", "linercp85").attr("d", emissionsrcp85(data));
-     svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
-       .attr("id", "observed").attr("d", observed(data));
-     svg.append("path").attr("clip-path", "url(#clip)").classed("emissions-line",true)
-       .attr("id", "linehistorical").attr("d", emissionshistorical(data));
-
-     // Add shaded background
-     svg.append("rect")
-         .attr("fill", "url(#shading)")
-         .attr("id", "shade-block")
-         .attr("opacity",0)
-         .attr("class", "models")
-         .attr("y", y(5))
-         .attr("width", width)
-         .attr("height", y(-1) - y(5))
-         .attr("clip-path", "url(#shading85)");
-    
-    // Add mouseover features
-    var mousemoveHistorical = function() {
-       var x0 = x.invert(d3.mouse(this)[0]),
-           bisector = d3.bisector(function(d) { return d.year; }).left;
-           i = bisector(data, x0, 1),
-           d0 = data[i - 1],
-           d1 = data[i],
-           d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-       svg.select("#circleobserved").attr("transform", "translate(" + x(d.year) + "," + y(d.emissions3P) + ")");
-       svg.selectAll(".labelobserved").text(Math.round(d.emissions3P) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions3P) + 25) + ")");
-       if (d3.mouse(this)[0] > width * 0.5) {
-           d3.selectAll(".focus text").attr("x","-85");
-           d3.selectAll(".focus rect").attr("x","-90").attr("width","100");
-         } else {
-           d3.selectAll(".focus text").attr("x","5");
-           d3.selectAll(".focus rect").attr("x","0").attr("width","100");
-       }
-    };
-    
-    var mousemoveEmissions = function() {
-       var x0 = x.invert(d3.mouse(this)[0]),
-           bisector = d3.bisector(function(d) { return d.year; }).left;
-           i = bisector(data, x0, 1),
-           d0 = data[i - 1],
-           d1 = data[i],
-           d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-       svg.select("#circle3P").attr("transform", "translate(" + x(d.year) + "," + y(d.emissions3P) + ")");
-       svg.select("#circle45") .attr("transform", "translate(" + x(d.year) + "," + y(d.emissions45) + ")");
-       svg.select("#circle60") .attr("transform", "translate(" + x(d.year) + "," + y(d.emissions60) + ")");
-       svg.select("#circle85") .attr("transform", "translate(" + x(d.year) + "," + y(d.emissions85) + ")");
-       svg.selectAll(".label3P").text(Math.round(d.emissions3P) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions3P) + 25) + ")");
-       svg.selectAll(".label45").text(Math.round(d.emissions45) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions45) + 13) + ")");
-       svg.selectAll(".label60").text(Math.round(d.emissions60) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions60) - 13) + ")");
-       svg.selectAll(".label85").text(Math.round(d.emissions85) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions85) - 25) + ")");
-       if (d3.mouse(this)[0] > width * 0.5) {
-         d3.selectAll(".focus text").attr("x","-95");
-         d3.selectAll(".focus rect").attr("x","-100").attr("width","110");
-       } else {
-         d3.selectAll(".focus text").attr("x","5");
-         d3.selectAll(".focus rect").attr("x","0").attr("width","110");
-       }
-    };
-    var mousemoveCumulative = function() {
-       var x0 = x.invert(d3.mouse(this)[0]),
-           bisector = d3.bisector(function(d) { return d.year; }).left;
-           i = bisector(data, x0, 1),
-           d0 = data[i - 1],
-           d1 = data[i],
-           d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-       svg.select("#circle3P").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp3P) + ")");
-       svg.select("#circle45").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp45) + ")");
-       svg.select("#circle60").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp60) + ")");
-       svg.select("#circle85").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp85) + ")");
-       svg.selectAll(".label3P").text(Math.round(d.cumulativercp3P) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp3P) + 25) + ")");
-       svg.selectAll(".label45").text(Math.round(d.cumulativercp45) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp45) + 13) + ")");
-       svg.selectAll(".label60").text(Math.round(d.cumulativercp60) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp60) - 13) + ")");
-       svg.selectAll(".label85").text(Math.round(d.cumulativercp85) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp85) - 25) + ")");
-       if (d3.mouse(this)[0] > width * 0.5) {
-         d3.selectAll(".focus text").attr("x","-115");
-         d3.selectAll(".focus rect").attr("x","-120").attr("width","130");
-       } else {
-         d3.selectAll(".focus text").attr("x","5");
-         d3.selectAll(".focus rect").attr("x","0").attr("width","130");
-       }
-    };
-    var mousemoveTemperatures = function() {
-      var x0 = x.invert(d3.mouse(this)[0]),
-           bisector = d3.bisector(function(d) { return d.cumulativercp60; }).left
-           i = Math.min(bisector(data, x0, 1), data.length - 1),
-           d0 = data[i - 1],
-           d1 = data[i],
-           d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-      svg.select("#circle3P").attr("transform", "translate(" + x(d.cumulativercp3P) + "," + y((d.highAR5rcp3P + d.lowAR5rcp3P)/2) + ")");
-      svg.select("#circle45").attr("transform", "translate(" + x(d.cumulativercp45) + "," + y((d.highAR5rcp45 + d.lowAR5rcp45)/2) + ")");
-      svg.select("#circle60").attr("transform", "translate(" + x(d.cumulativercp60) + "," + y((d.highAR5rcp60 + d.lowAR5rcp60)/2) + ")");
-      svg.select("#circle85").attr("transform", "translate(" + x(d.cumulativercp85) + "," + y((d.highAR5rcp85 + d.lowAR5rcp85)/2) + ")");
-      svg.selectAll(".label3P").text(d.year + ": " + Math.round(d.lowAR5rcp3P * 10)/10 + "–" + Math.round(d.highAR5rcp3P * 10)/10 + "°C").attr("transform", "translate(" + x(d.cumulativercp3P) + "," + (y((d.highAR5rcp3P + d.lowAR5rcp3P)/2) + 25) + ")");
-      svg.selectAll(".label45").text(d.year + ": " + Math.round(d.lowAR5rcp45 * 10)/10 + "–" + Math.round(d.highAR5rcp45 * 10)/10 + "°C").attr("transform", "translate(" + x(d.cumulativercp45) + "," + (y((d.highAR5rcp45 + d.lowAR5rcp45)/2) + 13) + ")");
-      svg.selectAll(".label60").text(d.year + ": " + Math.round(d.lowAR5rcp60 * 10)/10 + "–" + Math.round(d.highAR5rcp60 * 10)/10 + "°C").attr("transform", "translate(" + x(d.cumulativercp60) + "," + (y((d.highAR5rcp60 + d.lowAR5rcp60)/2) - 13) + ")");
-      svg.selectAll(".label85").text(d.year + ": " + Math.round(d.lowAR5rcp85 * 10)/10 + "–" + Math.round(d.highAR5rcp85 * 10)/10 + "°C").attr("transform", "translate(" + x(d.cumulativercp85) + "," + (y((d.highAR5rcp85 + d.lowAR5rcp85)/2) - 25) + ")");
-      if (d3.mouse(this)[0] > width * 0.5) {
-        d3.selectAll(".focus text").attr("x","-95");
-        d3.selectAll(".focus rect").attr("x","-100").attr("width","110");
-      } else {
-        d3.selectAll(".focus text").attr("x","5");
-        d3.selectAll(".focus rect").attr("x","0").attr("width","110");
-      }
-    };
-    
-    var focus = svg.append("g").attr("class", "focus").style("display", "none");
-    focus.append("circle").classed("focus-scenarios",true).attr("id","circle3P").attr("r", 4.5).style("stroke","green");
-    focus.append("rect")  .classed("focus-scenarios label3P",true).attr("id","bg3P").attr("x", 0).attr("y",0).attr("rx",4).attr("width",130).attr("height",20).style("fill","green");
-    focus.append("text")  .classed("focus-scenarios label3P",true).attr("id","text3P").attr("x", 5).attr("dy", "15").style("fill","white");
-    focus.append("circle").classed("focus-scenarios 45",true).attr("id","circle45").attr("r", 4.5).style("stroke","orange");
-    focus.append("rect")  .classed("focus-scenarios label45",true).attr("id","bg3P").attr("x", 0).attr("y",0).attr("rx",4).attr("width",130).attr("height",20).style("fill","orange");
-    focus.append("text")  .classed("focus-scenarios label45",true).attr("id","text45").attr("x", 5).attr("dy", "15").style("fill","white");
-    focus.append("circle").classed("focus-scenarios 60",true).attr("id","circle60").attr("r", 4.5).style("stroke","red");
-    focus.append("rect")  .classed("focus-scenarios label60",true).attr("id","bg3P").attr("x", 0).attr("y",0).attr("rx",4).attr("width",130).attr("height",20).style("fill","red");
-    focus.append("text")  .classed("focus-scenarios label60",true).attr("id","text60").attr("x", 5).attr("dy", "15").style("fill","white");
-    focus.append("circle").classed("focus-scenarios 85",true).attr("id","circle85").attr("r", 4.5).style("stroke","purple");
-    focus.append("rect")  .classed("focus-scenarios label85",true).attr("id","bg3P").attr("x", 0).attr("y",0).attr("rx",4).attr("width",130).attr("height",20).style("fill","purple");
-    focus.append("text")  .classed("focus-scenarios label85",true).attr("id","text85").attr("x", 5).attr("dy", "15").style("fill","white");
-    focus.append("circle").classed("focus-historical observed",true).attr("id","circleobserved").attr("r", 4.5).style("stroke","#555");
-    focus.append("rect")  .classed("focus-historical labelobserved",true).attr("id","bg3P").attr("x", 0).attr("rx",4).attr("y",0).attr("width",130).attr("height",20).style("fill","#333");
-    focus.append("text")  .classed("focus-historical labelobserved",true).attr("id","textobserved").attr("x", 5).attr("dy", "15").style("fill","white");
-
-    svg.append("rect")
-         .attr("class", "overlay")
-         .attr("width", width)
-         .attr("height", height)
-         .on("mouseover", function() { focus.style("display", null); })
-         .on("mouseout", function() { focus.style("display", "none"); })
-         .on("mousemove", function() { 
-           if (view == "historical") mousemoveHistorical.call(this)
-           else if (view == "emissions") mousemoveEmissions.call(this)
-           else if (view == "cumulative") mousemoveCumulative.call(this)
-           else if (view == "temperatures") mousemoveTemperatures.call(this)
-          });
-
-    // Set initial state visbility for mouseover stuff
-    d3.selectAll(".focus-scenarios").style("opacity",0);
-    d3.selectAll(".focus-historical").style("opacity",1);
-
-    function drawLineAcross(value,color,delay,label,baseline,indent) {
-      svg.append("line").classed("highlighter",true).classed("temperature-line",true).style("stroke",color)
-        .attr("x1",0).attr("x2",0).attr("y1",y(value)).attr("y2",y(value))
-        .transition().duration(1000).delay(delay).attr("x2",width)
-      svg.append("text").classed("highlighter",true).classed("temperature-label",true).text(label)
-        .attr("x",indent).attr("y",y(value) + baseline).style("fill",color).style("opacity",0)
-        .transition().duration(1000).delay(delay + 750).style("opacity",1)
-    }
-
-    function drawLineDown(value,color,delay,label,baseline,indent) {
-      svg.append("line").classed("highlighter",true).classed("temperature-line",true).style("stroke",color)
-        .attr("x1",x(value)).attr("x2",x(value)).attr("y1",0).attr("y2",0)
-        .transition().duration(1000).delay(delay).attr("y2",height)
-      svg.append("text").classed("highlighter",true).classed("temperature-label",true).text(label)
-        .attr("x",x(value) + 5).attr("y",20).style("fill",color).style("opacity",0)
-        .transition().duration(1000).delay(delay + 750).style("opacity",1)
-    }
-
-    function redraw() {
-      var t = svg.transition().duration(1250);
-      if (view == "historical") {
-        d3.selectAll(".temperature-line").transition().duration(1000).delay(0).style("opacity",0);
-        d3.selectAll(".focus-scenarios").style("opacity",0);
-        d3.selectAll(".focus-historical").style("opacity",0).transition().duration(1000).delay(0).style("opacity",1);
-        lowerBounds = 1860 - dataStartYear + 6;
-        upperBounds = 2010 - dataStartYear + 6;
-        x.domain([data[lowerBounds].year, data[upperBounds].year]);
-        y.domain([0, data[upperBounds].emissions85 + 1]);
-        t.select(".x.axis").call(xAxis);
-        t.select(".y.axis").call(yAxis);
-        t.select("#linehistorical").attr("d", emissionshistorical(data));
-        t.select("#linercp3P").attr("d", emissionsrcp3P(data));
-        t.select("#linercp45").attr("d",  emissionsrcp45(data));
-        t.select("#linercp60").attr("d",  emissionsrcp60(data));
-        t.select("#linercp85").attr("d",  emissionsrcp85(data));
-        t.select("#shade-block").attr("opacity",0);
-        d3.select("#y-label").text("Annual emissions (MtC)");
-        d3.select("#info-text").text("This graph shows total manmade CO2 emissions, which have been increasing fairly steadily since the industrial revolution.");
-      }      
-      else if (view == "emissions") {
-        d3.selectAll(".temperature-line").transition().duration(1000).delay(0).style("opacity",0);
-        d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(1000).delay(1000).style("opacity",1);
-        d3.selectAll(".focus-historical").style("opacity",0);
-        lowerBounds = 2000 - dataStartYear + 6;
-        upperBounds = 2100 - dataStartYear + 6;
-        x.domain([data[lowerBounds].year, data[upperBounds].year]);
-        y.domain([-5, data[upperBounds].emissions85 + 1]);
-        t.select(".x.axis").call(xAxis);
-        t.select(".y.axis").call(yAxis);
-        t.select("#linehistorical").attr("d", emissionshistorical(data));
-        t.select("#linercp3P").attr("d", emissionsrcp3P(data));
-        t.select("#linercp45").attr("d",  emissionsrcp45(data));
-        t.select("#linercp60").attr("d",  emissionsrcp60(data));
-        t.select("#linercp85").attr("d",  emissionsrcp85(data));
-        t.select("#shade-block").attr("opacity",0);
-        d3.select("#y-label").text("Annual emissions (MtC)");
-        d3.select("#info-text").text("The IPCC has examined a number of future emissions scenarios. So far actual emissions have tracked the highest-emissions path – RCP 8.0, shown here in purple – though the world has agreed in principle that it must cut its emissions.");
-      }
-      else if (view == "cumulative") {
-        d3.selectAll(".temperature-line").transition().duration(1000).delay(0).style("opacity",0);
-        d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(1000).delay(1000).style("opacity",1);
-        d3.selectAll(".focus-historical").style("opacity",0);
-        lowerBounds = 2013 - dataStartYear + 6;
-        upperBounds = 2100 - dataStartYear + 6;
-        x.domain([data[lowerBounds].year, data[upperBounds].year]);
-        y.domain([0, data[upperBounds].cumulativercp85 + 100]);
-        t.select(".x.axis").call(xAxis);
-        t.select(".y.axis").call(yAxis);
-        t.select("#linehistorical").attr("d", emissionshistorical(data));
-        t.select("#linercp3P").attr("d", cumulativercp3P(data));
-        t.select("#linercp45").attr("d", cumulativercp45(data));
-        t.select("#linercp60").attr("d", cumulativercp60(data));
-        t.select("#linercp85").attr("d", cumulativercp85(data));
-        t.select("#shade-block").attr("opacity",0);
-        d3.select("#y-label").text("Cumulative emissions (MtC)");
-        d3.select("#info-text").text("But even when emissions start to decline, carbon keeps building up in the air, because of the long lifetime of CO2. This graph shows the same four scenarios in terms of their cumulative emissions over time.");
-      }
-      else if (view == "temperatures") {
-        d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(1000).delay(1000).style("opacity",1);
-        d3.selectAll(".focus-historical").style("opacity",0);
-        svg.select("#linehistorical").style("opacity","0");
-        upperBounds = 1870 - dataStartYear + 6;
-        lowerBounds = 2013 - dataStartYear + 6;
-        y.domain([-1,5]);
-        x.domain([400,2500]);
-        t.select(".x.axis").call(xAxis);
-        t.select(".y.axis").call(yAxis);
-        t.select("#linehistorical").attr("d", emissionshistorical(data));
-        t.select("#linercp3P").attr("d", lineTemprcp3P(data));
-        t.select("#linercp45").attr("d",  lineTemprcp45(data));
-        t.select("#linercp60").attr("d",  lineTemprcp60(data));
-        t.select("#linercp85").attr("d",  lineTemprcp85(data));
-        t.select(".shading85").attr("d",  shading85(data));
-        t.select("#shade-block").attr("y", y(12)).attr("height", y(-1) - y(12)).delay(2000).attr("opacity",0.3);
-        drawLineAcross(2,"red",1000,"Agreed temperature limit", -10, 20);
-        drawLineDown(1000,"#333",2000,"All-time carbon budget for two-thirds odds of success", -10);
-        d3.select("#y-label").text("Temperature change (°C)");
-        d3.select("#info-text").text("When the graph is replotted to show cumulative emissions against expected temperature rise, something striking comes into view: all the scenarios follow basically the same straight path, the only difference being how fast. (The green line goes back on itself when human society becomes carbon negative.) In other words, it's cumulative carbon that counts, and no matter which scenario we follow, avoiding more than 2°C of warming means staying within an all-time carbon budget of around 1000 million tonnes of carbon, most of which we've already used up.")
-      }
-    }
-
-    // Activate chooser buttons
-    d3.select(".historical").on("click",function() { view = "historical"; redraw(); });
-    d3.select(".emissions").on("click",function() { view = "emissions"; redraw(); });
-    d3.select(".cumulative").on("click",function() { view = "cumulative"; redraw(); });
-    d3.select(".temperatures").on("click",function() { view = "temperatures"; redraw(); });
-
-    // Activate lock icon
-    d3.select("#lock").on("click",function() { 
-      if(!locked) {
-        d3.select("#lock-icon").text("\uF023")
-        locked = true;
-      } else {
-        d3.select("#lock-icon").text("\uF09C")
-        locked = false;
-      }
-    });
-
-   // Activate zoom buttons
-    d3.select("#lock-left-minus").on("click",function() { 
-      if (lowerBounds - 50 > -6) { lowerBounds -= 50; redraw(); }
-    });
-    d3.select("#lock-left-plus").on("click",function() { 
-      if (lowerBounds + 50 < upperBounds) { lowerBounds += 50; redraw(); }
-    });
-    d3.select("#lock-right-minus").on("click",function() { 
-      if (upperBounds + 50 > upperBounds - 2099 + 6) { upperBounds += 50; redraw(); }
-    });
-    d3.select("#lock-right-plus").on("click",function() {
-      if (upperBounds - 50 > lowerBounds) { upperBounds -= 50; redraw(); }
-    });
-
-    // Highlight lines
-    function nameLine(action) {
-      if (action == "remove") svg.select("#line-label").remove();
-      else svg.append("text").attr("id","line-label").text(function() {
-        if (view == "historical") return "Emissions so far"
-        else {
-          if (action == "linercp85") return "Highest emissions scenario (RCP 8.5)"
-          else if (action == "linercp60")  return "High emissions scenario (RCP 6.0)"
-          else if (action == "linercp45")  return "Low emissions scenario (RCP 4.5)"
-          else if (action == "linercp3P") return "Lowest emissions scenario (RCP 3P)"
-        }
-      }).attr("x", 5).attr("y",27).attr("text-anchor","start");
-    }
-    d3.selectAll(".emissions-line").on("mouseover", function(){
-      d3.select(this).classed("highlighted-line",true);
-      nameLine(d3.select(this).attr("id"));
-    });
-    d3.selectAll(".emissions-line").on("mouseout", function(){
-      d3.select(this).classed("highlighted-line",false);
-      nameLine("remove");
-    });
-  });
-
-  // Parse and filter the data
-  function parse(d) {
-    d.year = parseInt(d["1"]);
-    d.observations = parseFloat(d["2"]);
-    d.forcing = parseFloat(d["3"]);
-    d.aerosol = parseFloat(d["4"]);
-    d.cumulativercp3P = parseFloat(d["5"]);
-    d.lowAR5rcp3P = parseFloat(d["6"]);
-    d.lowAR4rcp3P = parseFloat(d["7"]);
-    d.highAR5rcp3P = parseFloat(d["8"]);
-    d.highAR4rcp3P = parseFloat(d["9"]);
-    d.cumulativercp45 = parseFloat(d["14"]);
-    d.lowAR5rcp45 = parseFloat(d["15"]);
-    d.lowAR4rcp45 = parseFloat(d["16"]);
-    d.highAR5rcp45 = parseFloat(d["17"]);
-    d.highAR4rcp45 = parseFloat(d["18"]);
-    d.cumulativercp60 = parseFloat(d["23"]);
-    d.lowAR5rcp60 = parseFloat(d["24"]);
-    d.lowAR4rcp60 = parseFloat(d["25"]);
-    d.highAR5rcp60 = parseFloat(d["26"]);
-    d.highAR4rcp60 = parseFloat(d["27"]);
-    d.cumulativercp85 = parseFloat(d["32"]);
-    d.lowAR5rcp85 = parseFloat(d["33"]);
-    d.lowAR4rcp85 = parseFloat(d["34"]);
-    d.highAR5rcp85 = parseFloat(d["35"]);
-    d.highAR4rcp85 = parseFloat(d["36"]);
-    d.emissions3P = parseFloat(d["37"]);
-    d.emissions45 = parseFloat(d["38"]);
-    d.emissions60 = parseFloat(d["39"]);
-    d.emissions85 = parseFloat(d["40"]);
-    return d;
-  }
-}
-drawGraph();
 
 </script>
 </html>
