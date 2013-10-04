@@ -46,7 +46,7 @@ body { }
 .line-highlighter { stroke: 12px; }
 @media only screen and (max-width : 560px) {
 	#line-label { font-size: 14px; }
-	#wrapper {  width: 460px; padding: 20px 0; }
+	#wrapper {  width: 460px; padding: 20px 0; font}
 	.btn-lg { font-size: 14px; padding: 10px; }
 }
 </style>
@@ -504,7 +504,7 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 			drawLineDown(1000,"#333",1000,"All-time carbon budget", -10, 20);
 			drawRectDown(900,1100,"#333",1000,"", -10, 20);
 			d3.select("#y-label").text("Temperature change (°C)");
-			d3.select("#info-text").text("The world has agreed to limit warming to 2°C. For a two-thirds chance of achieving that, cumulative emissions must stay below 1000 billion tonne of carbon. (A bit less if we want better odds; a bit more if we accept worse odds.) Of that, we've already used around 540 billion, leaving just 460 – a small fraction of the carbon stored in the world's remaining fossil fuel reserves. Only radical emissions cuts would stop us exceeding this budget by the 2050s, and on current trends we'll exceed it in about 30 years.")
+			d3.select("#info-text").text("The world has agreed to limit warming to 2°C. For a two-thirds chance of achieving that, cumulative emissions must stay below 1000 billion tonne of carbon. (A bit less if we want better odds; a bit more if we accept worse odds.) Of that, we've already used around 540 billion, leaving just 460 – much less than the carbon stored in the world's remaining oil, coal and gas reserves. Only radical emissions cuts would stop us exceeding this budget by the 2050s, and on current trends we'll exceed it in about 30 years.")
 		}
 	}
 
