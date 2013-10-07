@@ -42,12 +42,14 @@ body { }
 #linercp60 { stroke: red; }
 #linercp85 { stroke: purple; }
 #linehistorical { stroke: black; }
-#info-text { margin: 0 20px; font-size: 16px; line-height: 1.3; }
+#info-text { margin: 20px; padding: 10px; font-size: 14px; line-height: 1.3; background: #eee; border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; }
 .line-highlighter { stroke: 12px; }
 @media only screen and (max-width : 560px) {
 	#line-label { font-size: 14px; }
-	#wrapper {  width: 460px; padding: 20px 0; font}
+	#wrapper {  width: 460px; padding: 0; font}
 	.btn-lg { font-size: 14px; padding: 10px; }
+	#info-text { min-height: 200px; }
+	#ie8message { width: 100%!important; }
 }
 </style>
 
@@ -70,7 +72,7 @@ body { }
 		<div id="ie8message">This interactive is not supported by your browser. To see it, download a modern browser such as <a href="https://www.google.com/chrome">Chrome</a>, <a href="http://www.getfirefox.net">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 9.</div>
 		<![endif]-->
 		</div>
-		<div id="info-text">This graph shows total manmade CO2 emissions, which have been increasing fairly steadily since the industrial revolution.</div>
+		<div id="info-text">This graph shows annual manmade CO2 emissions, which have been increasing fairly steadily since the industrial revolution.</div>
 	</div>
 </body>
 
@@ -87,7 +89,7 @@ var locked = false,
 		view = "historical";
 
 // Layout
-var margin = {top: 10, right: 70, bottom: 30, left: 30},
+var margin = {top: 10, right: 70, bottom: 40, left: 30},
 		width = parseFloat(d3.select("#graph").style("width")) - margin.left - margin.right,
 		height = 400 - margin.top - margin.bottom,
 		x = d3.scale.linear().range([0, width]),
@@ -141,6 +143,15 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 		.attr("transform", "translate(0," + height + ")")
 		.call(xAxis);
 
+		svg.append("text")
+				.attr("class", "x label")
+				.attr("id", "x-label")
+				.attr("text-anchor", "middle")
+				.attr("x", width/2)
+				.attr("y", height + 30)
+				.attr("dy", ".75em")
+				.text("Year");
+				
 	// Add the y-axis
 	svg.append("g")
 		.attr("class", "y axis")
@@ -156,7 +167,7 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 			.attr("x", -height/2)
 			.attr("dy", ".75em")
 			.attr("transform", "rotate(-90)")
-			.text("Annual emissions (MtC)");
+			.text("Annual emissions (BtC)");
 
 	// Line generators
 	var emissionsrcp3P = d3.svg.line().interpolate("monotone")
@@ -266,7 +277,7 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 				 d1 = data[i],
 				 d = x0 - d0 > d1 - x0 ? d1 : d0;
 		 svg.select("#circleHistorical").attr("transform", "translate(" + x(d.year) + "," + y(d.emissions3P) + ")");
-		 svg.selectAll(".labelHistorical").text(Math.round(d.emissions3P) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions3P) + 25) + ")");
+		 svg.selectAll(".labelHistorical").text(Math.round(d.emissions3P) + " BtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions3P) + 25) + ")");
 		 if (d3.mouse(this)[0] > width * 0.5) {
 				 d3.selectAll(".focus text").attr("x","-85").attr("dy",0);
 				 d3.selectAll(".focus rect").attr("x","-90").attr("width","100").attr("y",-15);
@@ -287,10 +298,10 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 		 svg.select("#circle45") .attr("transform", "translate(" + x(d.year) + "," + y(d.emissions45) + ")");
 		 svg.select("#circle60") .attr("transform", "translate(" + x(d.year) + "," + y(d.emissions60) + ")");
 		 svg.select("#circle85") .attr("transform", "translate(" + x(d.year) + "," + y(d.emissions85) + ")");
-		 svg.selectAll(".label3P").text(Math.round(d.emissions3P) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions3P) + 25) + ")");
-		 svg.selectAll(".label45").text(Math.round(d.emissions45) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions45) + 13) + ")");
-		 svg.selectAll(".label60").text(Math.round(d.emissions60) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions60) - 13) + ")");
-		 svg.selectAll(".label85").text(Math.round(d.emissions85) + " MtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions85) - 25) + ")");
+		 svg.selectAll(".label3P").text(Math.round(d.emissions3P) + " BtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions3P) + 25) + ")");
+		 svg.selectAll(".label45").text(Math.round(d.emissions45) + " BtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions45) + 13) + ")");
+		 svg.selectAll(".label60").text(Math.round(d.emissions60) + " BtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions60) - 13) + ")");
+		 svg.selectAll(".label85").text(Math.round(d.emissions85) + " BtC in " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.emissions85) - 25) + ")");
 		 if (d3.mouse(this)[0] > width * 0.5) {
 			 d3.selectAll(".focus text").attr("x","-95");
 			 d3.selectAll(".focus rect").attr("x","-100").attr("width","110");
@@ -310,10 +321,10 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 		 svg.select("#circle45").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp45) + ")");
 		 svg.select("#circle60").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp60) + ")");
 		 svg.select("#circle85").attr("transform", "translate(" + x(d.year) + "," + y(d.cumulativercp85) + ")");
-		 svg.selectAll(".label3P").text(Math.round(d.cumulativercp3P) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp3P) + 25) + ")");
-		 svg.selectAll(".label45").text(Math.round(d.cumulativercp45) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp45) + 13) + ")");
-		 svg.selectAll(".label60").text(Math.round(d.cumulativercp60) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp60) - 13) + ")");
-		 svg.selectAll(".label85").text(Math.round(d.cumulativercp85) + " MtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp85) - 25) + ")");
+		 svg.selectAll(".label3P").text(Math.round(d.cumulativercp3P) + " BtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp3P) + 25) + ")");
+		 svg.selectAll(".label45").text(Math.round(d.cumulativercp45) + " BtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp45) + 13) + ")");
+		 svg.selectAll(".label60").text(Math.round(d.cumulativercp60) + " BtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp60) - 13) + ")");
+		 svg.selectAll(".label85").text(Math.round(d.cumulativercp85) + " BtC by " + d.year).attr("transform", "translate(" + x(d.year) + "," + (y(d.cumulativercp85) - 25) + ")");
 		 if (d3.mouse(this)[0] > width * 0.5) {
 			 d3.selectAll(".focus text").attr("x","-115");
 			 d3.selectAll(".focus rect").attr("x","-120").attr("width","130");
@@ -426,8 +437,9 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 			t.select("#linercp60").attr("d",	emissionsrcp60(data));
 			t.select("#linercp85").attr("d",	emissionsrcp85(data));
 			t.select("#shade-block").attr("opacity",0);
-			d3.select("#y-label").text("Annual emissions (MtC)");
-			d3.select("#info-text").text("This graph shows total manmade CO2 emissions, which have been increasing fairly steadily since the industrial revolution.");
+			d3.select("#x-label").text("Year");
+			d3.select("#y-label").text("Annual emissions (BtC)");
+			d3.select("#info-text").text("This graph shows annual manmade CO2 emissions, which have been increasing fairly steadily since the industrial revolution.");
 		}
 		else if (view == "emissions") {
 			d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(2000).delay(0).style("opacity",1);
@@ -444,8 +456,9 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 			t.select("#linercp60").attr("d",	emissionsrcp60(data));
 			t.select("#linercp85").attr("d",	emissionsrcp85(data));
 			t.select("#shade-block").attr("opacity",0);
-			d3.select("#y-label").text("Annual emissions (MtC)");
-			d3.select("#info-text").text("The IPCC has examined a number of future emissions scenarios. So far actual emissions have tracked the highest path – RCP 8.0, shown here in purple – though the world has agreed in principle that it must cut its emissions.");
+			d3.select("#x-label").text("Year");
+			d3.select("#y-label").text("Annual emissions (BtC)");
+			d3.select("#info-text").text("The IPCC has examined a number of future emissions scenarios. So far actual emissions have tracked the highest path – RCP 8.5, shown here in purple – though the world has agreed in principle that it must cut its emissions.");
 		}
 		else if (view == "cumulative") {
 			d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(2000).delay(0).style("opacity",1);
@@ -462,8 +475,9 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 			t.select("#linercp60").attr("d", cumulativercp60(data));
 			t.select("#linercp85").attr("d", cumulativercp85(data));
 			t.select("#shade-block").attr("opacity",0);
-			d3.select("#y-label").text("Cumulative emissions (MtC)");
-			d3.select("#info-text").text("But even when emissions start to decline, carbon keeps building up in the air, because of the long lifetime of CO2. This graph shows the same four scenarios in terms of their cumulative emissions over time.");
+			d3.select("#x-label").text("Year");
+			d3.select("#y-label").text("Cumulative emissions (BtC)");
+			d3.select("#info-text").text("But even when emissions start to decline, carbon is still being added to the air, and due to the long lifetime of CO2 , carbon concentrations don't immediately start to fall. This graph shows the same four scenarios in terms of their cumulative emissions over time.");
 		}
 		else if (view == "temperatures") {
 			d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(2000).delay(0).style("opacity",1);
@@ -481,8 +495,9 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 			t.select("#linercp85").attr("d",	lineTemprcp85(data));
 			t.select(".shading85").attr("d",	shading85(data));
 			t.select("#shade-block").attr("y", y(12)).attr("height", y(-1) - y(12)).delay(2000).attr("opacity",0.2);
+			d3.select("#x-label").text("Cumulative emissions (BtC)");
 			d3.select("#y-label").text("Temperature change (°C)");
-			d3.select("#info-text").text("When the graph is replotted to show cumulative emissions against expected temperature rise, something striking comes into view: all the scenarios follow basically the same straight path, the only difference being how fast. In other words, the thing that determines how hot the planet will get is the total amount of carbon we emit – not when we emit it. (The green line goes back on itself when human starts taking more carbon out of the air than we put into it, and the shading shows the uncertainty range based on the RCP 8.0 scenario.)")
+			d3.select("#info-text").text("When the graph is replotted to show cumulative emissions against expected temperature rise, something striking comes into view: all the scenarios follow basically the same straight path, the only difference being the timing. In other words, the thing that determines how hot the planet will get is the total amount of carbon we emit – not when we emit it. (The green line goes back on itself when human starts taking more carbon out of the air than we put into it, and the shading shows the uncertainty range based on the RCP 8.5 scenario.)")
 		}
 		else if (view == "budget") {
 			d3.selectAll(".focus-scenarios").style("opacity",0).transition().duration(2000).delay(0).style("opacity",1);
@@ -503,6 +518,7 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
 			drawLineAcross(2,"red",500,"Agreed temperature limit", -10, 20);
 			drawLineDown(1000,"#333",1000,"All-time carbon budget", -10, 20);
 			drawRectDown(900,1100,"#333",1000,"", -10, 20);
+			d3.select("#x-label").text("Cumulative emissions (BtC)");
 			d3.select("#y-label").text("Temperature change (°C)");
 			d3.select("#info-text").text("The world has agreed to limit warming to 2°C. For a two-thirds chance of achieving that, cumulative emissions must stay below 1000 billion tonne of carbon. (A bit less if we want better odds; a bit more if we accept worse odds.) Of that, we've already used around 540 billion, leaving just 460 – much less than the carbon stored in the world's remaining oil, coal and gas reserves. Only radical emissions cuts would stop us exceeding this budget by the 2050s, and on current trends we'll exceed it in about 30 years.")
 		}
