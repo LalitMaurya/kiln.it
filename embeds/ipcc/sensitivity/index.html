@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
   <style type="text/css">
-  body { min-width: 460px; }
-  #wrapper { width: 100%; padding: 20px 5%; }
+  body {  }
+  #wrapper { width: 900px; padding: 20px 0; }
   #graph { margin: 0; }
   .axis path, .axis line { fill: none; stroke: #000; shape-rendering: crispEdges; }
   .y.axis path { display: none; }
@@ -39,7 +39,8 @@
   #line-label { font-size: 16px; }
   #credits { margin: 20px 0; }
   @media only screen and (max-width : 500px) {
-    #line-label { font-size: 14px; }
+		#line-label { font-size: 14px; }
+		#wrapper { width: 460px; padding: 20px 0; }
   }
   </style>
 
@@ -131,7 +132,6 @@ function drawGraph() {
 
     // Create graph
     var svg = d3.select("svg")
-          // .attr("viewBox","0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
         .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -335,7 +335,7 @@ function drawGraph() {
       t.select(".lineObserved").attr("d", observed(data)).style("opacity","1");
       t.select("#shade-block").style("opacity","1");
 
-      // d3.select("#info").text("Temperature projections for RCP scenario" + scenarioName + ", based on Transient Climate Response of " + tcr + " and Equilibrium Climate Sensitivity range of " + ecs + ".");
+      d3.select("#info").text("Temperature projections for RCP scenario" + scenarioName + ", based on Transient Climate Response of " + tcr + " and Equilibrium Climate Sensitivity range of " + ecs + ".");
     }
 
     // Activate chooser buttons
