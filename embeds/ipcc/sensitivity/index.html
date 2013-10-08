@@ -377,9 +377,9 @@ function drawGraph() {
       if (action == "remove") svg.select("#line-label").remove();
       else svg.append("text").attr("id","line-label").text(text).attr("x", 5).attr("y",27).attr("text-anchor","start");
     }
-    d3.selectAll("#lineLow").on("mouseover", function(){ if(!untouched) { d3.select(this).classed("highlighted-line",true); nameLine("show", "Maximum sensitivity: TCR of " + tcrLow + ", ECS of " + ecsLow); }})
+    d3.selectAll("#lineLow").on("mouseover", function(){ if(!untouched) { d3.select(this).classed("highlighted-line",true); nameLine("show", "Minimum sensitivity: TCR of " + tcrLow + ", ECS of " + ecsLow); }})
     d3.selectAll("#lineLow").on("mouseout", function(){ if(!untouched) { d3.select(this).classed("highlighted-line",false); nameLine("remove"); }})
-    d3.selectAll("#lineHigh").on("mouseover", function(){ if(!untouched) { d3.select(this).classed("highlighted-line",true); nameLine("show","Minimum sensitivity: TCR of " + tcrHigh + ", ECS of " + ecsHigh); }})
+    d3.selectAll("#lineHigh").on("mouseover", function(){ if(!untouched) { d3.select(this).classed("highlighted-line",true); nameLine("show","Maximum sensitivity: TCR of " + tcrHigh + ", ECS of " + ecsHigh); }})
     d3.selectAll("#lineHigh").on("mouseout", function(){ if(!untouched) { d3.select(this).classed("highlighted-line",false); nameLine("remove"); }})
     d3.selectAll(".lineObserved").on("mouseover", function(){ d3.select(this).classed("highlighted-line",true); nameLine("show","Observed temperatures"); })
     d3.selectAll(".lineObserved").on("mouseout", function(){ d3.select(this).classed("highlighted-line",false); nameLine("remove"); })
