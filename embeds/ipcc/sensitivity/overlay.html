@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What do the new IPCC climate sensitivity estimates mean for future temperatures</title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+  <script src="../js/d3.v3.js" charset="utf-8"></script>
+  <script src="../js/jquery-1.10.2.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/fonts.css" type="text/css" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <style type="text/css">
+  body {  }
+  #wrapper { width: 900px; padding: 20px 0; }
+  #graph { margin: 0; }
+  .axis path, .axis line { fill: none; stroke: #000; shape-rendering: crispEdges; }
+  .y.axis path { display: none; }
+  .y.axis line { fill: none; stroke: #666; stroke-dasharray: 2,2; }
+  .x.axis .tick { stroke: #777; stroke-dasharray: none; }
+  .x.axis .minor { stroke-opacity: 0.4; }
+  #info { margin: 20px 40px; display: block; font-size: 14px; }
+  #zoom { font-size: 20px; padding: 0 40px; line-height: 20px; position: absolute; left: 0; bottom: 20px;  }
+  #left-zoom, #right-zoom { cursor: pointer; }
+  .icons { font-family: FontAwesome; fill: #888; text-anchor: middle; cursor: pointer; }
+  .button-mini { font-size: 11px; color: yellow; }
+  #choosers { text-align: center; }
+  .chooser { display: inline-block; margin: 10px; }
+  .chooser-label { margin-bottom: 4px; }
+  #scenario-label { display: inline-block; vertical-align: middle; line-height: 1.2; font-size: 16px; text-align: right; padding-right: 10px; }  
+  .models { opacity: 0; }
+  #lineLow, #lineHigh { fill: none; stroke: #999; stroke-width: 2; }
+  .highlighted-line { stroke: black!important; stroke-width: 5!important;  }
+  #line-label { font-size: 16px; }
+  @media only screen and (max-width : 500px) {
+		#line-label { font-size: 14px; }
+		#wrapper { width: 460px; padding: 0; }
+		#ie8message { width: 100%!important; }
+  }
+  </style>
+
+</head>
+<body>
+  <div id="choosers">
+      <div id="scenario" class="chooser">
+        <div class="chooser-label">Emissions scenario</div>
+        <span id="" class="btn-group" data-toggle="buttons">
+          <label class="rcp3P btn btn-info btn-lg active"><input type="checkbox" name="options" id="scenario-option1"> Lowest <div class="button-mini">RCP 3P</div></label>
+          <label class="rcp45 btn btn-info btn-lg"><input type="checkbox"  name="options" id="scenario-option2"> Low <div class="button-mini">RCP 4.5</div></label>
+          <label class="rcp60 btn btn-info btn-lg"><input type="checkbox"  name="options" id="scenario-option3"> High <div class="button-mini">RCP 6.0</div></label>
+          <label class="rcp85 btn btn-info btn-lg active"><input type="checkbox"  name="options" id="option4"> Highest <div class="button-mini">RCP 8.5</div></label>
+        </span>                                                  
+      </div>
+      <div id="report" class="chooser">
+        <div class="chooser-label">IPCC report</div>
+        <span class="btn-group" data-toggle="buttons">
+          <label class="AR4 btn btn-primary btn-lg active"><input type="checkbox" name="options" id="report-option1"> Previous report<div class="button-mini">AR4 • 2007</div></label>
+          <label class="AR5 btn btn-primary btn-lg active"><input type="checkbox" name="options" id="report-option2"> New report <div class="button-mini">AR5 • 2013</div></label>
+        </span>
+      </div>
+  </div>
+  <div id="wrapper">
+    <div id="graph">
+      <!--[if lte IE 8]>
+      <div id="ie8message">This interactive is not supported by your browser. To see it, download a modern browser such as <a href="https://www.google.com/chrome">Chrome</a>, <a href="http://www.getfirefox.net">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 9.</div>
+      <![endif]-->
+    </div>
+    <div id="credits">
+      <p class="small">Data provided by the Environmental Change Institute, School of Geography and the Environment, and Department of Physics, University of Oxford, with support from the Oxford Martin Programme on Resource Stewardship and the Union of Concerned Scientists. Modelling by Richard Millar based on the idealised climate model of Boucher and Reddy (2009), as used for calculation of warming potentials in IPCC (2013). They are consistent with, but not identical to, to the projections of the IPCC.</p>
+    </div>
+  </div>
+</body>
+
+<script>
+$('.nav-tabs').button();
+
+var rangeSelection, lowLineSelection, highLineSelection, lowLine, highLine, range, tcr, ecs, margin, width, height, x, y, xAxis, yAxis;
+
+// Defaults
+var scenario = "rcp85", 
+    report = "AR5",
+    locked = false,
+    scenarioName = "RCP 8.5",
+    initialMin = 1950,
+    initialMax = 2250,
+    untouched = true;
+    
+var AR4 = true;
+var AR5 = true;
+var rcp3P = true;
+var rcp45 = false;
+var rcp60 = false;
+var rcp85 = true;
+
+margin = {top: 40, right: 50, bottom: 30, left: 50};
+width = parseFloat(d3.select("#graph").style("width")) - margin.left - margin.right;
+height = 600 - margin.top - margin.bottom;
+
+x = d3.scale.linear().range([0, width]);
+y = d3.scale.linear().range([height, 0]);
+xAxis = d3.svg.axis().scale(x).tickSubdivide(true).tickFormat(d3.format());
+yAxis = d3.svg.axis().scale(y).tickSize(-width).orient("right");
+
+// Load data and draw graph
+d3.csv("../data-complete.csv", parse, function(error, data) {
+
+  // Create SVG
+  d3.select("body #graph").append("svg")
+      .attr("width", "100%")
+      .attr("height", height + margin.top + margin.bottom);
+
+  // Set bounds to display
+  var dataStartYear = 1765,
+      lowerBounds = initialMin - dataStartYear + 6,
+      upperBounds = initialMax - dataStartYear + 6;
+  x.domain([data[lowerBounds].year, data[upperBounds].year]);
+  y.domain([-0.5, 12]);
+
+  // Create graph
+  var svg = d3.select("svg")
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // Add the clip path
+  svg.append("clipPath")
+      .attr("id", "clip")
+    .append("rect")
+      .attr("width", width)
+      .attr("height", height);
+
+  // Line generator
+  var observed = d3.svg.line().interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.observations); })
+    .defined(function(d) { return !isNaN(d.observations) && !(d.observations > 100) });
+      
+  // Area generators
+  var areaAR4rcp3P = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lowAR4rcp3P); })
+    .y1(function(d) { return y(d.highAR4rcp3P); })
+    .defined(function(d) { return !isNaN(d.year) && d.year > 2012 });
+    
+  var areaAR5rcp3P = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lowAR5rcp3P); })
+    .y1(function(d) { return y(d.highAR5rcp3P); })
+    .defined(function(d) { return !isNaN(d.year) && d.year > 2012 });
+
+ var areaAR4rcp45 = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lowAR4rcp45); })
+    .y1(function(d) { return y(d.highAR4rcp45); })
+    .defined(function(d) { return !isNaN(d.year) && d.year > 2012 });
+  var areaAR5rcp45 = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lowAR5rcp45); })
+    .y1(function(d) { return y(d.highAR5rcp45); })
+    .defined(function(d) { return !isNaN(d.year) && d.year > 2012 });
+
+  var areaAR4rcp60 = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lowAR4rcp60); })
+    .y1(function(d) { return y(d.highAR4rcp60); })
+    .defined(function(d) { return !isNaN(d.year) && d.year > 2012 });
+  var areaAR5rcp60 = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lowAR5rcp60); })
+    .y1(function(d) { return y(d.highAR5rcp60); })
+    .defined(function(d) { return !isNaN(d.year) && d.year > 2012 });
+
+  var areaAR4rcp85 = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lowAR4rcp85); })
+    .y1(function(d) { return y(d.highAR4rcp85); })
+    .defined(function(d) { return !isNaN(d.year) && d.year > 2012 });
+  var areaAR5rcp85 = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.lowAR5rcp85); })
+    .y1(function(d) { return y(d.highAR5rcp85); })
+    .defined(function(d) { return !isNaN(d.year) && d.year > 2012 });
+
+  // Add the areas between
+  var areaAR4 = svg.append("g").attr("class", "areaAR4").attr("stroke","black").attr("clip-path", "url(#clip)").style("opacity",1);
+  var areaAR5 = svg.append("g").attr("class", "areaAR5").attr("stroke","black").attr("clip-path", "url(#clip)").style("opacity",1);
+  areaAR4.append("path").style("opacity",0).attr("class","area3P").attr("d", areaAR4rcp3P(data)).attr("fill","rgba(200,200,200,0.4)");
+  areaAR5.append("path").style("opacity",1).attr("class","area3P").attr("d", areaAR5rcp3P(data)).attr("fill","rgba(20,250,40,0.7)");
+  areaAR4.append("path").style("opacity",0).attr("class","area45").attr("d", areaAR4rcp45(data)).attr("fill","rgba(200,200,200,0.4)");
+  areaAR5.append("path").style("opacity",0).attr("class","area45").attr("d", areaAR5rcp45(data)).attr("fill","rgba(250,120,0,0.7)");
+  areaAR4.append("path").style("opacity",0).attr("class","area60").attr("d", areaAR4rcp60(data)).attr("fill","rgba(200,200,200,0.4)");
+  areaAR5.append("path").style("opacity",0).attr("class","area60").attr("d", areaAR5rcp60(data)).attr("fill","rgba(250,20,20,0.7)");
+  areaAR4.append("path").style("opacity",0).attr("class","area85").attr("d", areaAR4rcp85(data)).attr("fill","rgba(200,200,200,0.4)");
+  areaAR5.append("path").style("opacity",1).attr("class","area85").attr("d", areaAR5rcp85(data)).attr("fill","rgba(200,20,100,0.7)");
+                          
+  // Add the observed line
+  svg.append("path")
+    .attr("class", "lineObserved")
+    .attr("clip-path", "url(#clip)")
+    .attr("d", observed(data));
+    
+  // Add the x-axis
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+  // Add the y-axis
+  svg.append("g")
+    .attr("class", "y axis")
+    .classed("next",true)
+    .attr("transform", "translate(" + width + ",0)")
+    .call(yAxis);
+
+  svg.append("text")
+      .attr("class", "y label")
+      .attr("text-anchor", "middle")
+      .attr("y", width + 35)
+      .attr("x", -height/2)
+      .attr("dy", ".75em")
+      .attr("transform", "rotate(-90)")
+      .text("Anomaly °C");
+
+  // Activate chooser buttons
+  d3.select(".AR4").on("click",function() { if (AR4) { AR4 = false; d3.selectAll(".areaAR4").transition().duration(750).style("opacity",0); }    else { AR4 = true; d3.selectAll(".areaAR4").transition().duration(750).style("opacity",1); } });
+  d3.select(".AR5").on("click",function() { if (AR5) { AR5 = false; d3.selectAll(".areaAR5").transition().duration(750).style("opacity",0); }    else { AR5 = true; d3.selectAll(".areaAR5").transition().duration(750).style("opacity",1); } });
+  d3.select(".rcp3P") .on("click",function() { if (rcp3P) { rcp3P = false; d3.selectAll(".area3P").transition().duration(750).style("opacity",0); } else { rcp3P = true; d3.selectAll(".area3P").transition().duration(750).style("opacity",1); } });
+  d3.select(".rcp45") .on("click",function() { if (rcp45) { rcp45 = false; d3.selectAll(".area45").transition().duration(750).style("opacity",0); } else { rcp45 = true; d3.selectAll(".area45").transition().duration(750).style("opacity",1); } });
+  d3.select(".rcp60") .on("click",function() { if (rcp60) { rcp60 = false; d3.selectAll(".area60").transition().duration(750).style("opacity",0); } else { rcp60 = true; d3.selectAll(".area60").transition().duration(750).style("opacity",1); } });
+  d3.select(".rcp85") .on("click",function() { if (rcp85) { rcp85 = false; d3.selectAll(".area85").transition().duration(750).style("opacity",0); } else { rcp85 = true; d3.selectAll(".area85").transition().duration(750).style("opacity",1); } });
+
+});
+
+// Parse and filter the data
+function parse(d) {
+  d.year = parseInt(d["1"]);
+  d.observations = parseFloat(d["2"]);
+  d.forcing = parseFloat(d["3"]);
+  d.aerosol = parseFloat(d["4"]);
+  d.cumulative3P = parseFloat(d["5"]);
+  d.lowAR5rcp3P = parseFloat(d["6"]);
+  d.lowAR4rcp3P = parseFloat(d["7"]);
+  d.highAR5rcp3P = parseFloat(d["8"]);
+  d.highAR4rcp3P = parseFloat(d["9"]);
+  d.cumulative45 = parseFloat(d["14"]);
+  d.lowAR5rcp45 = parseFloat(d["15"]);
+  d.lowAR4rcp45 = parseFloat(d["16"]);
+  d.highAR5rcp45 = parseFloat(d["17"]);
+  d.highAR4rcp45 = parseFloat(d["18"]);
+  d.cumulative60 = parseFloat(d["23"]);
+  d.lowAR5rcp60 = parseFloat(d["24"]);
+  d.lowAR4rcp60 = parseFloat(d["25"]);
+  d.highAR5rcp60 = parseFloat(d["26"]);
+  d.highAR4rcp60 = parseFloat(d["27"]);
+  d.cumulative85 = parseFloat(d["32"]);
+  d.lowAR5rcp85 = parseFloat(d["33"]);
+  d.lowAR4rcp85 = parseFloat(d["34"]);
+  d.highAR5rcp85 = parseFloat(d["35"]);
+  d.highAR4rcp85 = parseFloat(d["36"]);
+  return d;
+}
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44635456-1', 'kiln.it');
+  ga('send', 'pageview');
+</script>
+</html>
