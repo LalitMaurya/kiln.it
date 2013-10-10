@@ -194,15 +194,15 @@ d3.csv("../data-complete.csv", parse, function(error, data) {
     .defined(function(d) { return !isNaN(d.year) && d.year > 2012 });
 
   // Add the areas between
-  var areaAR4 = svg.append("g").attr("class", "areaAR4").attr("stroke","black").attr("clip-path", "url(#clip)").style("opacity",1);
-  var areaAR5 = svg.append("g").attr("class", "areaAR5").attr("stroke","black").attr("clip-path", "url(#clip)").style("opacity",1);
-  areaAR4.append("path").style("opacity",0).attr("class","area3P").attr("d", areaAR4rcp3P(data)).attr("fill","rgba(200,200,200,0.4)");
+  var areaAR4 = svg.append("g").attr("class", "areaAR4").attr("stroke","rgba(40,40,40,0.5)").attr("clip-path", "url(#clip)").style("opacity",1);
+  var areaAR5 = svg.append("g").attr("class", "areaAR5").attr("stroke","rgba(40,40,40,0.5)").attr("clip-path", "url(#clip)").style("opacity",1);
+  areaAR4.append("path").style("opacity",1).attr("class","area3P").attr("d", areaAR4rcp3P(data)).attr("fill","rgba(200,200,200,0.4)");
   areaAR5.append("path").style("opacity",1).attr("class","area3P").attr("d", areaAR5rcp3P(data)).attr("fill","rgba(20,250,40,0.7)");
   areaAR4.append("path").style("opacity",0).attr("class","area45").attr("d", areaAR4rcp45(data)).attr("fill","rgba(200,200,200,0.4)");
   areaAR5.append("path").style("opacity",0).attr("class","area45").attr("d", areaAR5rcp45(data)).attr("fill","rgba(250,120,0,0.7)");
   areaAR4.append("path").style("opacity",0).attr("class","area60").attr("d", areaAR4rcp60(data)).attr("fill","rgba(200,200,200,0.4)");
   areaAR5.append("path").style("opacity",0).attr("class","area60").attr("d", areaAR5rcp60(data)).attr("fill","rgba(250,20,20,0.7)");
-  areaAR4.append("path").style("opacity",0).attr("class","area85").attr("d", areaAR4rcp85(data)).attr("fill","rgba(200,200,200,0.4)");
+  areaAR4.append("path").style("opacity",1).attr("class","area85").attr("d", areaAR4rcp85(data)).attr("fill","rgba(200,200,200,0.4)");
   areaAR5.append("path").style("opacity",1).attr("class","area85").attr("d", areaAR5rcp85(data)).attr("fill","rgba(200,20,100,0.7)");
                           
   // Add the observed line
