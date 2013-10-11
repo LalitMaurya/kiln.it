@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Anne’s story</title>
+    <link rel="stylesheet" type="text/css" href="http://kiln.it/talkie/ui/1.0/talkie.css">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://kiln.it/talkie-1.0.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="http://kiln.it/talkie/ui/1.0/talkie.css">
+    <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/c41e9f0e-5809-422c-8836-50879c093024.css">
+    <link type="text/css" rel="stylesheet" href="../style.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="slider" class="talkie-slider">
+        <div class="talkie-slider-arrowprev"><i class="icon-double-angle-left"></i></div>
+        <div class="talkie-slider-arrownext"><i class="icon-double-angle-right"></i></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-01.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-02.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-03.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-04.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-05.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-06.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-07.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-08.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-09.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-10.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-11.png"></div>
+        <div class="talkie-slider-panel"><img class="commic-image" src="sally-12.png"></div>
+        <div class="talkie-slider-panel">
+          <div id="credits">Comics by <a target="_parent" href="http://GraphicVoices.com">GraphicVoices.com</a><br>Interactive by <a target="_parent" href="http://kiln.it">Kiln.it</a></div>
+        </div>
+      </div>
+      <div class="talkie-slider-nav"></div>
+
+<!--
+      <div id="controls">
+        <audio id="soundtrack" controls="controls">
+          <source src="http://kiln.it/talkie/examples/audio/01.countdown.ogg" type="audio/ogg">
+          <source src="http://kiln.it/talkie/examples/audio/01.countdown.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+-->
+    </div>
+    <script>
+      var slider = Talkie.slider("#slider").navigation(".talkie-slider-nav");
+      var timeline = Talkie.timeline("#soundtrack", {
+        "0:01": slider.panel("#four"),
+        "0:02": slider.panel("#three"),
+        "0:03": slider.panel("#two"),
+        "0:04": slider.panel("#one"),
+        "0:05": slider.panel("#zero")
+      });
+      // If a panel is loaded explicitly by the user,
+      // a) pause the soundtrack, if it’s playing,
+      // b) ask the panel to be slid back when the soundtrack resumes.
+      Talkie.addEventListener("#slider", "Talkie.slider.load", function(e) {
+        if (e.explicitly) {
+          timeline.pause();
+          timeline.undoInteraction(function() { slider.slideTo(e.fromPanel); });
+        }
+      });
+    </script>
+  </body>
+</html>
