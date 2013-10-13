@@ -85,6 +85,8 @@
         var bp = "background-position";
         var timeline = Talkie.timeline("#soundtrack", {
          
+         "0.0": a.panel("#a01").and(s.panel("#s01")),
+         
          "0.1": sm.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(sn.style("opacity",0,3000)),
          "0.2": am.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(an.style("opacity",0,3000)),
          "0.3": aap.style("opacity",0,1000).and(sap.style("opacity",0,1000))
@@ -112,7 +114,7 @@
           // Sally#11
           // Anne#4 // panel 3
           "40": s.panel("#s11").and(sm.style(bp, "-520px -130px", 1000)),
-        "40.1": a.panel("#a04").and(am.style(bp, "-130px -130px", 1000)),
+        "40.1": a.panel("#a05").and(am.style(bp, "-145px -130px", 1000)),
 
           // … before procedures took place. 
           // 54
@@ -130,7 +132,7 @@
           // 1:11
           // Sally#5
           // Anne#7 // 'I'm Mr Jones'
-          "66": a.panel("#a07").and(am.style(bp, "-590px -130px", 1000)),
+          "66": a.panel("#a07").and(am.style(bp, "-540px -130px", 1000)),
           "69": s.panel("#s05").and(sm.style(bp, "-330px -130px", 1000)),
 
           // … where 13% of women said staff did not speak kindly to them.
@@ -143,14 +145,16 @@
           // … partner should be able to remain with her after her baby's birth if she wants support.
           // 1:38
           // Sally#12 // 'Visiting time is over'
-          "96": s.panel("#s12").and(sm.style(bp, "-590px -130px", 1000)),
+	        // Anne#9 // 'Thank you. That was amazing'
+         "96": s.panel("#s12").and(sm.style(bp, "-590px -130px", 1000)),
+	       "96.1": a.panel("#a09").and(am.style(bp, "-320px -130px", 1000)),
 
           // … women who gave birth in birth centres felt it had a negative impact. 
           // 1:55
           // Sally#12 // 'if only'
           // Anne#9 // breast-feeding baby
           "113": s.panel("#s12").and(sm.style(bp, "-100px -130px", 1000)),
-          "118": a.panel("#a09"),
+          "116": a.panel("#a09"),
 
           // 2:00
           // Thanks to Graphic Voices and Kiln for bringing these stories to life.
