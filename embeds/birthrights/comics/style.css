@@ -1,4 +1,4 @@
-body { background: white; font-family: "PMNCaeciliaW01-75Bold", georgia, serif; margin:0; padding: 0; }
+body { background: white; font-family: "PMNCaeciliaW01-75Bold", georgia, serif; margin:0; padding: 0; overflow: hidden; }
 #wrapper { width: 840px; margin: 0 auto; position: relative; }
 #header { width: 100%; background: #252535; color: yellow; line-height: 3em; text-align: center; }
 #header h1 { margin: 0; }
