@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Anne’s story</title>
+    <link type="text/css" rel="stylesheet" href="http://kiln.it/talkie/ui/1.0/talkie.css">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://kiln.it/talkie-1.0.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/c41e9f0e-5809-422c-8836-50879c093024.css">
+    <link type="text/css" rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="slider" class="talkie-slider">
+        <div class="talkie-slider-arrowprev"><i class="icon-double-angle-left"></i></div>
+        <div class="talkie-slider-arrownext"><i class="icon-double-angle-right"></i></div>
+        <div class="talkie-slider-panel" id="a01"><img class="commic-image" src="anne-01.png"></div>
+        <div class="talkie-slider-panel" id="a02"><img class="commic-image" src="anne-02.png"></div>
+        <div class="talkie-slider-panel" id="a03"><img class="commic-image" src="anne-03.png"></div>
+        <div class="talkie-slider-panel" id="a04"><img class="commic-image" src="anne-04.png"></div>
+        <div class="talkie-slider-panel" id="a05"><img class="commic-image" src="anne-05.png"></div>
+        <div class="talkie-slider-panel" id="a06"><img class="commic-image" src="anne-06.png"></div>
+        <div class="talkie-slider-panel" id="a07"><img class="commic-image" src="anne-07.png"></div>
+        <div class="talkie-slider-panel" id="a08"><img class="commic-image" src="anne-08.png"></div>
+        <div class="talkie-slider-panel" id="a09"><img class="commic-image" src="anne-09.png"></div>
+        <div class="talkie-slider-panel" id="a10">
+          <div id="credits">Comics by <a target="_parent" href="http://GraphicVoices.com">GraphicVoices.com</a><br>Interactive by <a target="_parent" href="http://kiln.it">Kiln.it</a></div>
+        </div>
+        <div id="annemask" class="mask"></div>
+      </div>
+      <div id="nav" class="talkie-slider-nav"></div>
+      <div id="slider2" class="talkie-slider">
+        <div class="talkie-slider-arrowprev"><i class="icon-double-angle-left"></i></div>
+        <div class="talkie-slider-arrownext"><i class="icon-double-angle-right"></i></div>
+        <div class="talkie-slider-panel" id="s01"><img class="commic-image" src="sally-01.png"></div>
+        <div class="talkie-slider-panel" id="s02"><img class="commic-image" src="sally-02.png"></div>
+        <div class="talkie-slider-panel" id="s03"><img class="commic-image" src="sally-03.png"></div>
+        <div class="talkie-slider-panel" id="s04"><img class="commic-image" src="sally-04.png"></div>
+        <div class="talkie-slider-panel" id="s05"><img class="commic-image" src="sally-05.png"></div>
+        <div class="talkie-slider-panel" id="s06"><img class="commic-image" src="sally-06.png"></div>
+        <div class="talkie-slider-panel" id="s07"><img class="commic-image" src="sally-07.png"></div>
+        <div class="talkie-slider-panel" id="s08"><img class="commic-image" src="sally-08.png"></div>
+        <div class="talkie-slider-panel" id="s09"><img class="commic-image" src="sally-09.png"></div>
+        <div class="talkie-slider-panel" id="s10"><img class="commic-image" src="sally-10.png"></div>
+        <div class="talkie-slider-panel" id="s11"><img class="commic-image" src="sally-11.png"></div>
+        <div class="talkie-slider-panel" id="s12"><img class="commic-image" src="sally-12.png"></div>
+        <div class="talkie-slider-panel" id="s13">
+          <div id="credits">Comics by <a target="_parent" href="http://GraphicVoices.com">GraphicVoices.com</a><br>Interactive by <a target="_parent" href="http://kiln.it">Kiln.it</a></div>
+        </div>
+        <div id="sallymask" class="mask"></div>
+      </div>
+      <div id="nav2" class="talkie-slider-nav"></div>
+      
+      <div id="controls">
+          <i id="close" class="icon-remove-sign"></i>
+          <audio id="soundtrack" controls="controls">
+            <source src="birthrights-stories.ogg" type="audio/ogg">
+            <source src="birthrights-stories.mp3" type="audio/mpeg">
+          </audio>
+          <div id="controls-mask">
+            <div><i class="icon-play"></i><span class="topalign"> Hear the Birthrights commentary on these cartoons.</span></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        animate = Talkie.animate();
+
+        var a = Talkie.slider("#slider") .navigation("#nav.talkie-slider-nav");
+        var s = Talkie.slider("#slider2").navigation("#nav2.talkie-slider-nav");
+
+        var sm = animate.select("#sallymask");
+        var am = animate.select("#annemask");
+        
+        var an = animate.select("#nav");
+        var sn = animate.select("#nav2");
+        
+        var bp = "background-position";
+        var timeline = Talkie.timeline("#soundtrack", {
+         
+         "0.1": sm.style("opacity", "1", 1000).style(bp, "-650px -180px", 1000).and(sn.style("opacity",0.2,1000)),
+         "0.2": am.style("opacity", "1", 1000).style(bp, "-650px -180px", 1000).and(an.style("opacity",0.2,1000)),
+
+          // … given a choice about where they had their baby.
+          // 28
+          // #s1 // panel 3
+          "21": sm.style(bp, "-200px -130px", 1000),
+
+          // … risking the woman or baby's safety. 
+          // 37
+          // [Anne#3, panel 2]
+          "33": a.panel("#a03").and(am.style(bp, "-400px -130px", 1000)),
+
+          // … the choice of position offered to them in labour.
+          // 45
+          // Sally#11
+          // Anne#4 // panel 3
+          "40": s.panel("#s11").and(sm.style(bp, "-520px -130px", 1000)),
+        "40.1": a.panel("#a04").and(am.style(bp, "-130px -130px", 1000)),
+
+          // … before procedures took place. 
+          // 54
+          // Anne#7 // Doctor by birth pool, 'I know you…'] 
+          // Sally#3 // 'I gave you a good sweep' ]
+          "0:50": a.panel("#a07").and(am.style(bp, "-540px -130px", 1000)),
+          "0:52": s.panel("#s03").and(sm.style(bp, "-100px -130px", 1000)),
+
+          // … their consent had not been sought.
+          // 1:02
+          // Sally#9 // doctor with forceps]
+          "58": s.panel("#s09").and(sm.style(bp, "-200px -130px", 1000)),
+
+          // … 20% of women did not know the names of staff caring for them.
+          // 1:11
+          // Sally#5
+          // Anne#7 // 'I'm Mr Jones'
+          "66": a.panel("#a07").and(am.style(bp, "-590px -130px", 1000)),
+          "69": s.panel("#s05").and(sm.style(bp, "-330px -130px", 1000)),
+
+          // … where 13% of women said staff did not speak kindly to them.
+          // 1:20
+          // Sally#9 // 'Push. 'You're not pushing']
+          // Anne#4 // 'Your body is working really well']
+          "75": a.panel("#a04").and(am.style(bp, "-100px -130px", 1000)),
+          "79": s.panel("#s09").and(sm.style(bp, "-130px -130px", 1000)),
+
+          // … partner should be able to remain with her after her baby's birth if she wants support.
+          // 1:38
+          // Sally#12 // 'Visiting time is over'
+          "96": s.panel("#s12").and(sm.style(bp, "-590px -130px", 1000)),
+
+          // … women who gave birth in birth centres felt it had a negative impact. 
+          // 1:55
+          // Sally#12 // 'if only'
+          // Anne#9 // breast-feeding baby
+          "113": s.panel("#s12").and(sm.style(bp, "-100px -130px", 1000)),
+          "118": a.panel("#a09"),
+
+          // 2:00
+          // Thanks to Graphic Voices and Kiln for bringing these stories to life.
+          "120": s.panel("#s13")  .and(sm.style(bp, "-370px -130px", 1000)),
+          "120.1": a.panel("#a10").and(am.style(bp, "-370px -130px", 1000))
+        });
+        
+        
+        // If a panel is loaded explicitly by the user,
+        // a) pause the soundtrack, if it’s playing,
+        // b) ask the panel to be slid back when the soundtrack resumes.
+        Talkie.addEventListener("#slider", "Talkie.slider.load", function(e) {
+          if (e.explicitly) {
+            timeline.pause();
+            timeline.undoInteraction(function() { slider.slideTo(e.fromPanel); });
+          }
+        });
+        Talkie.addEventListener("#slider2", "Talkie.slider.load", function(e) {
+          if (e.explicitly) {
+            timeline.pause();
+            timeline.undoInteraction(function() { slider.slideTo(e.fromPanel); });
+          }
+        });
+        d3.select("#controls-mask").on("click",function(){
+          d3.select(this).transition().duration(1000).style("opacity",0).each("end", function(){ d3.select(this).remove()});
+          timeline.play();
+        });
+        d3.select("#close").on("click",function(){
+            s.panel("#s01");
+            a.panel("#a01");
+            d3.selectAll(".mask").style("opacity",0);
+            d3.selectAll(".talkie-slider-nav").style("opacity",1);
+            timeline.rewind();
+        });
+      </script>
+  </body>
+</html>
+
