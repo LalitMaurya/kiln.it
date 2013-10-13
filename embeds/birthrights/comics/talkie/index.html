@@ -24,12 +24,11 @@
         <div class="talkie-slider-panel" id="a07"><img class="commic-image" src="anne-07.png"></div>
         <div class="talkie-slider-panel" id="a08"><img class="commic-image" src="anne-08.png"></div>
         <div class="talkie-slider-panel" id="a09"><img class="commic-image" src="anne-09.png"></div>
-        <div class="talkie-slider-panel" id="a10">
-          <div id="credits">Comics by <a target="_parent" href="http://GraphicVoices.com">GraphicVoices.com</a><br>Interactive by <a target="_parent" href="http://kiln.it">Kiln.it</a></div>
-        </div>
+        <div class="talkie-slider-panel" id="a10"><div id="credits">Comics by <a target="_parent" href="http://GraphicVoices.com">GraphicVoices.com</a><br>Interactive by <a target="_parent" href="http://kiln.it">Kiln.it</a></div></div>
         <div id="annemask" class="mask"></div>
       </div>
       <div id="nav" class="dimmable-on-play talkie-slider-nav"></div>
+      
       <div id="slider2" class="talkie-slider">
         <div class="talkie-slider-arrowprev"><i id="sap" class="dimmable-on-play icon-double-angle-left"></i></div>
         <div class="talkie-slider-arrownext"><i id="san" class="dimmable-on-play icon-double-angle-right"></i></div>
@@ -45,13 +44,15 @@
         <div class="talkie-slider-panel" id="s10"><img class="commic-image" src="sally-10.png"></div>
         <div class="talkie-slider-panel" id="s11"><img class="commic-image" src="sally-11.png"></div>
         <div class="talkie-slider-panel" id="s12"><img class="commic-image" src="sally-12.png"></div>
-        <div class="talkie-slider-panel" id="s13">
-          <div id="credits">Comics by <a target="_parent" href="http://GraphicVoices.com">GraphicVoices.com</a><br>Interactive by <a target="_parent" href="http://kiln.it">Kiln.it</a></div>
-        </div>
+        <div class="talkie-slider-panel" id="s13"><div id="credits">Comics by <a target="_parent" href="http://GraphicVoices.com">GraphicVoices.com</a><br>Interactive by <a target="_parent" href="http://kiln.it">Kiln.it</a></div></div>
         <div id="sallymask" class="mask"></div>
       </div>
       <div id="nav2" class="dimmable-on-play talkie-slider-nav"></div>
       
+      <div class="textpanel" id="about">Based on real-life positive and negative experiences of care in childbirth</div>
+
+      <div class="textpanel" id="survey">In September 2013 Birthrights asked more than 1000 women about their experience of childbirth<br><br><a target="_blank" href="http:/www.birthrights.org.uk/dignity-in-childbirth/survey">Read the results in full here</a></div>
+
       <div id="controls">
           <i id="close" class="icon-remove-sign"></i>
           <audio id="soundtrack" controls="controls">
@@ -59,10 +60,10 @@
             <source src="birthrights-stories.mp3" type="audio/mpeg">
           </audio>
           <div id="controls-mask">
-            <div><i class="icon-play"></i><span class="topalign"> Hear the Birthrights commentary on these cartoons.</span></div>
+            <div><i class="icon-play"></i><span class="topalign"> Listen to the Birthrights commentary on these graphic stories</span></div>
           </div>
-        </div>
       </div>
+      
       <script>
         animate = Talkie.animate();
 
@@ -79,14 +80,23 @@
             aan = animate.select("#aan"),
             sap = animate.select("#sap"),
             san = animate.select("#san");
+
         
         var bp = "background-position";
         var timeline = Talkie.timeline("#soundtrack", {
          
-         "0.1": sm.style("opacity", "1", 1000).style(bp, "-650px -180px", 1000).and(sn.style("opacity",0,1000)),
-         "0.2": am.style("opacity", "1", 1000).style(bp, "-650px -180px", 1000).and(an.style("opacity",0,1000)),
+         "0.1": sm.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(sn.style("opacity",0,3000)),
+         "0.2": am.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(an.style("opacity",0,3000)),
          "0.3": aap.style("opacity",0,1000).and(sap.style("opacity",0,1000))
                 .and(aan.style("opacity",0,1000)).and(san.style("opacity",0,1000)),
+          
+          "3": animate.select("#about").style("opacity",1,1000),
+          "9": animate.select("#about").style("opacity",0,1000),
+          
+          // In September 2013 …
+          "10": animate.select("#survey").style("opacity",1,1000),
+          "18": animate.select("#survey").style("opacity",0,1000),
+          
           // … given a choice about where they had their baby.
           // 28
           // #s1 // panel 3
@@ -179,4 +189,3 @@
       </script>
   </body>
 </html>
-
