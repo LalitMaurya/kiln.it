@@ -25,5 +25,5 @@ a:hover, a:active { text-decoration: none; color: #e11b55; }
 .talkie-slider-nav .talkie-slider-nav-dot { background-image: url(navdot.png); }
 i { font-size: 50px; color: #555; }
 i:hover { font-size: 50px; color: #e11b55; }
-.mask { background-image: url("mask.png"); width: 1500px; height: 760px; background-position: -500px -130px; position: absolute; left: 0; top: 0; opacity: 0; }
+.mask { background-image: url("mask.png"); width: 1500px; height: 760px; background-position: -500px -130px; position: absolute; left: 0; top: 0; opacity: 0; pointer-events: none; }
 .topalign { vertical-align: 12px; }
