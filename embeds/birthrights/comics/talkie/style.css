@@ -2,9 +2,8 @@ body { background: white; font-family: "PMNCaeciliaW01-75Bold", georgia, serif; 
 #wrapper { width: 840px; margin: 0 auto; position: relative; }
 #header { width: 100%; background: #252535; color: yellow; line-height: 3em; text-align: center; }
 #header h1 { margin: 0; }
-#slider, #slider2 { padding: 14px 10px 10px 10px; background: white; width: 770px; position: relative;overflow: hidden; 
+#slider, #slider2 { padding: 14px 10px 10px 10px; background: white; width: 770px; position: relative;
 webkit-border-bottom-right-radius: none!important; }
-
 #controls { width: 100%; padding: 0px 44px; margin: 5px 0 80px; position: relative; }
 #controls i { position: relative; top: 3px; }
 
