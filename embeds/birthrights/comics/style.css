@@ -28,4 +28,4 @@ i:hover { font-size: 50px; color: #e11b55; }
 .mask { background-image: url("mask.png"); width: 1500px; height: 760px; background-position: -500px -130px; position: absolute; left: 0; top: 0; opacity: 0; pointer-events: none; }
 .topalign { vertical-align: 12px; }
 
-.textpanel { position: absolute; top: 100px; left: 450px; width: 300px; font-size: 36px; line-height: 1.1; text-align: right; opacity: 0; }
+.textpanel { position: absolute; top: 100px; left: 500px; width: 300px; font-size: 36px; line-height: 1.1; text-align: right; opacity: 0; }
