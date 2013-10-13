@@ -13,8 +13,8 @@
   <body>
     <div id="wrapper">
       <div id="slider" class="talkie-slider">
-        <div id="aap" class="talkie-slider-arrowprev dimmable-on-play"><i class="icon-double-angle-left"></i></div>
-        <div id="aan" class="talkie-slider-arrownext dimmable-on-play"><i class="icon-double-angle-right"></i></div>
+        <div class="talkie-slider-arrowprev"><i id="aap" class="dimmable-on-play icon-double-angle-left"></i></div>
+        <div class="talkie-slider-arrownext"><i id="aan" class="dimmable-on-play icon-double-angle-right"></i></div>
         <div class="talkie-slider-panel" id="a01"><img class="commic-image" src="anne-01.png"></div>
         <div class="talkie-slider-panel" id="a02"><img class="commic-image" src="anne-02.png"></div>
         <div class="talkie-slider-panel" id="a03"><img class="commic-image" src="anne-03.png"></div>
@@ -29,10 +29,10 @@
         </div>
         <div id="annemask" class="mask"></div>
       </div>
-      <div id="nav" class="talkie-slider-nav dimmable-on-play"></div>
+      <div id="nav" class="dimmable-on-play talkie-slider-nav"></div>
       <div id="slider2" class="talkie-slider">
-        <div id="sap" class="talkie-slider-arrowprev dimmable-on-play"><i class="icon-double-angle-left"></i></div>
-        <div id="san" class="talkie-slider-arrownext dimmable-on-play"><i class="icon-double-angle-right"></i></div>
+        <div class="talkie-slider-arrowprev"><i id="sap" class="dimmable-on-play icon-double-angle-left"></i></div>
+        <div class="talkie-slider-arrownext"><i id="san" class="dimmable-on-play icon-double-angle-right"></i></div>
         <div class="talkie-slider-panel" id="s01"><img class="commic-image" src="sally-01.png"></div>
         <div class="talkie-slider-panel" id="s02"><img class="commic-image" src="sally-02.png"></div>
         <div class="talkie-slider-panel" id="s03"><img class="commic-image" src="sally-03.png"></div>
@@ -50,7 +50,7 @@
         </div>
         <div id="sallymask" class="mask"></div>
       </div>
-      <div id="nav2" class="talkie-slider-nav dimmable-on-play"></div>
+      <div id="nav2" class="dimmable-on-play talkie-slider-nav"></div>
       
       <div id="controls">
           <i id="close" class="icon-remove-sign"></i>
@@ -75,17 +75,18 @@
         var an = animate.select("#nav"),
             sn = animate.select("#nav2");
         
-        aap = animate.select("#aap"),
-        aan = animate.select("#aan"),
-        sap = animate.select("#sap"),
-        san = animate.select("#san");
+        var aap = animate.select("#aap"),
+            aan = animate.select("#aan"),
+            sap = animate.select("#sap"),
+            san = animate.select("#san");
         
         var bp = "background-position";
         var timeline = Talkie.timeline("#soundtrack", {
          
-         "0.1": sm.style("opacity", "1", 1000).style(bp, "-650px -180px", 1000).and(sn.style("opacity",0.05,1000)).and(aap.style("opacity",0.05,1000)).and(sap.style("opacity",0.05,1000)),
-         "0.2": am.style("opacity", "1", 1000).style(bp, "-650px -180px", 1000).and(an.style("opacity",0.05,1000)).and(aan.style("opacity",0.05,1000)).and(san.style("opacity",0.05,1000)),
-
+         "0.1": sm.style("opacity", "1", 1000).style(bp, "-650px -180px", 1000).and(sn.style("opacity",0,1000)),
+         "0.2": am.style("opacity", "1", 1000).style(bp, "-650px -180px", 1000).and(an.style("opacity",0,1000)),
+         "0.3": aap.style("opacity",0,1000).and(sap.style("opacity",0,1000))
+                .and(aan.style("opacity",0,1000)).and(san.style("opacity",0,1000)),
           // … given a choice about where they had their baby.
           // 28
           // #s1 // panel 3
