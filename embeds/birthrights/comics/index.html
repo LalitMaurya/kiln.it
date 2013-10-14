@@ -85,12 +85,16 @@
         var bp = "background-position";
         var timeline = Talkie.timeline("#soundtrack", {
          
-         "0.0": a.panel("#a01").and(s.panel("#s01")),
+         "0.1": a.panel("#a01"),
+         "0.2": s.panel("#s01"),
          
-         "0.1": sm.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(sn.style("opacity",0,3000)),
-         "0.2": am.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(an.style("opacity",0,3000)),
-         "0.3": aap.style("opacity",0,1000).and(sap.style("opacity",0,1000))
+         "0.3": sm.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(sn.style("opacity",0,3000)),
+         "0.4": am.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(an.style("opacity",0,3000)),
+         "0.5": aap.style("opacity",0,1000).and(sap.style("opacity",0,1000))
                 .and(aan.style("opacity",0,1000)).and(san.style("opacity",0,1000)),
+          
+         "1": a.panel("#a01"),
+         "2": s.panel("#s01"),
           
           "3": animate.select("#about").style("opacity",1,1000),
           "9": animate.select("#about").style("opacity",0,1000),
@@ -162,33 +166,19 @@
           "120.1": a.panel("#a10").and(am.style(bp, "-370px -130px", 1000))
         });
         
-        
-        // If a panel is loaded explicitly by the user,
-        // a) pause the soundtrack, if it’s playing,
-        // b) ask the panel to be slid back when the soundtrack resumes.
-        Talkie.addEventListener("#slider", "Talkie.slider.load", function(e) {
-          if (e.explicitly) {
-            timeline.pause();
-            timeline.undoInteraction(function() { slider.slideTo(e.fromPanel); });
-          }
-        });
-        Talkie.addEventListener("#slider2", "Talkie.slider.load", function(e) {
-          if (e.explicitly) {
-            timeline.pause();
-            timeline.undoInteraction(function() { slider.slideTo(e.fromPanel); });
-          }
-        });
         d3.select("#controls-mask").on("click",function(){
-          d3.select(this).transition().duration(1000).style("opacity",0).each("end", function(){ d3.select(this).remove()});
+          d3.select(this).transition().duration(1000).style("opacity",0).style("pointer-events","none");
           timeline.play();
         });
         d3.select("#close").on("click",function(){
-            s.panel("#s01");
-            a.panel("#a01");
+            timeline.pause();
+            timeline.rewind();
+            setTimeout(function(){
             d3.selectAll(".mask").style("opacity",0);
             d3.selectAll(".dimmable-on-play").style("opacity",1);
-            d3.select("#controls-mask").style("opacity",1);
-            timeline.rewind();
+            d3.selectAll(".textpanel").style("opacity",0);
+            d3.select("#controls-mask").style("opacity",1).style("pointer-events","auto");
+            },1000);
         });
       </script>
   </body>
