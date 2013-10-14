@@ -51,7 +51,7 @@
       <div id="nav2" class="dimmable-on-play talkie-slider-nav"></div>
       
       <div class="textpanel" id="about">Stories based on the real-life experiences of women who have contacted Birthrights</div>
-      <div class="textpanel" id="survey">In September 2013 Birthrights asked more than 1000 women about their experience of childbirth<br><br><a target="_blank" href="http:/www.birthrights.org.uk/dignity-in-childbirth/survey">Read the results in full here</a></div>
+      <div class="textpanel" id="survey">In September 2013 Birthrights asked more than 1000 women about their experience of childbirth<br><br><a target="_blank" href="http://www.birthrights.org.uk/campaigns/dignity-in-childbirth/dignity-survey/">Read the results in full here</a></div>
 
       <div id="controls">
           <i id="close" class="icon-remove-sign"></i>
@@ -85,8 +85,7 @@
         var bp = "background-position";
         var timeline = Talkie.timeline("#soundtrack", {
          
-         "0.1": a.panel("#a01"),
-         "0.2": s.panel("#s01"),
+         "0:0": a.panel("#a01").and(s.panel("#s01")),
          
          "0.3": sm.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(sn.style("opacity",0,3000)),
          "0.4": am.style("opacity", "1", 3000).style(bp, "-650px -180px", 3000).and(an.style("opacity",0,3000)),
@@ -171,14 +170,11 @@
           timeline.play();
         });
         d3.select("#close").on("click",function(){
-            timeline.pause();
             timeline.rewind();
-            setTimeout(function(){
             d3.selectAll(".mask").style("opacity",0);
             d3.selectAll(".dimmable-on-play").style("opacity",1);
             d3.selectAll(".textpanel").style("opacity",0);
             d3.select("#controls-mask").style("opacity",1).style("pointer-events","auto");
-            },1000);
         });
       </script>
   </body>
