@@ -1,1 +1,1 @@
-talkie-1.1.0.js
+talkie-1.1.1.js
