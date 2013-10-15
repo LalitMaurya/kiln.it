@@ -9,20 +9,21 @@
   <link rel="stylesheet" href="css/font-awesome.css" rel="stylesheet">
   <script src="js/d3.v3.js" charset="utf-8"></script>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <script src="js/jquery-1.10.2.min.js"></script>
 </head>
 <body class="game">
   <div id="wrapper">
     <div id="graph">
       <div id="explainers">
-        <div class="explainer" id="step1">Temperatures have risen about 0.75°C since the industrial revolution.</div>
+        <div class="explainer" id="step1">Temperatures have risen about <span id="warmingsofar">0.75°C</span> since the industrial revolution.</div>
         <div class="explainer" id="step2"><span id="amount-in-lifetime">Some of that increase was in your lifetime.</span> The last decade was <span id="temp-rise-in-lifetime"></span> hotter than the decade before you were born.</div>
         <div class="explainer" id="step3">What happens next depends on future carbon emissions and how ‘sensitive’ the climate turns out to be. The orange area shows the range of possibilities if emissions keep rising.</div>
-        <div class="explainer" id="step4">On current emissions trends, the planet will be <span id="low-temp-retirement"></span>–<span id="high-temp-retirement"></span> hotter than the preindustrial era by your retirement <span id="retirement-comment"> – potentially <span id="retirement-adverb"></span> above the agreed ‘safety’ limit of 2°C</span>.</div>
-        <div class="explainer" id="step5">By the end of your life, warming could have reached <span id="high-temp-lifespan"></span> above preindustrial levels. For comparison, a 4°C rise was enough to transform the planet since the last ice age.</div>
+        <div class="explainer" id="step4">On current emissions trends, the planet will be <span id="low-temp-retirement"></span>–<span id="high-temp-retirement"></span> hotter than the preindustrial era by your retirement <span id="retirement-comment"> – potentially <span id="retirement-adverb"></span> above the agreed ‘safety’ limit of <span class="safetylimit">2°C</span></span>.</div>
+        <div class="explainer" id="step5">By the end of your life, warming could have reached <span id="high-temp-lifespan"></span> above preindustrial levels. For comparison, a <span id="fourC">4°C</span> rise was enough to transform the planet since the last ice age.</div>
         <div class="explainer" id="step6">A child born today could see rises of up to <span id="high-temp-child"></span> in its lifetime – enough to bring catastrophic impacts.</div>
         <div class="explainer" id="step7">Without emissions cuts, temperatures would keep rising in future centuries, likely accelerated by natural processes.</div>
         <div class="explainer" id="step8">There is some good news: the new IPCC report suggests that the climate may be slightly less sensitive to carbon than previously thought. Unfortunately that doesn't help much.</div>
-        <div class="explainer" id="step9">Only if emissions are cut radically will there be a good chance of staying below 2°C.</div>
+        <div class="explainer" id="step9">Only if emissions are cut radically will there be a good chance of staying below <span class="safetylimit">2°C</span>.</div>
         <div class="explainer" id="step10">
           <div id="final-text"></div>
           <div id="tweet-button-final"></div>
@@ -40,10 +41,16 @@
         <div id="screen"></div>
         <div id="controls">
           <h2>Enter your year of birth</h2>
-          <form id="go"><input type="text" id="dateinput" name="dateinput"><input type="submit" value="Go" class="btn" href="#"></form>
-          <div class="alerts" id="numbers-only">Please enter a year. Numbers only.</div>
-          <div class="alerts" id="too-early">You surely weren't born that long ago. Try again.</div>
-          <div class="alerts" id="too-late">You surely weren't born in the future. Try again.</div>
+          <form id="go">
+              <input type="text" id="dateinput" name="dateinput">
+              <input type="submit" value="Go" class="btn" href="#">
+              <div class="alerts" id="numbers-only">Please enter a year. Numbers only.</div>
+              <div class="alerts" id="too-early">You surely weren't born that long ago. Try again.</div>
+              <div class="alerts" id="too-late">You surely weren't born in the future. Try again.</div>
+              <div id="fahrenheit">
+                  <input id="unit" type="checkbox" value="usefahrenheit"><span id="checkbox-label">Use Fahrenheit</span>
+              </div>
+          </form>
         </div>
       </div>
       <div id="hand-explainer">
@@ -74,7 +81,17 @@ var thisYear = 2013,
     old = false,
     currentStep = 1,
     visibleHighlighters = [],
-    helpText = "";
+    helpText = "",
+    fahrenheit = false;
+
+function temp(tempInC) {
+    if (fahrenheit == false) return tempInC
+    else return tempInC * 6.3/3.5;
+}
+function degs() {
+    if (fahrenheit == false) return "°C"
+    else return "°F"
+}
 
 // Layout
 var margin = {top: 10, right: 60, bottom: 30, left: 150},
@@ -93,65 +110,65 @@ var smallLabelHeight = 20;
 var areaNew = d3.svg.area()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y0(function(d) { return y(d.lineLowNew); })
-    .y1(function(d) { return y(d.lineHighNew); })
+    .y0(function(d) { return y(temp(d.lineLowNew)); })
+    .y1(function(d) { return y(temp(d.lineHighNew)); })
     .defined(function(d) { return d.year > 2012; });
 
 var areaAR4 = d3.svg.area()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y0(function(d) { return y(d.lineLowAR4); })
-    .y1(function(d) { return y(d.lineHighAR4); })
+    .y0(function(d) { return y(temp(d.lineLowAR4)); })
+    .y1(function(d) { return y(temp(d.lineHighAR4)); })
     .defined(function(d) { return d.year > 2012; });
 
 var area3PD = d3.svg.area()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y0(function(d) { return y(d.lineLow3PD); })
-    .y1(function(d) { return y(d.lineHigh3PD); })
+    .y0(function(d) { return y(temp(d.lineLow3PD)); })
+    .y1(function(d) { return y(temp(d.lineHigh3PD)); })
     .defined(function(d) { return d.year > 2012; });
 
 // Line generators
 var lineHighNew = d3.svg.line()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.lineHighNew); })
+    .y(function(d) { return y(temp(d.lineHighNew)); })
     .defined(function(d) { return d.year > 2012; });
 
 var lineHighAR4 = d3.svg.line()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.lineHighAR4); })
+    .y(function(d) { return y(temp(d.lineHighAR4)); })
     .defined(function(d) { return d.year > 2012; });
 
 var lineLowNew = d3.svg.line()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.lineLowNew); })
+    .y(function(d) { return y(temp(d.lineLowNew)); })
     .defined(function(d) { return d.year > 2012; });
 
 var lineLowAR4 = d3.svg.line()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.lineLowAR4); })
+    .y(function(d) { return y(temp(d.lineLowAR4)); })
     .defined(function(d) { return d.year > 2012; });
 
 var lineHigh3PD = d3.svg.line()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.lineHigh3PD); })
+    .y(function(d) { return y(temp(d.lineHigh3PD)); })
     .defined(function(d) { return d.year > 2012; });
 
 var lineLow3PD= d3.svg.line()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.lineLow3PD); })
+    .y(function(d) { return y(temp(d.lineLow3PD)); })
     .defined(function(d) { return d.year > 2012; });
 
 var lineObserved = d3.svg.line()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.observations); })
+    .y(function(d) { return y(temp(d.observations)); })
     .defined(function(d) { return !isNaN(d.observations) });
 
 var currentArea = areaNew,
@@ -223,7 +240,7 @@ d3.csv("data.csv", parse, function(error, data) {
       lowerBounds = initialMin - dataStartYear,
       upperBounds = initialMax - dataStartYear;
   x.domain([data[lowerBounds].year, data[upperBounds].year]);
-  y.domain([data[lowerBounds].observations - 0.3, data[upperBounds].observations + 0.4]);
+  y.domain([temp(data[lowerBounds].observations - 0.3), temp(data[upperBounds].observations + 0.4)]);
 
   // Add the x-axis
   svg.append("g")
@@ -245,7 +262,9 @@ d3.csv("data.csv", parse, function(error, data) {
       .attr("x", -200)
       .attr("dy", ".75em")
       .attr("transform", "rotate(-90)")
-      .text("Temperature rise over preindustrial average (°C)");
+      .text(function() {
+          return "Temperature rise over preindustrial average " + degs()
+      });
 
   // Add a background group for shading
   svg.append("g").attr("id", "background-highlighters")
@@ -313,6 +332,17 @@ d3.csv("data.csv", parse, function(error, data) {
   d3.select("#go").on("submit", function() {
     d3.event.preventDefault();
     dob = document.getElementById("dateinput").value;
+
+    fahrenheit = $('#unit').prop('checked');
+    if (fahrenheit) {
+        d3.select("#warmingsofar")  .text(function() { return Math.round(temp(0.75) * 10)/10 + degs() });
+        d3.select("#fourC")         .text(function() { return temp(4) + degs() });
+        d3.selectAll(".safetylimit").text(function() { return temp(2) + degs() });
+        d3.select(".y.label").text(function() {
+          return "Temperature rise over preindustrial average " + degs()
+      });
+    }
+
     d3.selectAll(".alerts").style("display","none");
     
     // Load graph only when usable date is entered
@@ -353,8 +383,8 @@ d3.csv("data.csv", parse, function(error, data) {
     dorOnGraph = dor - dataStartYear + 1;
     highTempAtRetirement = Math.round(data[dor - dataStartYear + 1].lineHighNew * 10)/10
     lowTempAtRetirement = Math.round(data[dor - dataStartYear + 1].lineLowNew * 10)/10
-    d3.select("#high-temp-retirement").text(highTempAtRetirement + "°C");
-    d3.select("#low-temp-retirement").text(lowTempAtRetirement + "°C");
+    d3.select("#high-temp-retirement").text(highTempAtRetirement + degs());
+    d3.select("#low-temp-retirement").text(lowTempAtRetirement + degs());
     d3.select("#date-of-retirement").text(dor);
 
     // Set life expectancy as UK average (80) + 0.2 years per remaining year,
@@ -369,13 +399,13 @@ d3.csv("data.csv", parse, function(error, data) {
     }
     remainingYears = le - thisYear;
     leOnGraph = le - dataStartYear + 1;
-    highTempAtLifespan = Math.round(data[leOnGraph].lineHighNew * 10)/10;
-    lowTempAtLifespan = Math.round(data[leOnGraph].lowHighNew * 10)/10;
+    highTempAtLifespan = Math.round(temp(data[leOnGraph].lineHighNew) * 10)/10;
+    lowTempAtLifespan = Math.round(temp(data[leOnGraph].lowHighNew) * 10)/10;
 
     // Details for child born today
     leChild = Math.round((thisYear + 80) + 0.2 * (thisYear + 80 - thisYear));
     leChildOnGraph = leChild - dataStartYear + 1;
-    tempAtChildLifespan = Math.round(data[leChildOnGraph].lineHighNew * 10)/10;
+    tempAtChildLifespan = Math.round(temp(data[leChildOnGraph].lineHighNew) * 10)/10;
 
     // Set temperature rise during lifetime
     var sumToAverageBirth = 0;
@@ -395,10 +425,10 @@ d3.csv("data.csv", parse, function(error, data) {
 
   function drawLineAcross(value,color,delay,label,baseline,indent) {
     svg.append("line").classed("highlighter",true).classed("temperature-line",true).style("stroke",color)
-      .attr("x1",0).attr("x2",0).attr("y1",y(value)).attr("y2",y(value))
+      .attr("x1",0).attr("x2",0).attr("y1",y(temp(value))).attr("y2",y(temp(value)))
       .transition().duration(1000).delay(delay).attr("x2",width)
     svg.append("text").classed("highlighter",true).classed("temperature-label",true).text(label)
-      .attr("x",indent).attr("y",y(value) + baseline).style("fill",color).style("opacity",0)
+      .attr("x",indent).attr("y",y(temp(value)) + baseline).style("fill",color).style("opacity",0)
       .transition().duration(1000).delay(delay + 750).style("opacity",1)
   }
 
@@ -439,7 +469,7 @@ d3.csv("data.csv", parse, function(error, data) {
     lowerBounds = axisStart - dataStartYear + 1;
     upperBounds = axisEnd - dataStartYear + 1;
     x.domain([data[lowerBounds].year, data[upperBounds].year]);
-    y.domain([data[lowerBounds].observations - 0.5, data[upperBounds].lineHighAR4 + 0.1]);
+    y.domain([temp(data[lowerBounds].observations - 0.5), temp(data[upperBounds].lineHighAR4 + 0.1)]);
     var t = svg.transition().duration(750);
     t.select(".x.axis").call(xAxis);
     t.select(".y.axis").call(yAxis);
@@ -465,28 +495,29 @@ d3.csv("data.csv", parse, function(error, data) {
 
   function addCircleHighlights(year) {
     var yearOnGraph = year - dataStartYear + 1;
-    var tempHigh = Math.round(data[yearOnGraph].lineHighNew * 10)/10;
-    var tempLow = Math.round(data[yearOnGraph].lineLowNew * 10)/10;
+    var tempHigh = Math.round(temp(data[yearOnGraph].lineHighNew) * 10)/10;
+    var tempLow = Math.round(temp(data[yearOnGraph].lineLowNew) * 10)/10;
+
     // Add Upper circle
     svg.append("circle").attr("fill","red")
-      .attr("r",0).attr("cx", x(year)).attr("cy", y(data[yearOnGraph].lineHighNew))
+      .attr("r",0).attr("cx", x(year)).attr("cy", y(temp(data[yearOnGraph].lineHighNew)))
       .classed("highlighter",true).classed("temperature-circle-high",true).classed("circle-highlights",true)
       .transition(500).delay(2500).attr("r",20);
     // Add lower circle
     svg.append("circle").attr("fill","red")
-      .attr("r",0).attr("cx", x(year)).attr("cy", y(data[yearOnGraph].lineLowNew))
+      .attr("r",0).attr("cx", x(year)).attr("cy", y(temp(data[yearOnGraph].lineLowNew)))
       .classed("highlighter",true).classed("temperature-circle-low",true).classed("circle-highlights",true)
       .transition(500).delay(2500).attr("r",20);
     // Add labels
     svg.append("text").style("fill","white")
-      .style("opacity",0).attr("text-anchor","middle").text(tempHigh + "°C")
+      .style("opacity",0).attr("text-anchor","middle").text(tempHigh + degs())
       .classed("highlighter",true).classed("circle-highlights",true).classed("temperature-stat-high",true)
-      .attr("x", x(year)).attr("y", y(data[yearOnGraph].lineHighNew) + 5)
+      .attr("x", x(year)).attr("y", y(temp(data[yearOnGraph].lineHighNew)) + 5)
       .transition(500).delay(3000).style("opacity",1);
     svg.append("text").style("fill","white")
-      .style("opacity",0).attr("text-anchor","middle").text(tempLow + "°C")
+      .style("opacity",0).attr("text-anchor","middle").text(tempLow + degs())
       .classed("highlighter",true).classed("circle-highlights",true).classed("temperature-stat-low",true)
-      .attr("x", x(year)).attr("y", y(data[yearOnGraph].lineLowNew) + 5)
+      .attr("x", x(year)).attr("y", y(temp(data[yearOnGraph].lineLowNew)) + 5)
       .transition(500).delay(3000).style("opacity",1);
   }
 
@@ -531,7 +562,7 @@ d3.csv("data.csv", parse, function(error, data) {
       drawLineAcross(0.75,"red",1500,"Average temperature, today", (-smallLabelHeight/2), width * 0.4);
     }
     else if (step == 2) {
-      addTweetButton("The world has warmed around " + tempRiseInLifetime + "°C so far during my lifetime.");
+      addTweetButton("The world has warmed around " + tempRiseInLifetime + degs() + " so far during my lifetime.");
       helpText = "This is based on the mean observed global temperature in the 10 years up to and including your birth, compared with the global mean for the decade up to 2012, the last year for which data is available.";
       svg.select("path.lineLow").style("opacity",0.6);
       svg.select("path.lineHigh").style("opacity",0.6);
@@ -539,7 +570,7 @@ d3.csv("data.csv", parse, function(error, data) {
       d3.select("#lifetime").classed("visible",true);
       redrawGraph(1900,thisYear);
       highlightArea("lifetime","rgb(0,100,200)",dob,thisYear,0,"Your life so far");
-      if ( dob < 2007) d3.select("#temp-rise-in-lifetime").text(tempRiseInLifetime + "°C")
+      if ( dob < 2007) d3.select("#temp-rise-in-lifetime").text(tempRiseInLifetime + degs())
       else {
         d3.select("#step2").text("But most of that was before you were born.");
         helpText = "The few years since your birth have been relative flat in terms of global temperatures, but they are among the warmest on record.";
@@ -555,7 +586,7 @@ d3.csv("data.csv", parse, function(error, data) {
       if (old) { currentStep++; nextStep(); }
       else {
         d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-31 700,230) translate(10,-7)");
-        addTweetButton("By the time I retire the world could be " + highTempAtRetirement + "°C hotter than preindustrial levels.");
+        addTweetButton("By the time I retire the world could be " + highTempAtRetirement + degs() + " hotter than preindustrial levels.");
         helpText = "Assumes you retire in " + dor + ". Retirement age is based on 62 (traditional average for men and women) plus a year and a half extra per decade of remaining working life to reflect ongoing increases.";
         redrawGraph(1900,dor + 50);
         highlightArea("working-life","rgb(240,40,40)",thisYear,dor,0,"Your remaining work years");
@@ -568,18 +599,18 @@ d3.csv("data.csv", parse, function(error, data) {
       }
     }
     else if (step == 5) {
-      addTweetButton("In my lifetime the world could see " + highTempAtLifespan + "°C of global warming. How about in yours?");
+      addTweetButton("In my lifetime the world could see " + highTempAtLifespan + degs() + " of global warming. How about in yours?");
       d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-31 700,230) translate(10,-15)");
       redrawGraph(1900,le + 50);
       d3.select("#date-of-retirement").text(dor);
-      d3.select("#high-temp-lifespan").text(highTempAtLifespan + "°C");
+      d3.select("#high-temp-lifespan").text(highTempAtLifespan + degs());
       d3.select("#low-temp-lifespan").text(lowTempAtLifespan);
       if (!haveMentioned2C && highTempAtLifespan > 2) { d3.select("#lifespan-comment").style("display","inline"); }
       if (old) {
         helpText = "The graph highlights upper-end and lower-end temperatures for the year " + (remainingYears + thisYear) + ".";
         var twoCComment = "";
-        if (highTempAtLifespan > 2) twoCComment = " That's higher than the agree global safety limit of 2°C."
-        d3.select("#step5").text("If you live another " + remainingYears + " years, you could see a world " + highTempAtLifespan + "°C above preindustrial levels, if emissions keep rising." + twoCComment)
+        if (highTempAtLifespan > 2) twoCComment = " That's higher than the agree global safety limit of " + temp(2) + degs() + "."
+        d3.select("#step5").text("If you live another " + remainingYears + " years, you could see a world " + highTempAtLifespan + degs() + " above preindustrial levels, if emissions keep rising." + twoCComment)
         highlightArea("remaining-years","green",thisYear,le,0,"Next " + remainingYears + " years");
       } else {
         helpText = "Life expectancy of is based on the current UK average age at death (80 years), plus 0.2 years per remaining year of life to reflect ongoing increases.";
@@ -588,17 +619,17 @@ d3.csv("data.csv", parse, function(error, data) {
       addCircleHighlights(le);
     }
     else if (step == 6) {
-      addTweetButton("A child born today could see a world " + tempAtChildLifespan + "°C hotter than preindustrial levels.");
+      addTweetButton("A child born today could see a world " + tempAtChildLifespan + degs() + " hotter than preindustrial levels.");
       helpText = "Assumes a life expectancy for a child born today of 96 years, based on current UK average age at death (80 years), plus 0.2 years per remaining year of life to reflect ongoing increases."
       redrawGraph(1900,leChild + 45);
       d3.select("#child").classed("visible",true);
-      d3.select("#high-temp-child").text(tempAtChildLifespan + "°C");
+      d3.select("#high-temp-child").text(tempAtChildLifespan + degs());
       d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-31 700,230) translate(10,-25)");
       highlightArea("child","rgb(240,150,20)",le,leChild,0,"Child born today");
       addCircleHighlights(leChild);
     }
     else if (step == 7) {
-      addTweetButton("If emissions keep rising global warming could reach " + Math.round(data[2200 - dataStartYear + 1].lineHighNew * 10)/10 + "°C by 2200.");
+      addTweetButton("If emissions keep rising global warming could reach " + Math.round(data[2200 - dataStartYear + 1].lineHighNew * 10)/10 + degs() + " by 2200.");
       helpText = "Longer-term forecasts contain greater uncertainty, partly because the feedback loops that would likely augment manmade climate change (such as emissions from melting permafrost) are poorly understood at present.";
       redrawGraph(1900,2200,"separate");
       d3.select("#report-labels").transition().duration(750).attr("transform","rotate(-23 700,230) translate(10,-25)");
@@ -630,8 +661,8 @@ d3.csv("data.csv", parse, function(error, data) {
       },2000);
     }
     else if (step == 9) {
-      addTweetButton("Only radical emissions cuts can avoid global warming of 2°C in our lifetimes.");
-      helpText = "This shows the IPCC's 3PD scenario in which carbon concentrations are quickly reduced. This would probably be sufficient to avoid exceeding 2°C of warming but would require radical, possibly infeasible, reductions in emissions and/or some CO2 being removed from the air.";
+      addTweetButton("Only radical emissions cuts can avoid global warming of " + temp(2) + degs() + " in our lifetimes.");
+      helpText = "This shows the IPCC's 3PD scenario in which carbon concentrations are quickly reduced. This would probably be sufficient to avoid exceeding " + temp(2) + degs() + " of warming but would require radical, possibly infeasible, reductions in emissions and/or some CO2 being removed from the air.";
       clearInterval(switcher);
       currentHighLine = lineHighNew;
       currentLowLine = lineLowNew;
@@ -645,7 +676,7 @@ d3.csv("data.csv", parse, function(error, data) {
       currentArea = area3PD;
       currentLowLine = lineLow3PD;
       currentHighLine = lineHigh3PD;
-      y.domain([data[lowerBounds].observations - 0.5, 3]);
+      y.domain([temp(data[lowerBounds].observations - 0.5), temp(3)]);
       var t = d3.transition().duration(3000);
       t.select(".y.axis").call(yAxis);
       t.select(".area").attr("d", currentArea(data));
@@ -655,12 +686,12 @@ d3.csv("data.csv", parse, function(error, data) {
       drawLineAcross(2,"red",2000,"Agreed global limit", (-smallLabelHeight/2), 40);
     }
     else if (step == 10) {
-      addTweetButtonLarge("In my lifetime the world could see " + highTempAtLifespan + "°C of global warming. How about in yours?");
+      addTweetButtonLarge("In my lifetime the world could see " + highTempAtLifespan + degs() + " of global warming. How about in yours?");
       d3.select("#info").remove();
       d3.select("#reload-button").transition().duration(1500).style("margin-bottom","50px").style("margin-left","450px");        
       d3.select("#reload-button").style("display","block").on("click",function() { location.reload() });
       d3.select("#explainers").transition().duration(1500).style("width","590px").style("padding-right","150px").style("padding-left","150px");
-      d3.select("#final-text").text('“In my lifetime the world could see ' + highTempAtLifespan + '°C of global warming. How about in yours? #howhotwillitget”')
+      d3.select("#final-text").text('“In my lifetime the world could see ' + highTempAtLifespan + degs() + ' of global warming. How about in yours? #howhotwillitget”')
         .transition().duration(1500).style("font-size","24px").style("padding-top","100px");
     }
   }
