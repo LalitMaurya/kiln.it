@@ -20,7 +20,6 @@
         <div id="tweet-button"></div>
         <div id="buttons">
             <span id="next-button" class="next"><i class="icon-chevron-right"></i></span>
-            <span id="reload-button" class="reload"><i class="icon-refresh"></i></span>
         </div>
       </div>
       <div id="help-text"></div>
@@ -81,6 +80,13 @@ var areaGasStacked = d3.svg.area()
     .x(function(d) { return x(d.year); })
     .y0(function(d) { return y(d.carbonCoal + d.carbonOil); })
     .y1(function(d) { return y(d.carbonCoal + d.carbonOil + d.carbonGas); })
+    .defined(filter);
+
+var areaGasStackedOnOil = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.carbonOil); })
+    .y1(function(d) { return y(d.carbonOil + d.carbonGas); })
     .defined(filter);
 
 var areaTotal = d3.svg.area()
@@ -187,9 +193,9 @@ d3.csv("oci-data.csv", parse, function(error, data) {
   elements.append("text")
     .attr("class", "label coal")
     .attr("clip-path", "url(#clipCoal)")
-    .text("Coal")
+    .text("Coal reserves")
     .attr("x", width - 10)
-    .attr("y", y(data[xHigh].carbonCoal) + 22);
+    .attr("y", y(data[xHigh - 2].carbonCoal) + 20);
 
   // Oil
   elements.append("path")
@@ -201,9 +207,9 @@ d3.csv("oci-data.csv", parse, function(error, data) {
   elements.append("text")
     .attr("class", "label fuel oil")
     .attr("clip-path", "url(#clipOil)")
-    .text("Oil")
+    .text("Oil reserves")
     .attr("x", width - 10)
-    .attr("y", y(data[xHigh].carbonOil) + 22);
+    .attr("y", y(data[xHigh - 2].carbonOil) + 20);
 
   // Gas
   elements.append("path")
@@ -215,9 +221,9 @@ d3.csv("oci-data.csv", parse, function(error, data) {
   elements.append("text")
     .attr("class", "label fuel gas")
     .attr("clip-path", "url(#clipGas)")
-    .text("Gas")
+    .text("Gas reserves")
     .attr("x", width - 10)
-    .attr("y", y(data[xHigh].carbonGas) + 22);
+    .attr("y", y(data[xHigh - 2].carbonGas) + 20);
 
   // All reserves
   elements.append("path")
@@ -267,13 +273,13 @@ d3.csv("oci-data.csv", parse, function(error, data) {
 
   // Add percent marker
   elements.append("line")
-    .attr("x1",x(1990)).attr("x2",x(1990))
-    .attr("y1", y(data[1990 - dataStart].carbonAllReserves) + 5)
-    .attr("y2", y(data[1990 - dataStart].budgetIPCC) - 5)
+    .attr("clip-path", "url(#clip)")
+    .attr("x1",x(1998)).attr("x2",x(1998))
+    .attr("y1", y(data[2000 - dataStart].carbonAllReserves) + 8)
+    .attr("y2", y(data[2000 - dataStart].budgetIPCC) - 8)
     .attr("stroke", "white")
     .attr("class", "percentmarker")
-    .attr("clip-path", "url(#clip)")
-    .attr("stroke-width", "5")
+    .attr("stroke-width", "8")
     .attr("marker-start", "url(#arrowup)")
     .attr("marker-end", "url(#arrowdown)");
 
@@ -315,11 +321,8 @@ d3.csv("oci-data.csv", parse, function(error, data) {
       .text("Billion tonnes of CO₂");
 
   function nextStep() {
-    if (currentStep > 6) {
-      d3.select("#next-button").style("display","none").remove();
-    } else {
-      d3.select("#next-button").style("display","inline-block").style("opacity","0").style("bottom","-100px").transition().duration(500).delay(0000).style("opacity",1).style("bottom","0px");
-    }
+    d3.select("#next-button").style("display","inline-block").style("opacity","0").style("bottom","-100px").transition().duration(500).delay(0000).style("opacity",1).style("bottom","0px");
+    if (currentStep > 6) d3.select("#next-button i").attr("class","icon-refresh").on("click",function(){ location.reload(); });
     steps(currentStep);
   }
   nextStep();
@@ -345,12 +348,12 @@ d3.csv("oci-data.csv", parse, function(error, data) {
       t.select(".reserves.coal").attr("d", areaCoal(data));
       t.select(".reserves.oil").attr("d", areaOilStacked(data));
       t.select(".reserves.gas").attr("d", areaGasStacked(data));
-      t.select(".label.coal").attr("y", y(data[xHigh].carbonCoal) + 22);
-      t.select(".label.oil").attr("y", y(data[xHigh].carbonCoal + data[xHigh].carbonOil) + 22);
-      t.select(".label.gas").attr("y", y(data[xHigh].carbonCoal + data[xHigh].carbonOil + data[xHigh].carbonGas) + 22);
+      t.select(".label.coal").attr("y", y(data[xHigh - 2].carbonCoal) + 20);
+      t.select(".label.oil").attr("y", y(data[xHigh].carbonCoal + data[xHigh - 2].carbonOil) + 20);
+      t.select(".label.gas").attr("y", y(data[xHigh].carbonCoal + data[xHigh].carbonOil + data[xHigh - 2].carbonGas) + 20);
     }
     else if (step == 3) {
-      text.text("In fact, since 2007, reserves have grown, as fossil fuel companies have spent huge sums bringing new reserves to commercial viability.");
+      text.text("In fact, since 2007, carbon reserves have grown, as fossil fuel companies have spent huge sums bringing new reserves to commercial viability.");
       x.domain([data[2007 - dataStart].year, data[2011 - dataStart].year]);
       axes();
       t.select(".reserves.coal").attr("d", areaCoal(data));
@@ -363,27 +366,52 @@ d3.csv("oci-data.csv", parse, function(error, data) {
       t.select(".budgetarea").attr("d", budgetArea(data));
     }
     else if (step == 4) {
-      text.text("But the remaining carbon budget that the world can burn to have a good chance of meeting the world's target to limit global warming to 2°C is falling every year.");
+      text.text("But the remaining carbon budget that the world must remain within to meet the agreed global target to limit global warming to 2°C is diminishing every year.");
       t.select("#clipBudget rect").attr("width",width);
     }
     else if (step == 5) {
-      text.text("By 2007, around 62% of carbon in the world's proven fossil fuel reserves can not be safely emitted …");
+      text.text("By 2007, around 61% of carbon in the world's proven fossil fuel reserves can not be safely emitted …");
       t.select(".percentmarker").attr("x1",x(2007.2)).attr("x2",x(2007.2))
-        .attr("y1", y(data[2007 - dataStart].carbonAllReserves) + 5)
-        .attr("y2", y(data[2007 - dataStart].budgetIPCC) - 5);
+        .attr("y1", y(data[2007 - dataStart].carbonAllReserves) + 8)
+        .attr("y2", y(data[2007 - dataStart].budgetIPCC) - 8);
       t.select(".percentmarker-label").attr("fill","white")
         .attr("x", y(4900)) 
         .attr("y",x(2007) + 60);
     }
     else if (step == 6) {
-      text.text("… by 2011 that had risen to 68%. But although less than a third of the remaining reserves can be safely burned, companies are still spending billions looking for more.");
+      text.text("… by 2011 that had risen to 68%, meaning that less than a third of the remaining reserves can be safely burned.");
       t.select(".percentmarker").attr("x1",x(2010.8)).attr("x2",x(2010.8))
-        .attr("y1", y(data[2011 - dataStart].carbonAllReserves) + 5)
-        .attr("y2", y(data[2011 - dataStart].budgetIPCC) - 5);
+        .attr("y1", y(data[2011 - dataStart].carbonAllReserves) + 8)
+        .attr("y2", y(data[2011 - dataStart].budgetIPCC) - 8);
       t.select(".percentmarker-label").attr("fill","white")
         .attr("x", y(4900)) 
         .attr("y",x(2011) - 45)
         .text("68% unburnable");
+    }
+    else if (step == 7) {
+      text.text("And yet fossil fuel companies still spending hundreds of billions of dollars developing new reserves – especially the oil and gas sector, whose reserves are soaring.");
+      x.domain([data[2007 - dataStart].year, data[2011 - dataStart].year]);
+      y.domain([0, 1250]);
+      axes();
+
+
+      t.select(".budgetarea").attr("opacity","0");
+      t.select(".budgetline").attr("opacity","0");      
+      t.select(".scissors").attr("opacity","0");
+      t.select(".label.budget").attr("opacity","0");
+
+      t.select(".reserves.total").attr("opacity","0");
+      t.select(".percentmarker").attr("opacity","0");
+      t.select(".percentmarker-label").attr("opacity","0");
+      t.select(".label.total").attr("opacity","0");
+      
+      t.select(".reserves.coal").delay(1000).attr("opacity","0");
+      t.select(".label.coal").delay(1000).attr("opacity","0");
+      
+      t.select(".reserves.oil").delay(2000).attr("d", areaOil(data));
+      t.select(".reserves.gas").delay(2000).attr("d", areaGasStackedOnOil(data));
+      t.select(".label.oil").delay(2000).attr("y", y(data[xHigh - 2].carbonOil) + 20);
+      t.select(".label.gas").delay(2000).attr("y", y(data[xHigh].carbonOil + data[xHigh - 2].carbonGas) + 30);
     }
   }
 });
