@@ -321,7 +321,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
       .text("Billion tonnes of CO₂");
 
   function nextStep() {
-    d3.select("#next-button").style("display","inline-block").style("opacity","0").style("bottom","-100px").transition().duration(500).delay(0000).style("opacity",1).style("bottom","0px");
+    d3.select("#next-button").style("display","inline-block").style("opacity","0").style("bottom","-100px").transition().duration(500).delay(2000).style("opacity",1).style("bottom","0px");
     if (currentStep > 6) d3.select("#next-button i").attr("class","icon-refresh").on("click",function(){ location.reload(); });
     steps(currentStep);
   }
@@ -350,7 +350,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
       t.select(".reserves.gas").attr("d", areaGasStacked(data));
       t.select(".label.coal").attr("y", y(data[xHigh - 2].carbonCoal) + 20);
       t.select(".label.oil").attr("y", y(data[xHigh].carbonCoal + data[xHigh - 2].carbonOil) + 20);
-      t.select(".label.gas").attr("y", y(data[xHigh].carbonCoal + data[xHigh].carbonOil + data[xHigh - 2].carbonGas) + 20);
+      t.select(".label.gas").attr("y", y(data[xHigh].carbonCoal + data[xHigh].carbonOil + data[xHigh - 2].carbonGas) + 30);
     }
     else if (step == 3) {
       text.text("In fact, since 2007, carbon reserves have grown, as fossil fuel companies have spent huge sums bringing new reserves to commercial viability.");
