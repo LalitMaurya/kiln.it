@@ -67,4 +67,4 @@ text.highlighter { font-family: 'Droid Serif', serif; font-size: 16px; fill: bla
 text.label { fill: white; text-anchor: end; font-size: 15px; }
 text.centre { text-anchor: middle; }
 
-#ie8message { width: 700px; height: 300px; background: white; position: absolute; top: 0; padding: 70px; font-size: 18px; line-height: 26px; background: #eee; text-align: center;  }
+#ie8message { width: 740px; height: 600px; background: white; position: absolute; top: 0; padding: 70px; font-size: 18px; line-height: 26px; background: #eee; text-align: center;  }

@@ -353,7 +353,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
       t.select(".label.gas").attr("y", y(data[xHigh].carbonCoal + data[xHigh].carbonOil + data[xHigh - 2].carbonGas) + 30);
     }
     else if (step == 3) {
-      text.text("In fact, since 2007, carbon reserves have grown, as fossil fuel companies have spent huge sums bringing new reserves to commercial viability.");
+      text.text("In fact, since 2007, carbon reserves have grown, as fossil fuel companies have spent huge amounts of money bringing new reserves to commercial viability.");
       x.domain([data[2007 - dataStart].year, data[2011 - dataStart].year]);
       axes();
       t.select(".reserves.coal").attr("d", areaCoal(data));
@@ -366,7 +366,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
       t.select(".budgetarea").attr("d", budgetArea(data));
     }
     else if (step == 4) {
-      text.text("But the remaining carbon budget that the world must remain within to meet the agreed global target to limit global warming to 2°C is diminishing every year.");
+      text.text("But the world’s ‘carbon budget’ – the amount of CO2 we can emit while meeting the global target of 2°C – is diminishing every year.");
       t.select("#clipBudget rect").attr("width",width);
     }
     else if (step == 5) {
@@ -389,7 +389,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
         .text("68% unburnable");
     }
     else if (step == 7) {
-      text.text("And yet fossil fuel companies still spending hundreds of billions of dollars developing new reserves – especially the oil and gas sector, whose reserves are soaring.");
+      text.text("And yet fossil fuel companies still spending hundreds of billions of dollars developing new reserves – especially in the oil and gas sector, in which reserves are soaring.");
       x.domain([data[2007 - dataStart].year, data[2011 - dataStart].year]);
       y.domain([0, 1250]);
       axes();
