@@ -16,7 +16,7 @@
     <div id="graph">
       <div id="explainers">
 				<div id="explainerlanding">In a hole? Stop digging …</div>
-				<div id="explainertext"><div id="landingtext">When it comes to climate change and fossil fuels, the world is in a hole, and the first order of business must therefore be to stop digging deeper.  Scientists agree that at least half and possibly much more of the world’s current, proven reserves of oil, gas, and coal must not be burned if we are to avoid the worst impacts of climate change. And yet…</div></div>
+				<div id="explainertext"><span id="maintext">When it comes to climate change and fossil fuels, the world is in a hole, and the first order of business must therefore be to stop digging deeper.  Scientists agree that at least half and possibly much more of the world’s current, proven reserves of oil, gas, and coal must not be burned if we are to avoid the worst impacts of climate change. And yet…</span> <a target="_parent" href="http://priceofoil.org"><span id="link"></span></a></div>
 				<div id="logo"></div>
 	      <div id="buttons">
 	          <span id="next-button" class="next"><i class="icon-chevron-right"></i></span>
@@ -306,7 +306,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
     .call(yAxis);
 
   svg.append("text")
-      .attr("class", "y axislabel")
+      .attr("class", "y axislabel next")
       .attr("text-anchor", "middle")
       .attr("y", -70)
       .attr("x", -200)
@@ -334,7 +334,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
   // Activate next and previous buttons
   d3.selectAll(".next").on("click", function(){ currentStep++; nextStep(); });
   function steps(step) {
-    var text = d3.select("#explainertext"),
+    var text = d3.select("#maintext"),
 			  t = d3.transition().duration(750);
     function axes() { t.select(".x.axis").call(xAxis); t.select(".y.axis").call(yAxis); }
 
@@ -445,7 +445,8 @@ d3.csv("oci-data.csv", parse, function(error, data) {
 					.style("padding", "30px")
 					.style("background-position","0px 0px")
 					.style("background-size","820px")
-    	text.text("For more information, and to find out what you can do, please visit  PriceofOil.org").style("font-size","20px").style("padding-left","350px");
+    	text.text("For more information, and to find out what you can do, please visit ").style("font-size","20px").style("padding-left","350px");
+			d3.select("#link").text("PriceOfOil.org").style("font-size","20px");
 			t.select("#logo").style("opacity",1);
 		}
   }

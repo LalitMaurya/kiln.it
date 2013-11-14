@@ -1,4 +1,4 @@
-body { background: white; }
+body { background: white; overflow: hidden; }
 
 #wrapper { width: 880px; padding: 20px 30px ; font-family: 'Droid Serif', serif; position: relative; background: white; margin: 0 auto; }
 #graph { width: 100%; position: relative; overflow: hidden; margin-top: 20px; min-height: 200px; }
