@@ -463,7 +463,8 @@ d3.csv("oci-data.csv", parse, function(error, data) {
             .attr("y2", y(data[2007 - dataStart].budgetIPCC) - 8);
         t.select(".percentmarker-label")
             .attr("x", y(4900)) 
-            .attr("y",x(2007) + 60);
+            .attr("y",x(2007) + 60)
+            .text("61% unburnable");
     }
     else if (step == 6) {
         y.domain([0, 3500]);
@@ -475,7 +476,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
         t.select(".percentmarker-label")
             .attr("x", y(4900)) 
             .attr("y",x(2012) - 45)
-            .text("68% unburnable");
+            .text("69% unburnable");
             
         t.select(".budgetarea").attr("opacity","1");
         t.select(".budgetline").attr("opacity","1");      
