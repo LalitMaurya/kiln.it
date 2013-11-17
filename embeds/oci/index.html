@@ -26,18 +26,17 @@
                   </div>
               </div>
               <div id="logo"></div>
+              <div id="credit">Interactive by <a target="_parent" href="http://kiln.it">Kiln</a></div>
               <div id="buttons">
                   <span id="back-button" class="back"><i class="icon-chevron-left"></i></span>
                   <span id="next-button" class="next"><i class="icon-chevron-right"></i></span>
               </div>
           </div>
-          <div id="help-text"></div>
           <!--[if lte IE 8]>
           <div id="ie8message">This interactive is not supported by your browser. To see it, download a modern browser such as <a href="https://www.google.com/chrome">Chrome</a>, <a href="http://www.getfirefox.net">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 9.</div>
           <![endif]-->
         </div>
     </div>
-    <div id="credit">Interactive by <a href="http://kiln.it">Kiln</a></div>
 </body>
 
 <script>
@@ -384,6 +383,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
                 .style("background-size","820px")
         t.select("#explainertext").style("padding", "10px 10px 10px 400px");
         t.select("#logo").style("opacity","1");
+        t.select("#credit").style("opacity","1");
         t.select("#explainerlanding").style("font-size","40px");
         
         t.select("#clipCoal rect").attr("width",0);
@@ -411,6 +411,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
                 .style("background-size","350px")
         t.select("#explainertext").style("padding", "10px 10px 10px 10px");
         t.select("#logo").style("opacity","0");
+        t.select("#credit").style("opacity","0");
         t.select("#explainerlanding").style("font-size","0px");
         text.text("In the last decade, the world’s commercially viable (‘proven’) coal reserves have declined, but oil and gas reserves have increased.");
         t.select("#explainertext").style("padding-left","0px");
@@ -534,7 +535,8 @@ d3.csv("oci-data.csv", parse, function(error, data) {
             d3.select("#link").text("PriceOfOil.org").style("font-size","20px");
             d3.select("#sourceslink").style("display","block");
             t.select("#logo").style("opacity",1);
-
+            t.select("#credit").style("opacity",1);
+        
             var sourcevisible = false;
             d3.select("#sourceslink")
                 .on("click",function() {
