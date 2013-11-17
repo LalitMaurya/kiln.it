@@ -55,7 +55,7 @@ var x = d3.scale.linear().range([0, width]),
     yAxis = d3.svg.axis().scale(y).ticks(7).orient("left");
 
 // Area generators stack
-var filter = function(d) { return d.year <= 2011 && d.year >= 2000; }
+var filter = function(d) { return d.year <= 2012 && d.year >= 2000; }
 var areaOil = d3.svg.area()
     .interpolate("monotone")
     .x(function(d) { return x(d.year); })
@@ -184,7 +184,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
   // Set initial bounds to display
   var dataStart = 1990,
       xLow = 2000 - dataStart,
-      xHigh = 2011 - dataStart,
+      xHigh = 2012 - dataStart,
       xMid = Math.round((xHigh + xLow)/2);
   x.domain([data[xLow].year, data[xHigh].year]);
   y.domain([0, 3000]);
@@ -391,7 +391,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
         t.select("#clipGas rect").attr("width",0);
     }
     if (step == 1) {
-        x.domain([data[2000 - dataStart].year, data[2011 - dataStart].year]);
+        x.domain([data[2000 - dataStart].year, data[2012 - dataStart].year]);
         y.domain([0, 3000]);
         axes();
         t.select(".reserves.coal").attr("d", areaCoal(data));
@@ -424,7 +424,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
     }
     else if (step == 2) {
         text.text("All told, there's been no significant reduction in fossil fuel reserves despite massive consumption of oil, gas, and coal in the interim.");
-        x.domain([data[2000 - dataStart].year, data[2011 - dataStart].year]);
+        x.domain([data[2000 - dataStart].year, data[2012 - dataStart].year]);
         y.domain([0, 3500]);
         axes();
         t.select(".reserves.coal").attr("d", areaCoal(data));
@@ -438,7 +438,7 @@ d3.csv("oci-data.csv", parse, function(error, data) {
     }
     else if (step == 3) {
         text.text("In fact, since 2007, fossil fuel reserves have grown, as oil and gas companies in particular have spent huge amounts of money bringing new reserves to commercial viability.");
-        x.domain([data[2007 - dataStart].year, data[2011 - dataStart].year]);
+        x.domain([data[2007 - dataStart].year, data[2012 - dataStart].year]);
         axes();
         t.select(".reserves.coal").attr("d", areaCoal(data));
         t.select(".reserves.oil").attr("d", areaOilStacked(data));
@@ -468,13 +468,13 @@ d3.csv("oci-data.csv", parse, function(error, data) {
     else if (step == 6) {
         y.domain([0, 3500]);
         axes();
-        text.text("… by 2011 that had risen to 68%, meaning that less than a third of the remaining reserves can be safely burned.");
-        t.select(".percentmarker").attr("x1",x(2010.8)).attr("x2",x(2010.8))
-            .attr("y1", y(data[2011 - dataStart].carbonAllReserves) + 8)
-            .attr("y2", y(data[2011 - dataStart].budgetIPCC) - 8);
+        text.text("… by 2012 that had risen to 69%, meaning that less than a third of the remaining reserves can be safely burned.");
+        t.select(".percentmarker").attr("x1",x(2011.8)).attr("x2",x(2011.8))
+            .attr("y1", y(data[2012 - dataStart].carbonAllReserves) + 8)
+            .attr("y2", y(data[2012 - dataStart].budgetIPCC) - 8);
         t.select(".percentmarker-label")
             .attr("x", y(4900)) 
-            .attr("y",x(2011) - 45)
+            .attr("y",x(2012) - 45)
             .text("68% unburnable");
             
         t.select(".budgetarea").attr("opacity","1");
@@ -557,16 +557,6 @@ d3.csv("oci-data.csv", parse, function(error, data) {
 // Parse and filter the data
 function parse(d) {
     d.year = parseInt(d["Year"]);
-    d.reservesOil = parseFloat(d["Crude Proved Oil Reserves (billion barrels)"]);
-    d.reservesCoal = parseFloat(d["Total Recoverable Coal Reserves (billion BOE)"]);
-    d.reservesGas = parseFloat(d["Proved Reserves of Natural Gas (billion BOE)"]);
-    d.reservesTotal = parseFloat(d["Total Fossil Fuel Reserves (billion BOE)"]);
-    d.supplyOil = parseFloat(d["Total Oil Supply (annual million barrels)"]);
-    d.supplyCoal = parseFloat(d["Total Primary Coal Production (million BOE)"]);
-    d.supplyGas = parseFloat(d["Dry Natural Gas Production (million BOE)"]);
-    d.supplyTotalMOE = parseFloat(d["Total Fossil Fuel Production (million BOE)"]);
-    d.supplyTotal = parseFloat(d["Total Fossil Fuel Production (billion BOE)"]);
-    d.reservesChange = parseFloat(d["Fossil Fuel Reserves Expansion (billion BOE)"]);
     d.budgetIPCC = parseFloat(d["Remaining Carbon Budget (GtCO2) - IPCC"]);
     d.budgetOCI = parseFloat(d["Remaining Carbon Budget (GtCO2) - OCI"]);
     d.carbonOil = parseFloat(d["Carbon Content of Proved Oil Reserves (GtCO2)"]);
