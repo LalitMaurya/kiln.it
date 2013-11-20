@@ -12,17 +12,27 @@
     <script src="js/jquery-1.10.2.min.js"></script>
 </head>
 <body>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
     <div id="wrapper">
         <div id="graph">
           <div id="explainers">
               <div id="explainerlanding">In a hole? Stop digging …</div>
               <div id="explainertext">
-                  <span id="maintext">When it comes to climate change and fossil fuels, the world is in a hole, and the first order of business must therefore be to stop digging deeper.  Scientists agree that at least two thirds and possibly more of the world’s current, proven reserves of oil, gas, and coal must not be burned if we are to avoid the worst impacts of climate change. And yet…</span> <a target="_parent" href="http://priceofoil.org"><span id="link"></span></a>
+                  <div><span id="maintext">When it comes to climate change and fossil fuels, the world is in a hole, and the first order of business must therefore be to stop digging deeper. Scientists agree that at least two thirds and possibly more of the world’s current, proven reserves of oil, gas, and coal must not be burned if we are to avoid the worst impacts of climate change. And yet…</span> <a target="_parent" href="http://priceofoil.org/hole"><span id="link"></span></a> <span id="tail">and help us all start climbing.</span></div>
+									<div id="shares">
+										<span id="tweet-button"></span>
+										<span id="fb-button"><div class="fb-share-button" data-href="http://priceofoil.org/hole" data-width="80px" data-type="button"></div></span>
+									</div>
                   <div id="sourceslink"><a href="#">Data sources <i class="icon-chevron-sign-right"></i></a></div>
                   <div id="sources">
-                      <p>Slides 2-4: U.S. Energy Information Administration, International Energy Statistics; World Energy Council, World Energy Resources Survey</p>
-                      <p>Slides 5-7: Intergovernmental Panel on Climate Change, 5th Assessment Report; Oak Ridge National Laboratory, Carbon Dioxide Information Analysis Center; BP Energy Statistics; R.A. Houghton and J. L. Hackler, “Annual Flux of Carbon from Land Use and Land-Cover Change 1850 to 2010,” Global Biogeochemical Cycles; Le Quéré, et al., “The Global Carbon Budget 1959 – 2011,” Earth System Science Data; U.S. Energy Information Administration, International Energy Statistics; World Energy Council, World Energy Resources Survey</p>
-                      <p>Slide 8: U.S. Energy Information Administration, International Energy Statistics</p>
+                      <p>Slides 2-4: U.S. Energy Information Administration, International Energy Statistics; World Energy Council, World Energy Resources Survey. Slides 5-7: Intergovernmental Panel on Climate Change, 5th Assessment Report; Oak Ridge National Laboratory, Carbon Dioxide Information Analysis Center; BP Energy Statistics; R.A. Houghton and J. L. Hackler, “Annual Flux of Carbon from Land Use and Land-Cover Change 1850 to 2010,” Global Biogeochemical Cycles; Le Quéré, et al., “The Global Carbon Budget 1959 – 2011,” Earth System Science Data; U.S. Energy Information Administration, International Energy Statistics; World Energy Council, World Energy Resources Survey. Slide 8: U.S. Energy Information Administration, International Energy Statistics</p>
                   </div>
               </div>
               <div id="logo"></div>
@@ -40,6 +50,17 @@
 </body>
 
 <script>
+
+// Set up tweet buttons
+function addTweetButton(tweetText) {
+  d3.select('#tweet-button').html("");
+  twttr.widgets.createShareButton(
+    'http://priceofoil.org/hole',
+    document.getElementById('tweet-button'),
+    function (el) {  },
+    { count: 'none', text: tweetText, via: 'PriceofOil' }
+    );
+}
 
 var currentStep = 0,
     helpText = "";
@@ -532,12 +553,16 @@ d3.csv("oci-data.csv", parse, function(error, data) {
                     .style("padding", "30px")
                     .style("background-position","0px 0px")
                     .style("background-size","820px")
-            text.text("For more information, and to find out what you can do, please visit ").style("font-size","20px").style("padding-left","350px");
+            text.text("It's time to stop digging and start climbing out of the climate hole. Take action at ").style("font-size","20px").style("padding-left","350px");
             d3.select("#link").text("PriceOfOil.org").style("font-size","20px");
+            d3.select("#tail").style("display","block").style("font-size","20px")
             d3.select("#sourceslink").style("display","block");
             t.select("#logo").style("opacity",1);
             t.select("#credit").style("opacity",1);
-        
+
+						addTweetButton("First rule of holes - when you're in one, stop digging. See how deep we are and what you can do at");
+						d3.select("#fb-button").style("display","inline");
+						
             var sourcevisible = false;
             d3.select("#sourceslink")
                 .on("click",function() {

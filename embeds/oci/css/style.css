@@ -16,17 +16,21 @@ input.btn { top: -1px; height: 30px; }
 select { vertical-align: bottom; }
 #fahrenheit { margin-top: 20px }
 #checkbox-label { font-size: 12px; vertical-align: bottom; line-height: 1; margin-left: -5px; }
+#tail { display: none; }
 
-#explainertext a:link, #explainertext a:visited {color: #66aadd; } 
+#explainers a:link, #explainertext a:visited {color: #66aadd; } 
 #explainertext a:hover, #explainertext a:active { color: white; text-decoration: none; }
-#sourceslink { display: none; margin-top: 40px; margin-bottom: 8px; font-size: 14px; }
-#sources { display: none; font-size: 11px; margin-left: 370px;}
+#sourceslink { display: none; margin-top: 20px; margin-bottom: 8px; font-size: 14px; }
+#sources { display: none; font-size: 11px; margin-left: 345px;}
     
+#shares { margin-top: 15px; }
+
 #info { display: none; font-size: 18px; }
 #help-text { font-family: font-family: 'Droid Serif', serif; position: absolute; left: 145px; height: 100%; background: rgba(240,240,240,0.85); width: 170px; padding: 10px 10px 10px 20px; color: black; text-align: right; height: 400px; opacity: 0; }
 
 #tweet-button-final { margin-top: 10px; }
-#tweet-button { display: block; margin-top: 2px; }
+#tweet-button { margin-top: 14px; vertical-align: bottom; position: relative; top: 5px; right: 5px; }
+#fb-button { display: none; vertical-align: bottom; }
 
 #explainers { position: absolute; right: 0; color: white; top: 0; width: 820px; height: 375px; font-size: 15px; line-height: 1.2; text-align: right; background: #111; background-image: url(hole.jpg); background-position: 0px 0px; background-size: 820px; background-repeat: no-repeat; border-bottom-right-radius: 8px; -webkit-border-bottom-right-radius: 8px; -moz--border-bottom-right-radius: 8px; border-top-right-radius: 8px; -webkit-border-top-right-radius: 8px; -moz-border-top-right-radius: 8px; border-bottom-left-radius: 8px; -webkit-border-bottom-left-radius: 8px; -moz-border-bottom-left-radius: 8px; border-top-left-radius: 8px; -webkit-border-top-left-radius: 8px; -moz-border-top-left-radius: 8px; padding: 30px; }
 #explainers .explainer { display: none; margin-bottom: 10px; padding: 3px; overflow: hidden; }
