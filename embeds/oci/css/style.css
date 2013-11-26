@@ -77,3 +77,9 @@ text.label { fill: white; text-anchor: end; font-size: 15px; }
 text.centre { text-anchor: middle; }
 
 #ie8message { width: 740px; height: 600px; background: white; position: absolute; top: 0; padding: 70px; font-size: 18px; line-height: 26px; background: #eee; text-align: center;  }
+
+/* Tweaks for guardian version */
+.guardian #explainers { background-image: none; background: white; background-repeat: no-repeat; background-image: url(graph.png); }
+.guardian #explainerlanding { margin-top: 110px; background-opacity: 1;}
+.guardian #sourceslink { margin-top: 130px; }
+.guardian #sources { display: none; font-size: 11px; margin-left: 250px;}
