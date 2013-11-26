@@ -80,6 +80,6 @@ text.centre { text-anchor: middle; }
 
 /* Tweaks for guardian version */
 .guardian #explainers { background-image: none; background: white; background-repeat: no-repeat; background-image: url(graph.png); }
-.guardian #explainerlanding { margin-top: 110px; background-opacity: 1;}
+.guardian #explainerlanding { margin-top: 110px; background-opacity: 1; }
 .guardian #sourceslink { margin-top: 130px; }
 .guardian #sources { display: none; font-size: 11px; margin-left: 250px;}
