@@ -1,0 +1,930 @@
+{
+	"name": "Manmade emissions since 1750",
+	"total": 1450.33,
+	"children": [
+		{
+			"name": "Top 90 Producers",
+			"children": [
+				{
+					"name": "Investor owned",
+					"children": [
+						{ 
+							"name": "Alpha Natural Resources", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.98},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.17}
+							],
+							"country": "USA",
+							"rank": 56
+						},
+						{ 
+							"name": "Anadarko", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 4.56},
+								{"name": "Own footprint", "size": 0.18},
+								{"name": "Methane leaks", "size": 0.46}
+							],
+							"country": "USA",
+							"rank": 37
+						},
+						{ 
+							"name": "Anglo American", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 6.68},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.57}
+							],
+							"country": "UK",
+							"rank": 26
+						},
+						{ 
+							"name": "Apache", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.81},
+								{"name": "Own footprint", "size": 0.04},
+								{"name": "Methane leaks", "size": 0.1}
+							],
+							"country": "USA",
+							"rank": 77
+						},
+						{ 
+							"name": "Arch Coal", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 5.43},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.46}
+							],
+							"country": "USA",
+							"rank": 35
+						},
+						{ 
+							"name": "BG Group", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.24},
+								{"name": "Own footprint", "size": 0.09},
+								{"name": "Methane leaks", "size": 0.21}
+							],
+							"country": "UK",
+							"rank": 64
+						},
+						{ 
+							"name": "BHP Billiton", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 6.97},
+								{"name": "Own footprint", "size": 0.06},
+								{"name": "Methane leaks", "size": 0.58}
+							],
+							"country": "Australia",
+							"rank": 24
+						},
+						{ 
+							"name": "BP", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 32.51},
+								{"name": "Own footprint", "size": 1.02},
+								{"name": "Methane leaks", "size": 2.31}
+							],
+							"country": "UK",
+							"rank": 6
+						},
+						{ 
+							"name": "Canadian Natural Resources", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.83},
+								{"name": "Own footprint", "size": 0.04},
+								{"name": "Methane leaks", "size": 0.09}
+							],
+							"country": "Canada",
+							"rank": 76
+						},
+						{ 
+							"name": "Cemex", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.55},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0}
+							],
+							"country": "Mexico",
+							"rank": 85
+						},
+						{ 
+							"name": "ChevronTexaco", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 46.28},
+								{"name": "Own footprint", "size": 1.48},
+								{"name": "Methane leaks", "size": 3.34}
+							],
+							"country": "USA",
+							"rank": 3
+						},
+						{ 
+							"name": "ConocoPhillips", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 14.7},
+								{"name": "Own footprint", "size": 0.67},
+								{"name": "Methane leaks", "size": 1.5}
+							],
+							"country": "USA",
+							"rank": 13
+						},
+						{ 
+							"name": "Consol Energy, Inc.", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 8.38},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.71}
+							],
+							"country": "USA",
+							"rank": 23
+						},
+						{ 
+							"name": "Cyprus Amax", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.61},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.14}
+							],
+							"country": "USA",
+							"rank": 61
+						},
+						{ 
+							"name": "Devon Energy", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.41},
+								{"name": "Own footprint", "size": 0.08},
+								{"name": "Methane leaks", "size": 0.19}
+							],
+							"country": "USA",
+							"rank": 63
+						},
+						{ 
+							"name": "EnCana", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.4},
+								{"name": "Own footprint", "size": 0.09},
+								{"name": "Methane leaks", "size": 0.2}
+							],
+							"country": "Canada",
+							"rank": 62
+						},
+						{ 
+							"name": "ENI", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 5.2},
+								{"name": "Own footprint", "size": 0.24},
+								{"name": "Methane leaks", "size": 0.54}
+							],
+							"country": "Italy",
+							"rank": 33
+						},
+						{ 
+							"name": "ExxonMobil", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 41.6},
+								{"name": "Own footprint", "size": 1.54},
+								{"name": "Methane leaks", "size": 3.53}
+							],
+							"country": "USA",
+							"rank": 4
+						},
+						{ 
+							"name": "HeidelbergCement", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.59},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0}
+							],
+							"country": "Germany",
+							"rank": 84
+						},
+						{ 
+							"name": "Hess", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.09},
+								{"name": "Own footprint", "size": 0.08},
+								{"name": "Methane leaks", "size": 0.19}
+							],
+							"country": "USA",
+							"rank": 53
+						},
+						{ 
+							"name": "Holcim", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.01},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0}
+							],
+							"country": "Switzerland",
+							"rank": 75
+						},
+						{ 
+							"name": "Husky Energy", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.59},
+								{"name": "Own footprint", "size": 0.02},
+								{"name": "Methane leaks", "size": 0.05}
+							],
+							"country": "Canada",
+							"rank": 82
+						},
+						{ 
+							"name": "Italcimenti", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.46},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0}
+							],
+							"country": "Italy",
+							"rank": 87
+						},
+						{ 
+							"name": "Kiewit Mining", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.19},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.1}
+							],
+							"country": "USA",
+							"rank": 69
+						},
+						{ 
+							"name": "Lafarge", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.04},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0}
+							],
+							"country": "France",
+							"rank": 74
+						},
+						{ 
+							"name": "Lukoil", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 3.6},
+								{"name": "Own footprint", "size": 0.09},
+								{"name": "Methane leaks", "size": 0.19}
+							],
+							"country": "Russian Federation",
+							"rank": 42
+						},
+						{ 
+							"name": "Luminant", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.97},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.08}
+							],
+							"country": "USA",
+							"rank": 73
+						},
+						{ 
+							"name": "Marathon", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.64},
+								{"name": "Own footprint", "size": 0.11},
+								{"name": "Methane leaks", "size": 0.24}
+							],
+							"country": "USA",
+							"rank": 47
+						},
+						{ 
+							"name": "Massey Energy", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.03},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.17}
+							],
+							"country": "USA",
+							"rank": 55
+						},
+						{ 
+							"name": "Murphy Oil", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.37},
+								{"name": "Own footprint", "size": 0.02},
+								{"name": "Methane leaks", "size": 0.03}
+							],
+							"country": "USA",
+							"rank": 88
+						},
+						{ 
+							"name": "Murray Coal", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.73},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.06}
+							],
+							"country": "USA",
+							"rank": 80
+						},
+						{ 
+							"name": "Nexen", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.59},
+								{"name": "Own footprint", "size": 0.02},
+								{"name": "Methane leaks", "size": 0.04}
+							],
+							"country": "Canada",
+							"rank": 83
+						},
+						{ 
+							"name": "North American Coal", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.09},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.09}
+							],
+							"country": "USA",
+							"rank": 70
+						},
+						{ 
+							"name": "Occidental", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 4.63},
+								{"name": "Own footprint", "size": 0.09},
+								{"name": "Methane leaks", "size": 0.34}
+							],
+							"country": "USA",
+							"rank": 38
+						},
+						{ 
+							"name": "OMV Group", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.3},
+								{"name": "Own footprint", "size": 0.01},
+								{"name": "Methane leaks", "size": 0.03}
+							],
+							"country": "Austria",
+							"rank": 90
+						},
+						{ 
+							"name": "Peabody Energy", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 11.46},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.97}
+							],
+							"country": "USA",
+							"rank": 16
+						},
+						{ 
+							"name": "RAG", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.05},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.09}
+							],
+							"country": "Germany",
+							"rank": 71
+						},
+						{ 
+							"name": "Repsol", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.96},
+								{"name": "Own footprint", "size": 0.13},
+								{"name": "Methane leaks", "size": 0.29}
+							],
+							"country": "Spain",
+							"rank": 45
+						},
+						{ 
+							"name": "Rio Tinto", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 5.5},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.47}
+							],
+							"country": "UK",
+							"rank": 34
+						},
+						{ 
+							"name": "Royal Dutch Shell", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 27.57},
+								{"name": "Own footprint", "size": 0.99},
+								{"name": "Methane leaks", "size": 2.19}
+							],
+							"country": "The Netherlands",
+							"rank": 8
+						},
+						{ 
+							"name": "RWE", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 6.31},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.54}
+							],
+							"country": "Germany",
+							"rank": 28
+						},
+						{ 
+							"name": "Sasol", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 3.24},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.27}
+							],
+							"country": "South Africa",
+							"rank": 43
+						},
+						{ 
+							"name": "Suncor", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.24},
+								{"name": "Own footprint", "size": 0.05},
+								{"name": "Methane leaks", "size": 0.11}
+							],
+							"country": "Canada",
+							"rank": 67
+						},
+						{ 
+							"name": "Taiheiyo", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.4},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0}
+							],
+							"country": "Japan",
+							"rank": 89
+						},
+						{ 
+							"name": "Talisman", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.79},
+								{"name": "Own footprint", "size": 0.04},
+								{"name": "Methane leaks", "size": 0.09}
+							],
+							"country": "Canada",
+							"rank": 79
+						},
+						{ 
+							"name": "Total", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 10.79},
+								{"name": "Own footprint", "size": 0.35},
+								{"name": "Methane leaks", "size": 0.77}
+							],
+							"country": "France",
+							"rank": 17
+						},
+						{ 
+							"name": "UK Coal", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.73},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.06}
+							],
+							"country": "UK",
+							"rank": 81
+						},
+						{ 
+							"name": "Westmoreland Mining", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.41},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.12}
+							],
+							"country": "USA",
+							"rank": 66
+						},
+						{ 
+							"name": "Xstrata", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.05},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.17}
+							],
+							"country": "Switzerland",
+							"rank": 54
+						},
+						{ 
+							"name": "Yukos", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.69},
+								{"name": "Own footprint", "size": 0.06},
+								{"name": "Methane leaks", "size": 0.12}
+							],
+							"country": "Russian Federation",
+							"rank": 48
+						}
+					]
+				},
+				{
+					"name": "State owned",
+					"children": [
+						{ 
+							"name": "Abu Dhabi NOC", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 8.84},
+								{"name": "Own footprint", "size": 0.26},
+								{"name": "Methane leaks", "size": 0.57}
+							],
+							"country": "UAE",
+							"rank": 21
+						},
+						{ 
+							"name": "Bahrain Petroleum", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.78},
+								{"name": "Own footprint", "size": 0.05},
+								{"name": "Methane leaks", "size": 0.11}
+							],
+							"country": "Bahrain",
+							"rank": 78
+						},
+						{ 
+							"name": "British Coal Corp.", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 17.74},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 1.5}
+							],
+							"country": "UK",
+							"rank": 12
+						},
+						{ 
+							"name": "China National Offshore Oil Co.", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.03},
+								{"name": "Own footprint", "size": 0.03},
+								{"name": "Methane leaks", "size": 0.06}
+							],
+							"country": "China",
+							"rank": 72
+						},
+						{ 
+							"name": "Coal India", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 14.28},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 1.21}
+							],
+							"country": "India",
+							"rank": 15
+						},
+						{ 
+							"name": "Ecopetrol", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.66},
+								{"name": "Own footprint", "size": 0.05},
+								{"name": "Methane leaks", "size": 0.1}
+							],
+							"country": "Colombia",
+							"rank": 59
+						},
+						{ 
+							"name": "Egyptian General Petroleum", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.48},
+								{"name": "Own footprint", "size": 0.09},
+								{"name": "Methane leaks", "size": 0.2}
+							],
+							"country": "Egypt",
+							"rank": 50
+						},
+						{ 
+							"name": "Gazprom", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 25.09},
+								{"name": "Own footprint", "size": 2.13},
+								{"name": "Methane leaks", "size": 4.92}
+							],
+							"country": "Russian Federation",
+							"rank": 7
+						},
+						{ 
+							"name": "Iraq National Oil Company", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 6.7},
+								{"name": "Own footprint", "size": 0.14},
+								{"name": "Methane leaks", "size": 0.29}
+							],
+							"country": "Iraq",
+							"rank": 27
+						},
+						{ 
+							"name": "Kuwait Petroleum Corp.", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 9.8},
+								{"name": "Own footprint", "size": 0.23},
+								{"name": "Methane leaks", "size": 0.48}
+							],
+							"country": "Kuwait",
+							"rank": 20
+						},
+						{ 
+							"name": "Libya National Oil Corp.", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 6.22},
+								{"name": "Own footprint", "size": 0.15},
+								{"name": "Methane leaks", "size": 0.32}
+							],
+							"country": "Libya",
+							"rank": 30
+						},
+						{ 
+							"name": "National Iranian Oil Company",
+							"children":  [
+								{"name": "Fuel & cement", "size": 26.71},
+								{"name": "Own footprint", "size": 0.76},
+								{"name": "Methane leaks", "size": 1.62}
+							],
+							"country": "Iran",
+							"rank": 9
+						},
+						{ 
+							"name": "Nigerian National Petroleum", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 6.06},
+								{"name": "Own footprint", "size": 0.15},
+								{"name": "Methane leaks", "size": 0.33}
+							],
+							"country": "Nigeria",
+							"rank": 31
+						},
+						{ 
+							"name": "Oil & Gas Corporation", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 3.71},
+								{"name": "Own footprint", "size": 0.14},
+								{"name": "Methane leaks", "size": 0.31}
+							],
+							"country": "India",
+							"rank": 41
+						},
+						{ 
+							"name": "Pemex", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 18.14},
+								{"name": "Own footprint", "size": 0.59},
+								{"name": "Methane leaks", "size": 1.29}
+							],
+							"country": "Mexico",
+							"rank": 11
+						},
+						{ 
+							"name": "Pertamina", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 6.16},
+								{"name": "Own footprint", "size": 0.21},
+								{"name": "Methane leaks", "size": 0.46}
+							],
+							"country": "Indonesia",
+							"rank": 29
+						},
+						{ 
+							"name": "Petrobras", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 5.49},
+								{"name": "Own footprint", "size": 0.16},
+								{"name": "Methane leaks", "size": 0.34}
+							],
+							"country": "Brazil",
+							"rank": 32
+						},
+						{ 
+							"name": "PetroChina", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 9.67},
+								{"name": "Own footprint", "size": 0.28},
+								{"name": "Methane leaks", "size": 0.61}
+							],
+							"country": "China",
+							"rank": 19
+						},
+						{ 
+							"name": "Petroleos de Venezuela", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 14.77},
+								{"name": "Own footprint", "size": 0.44},
+								{"name": "Methane leaks", "size": 0.95}
+							],
+							"country": "Venezuala",
+							"rank": 14
+						},
+						{ 
+							"name": "Petroleum Development Oman", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.4},
+								{"name": "Own footprint", "size": 0.08},
+								{"name": "Methane leaks", "size": 0.18}
+							],
+							"country": "Oman",
+							"rank": 52
+						},
+						{ 
+							"name": "Petronas", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 4.56},
+								{"name": "Own footprint", "size": 0.22},
+								{"name": "Methane leaks", "size": 0.5}
+							],
+							"country": "Malaysia",
+							"rank": 36
+						},
+						{ 
+							"name": "Polish Oil & Gas", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 0.42},
+								{"name": "Own footprint", "size": 0.02},
+								{"name": "Methane leaks", "size": 0.03}
+							],
+							"country": "Poland",
+							"rank": 86
+						},
+						{ 
+							"name": "Qatar Petroleum", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 3},
+								{"name": "Own footprint", "size": 0.13},
+								{"name": "Methane leaks", "size": 0.29}
+							],
+							"country": "Qatar",
+							"rank": 44
+						},
+						{ 
+							"name": "Rosneft", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.5},
+								{"name": "Own footprint", "size": 0.07},
+								{"name": "Methane leaks", "size": 0.15}
+							],
+							"country": "Russian Federation",
+							"rank": 51
+						},
+						{ 
+							"name": "Saudi Aramco", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 42.82},
+								{"name": "Own footprint", "size": 1.03},
+								{"name": "Methane leaks", "size": 2.18}
+							],
+							"country": "Saudi Arabia",
+							"rank": 5
+						},
+						{ 
+							"name": "Singareni Collieries", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.74},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.15}
+							],
+							"country": "India",
+							"rank": 58
+						},
+						{ 
+							"name": "Sinopec", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.41},
+								{"name": "Own footprint", "size": 0.04},
+								{"name": "Methane leaks", "size": 0.08}
+							],
+							"country": "China",
+							"rank": 65
+						},
+						{ 
+							"name": "Sonangol", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.69},
+								{"name": "Own footprint", "size": 0.03},
+								{"name": "Methane leaks", "size": 0.07}
+							],
+							"country": "Angola",
+							"rank": 60
+						},
+						{ 
+							"name": "Sonatrach", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 7.96},
+								{"name": "Own footprint", "size": 0.4},
+								{"name": "Methane leaks", "size": 0.91}
+							],
+							"country": "Algeria",
+							"rank": 22
+						},
+						{ 
+							"name": "Statoil", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 3.89},
+								{"name": "Own footprint", "size": 0.15},
+								{"name": "Methane leaks", "size": 0.33}
+							],
+							"country": "Norway",
+							"rank": 40
+						},
+						{ 
+							"name": "Syrian Petroleum", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.29},
+								{"name": "Own footprint", "size": 0.04},
+								{"name": "Methane leaks", "size": 0.08}
+							],
+							"country": "Syria",
+							"rank": 68
+						}
+					]
+				},
+				{
+					"name": "Nation states",
+					"children": [
+						{ 
+							"name": "China (coal & cement)", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 115.11},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 8.98}
+							],
+							"country": "China",
+							"rank": 2
+						},
+						{ 
+							"name": "Czech Republic & Slovakia (coal)", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 1.84},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.16}
+							],
+							"country": "Czech Republic & Slovakia",
+							"rank": 57
+						},
+						{ 
+							"name": "Czechoslovakia (coal)", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 6.77},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.57}
+							],
+							"country": "Czechoslovakia",
+							"rank": 25
+						},
+						{ 
+							"name": "Former USSR (oil, gas, coal)", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 116.88},
+								{"name": "Own footprint", "size": 2.31},
+								{"name": "Methane leaks", "size": 10.53}
+							],
+							"country": "Former Soviet Union",
+							"rank": 1
+						},
+						{ 
+							"name": "Kazakhstan (coal)", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 4.09},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.35}
+							],
+							"country": "Kazakhstan",
+							"rank": 39
+						},
+						{ 
+							"name": "North Korea (coal)", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 2.58},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.22}
+							],
+							"country": "North Korea",
+							"rank": 49
+						},
+						{ 
+							"name": "Poland (coal)", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 24.66},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 2.09}
+							],
+							"country": "Poland",
+							"rank": 10
+						},
+						{ 
+							"name": "Russian Federation (coal)", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 10.36},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.88}
+							],
+							"country": "Russia",
+							"rank": 18
+						},
+						{ 
+							"name": "Ukraine (coal)", 
+							"children":  [
+								{"name": "Fuel & cement", "size": 3.11},
+								{"name": "Own footprint", "size": 0},
+								{"name": "Methane leaks", "size": 0.26}
+							],
+							"country": "Ukraine",
+							"rank": 46
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Other",
+			"size": 536.08
+		}
+	]
+}
